@@ -1,0 +1,79 @@
+.header {
+    position: fixed;
+    display: flex;
+    justify-content: center; /* 수정 */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    border-bottom: 2px solid #e6e5e5;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    width: 1280px;
+    max-width: 100%;
+}
+
+.header-inner .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-inner .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-inner .nav .gnb {
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
+    margin: 0 30px;
+}
+.header-inner .nav .gnb a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+.header-inner .nav .utils {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+.btn-cart,
+.btn-user {
+    margin: 0 5px;
+}
+
+.btn-login,
+.btn-logout,
+.btn-signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 2px;
+    flex-shrink: 0;
+    font-size: 15px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+}
+.btn-login {
+    background: #a586f6;
+    width: 90px;
+    height: 40px;
+}
+.btn-signin {
+    background: black;
+    width: 90px;
+    height: 40px;
+}
+.btn-logout {
+    background: black;
+    width: 90px;
+    height: 40px;
+}
