@@ -1,0 +1,23 @@
+.footer-inner{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0 20px 0;
+    text-align: center;
+    background-color: #f7f9fa;
+}
+
+.footer-inner .top{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 30% 0 30%;
+    color: #c6c6c6;
+    font-size: 17px;
+}
+
+.footer-inner .bottom{
+    margin: 3px 0 0 0;
+    line-height: 5px;
+    font-size: 15px;
+    color: #c6c6c6;
+}
