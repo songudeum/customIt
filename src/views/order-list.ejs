@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/header.css" />
+<link rel="stylesheet" href="/css/head.css" />
+<link rel="stylesheet" href="/css/footer.css" />
+<link rel="stylesheet" href="/css/order-list.css" />
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../views/partials/head'); %>
+    </head>
+    <body>
+        <header><%- include('../views/partials/header'); %></header>
+        <div id="container">
+            <div id="main">
+                <div id="content">
+                    <div class="page_aticle aticle_type2">
+                        <div id="snb" class="snb_my">
+                            <h2 class="tit_snb">마이페이지</h2>
+                            <div class="inner_sub">
+                                <ul class="list_menu">
+                                    <li class="on">
+                                        <a href="#">주문내역</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">개인 정보 수정</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="viewOrderList" class="page_section section_orderlist">
+                            <div class="head_aticle">
+                                <h2 class="tit">주문 내역</h2>
+                            </div>
+
+                            <ul class="list_order">
+                                <li>
+                                    <div class="date">2020.12.17 (날짜 데이터 넣는 곳)</div>
+                                    <div class="order_goods">
+                                        <div class="name">
+                                            <a>(상품 제목)</a>
+                                        </div>
+                                        <div class="order_info">
+                                            <div class="thumb">
+                                                <img src="https://img-cf.kurly.com/shop/data/goods/1506389622159s0.jpg" alt="해당 주문 대표 상품 이미지" />
+                                            </div>
+                                            <div class="desc">
+                                                <dl>
+                                                    <dt>주문번호</dt>
+                                                    <dd>(주문번호 넣는곳)</dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>결제금액</dt>
+                                                    <dd>0원(결제 금액 넣는곳)</dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>주문상태</dt>
+                                                    <dd class="status end">배송완료</dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="layout-pagination">
+                                <div class="pagediv">
+                                    <a href="#viewOrderList" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
+                                    <a href="#viewOrderList" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
+                                    <span>
+                                        <strong class="layout-pagination-button layout-pagination-number __active" style="height: 32px"> 1 </strong>
+                                    </span>
+                                    <a href="#viewOrderList" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a>
+                                    <a href="#viewOrderList" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로 가기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer><%- include('../views/partials/footer'); %></footer>
+    </body>
+</html>
