@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/signin.css">
+<link rel="stylesheet" href="/css/footer.css">
+
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include('../views/partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header class="header">
+        <%- include('../views/partials/header'); %>
+    </header>
+
+    <main role="main" class="contents">
+        <div class="contents-inner">
+            <div class="signin-wrap">
+                <div class="signin-text">
+                    회원가입
+                </div>
+                <div class="line">
+                    <section class="top">
+                        <div class="email">
+                            <label>이메일</label>
+                            <input type="text" placeholder="예: customit@custom.com">
+                            <div class="email-check" id="email-check"><a href="#">중복확인</a></div>
+                        </div>
+
+                        <div class="password">
+                            <label>비밀번호</label>
+                            <input type="password" placeholder="비밀번호를 입력해주세요">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="password-confirm">
+                            <label>비밀번호확인</label>
+                            <input type="password" placeholder="비밀번호를 한번 더 입력해주세요">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="name">
+                            <label>이름</label>
+                            <input type="text" placeholder="이름을 입력해주세요">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="phonenum">
+                            <label>휴대폰</label>
+                            <input type="text" placeholder="숫자로 입력해주세요">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="adress">
+                            <label>주소</label>
+                            <a href="#" class="adress-btn">주소검색</a>
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                    </section>
+                </div>
+                <section class="bottom">
+                    <div class="bottom-wrap">
+                        <a href="#" class="signin-btn">회원가입</a>
+                        <div class="login">
+                            이미 아이디가 있으신가요?
+                            <div>
+                                <a href="#"> 로그인</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <%- include('../views/partials/footer'); %>
+    </footer>
+</body>
+
+</html>

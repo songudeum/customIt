@@ -1,12 +1,13 @@
 .header {
     position: fixed;
     display: flex;
-    justify-content: center; /* 수정 */
+    justify-content: center;
     top: 0;
     left: 0;
     right: 0;
     height: 100px;
-    border-bottom: 2px solid #e6e5e5;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.07);
+    background-color: #fff;
 }
 
 .header-inner {
@@ -43,14 +44,14 @@
     align-items: center;
     margin: 0 10px;
 }
-.btn-cart,
-.btn-user {
+.header-inner .btn-cart,
+.header-inner .btn-user {
     margin: 0 5px;
 }
 
-.btn-login,
-.btn-logout,
-.btn-signin {
+.header-inner .btn-login,
+.header-inner .btn-logout,
+.header-inner .btn-signin {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,17 +63,17 @@
     color: white;
     text-align: center;
 }
-.btn-login {
+.header-inner .btn-login {
     background: #a586f6;
     width: 90px;
     height: 40px;
 }
-.btn-signin {
+.header-inner .btn-signin {
     background: black;
     width: 90px;
     height: 40px;
 }
-.btn-logout {
+.header-inner .btn-logout {
     background: black;
     width: 90px;
     height: 40px;
