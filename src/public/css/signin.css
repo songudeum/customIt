@@ -1,7 +1,6 @@
 main .contents-inner {
     display: flex;
     background-color: rgb(255, 255, 255);
-    margin-top: 100px;
 }
 .signin-text {
     margin: 70px 0 20px 0;
