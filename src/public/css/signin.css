@@ -42,7 +42,7 @@ main .contents-inner {
     padding: 12px 20px;
     justify-content: space-between;
 }
-.signin-wrap .email-btn {
+.signin-wrap .email-check {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,7 +55,7 @@ main .contents-inner {
     background-color: rgb(255, 255, 255);
     border: 1px solid #a586f6;
 }
-.signin-wrap .email-btn a {
+.signin-wrap .email-check a {
     color: #a586f6;
     text-decoration: none;
 }
@@ -103,7 +103,7 @@ main .contents-inner {
     border: 1px solid rgb(95, 0, 128);
 }
 
-.email .check-btn {
+.email .check-email {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,6 +133,7 @@ main .contents-inner {
     display: inline-flex;
     margin: 20px 0 0 0;
 }
+
 .signin-wrap .login a {
     text-decoration: underline;
     font-weight: bold;
