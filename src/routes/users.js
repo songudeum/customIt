@@ -1,0 +1,68 @@
+const { Router } = require("express");
+const { Users } = require("../data-access/");
+const asyncHandler = require("../utils/async-handler");
+const createHash = require("../utils/hash-password");
+
+const router = Router();
+
+//사용자 회원가입 라우터
+router.post(
+    "/join",
+    asyncHandler(async (req, res) => {
+        const { email, password, name, phoneNumber, address } = req.body;
+
+        //이메일 형식 확인 조건문
+        let emailCheck = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+        if (!emailCheck.test(email)) {
+            const error = new Error("이메일 형식에 맞게 입력해주세요.");
+            error.statusCode = 400;
+            throw error;
+        }
+
+        //비밀번호 형식 확인 조건문
+        let pwCheck = new RegExp(
+            /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/
+        );
+        if (!pwCheck.test(password)) {
+            const error = new Error(
+                "영문 숫자 특수기호 조합 8~15자 이하로 입력해주세요."
+            );
+            error.statusCode = 400;
+            throw error;
+        }
+
+        //핸드폰 번호 형식 확인 조건문
+        if (!/^[0-9]+$/.test(phoneNumber)) {
+            const error = new Error("휴대폰 번호는 숫자로 입력해주세요.");
+            error.statusCode = 400;
+            throw error;
+        }
+
+        //비밀번호 hash화 작업
+        const hashedPassword = createHash(password);
+
+        await Users.create({
+            email,
+            password: hashedPassword,
+            name,
+            phoneNumber,
+            address,
+        });
+
+        res.status(201).json({ message: "회원가입 성공" });
+        res.redirect("/");
+    })
+);
+
+
+//사용자 정보 조회 라우터 (아직 토큰 만들기 전이라 일단 req.params로 대체)
+router.get(
+    "/:email",
+    asyncHandler(async (req, res) => {
+        const userEmail = req.params.email;
+        const userInfo = await Users.findOne({ userEmail });
+        res.render();
+    })
+);
+
+module.exports = router;

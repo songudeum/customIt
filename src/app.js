@@ -7,7 +7,9 @@ const cors = require("cors");
 const path = require("path");
 const { MONGO_USER, MONGO_PW } = process.env;
 
-const indexRouter = require("./routes");
+const indexRouter = require("./routes/index");
+const userRouter = require("./routes/users");
+const adminRouter = require("./routes/admin");
 
 const connectToDatabase = async (url) => {
     try {
@@ -26,6 +28,7 @@ connectToDatabase(url);
 
 const app = express();
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,6 +36,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use("/", indexRouter);
+app.use("/users", userRouter);
+app.use("/admin", adminRouter);
 
 app.use((req, res, next) => {
     const error = new Error("Resource Not Found");
