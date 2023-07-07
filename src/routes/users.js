@@ -55,7 +55,8 @@ router.post(
 );
 
 
-//사용자 정보 조회 라우터 (아직 토큰 만들기 전이라 일단 req.params로 대체)
+//사용자 정보 조회 라우터 미완 (아직 토큰 만들기 전이라 일단 req.params로 대체)
+//render 
 router.get(
     "/:email",
     asyncHandler(async (req, res) => {
