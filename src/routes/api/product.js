@@ -1,35 +1,27 @@
-const { Router } = require("express");
-const { nanoid } = require("nanoid");
+const { Router } = require('express');
+const { nanoid } = require('nanoid');
 
-const { Product } = require("../../data-access");
-const productService = require("../../services/product");
+// const { Product } = require('../../data-access');
+const productService = require('../../services/product');
 
-const asyncHandler = require("../../utils/async-handler");
+const asyncHandler = require('../../utils/async-handler');
 
 const router = Router();
 
 router.post(
-	"/",
-	asyncHandler(async (req, res, next) => {
-		const { name, price, description, company, categoryName, image } =
-			req.body;
+	'/',
+	asyncHandler(async (req, res) => {
+		const { name, price, description, company, categoryName, image } = req.body;
 
-		if (
-			!name ||
-			!price ||
-			!description ||
-			!company ||
-			!categoryName ||
-			!image
-		) {
-			const error = new Error("모든 값은 필수 값입니다.");
+		if (!name || !price || !description || !company || !categoryName || !image) {
+			const error = new Error('모든 값은 필수 값입니다.');
 			error.statusCode = 400;
 			throw error;
 		}
 
 		const id = nanoid(10);
 
-		const createdProduct = productService.createProduct({
+		productService.createProduct({
 			id,
 			name,
 			price,
@@ -46,30 +38,22 @@ router.post(
 				id,
 			},
 		});
-	})
+	}),
 );
 
 router.put(
-	"/:id",
+	'/:id',
 	asyncHandler(async (req, res) => {
 		const { id } = req.params;
-		const { name, price, description, company, categoryName, image } =
-			req.body;
+		const { name, price, description, company, categoryName, image } = req.body;
 
-		if (
-			!name ||
-			!price ||
-			!description ||
-			!company ||
-			!categoryName ||
-			!image
-		) {
-			const error = new Error("모든 값은 필수 값입니다.");
+		if (!name || !price || !description || !company || !categoryName || !image) {
+			const error = new Error('모든 값은 필수 값입니다.');
 			error.statusCode = 400;
 			throw error;
 		}
 
-		const updatedProduct = productService.updateProduct({
+		productService.updateProduct({
 			id,
 			name,
 			price,
@@ -83,21 +67,21 @@ router.put(
 		res.json({
 			success: true,
 		});
-	})
+	}),
 );
 
 router.delete(
-	"/:id",
+	'/:id',
 	asyncHandler(async (req, res) => {
 		const { id } = req.params;
 
-		const deletedProduct = productService.deleteProduct({ id });
+		productService.deleteProduct({ id });
 
 		res.status(200);
 		res.json({
 			success: true,
 		});
-	})
+	}),
 );
 
 module.exports = router;
