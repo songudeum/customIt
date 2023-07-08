@@ -50,7 +50,10 @@
 .header-inner .btn-user {
     margin: 0 5px;
 }
-
+.header-inner .utils img {
+    width: 30px;
+    height: 30px;
+}
 .header-inner .btn-login,
 .header-inner .btn-logout,
 .header-inner .btn-signin {

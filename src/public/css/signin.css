@@ -37,7 +37,7 @@ main .contents-inner {
 .signin-wrap .password,
 .signin-wrap .password-confirm,
 .signin-wrap .name,
-.signin-wrap .phonenum,
+.signin-wrap .phone-num,
 .signin-wrap .adress {
     display: inline-flex;
     width: 100%;
