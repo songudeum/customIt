@@ -10,26 +10,35 @@
         <div class="grid">
         <%- include('../views/partials/admin-aside.ejs'); %>
         <article class="article">
-            <p>상품 목록</p>       
+            <p>주문 관리</p>
             <table>
                 <tr>
-                    <th>카테고리</th>
-                    <th>이미지</th>
-                    <th>상품명</th>
-                    <th>제조사</th>
-                    <th>가격</th>
+                    <th>날짜</th>
+                    <th>주문 관리</th>
+                    <th>주문 총액</th>
+                    <th>준비/배송 상태</th>
+                    <th>관리</th>
                 </tr>
                 <tr>
                     <th href="#">.</th>
                     <th href="#">.</th>
                     <th href="#">.</th>
-                    <th href="#">.</th>
-                    <th href="#">.</th>
+                    <th href="#">
+                        <select>
+                            <option>상품 준비중</option>
+                            <option>배송 중</option>
+                            <option>배송 완료</option>
+                        </select></th>
+                    <th href="#">
+                        <button class="cancle-order">
+                            주문 취소
+                        </button>
+                    </th>
                 </tr>
                 <button class="btn-add-product">상품 등록</button>
                 </table>  
         </article>
-        </div>
+    </div>
     </body>
     <footer>
     </footer>
