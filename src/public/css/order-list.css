@@ -57,7 +57,8 @@
 
 #snb .list_menu li.on a,
 #snb .list_menu li a:hover {
-    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 52%;
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        52%;
     background-size: 6px 11px;
     font-weight: 700;
     color: #5f0080;
@@ -83,7 +84,8 @@
     margin-top: 20px;
     padding: 9px 0 0 21px;
     border-radius: 0 100px 100px 0;
-    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 25px;
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        25px;
     background-size: 6px 11px;
     font-size: 12px;
     color: #333;
@@ -98,7 +100,7 @@
 }
 
 .page_aticle.aticle_type2:after {
-    content: "";
+    content: '';
     display: block;
     overflow: hidden;
     width: 100%;
@@ -153,7 +155,7 @@
 }
 
 .search_date .btn_layer:after {
-    content: "";
+    content: '';
     position: absolute;
     left: 128px;
     top: 18px;

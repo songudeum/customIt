@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
     background-color: #dbdbdb;
     margin: 0;
@@ -19,3 +20,9 @@ article{
     display: grid;
     grid-template-columns: 300px 1fr;
 }
+=======
+.nav-category {
+    font-weight: bold;
+    font-size: larger;
+}
+>>>>>>> 8395d2d6839976ec0c7725816b5ac1d950b53002
