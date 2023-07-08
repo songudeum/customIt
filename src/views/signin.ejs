@@ -148,13 +148,14 @@
                         function openKakaoMap() {
                             new daum.Postcode({
                                 oncomplete: function (data) {
-                                    var addressInput = document.getElementById("addressInput");
-                                    addressInput.value = data.address;
-                                    addressInput.focus();
+                                    var $addressInput = document.querySelector("#addressInput");
+                                    $addressInput.value = data.address;
+                                    $addressInput.focus();
                                 }
                             }).open();
                         }
                     </script>
+
 
 
 
