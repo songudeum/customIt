@@ -38,13 +38,15 @@ main .contents-inner {
 .signin-wrap .password-confirm,
 .signin-wrap .name,
 .signin-wrap .phone-num,
-.signin-wrap .adress {
+.signin-wrap .adress,
+.signin-wrap .detailAddress {
     display: inline-flex;
     width: 100%;
     padding: 12px 20px;
     justify-content: space-between;
 }
-.signin-wrap .email-check {
+.signin-wrap .email-check,
+.signin-wrap .address-check {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,6 +60,10 @@ main .contents-inner {
     border: 1px solid #a586f6;
 }
 .signin-wrap .email-check a {
+    color: #a586f6;
+    text-decoration: none;
+}
+.signin-wrap .address-check a {
     color: #a586f6;
     text-decoration: none;
 }
@@ -80,29 +86,12 @@ main .contents-inner {
     color: #bbbbbb;
 }
 
-.signin-wrap .top .btn-adress {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 350px;
-    height: 46px;
-    background-color: white;
-    border: 1px solid #a586f6;
-    text-decoration: none;
-    border-radius: 6px;
-    color: #a586f6;
-}
 .signin-wrap .top span {
     visibility: hidden;
-    display: block;
     padding: 0px 10px;
     overflow: hidden;
     width: 100px;
     height: 46px;
-    border-radius: 6px;
-    color: rgb(95, 0, 128);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
 }
 
 .email .check-email {
@@ -128,6 +117,10 @@ main .contents-inner {
     height: 80px;
     margin: 30px 0 50px 0;
     margin-left: 14px;
+}
+
+.detailAddress {
+    margin-top: -10px;
 }
 
 .signin-wrap .login {
