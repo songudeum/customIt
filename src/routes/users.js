@@ -36,12 +36,9 @@ router.post(
             throw error;
         }
 
-        // 비밀번호 hash화 작업
-        const hashedPassword = createHash(password);
-
         await Users.create({
             email,
-            password: hashedPassword,
+            password: createHash(password),
             name,
             phoneNumber,
             address,
@@ -52,10 +49,9 @@ router.post(
     }),
 );
 
-// 사용자 정보 조회 라우터 미완 (아직 토큰 만들기 전이라 일단 req.params로 대체)
-// render
+// 사용자 정보 조회 라우터
 router.get(
-    '/:email',
+    '/info/:email',
     asyncHandler(async (req, res) => {
         const userEmail = req.params.email;
         const userInfo = await Users.findOne({ email: userEmail });
@@ -66,7 +62,6 @@ router.get(
 // 로그인 라우터 passport local로 인증
 router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
     // 유저 토큰 생성 및 쿠키에 전달
-    console.log(req.user);
     setUserToken(res, req.user);
 
     res.send('성공');

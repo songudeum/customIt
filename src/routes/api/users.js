@@ -1,33 +1,50 @@
 const { Router } = require('express');
 const { Users } = require('../../data-access');
 const asyncHandler = require('../../utils/async-handler');
-// const createHash = require('../../utils/hash-password');
+const createHash = require('../../utils/hash-password');
+const getUserFromJWT = require('../../middlewares/get-user-from-jwt');
 
 const router = Router();
 
-// 사용자 이메일 중복 확인 api
-// router.post("/:email");
-router.post('/:email',)
+// 회원가입 사용자 이메일 중복 확인 api (send render로바꾸기!)
+router.post(
+    '/join',
+    asyncHandler(async (req, res) => {
+        const { email } = req.body;
+        const emailDuplicate = await Users.findOne({ email });
+        if (emailDuplicate) {
+            res.send('중복된 이메일이 존재합니다.');
+        } else res.send('성공');
+    }),
+);
 
-// 사용자 정보 수정 api (토큰과 ejs작성 전이라 일단 대강적으로 작성)
-// 아직 2번 눌러야 제대로 작동함 왜인지는 파악중
+// 개인페이지 사용자 정보 수정 api(send 나중에 render로 수정)
 router.put(
-	'/:email',
-	asyncHandler(async (req, res) => {
-		const userEmail = req.params.email;
-		const { email, password, name, phoneNumber, address } = req.body;
-		await Users.findOneAndUpdate(
-			{ email: userEmail },
-			{
-				email,
-				password,
-				name,
-				phoneNumber,
-				address,
-			},
-		);
-		res.send('성공');
-	}),
+    '/info/edit/:email',
+    getUserFromJWT,
+    asyncHandler(async (req, res) => {
+        const userEmail = req.params.email;
+        const { email, password, newPassword, name, phoneNumber, address } = req.body;
+        const user = await Users.findOne({ email: userEmail });
+        const userPw = user.password;
+
+        if (userPw !== createHash(password)) {
+            const error = new Error('비밀번호가 일치하지 않습니다.');
+            error.statusCode = 400;
+            throw error;
+        }
+        const newUserInfo = await Users.findOneAndUpdate(
+            { email: userEmail },
+            {
+                email,
+                password: createHash(newPassword),
+                name,
+                phoneNumber,
+                address,
+            },
+        );
+        res.send(newUserInfo);
+    }),
 );
 
 module.exports = router;
