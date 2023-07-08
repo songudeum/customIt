@@ -1,4 +1,28 @@
+<<<<<<< HEAD
+body{
+    background-color: #dbdbdb;
+    margin: 0;
+}
+
+article{
+    background-color: white;
+    margin:8% 10% 0 10%;
+    border-radius: 3px;
+}
+
+.category{ 
+    /**admin-aside 내부 class**/
+    font-weight: bold;
+    font-size: larger;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+=======
 .nav-category {
     font-weight: bold;
     font-size: larger;
 }
+>>>>>>> 8395d2d6839976ec0c7725816b5ac1d950b53002
