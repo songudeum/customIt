@@ -6,9 +6,10 @@ body {
 
 main .contents-inner {
     display: flex;
+    margin: 50px 0;
     background-color: rgb(255, 255, 255);
 }
-.signin-text {
+.admin-signin-text {
     margin: 70px 0 20px 0;
     font-size: 28px;
     line-height: 35px;
@@ -18,94 +19,31 @@ main .contents-inner {
     color: rgb(51, 51, 51);
 }
 
-.signin-wrap {
+.admin-signin-wrap {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.signin-wrap .top {
+.admin-signin-wrap .top {
     display: flex;
     flex-direction: column;
     align-items: center;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
-    padding: 7px 0;
+    padding: 15px 0;
 }
-
-.signin-wrap .email,
-.signin-wrap .password,
-.signin-wrap .password-confirm,
-.signin-wrap .name,
-.signin-wrap .phonenum,
-.signin-wrap .adress {
+.admin-signin-wrap .admin-email,
+.admin-signin-wrap .password,
+.admin-signin-wrap .password-confirm,
+.admin-signin-wrap .name {
     display: inline-flex;
+    justify-content: space-around;
     width: 100%;
     padding: 12px 20px;
-    justify-content: space-between;
-}
-.signin-wrap .email-check {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 10px;
-    overflow: hidden;
-    width: 100px;
-    height: 46px;
-    border-radius: 6px;
-    color: #a586f6;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #a586f6;
-}
-.signin-wrap .email-check a {
-    color: #a586f6;
-    text-decoration: none;
 }
 
-.signin-wrap label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 140px;
-    padding-top: 7px;
-}
-.signin-wrap input {
-    width: 350px;
-    height: 46px;
-    padding: 0px 11px 1px 15px;
-    border-radius: 6px;
-    border: 1px solid rgb(221, 221, 221);
-}
-.signin-wrap input::placeholder {
-    color: #bbbbbb;
-}
-
-.signin-wrap .top .btn-adress {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 350px;
-    height: 46px;
-    background-color: white;
-    border: 1px solid #a586f6;
-    text-decoration: none;
-    border-radius: 6px;
-    color: #a586f6;
-}
-.signin-wrap .top span {
-    visibility: hidden;
-    display: block;
-    padding: 0px 10px;
-    overflow: hidden;
-    width: 100px;
-    height: 46px;
-    border-radius: 6px;
-    color: rgb(95, 0, 128);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
-}
-
-.email .check-email {
+.admin-email .check-admin-email {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,28 +53,70 @@ main .contents-inner {
     font-size: 15px;
     border-radius: 6px;
     border: 1px solid #fff;
-    color: white;
+    color: black;
     background-color: #a586f6;
     cursor: pointer;
 }
 
-.signin-wrap .bottom-wrap {
+.admin-email-check {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    height: 80px;
-    margin: 30px 0 50px 0;
-    margin-left: 14px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0px 10px;
+    width: 100px;
+    height: 46px;
+    border-radius: 6px;
+    color: rgb(95, 0, 128);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(95, 0, 128);
+}
+.admin-email-check a {
+    text-decoration: none;
 }
 
-.signin-wrap .login {
+.hidden-span {
+    visibility: hidden;
+    width: 100px;
+    height: 46px;
+    padding: 0px 10px;
+}
+
+.admin-signin-wrap label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    padding-top: 7px;
+}
+
+.admin-signin-wrap input {
+    width: 350px;
+    height: 46px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 6px;
+    border: 1px solid rgb(221, 221, 221);
+}
+.admin-signin-wrap input::placeholder {
+    color: #bbbbbb;
+}
+
+.admin-signin-wrap .bottom-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    margin: 30px 0;
+    margin-left: 14px;
+    margin-left: -20px;
+}
+
+.admin-signin-wrap .login {
     display: inline-flex;
     justify-content: center;
     margin: 20px 0 0 0;
 }
 
-.signin-wrap .login a {
+.admin-signin-wrap .login a {
     display: inline-block;
     text-decoration: underline;
     font-weight: bold;
@@ -144,7 +124,7 @@ main .contents-inner {
     color: rgb(51, 51, 51);
 }
 
-.signin-wrap .btn-signin {
+.admin-signin-wrap .btn-admin-signin {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,6 +135,6 @@ main .contents-inner {
     border-radius: 6px;
     border: 1px solid #fff;
     color: white;
-    background-color: #a586f6;
+    background-color: black;
     margin: 0 auto;
 }
