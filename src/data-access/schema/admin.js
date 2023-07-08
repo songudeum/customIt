@@ -1,18 +1,23 @@
 const { Schema } = require("mongoose");
-const adminSchema = new Schema({
-    email: {
-        type: String,
-        required: true,
+
+const adminSchema = new Schema(
+    {
+        email: {
+            type: String,
+            required: true,
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        name: {
+            type: String,
+            required: true,
+        },
     },
-    password: {
-        type: String,
-        required: true,
-    },
-    name: {
-        type: String,
-        required: true,
-    },
-    
-});
+    {
+        collection: "Admin",
+    }
+);
 
 module.exports = adminSchema;

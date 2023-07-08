@@ -1,4 +1,4 @@
-const { Category } = require("../data-access");
+const { Category } = require('../data-access');
 
 const categoryService = {
 	createCategory: async ({ id, name }) => {

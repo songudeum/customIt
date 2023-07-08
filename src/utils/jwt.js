@@ -1,12 +1,13 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
-//jwt secret 값 불러옴
-const jwtSecret = process.env.JWTSECRET;
+const secret = process.env.JWTSECRET;
 
-exports.jwtSecret = jwtSecret;
+exports.secret = secret;
 
-//토큰 생성하고 쿠키에 담아주는 함수
-exports.gernerateToken = (req, user) => {
-    const token = jwt.sign(user, jwtSecret);
-    res.cookie("token", token);
+exports.setUserToken = (res, user) => {
+	// 유저 jwt 토큰생성
+	// 토큰을 쿠키로 전달
+	const token = jwt.sign(user, secret);
+	res.cookie('token', token);
 };
+
