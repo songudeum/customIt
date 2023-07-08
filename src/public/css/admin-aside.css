@@ -1,12 +1,11 @@
+<<<<<<< HEAD
+=======
 body {
     background-color: #dadada;
 }
 
+>>>>>>> 8395d2d6839976ec0c7725816b5ac1d950b53002
 .aside {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 300px;
     height: 100vh;
     background-color: #353535;
 }
@@ -34,18 +33,34 @@ body {
     text-decoration: none;
 }
 
+<<<<<<< HEAD
+.aside .logout{
+    width: 100%;
+}
+
+.aside .logout .btn-logout{
+    width: 90%;
+    height: 50px;
+    box-sizing: border-box;
+    margin: 0 5% 0 5%;
+=======
 .aside .btn-logout {
     position: absolute;
     bottom: 20px;
     width: 50%;
     height: 50px;
     margin-bottom: 10px;
+>>>>>>> 8395d2d6839976ec0c7725816b5ac1d950b53002
     border: 2px #1a1a1a solid;
     border-radius: 5px;
     background-color: #353535;
     color: #c9c9c9;
+<<<<<<< HEAD
+}
+=======
 }
 
 .article {
     background-color: white;
 }
+>>>>>>> 8395d2d6839976ec0c7725816b5ac1d950b53002
