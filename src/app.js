@@ -1,36 +1,33 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const express = require("express");
-const path = require("path");
-const cors = require("cors");
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
 
 const app = express();
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/", function (req, res) {
-    res.render("signin.ejs");
+app.get('/', (req, res) => {
+    res.render('admin-signin.ejs');
 });
 
 app.use((req, res, next) => {
-    const error = new Error("Resource Not Found");
+    const error = new Error('Resource Not Found');
     error.statusCode = 404;
     next(error);
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     console.error(err);
-    res.status(err.statusCode);
-    res.json({ status: err.status, reason: err.message });
+    res.status(err.statusCode || 500).json({ status: err.status, reason: err.message });
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(
-        `정상적으로 커스텀잇 서버를 시작하였습니다.  http://localhost:${PORT}`
-    );
+    console.log(`정상적으로 커스텀잇 서버를 시작하였습니다.  http://localhost:${PORT}`);
 });

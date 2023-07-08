@@ -6,54 +6,54 @@
     width: 100%;
     border: 2px solid rgb(220, 220, 220);
     background-color: #fff;
-  }
-  
-  .header-inner {
+}
+
+.header-inner {
     display: flex;
     justify-content: space-between;
     width: 1280px;
     max-width: 100%;
-  }
-  
-  .header-inner .logo {
+}
+
+.header-inner .logo {
     display: flex;
     align-items: center;
-  }
-  
-  .header-inner .nav {
+}
+
+.header-inner .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  
-  .header-inner .nav .gnb {
+}
+
+.header-inner .nav .gnb {
     display: flex;
     justify-content: space-between;
     width: 230px;
     margin: 0 30px;
-  }
-  
-  .header-inner .nav .gnb a {
+}
+
+.header-inner .nav .gnb a {
     text-decoration: none;
     color: black;
     font-weight: bold;
     font-size: 20px;
-  }
-  
-  .header-inner .nav .utils {
+}
+
+.header-inner .nav .utils {
     display: flex;
     align-items: center;
     margin: 0 10px;
-  }
-  
-  .header-inner .btn-cart,
-  .header-inner .btn-user {
+}
+
+.header-inner .btn-cart,
+.header-inner .btn-user {
     margin: 0 5px;
-  }
-  
-  .header-inner .btn-login,
-  .header-inner .btn-logout,
-  .header-inner .btn-signin {
+}
+
+.header-inner .btn-login,
+.header-inner .btn-logout,
+.header-inner .btn-signin {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,23 +64,22 @@
     border-radius: 20px;
     color: white;
     text-align: center;
-  }
-  
-  .header-inner .btn-login {
+}
+
+.header-inner .btn-login {
     background: #a586f6;
     width: 90px;
     height: 40px;
-  }
-  
-  .header-inner .btn-signin {
+}
+
+.header-inner .btn-signin {
     background: black;
     width: 90px;
     height: 40px;
-  }
-  
-  .header-inner .btn-logout {
+}
+
+.header-inner .btn-logout {
     background: black;
     width: 90px;
     height: 40px;
-  }
-  
+}

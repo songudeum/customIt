@@ -25,52 +25,99 @@
                 <div class="signin-text">
                     회원가입
                 </div>
-                <div class="line">
-                    <section class="top">
-                        <div class="email">
+                <section class="top">
+                    <!-- <div class="email">
                             <label>이메일</label>
                             <input type="text" placeholder="예: customit@custom.com">
                             <div class="email-check" id="email-check"><a href="#">중복확인</a></div>
-                        </div>
-
-                        <div class="password">
-                            <label>비밀번호</label>
-                            <input type="password" placeholder="비밀번호를 입력해주세요">
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <div class="password-confirm">
-                            <label>비밀번호확인</label>
-                            <input type="password" placeholder="비밀번호를 한번 더 입력해주세요">
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <div class="name">
-                            <label>이름</label>
-                            <input type="text" placeholder="이름을 입력해주세요">
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <div class="phonenum">
-                            <label>휴대폰</label>
-                            <input type="text" placeholder="숫자로 입력해주세요">
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <div class="adress">
-                            <label>주소</label>
-                            <a href="#" class="adress-btn">주소검색</a>
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                    </section>
-                </div>
-                <section class="bottom">
-                    <div class="bottom-wrap">
-                        <a href="#" class="signin-btn">회원가입</a>
-                        <div class="login">
-                            이미 아이디가 있으신가요?
-                            <div>
-                                <a href="#"> 로그인</a>
-                            </div>
+                        </div> -->
+                    <div class="email">
+                        <label>이메일</label>
+                        <input type="text" id="email-input" placeholder="예: customit@custom.com">
+                        <div class="email-check" id="email-check">
+                            <a href="#" onclick="validateEmail()">중복확인</a>
                         </div>
                     </div>
+                    <p id="email-validation" style="color: red;"></p>
+
+                    <script>
+                        function validateEmail() {
+                            var emailInput = document.querySelector("#email-input");
+                            var validationEmail = document.querySelector("#email-validation");
+                            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                            if (emailInput.value.match(emailRegex)) {
+                                validationEmail.textContent = ""
+                            } else {
+                                validationEmail.textContent = "이메일 형식에 맞게 입력해주세요.";
+                            }
+                        }
+                    </script>
+
+
+                    <div class="password">
+                        <label>비밀번호</label>
+                        <input type="password" placeholder="비밀번호를 입력해주세요">
+                        <span><a href="#">중복확인</a></span>
+                    </div>
+
+                    <!-- <div class="password">
+                            <label>비밀번호</label>
+                            <input type="password" id="password-input" placeholder="비밀번호를 입력해주세요">
+                            <div class="email-check" id="email-check">
+                                <a href="#" onclick="validateEmail()">중복확인</a>
+                            </div>
+                        </div>
+                        <p id="password-validation" style="color: red;"></p>
+
+                        <script>
+                            function validatepassword() {
+                                var $passwordinput = document.querySelector("#password-input");
+                                var $validationPassword = document.querySelector("#password-validation");
+                                var passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/
+
+                                if ($passwordinput.value.match(passwordRegex)) {
+                                    $validationPassword.textContent = "";
+                                } else {
+                                    $validationPassword.textContent = "영문 숫자 특수기호 조합 8~15자리 이하로 입력해주세요.";
+                                }
+                            }
+                        </script> -->
+
+
+
+
+                    <div class="password-confirm">
+                        <label>비밀번호확인</label>
+                        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요">
+                        <span><a href="#">중복확인</a></span>
+                    </div>
+                    <div class="name">
+                        <label>이름</label>
+                        <input type="text" placeholder="이름을 입력해주세요">
+                        <span><a href="#">중복확인</a></span>
+                    </div>
+                    <div class="phonenum">
+                        <label>휴대폰</label>
+                        <input type="text" placeholder="숫자로 입력해주세요">
+                        <span><a href="#">중복확인</a></span>
+                    </div>
+                    <div class="adress">
+                        <label>주소</label>
+                        <a href="#" class="btn-adress">주소검색</a>
+                        <span><a href="#">중복확인</a></span>
+                    </div>
                 </section>
+
+                <div class="bottom-wrap">
+                    <a href="#" class="btn-signin">회원가입</a>
+                    <div class="login">
+                        이미 아이디가 있으신가요?
+                        <div>
+                            <a href="#"> 로그인</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
