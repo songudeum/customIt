@@ -39,7 +39,7 @@ router.post(
             description,
             company,
             categoryName,
-            image: `../public/image/${req.file.originalname}`,
+            image: `/image/${req.file.originalname}`,
         });
 
         res.status(201).redirect('/admin/product');
@@ -75,7 +75,7 @@ router.put(
             description,
             company,
             categoryName,
-            image: `../public/image/${req.file.originalname}`,
+            image: `/image/${req.file.originalname}`,
         });
 
         res.status(201).redirect('/admin/product');
