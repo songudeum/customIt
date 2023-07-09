@@ -1,10 +1,15 @@
 const { Product } = require('../data-access');
 
 const productService = {
-    createProduct: async ({ id, name }) => {
+    createProduct: async ({ id, name, price, description, company, categoryName, image }) => {
         const createdProduct = await Product.create({
             id,
             name,
+            price,
+            description,
+            company,
+            categoryName,
+            image,
         });
         return createdProduct;
     },

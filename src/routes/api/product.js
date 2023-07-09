@@ -1,87 +1,108 @@
 const { Router } = require('express');
 const { nanoid } = require('nanoid');
 
-// const { Product } = require('../../data-access');
 const productService = require('../../services/product');
 
 const asyncHandler = require('../../utils/async-handler');
+const upload = require('../../middlewares/multer');
 
 const router = Router();
 
 router.post(
-	'/',
-	asyncHandler(async (req, res) => {
-		const { name, price, description, company, categoryName, image } = req.body;
+    '/',
+    upload.single('productImage'),
+    asyncHandler(async (req, res) => {
+        const { name, price, description, company, categoryName } = req.body;
 
-		if (!name || !price || !description || !company || !categoryName || !image) {
-			const error = new Error('모든 값은 필수 값입니다.');
-			error.statusCode = 400;
-			throw error;
-		}
+        if (!name || !price || !description || !company || !categoryName) {
+            const error = new Error('모든 값은 필수 값입니다.');
+            error.statusCode = 400;
+            throw error;
+        }
 
-		const id = nanoid(10);
+        if (
+            req.file.mimetype !== 'image/png' &&
+            req.file.mimetype !== 'image/jpg' &&
+            req.file.mimetype !== 'image/jpeg'
+        ) {
+            const error = new Error('.png, .jpeg, .jpg 파일만 업로드 가능합니다.');
+            error.statusCode = 400;
+            throw error;
+        }
 
-		productService.createProduct({
-			id,
-			name,
-			price,
-			description,
-			company,
-			categoryName,
-			image,
-		});
+        const id = nanoid(10);
 
-		res.status(201);
-		res.json({
-			success: true,
-			data: {
-				id,
-			},
-		});
-	}),
+        productService.createProduct({
+            id,
+            name,
+            price: Number(price),
+            description,
+            company,
+            categoryName,
+            image: `../public/image/${req.file.originalname}`,
+        });
+
+        res.status(201);
+        res.json({
+            success: true,
+            data: {
+                id,
+            },
+        });
+    }),
 );
 
 router.put(
-	'/:id',
-	asyncHandler(async (req, res) => {
-		const { id } = req.params;
-		const { name, price, description, company, categoryName, image } = req.body;
+    '/:id',
+    upload.single('productImage'),
+    asyncHandler(async (req, res) => {
+        const { id } = req.params;
+        const { name, price, description, company, categoryName } = req.body;
 
-		if (!name || !price || !description || !company || !categoryName || !image) {
-			const error = new Error('모든 값은 필수 값입니다.');
-			error.statusCode = 400;
-			throw error;
-		}
+        if (!name || !price || !description || !company || !categoryName) {
+            const error = new Error('모든 값은 필수 값입니다.');
+            error.statusCode = 400;
+            throw error;
+        }
+        if (
+            req.file.mimetype !== 'image/png' &&
+            req.file.mimetype !== 'image/jpg' &&
+            req.file.mimetype !== 'image/jpeg'
+        ) {
+            const error = new Error('.png, .jpeg, .jpg 파일만 업로드 가능합니다.');
+            error.statusCode = 400;
+            throw error;
+        }
 
-		productService.updateProduct({
-			id,
-			name,
-			price,
-			description,
-			company,
-			categoryName,
-			image,
-		});
+        productService.updateProduct({
+            id,
+            name,
+            price: Number(price),
+            description,
+            company,
+            categoryName,
+            image: `../public/image/${req.file.originalname}`,
+        });
 
-		res.status(201);
-		res.json({
-			success: true,
-		});
-	}),
+        res.status(201);
+        res.json({
+            success: true,
+        });
+    }),
 );
 
 router.delete(
-	'/:id',
-	asyncHandler(async (req, res) => {
-		const { id } = req.params;
+    '/:id',
+    asyncHandler(async (req, res) => {
+        const { id } = req.params;
 
-		productService.deleteProduct({ id });
+        productService.deleteProduct({ id });
 
-		res.status(200);
-		res.json({
-			success: true,
-		});
-	}),
+        res.status(200);
+        res.json({
+            success: true,
+        });
+    }),
 );
 
 module.exports = router;
