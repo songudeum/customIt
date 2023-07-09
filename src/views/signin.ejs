@@ -1,14 +1,13 @@
-<link rel="stylesheet" href="/css/reset.css">
-<link rel="stylesheet" href="/css/header.css">
-<link rel="stylesheet" href="/css/signin.css">
-<link rel="stylesheet" href="/css/footer.css">
-
-
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/signin.css">
+        <link rel="stylesheet" href="/css/footer.css">
+
 </head>
 
 <body class="container">
@@ -121,7 +120,7 @@
                         function validatePhoneNum() {
                             let $phoneNumInput = document.querySelector("#phoneNumInput");
                             let $phoneNumCheck = document.querySelector("#phoneNumCheck");
-                            let $phoneNumRegex = /^[0-9]{8,13}$/;
+                            let $phoneNumRegex = /^[0-9]+$/;
 
                             if ($phoneNumInput.value.match($phoneNumRegex)) {
                                 $phoneNumCheck.style.fontSize = "12px";
@@ -129,7 +128,7 @@
                                 $phoneNumCheck.style.color = "blue";
                             } else {
                                 $phoneNumCheck.style.fontSize = "12px";
-                                $phoneNumCheck.textContent = "8자리에서 13자리의 숫자로 입력해주세요.";
+                                $phoneNumCheck.textContent = "숫자로만 입력해주세요";
                                 $phoneNumCheck.style.color = "red";
                             }
                         }
@@ -142,7 +141,6 @@
                             <div><a href="#" onClick="openKakaoMap()">주소검색</a></div>
                         </div>
                     </div>
-
                     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
                     <script>
                         function openKakaoMap() {
@@ -155,14 +153,6 @@
                             }).open();
                         }
                     </script>
-
-
-
-
-
-
-
-
 
                     </script>
                     <div div class="detailAddress">
@@ -182,6 +172,38 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="tbl_wrap">
+            <table class="tbl tbl_view">
+                <caption>보기테이블</caption>
+                <colgroup>
+                    <col style="width: 110px;">
+                    <col>
+
+
+
+
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th>항목</th>
+                        <td>내용</td>
+
+
+
+
+                    </tr>
+
+                    <tr>
+                        <th>항목</th>
+                        <td>내용</td>
+
+
+
+
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
     <footer class="footer">
