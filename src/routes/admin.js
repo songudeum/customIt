@@ -7,7 +7,7 @@ const { setUserToken } = require('../utils/jwt');
 
 const router = Router();
 
-// 사용자 회원가입 api
+// 관리자 회원가입 api
 router.post(
     '/join',
     asyncHandler(async (req, res) => {

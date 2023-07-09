@@ -5,9 +5,9 @@ const asyncHandler = require('../../utils/async-handler');
 
 const router = Router();
 
-// 관리자 이메일 중복 확인 api
+// 관리자 이메일 중복 확인 api (render값 수정해야함)
 router.post(
-    '/join/',
+    '/join/emailDuplicate',
     asyncHandler(async (req, res) => {
         const { email } = req.body;
         const emailDuplicate = await Admin.findOne({ email });

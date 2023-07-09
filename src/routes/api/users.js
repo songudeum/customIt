@@ -2,13 +2,12 @@ const { Router } = require('express');
 const { Users } = require('../../data-access');
 const asyncHandler = require('../../utils/async-handler');
 const createHash = require('../../utils/hash-password');
-const getUserFromJWT = require('../../middlewares/get-user-from-jwt');
 
 const router = Router();
 
 // 회원가입 사용자 이메일 중복 확인 api (send render로바꾸기!)
 router.post(
-    '/join',
+    '/join/emailDuplicate',
     asyncHandler(async (req, res) => {
         const { email } = req.body;
         const emailDuplicate = await Users.findOne({ email });
@@ -21,7 +20,6 @@ router.post(
 // 개인페이지 사용자 정보 수정 api(send 나중에 render로 수정)
 router.put(
     '/info/edit/:email',
-    getUserFromJWT,
     asyncHandler(async (req, res) => {
         const userEmail = req.params.email;
         const { email, password, newPassword, name, phoneNumber, address } = req.body;
