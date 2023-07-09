@@ -55,7 +55,7 @@ main .contents-inner {
     display: flex;
     flex-direction: column;
     flex: none;
-    width: 250px;
+    width: 280px;
     margin-left: 20px;
 }
 .intro-main .main-items > li {
