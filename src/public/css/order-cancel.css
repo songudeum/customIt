@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.cancel-message {
+    color: #a19a9a;
+    /* font-family: Jomhuria; */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.order-cancel-wrap {
+    text-align: center;
+}
+
+.icon-wrapper {
+    flex-shrink: 0;
+    width: 179px;
+    height: 138px;
+}
+
+.cancel-message {
+    margin-bottom: 40px;
+}
+
+.home-button {
+    flex-shrink: 0;
+    display: block;
+    width: 190px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    background: #a586f6;
+    color: #fff;
+    /* font-family: Jomhuria; */
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: center;
+}

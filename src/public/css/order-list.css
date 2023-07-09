@@ -1,6 +1,5 @@
 #container,
 #content {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,33 +10,29 @@
     border-bottom: 1px solid #f7f7f7;
     width: 100%;
     max-width: 1050px;
+    margin: 0 auto;
 }
 
 #content {
     min-width: 1050px;
     padding-bottom: 120px;
-    margin: 0 auto;
 }
 
-.page-aticle {
+.page_aticle {
     margin: 0 auto;
+    width: 100%;
+    max-width: 1050px;
 }
 
-.page-aticle.aticle-type2 {
+.page_aticle.aticle_type2 {
     padding-top: 65px;
 }
 
-.page-aticle {
-    width: 1050px;
-    margin: 0 auto;
-}
-
 #snb {
-    float: left;
     width: 200px;
 }
 
-#snb .tit-snb {
+#snb .tit_snb {
     padding: 8px 0 33px 1px;
     font-weight: 700;
     font-size: 30px;
@@ -46,28 +41,29 @@
     letter-spacing: -0.5px;
 }
 
-#snb .inner-sub {
+#snb .inner_sub {
     border: 1px solid #f2f2f2;
     border-bottom: 0;
 }
 
-#snb .list-menu li {
+#snb .list_menu li {
     border-bottom: 1px solid #f2f2f2;
 }
 
-#snb .list-menu li.on a,
-#snb .list-menu li a:hover {
-    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico-arrow-6x11-on.svg) no-repeat 174px 52%;
+#snb .list_menu li.on a,
+#snb .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        52%;
     background-size: 6px 11px;
     font-weight: 700;
-    color: #a586f6;
+    color: #5f0080;
 }
 
-#snb .list-menu li a {
+#snb .list_menu li a {
     display: block;
     overflow: hidden;
     padding: 15px 0 15px 20px;
-    background: #fff url(https://res.kurly.com/pc/ico/2008/ico-arrow-6x11.svg) no-repeat 174px 52%;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
     background-size: 6px 11px;
     font-size: 14px;
     color: #666;
@@ -75,7 +71,7 @@
     letter-spacing: -0.3px;
 }
 
-#snb .link-inquire {
+#snb .link_inquire {
     display: block;
     overflow: hidden;
     width: 200px;
@@ -83,38 +79,37 @@
     margin-top: 20px;
     padding: 9px 0 0 21px;
     border-radius: 0 100px 100px 0;
-    /* background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico-arrow-6x11-on.svg) no-repeat 174px 25px; */
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        25px;
     background-size: 6px 11px;
     font-size: 12px;
     color: #333;
     line-height: 20px;
 }
 
-#snb .link-inquire .emph {
+#snb .link_inquire .emph {
     display: block;
     padding-bottom: 1px;
     font-weight: 700;
     font-size: 14px;
 }
 
-.page-aticle.aticle-type2:after {
-    content: "";
-    display: block;
-    overflow: hidden;
-    width: 100%;
+.page_aticle.aticle_type2:after {
+    content: '';
+    display: table;
     clear: both;
 }
 
-.page-aticle.aticle-type2 .page-section {
+.page_aticle.aticle_type2 .page_section {
     float: right;
-    width: 820px;
+    width: calc(100% - 200px);
 }
 
-.page-aticle .head-aticle {
+.page_aticle .head_aticle {
     padding: 5px 0 34px;
 }
 
-.page-aticle .head-aticle .tit {
+.page_aticle .head_aticle .tit {
     height: 36px;
     font-weight: 700;
     font-size: 24px;
@@ -123,7 +118,7 @@
     letter-spacing: -0.5px;
 }
 
-.page-aticle .head-aticle .tit-sub {
+.page_aticle .head_aticle .tit_sub {
     padding-left: 11px;
     font-size: 14px;
     color: #999;
@@ -132,12 +127,12 @@
     vertical-align: 3px;
 }
 
-.search-date {
+.search_date {
     position: relative;
     z-index: 1;
 }
 
-.search-date .btn-layer {
+.search_date .btn_layer {
     overflow: hidden;
     position: absolute;
     right: 0;
@@ -152,18 +147,18 @@
     letter-spacing: -0.5px;
 }
 
-.search-date .btn-layer:after {
-    content: "";
+.search_date .btn_layer:after {
+    content: '';
     position: absolute;
     left: 128px;
     top: 18px;
     width: 12px;
     height: 8px;
-    /* background: url(https://res.kurly.com/pc/ico/2008/ico-down-12x8.svg) no-repeat 0 0; */
+    background: url(https://res.kurly.com/pc/ico/2008/ico_down_12x8.svg) no-repeat 0 0;
     background-size: 12px 8px;
 }
 
-.search-date .layer-search {
+.search_date .layer_search {
     display: none;
     position: absolute;
     right: 0;
@@ -173,20 +168,20 @@
     border-top: 0;
 }
 
-.search-date .layer-search li:first-child {
+.search_date .layer_search li:first-child {
     border-top: 0;
 }
 
-.search-date .layer-search li {
+.search_date .layer_search li {
     background-color: #fff;
     border-top: 1px solid #dddfe1;
 }
 
-.search-date .layer-search a.on {
+.search_date .layer_search a.on {
     background-color: #f7f7f7;
 }
 
-.search-date .layer-search a {
+.search_date .layer_search a {
     display: block;
     overflow: hidden;
     height: 32px;
@@ -197,12 +192,12 @@
     letter-spacing: -0.2px;
 }
 
-.section-orderlist .list-order {
+.section_orderlist .list_order {
     padding-top: 10px;
     border-top: 2px solid #333;
 }
 
-.section-orderlist .list-order .date {
+.section_orderlist .list_order .date {
     padding-top: 20px;
     font-size: 16px;
     line-height: 24px;
@@ -210,22 +205,22 @@
     color: #666;
 }
 
-.section-orderlist .list-order .order-goods {
+.section_orderlist .list_order .order_goods {
     position: relative;
     margin-top: 10px;
     padding: 0 20px;
     border: 1px solid #dddfe1;
 }
 
-.section-orderlist .list-order .name {
+.section_orderlist .list_order .name {
     padding: 20px 0 13px;
     border-bottom: 1px solid #dddfe1;
 }
 
-.section-orderlist .list-order .name a {
+.section_orderlist .list_order .name a {
     display: block;
     overflow: hidden;
-    background: url(https://res.kurly.com/pc/ico/1806/ico-arrow-10x15.png) no-repeat 100% 1px;
+    background: url(https://res.kurly.com/pc/ico/1806/ico_arrow_10x15.png) no-repeat 100% 1px;
     font-size: 16px;
     line-height: 24px;
     font-weight: 700;
@@ -233,37 +228,37 @@
     cursor: pointer;
 }
 
-.section-orderlist .list-order .order-info {
+.section_orderlist .order_info {
     overflow: hidden;
     padding: 14px 0 20px;
 }
 
-.section-orderlist .list-order .thumb {
+.section_orderlist .list_order .thumb {
     float: left;
     width: 60px;
     margin-right: 20px;
 }
 
-.section-orderlist .list-order .thumb img {
+.section_orderlist .list_order .thumb img {
     width: 60px;
     height: auto;
 }
 
-.section-orderlist .list-order .desc {
+.section_orderlist .list_order .desc {
     overflow: hidden;
     padding-top: 1px;
 }
 
-.section-orderlist .list-order .order-info dl:first-child {
+.section_orderlist .list_order .order_info dl:first-child {
     padding-top: 3px;
 }
 
-.section-orderlist .list-order .order-info dl {
+.section_orderlist .list_order .order_info dl {
     overflow: hidden;
     padding-top: 6px;
 }
 
-.section-orderlist .list-order .order-info dt {
+.section_orderlist .list_order .order_info dt {
     float: left;
     padding-right: 15px;
     font-size: 12px;
@@ -271,7 +266,7 @@
     line-height: 20px;
 }
 
-.section-orderlist .list-order .order-info dd {
+.section_orderlist .list_order .order_info dd {
     float: left;
     font-size: 14px;
     line-height: 20px;
@@ -279,59 +274,60 @@
     color: #000;
 }
 
-.section-orderlist .list-order .order-info .end {
+.section_orderlist .list_order .order_info .end {
     color: #514859;
 }
 
-.section-orderlist .list-order .order-info .status {
-    color: #a586f6;
+.section_orderlist .list_order .order_info .status {
+    color: #5f0080;
 }
 
-.section-orderlist .list-order .order-status {
-    display: table;
+.section_orderlist .list_order .order_status {
+    display: flex;
     position: absolute;
     right: 20px;
     bottom: 0;
     height: 114px;
+    align-items: center;
+}
+
+.section_orderlist .list_order .inner_status {
     vertical-align: middle;
 }
 
-.section-orderlist .list-order .inner-status {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.section-orderlist .list-order .order-status .link {
+.section_orderlist .list_order .order_status .link {
     display: block;
     width: 100px;
     height: 34px;
-    border: 1px solid #a586f6;
+    border: 1px solid #5f0080;
     background-color: #fff;
     font-size: 12px;
-    color: #a586f6;
+    color: #5f0080;
     line-height: 32px;
     text-align: center;
     cursor: pointer;
 }
 
-.page-aticle .layout-pagination {
+.page_aticle .layout-pagination {
     font-size: 0;
+    text-align: center;
+    margin: 60px 0 0;
 }
 
-.page-aticle .layout-pagination-first-page:first-child {
+.page_aticle .layout-pagination-first-page:first-child {
     border-left: 1px solid #ddd;
 }
 
-.page-aticle .layout-pagination-button:first-child {
+.page_aticle .layout-pagination-button:first-child {
     border-left: 0;
 }
 
-.page-aticle .layout-pagination a {
+.page_aticle .layout-pagination a {
     cursor: pointer;
 }
 
-.page-aticle .layout-pagination a,
-.page-aticle .layout-pagination strong {
+.page_aticle .layout-pagination a,
+.page_aticle .layout-pagination strong {
     font-weight: 700;
     font-size: 12px;
 }
@@ -360,31 +356,6 @@ body #container #main .layout-pagination-button:first-child {
     border: 1px solid #ddd;
     border-left: 0;
     vertical-align: top;
-}
-
-.layout-pagination {
-    margin: 60px 0 0;
-    text-align: center;
-}
-
-.layout-pagination-first-page {
-    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png);
-}
-
-.layout-pagination-number:hover,
-.layout-pagination-number.__active {
-    background-color: #f7f7f7;
-    color: #a586f6;
-}
-
-.layout-pagination-number {
-    font-weight: 700;
-    color: #333;
-    line-height: 34px;
-}
-
-body #container #main .layout-pagination .pagediv span strong {
-    border-left: 0px;
 }
 
 .layout-pagination-next-page {

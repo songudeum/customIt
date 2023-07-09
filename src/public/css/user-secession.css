@@ -1,0 +1,179 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+main .contents-inner {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+}
+
+.user-secession-wrap {
+    max-width: 660px;
+    padding: 0 30px;
+}
+
+.user-secession-title {
+    margin: 70px 0 20px 15px;
+    font-size: 28px;
+    line-height: 35px;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+}
+
+.user-secession-info {
+    display: flex;
+    flex-direction: column;
+}
+.user-secession-info span {
+    color: #a586f6;
+    font-weight: 500;
+}
+
+.user-secession-info div {
+    margin: 10px 0;
+    width: 97vh;
+}
+
+.user-secession-info p {
+    margin: 5px 0;
+}
+
+.user-secession-wrap .top {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 15px 0;
+}
+
+.user-secession-wrap .password {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 60%;
+    padding: 12px 0;
+}
+
+.user-secession-wrap .password label {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.user-secession-wrap .password span {
+    vertical-align: middle;
+    font-size: 20px;
+    color: red;
+}
+
+.user-secession-wrap input {
+    width: 350px;
+    height: 46px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 6px;
+    border: 1px solid rgb(221, 221, 221);
+}
+.user-secession-wrap input::placeholder {
+    color: #bbbbbb;
+}
+
+.user-secession-wrap .btn-bottom {
+    display: inline-flex;
+    width: 100vh;
+    height: 80px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.btn-secede {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 46px;
+    font-size: 17px;
+    border-radius: 6px;
+    color: #a586f6;
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    border: 1px solid #a586f6;
+    margin: 0 3px;
+}
+
+.btn-cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 46px;
+    font-size: 17px;
+    border-radius: 6px;
+    color: #ffffff;
+    background-color: #a586f6;
+    text-decoration: none;
+    border: 1px solid #a586f6;
+    margin: 0 3px;
+}
+.snb_my {
+    width: 200px;
+}
+
+.snb_my .tit_snb {
+    padding: 8px 0 33px 1px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 34px;
+    color: #333;
+    letter-spacing: -0.5px;
+}
+
+.user-aside {
+    margin-top: 70px;
+    float: right;
+}
+
+.snb_my .inner_sub {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+.snb_my .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.snb_my .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 15px 0 15px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+}
+
+.snb_my .link_inquire {
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+    padding: 9px 0 0 21px;
+    border-radius: 0 100px 100px 0;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        25px;
+    background-size: 6px 11px;
+    font-size: 12px;
+    color: #333;
+    line-height: 20px;
+}
+
+.snb_my .link_inquire .emph {
+    display: block;
+    padding-bottom: 1px;
+    font-weight: 700;
+    font-size: 14px;
+}
