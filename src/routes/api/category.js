@@ -34,7 +34,6 @@ router.post(
 
         res.status(201);
         res.json({
-            success: true,
             data: {
                 id,
             },
@@ -60,9 +59,6 @@ router.put(
         categoryService.updateCategory({ id, name });
 
         res.status(201);
-        res.json({
-            success: true,
-        });
     }),
 );
 
@@ -74,9 +70,6 @@ router.delete(
         categoryService.deleteCategory({ id });
 
         res.status(200);
-        res.json({
-            success: true,
-        });
     }),
 );
 
