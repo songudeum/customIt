@@ -101,6 +101,10 @@ main .contents-inner {
     background: url('../image/icon-arrow-right.png') no-repeat center / 6px;
 }
 
+.intro-main .main-items .btn-item:hover:before {
+    background-image: url('../image/icon-arrow-right-hover.png');
+}
+
 .intro-main .main-items .btn-item .item-img {
     overflow: hidden;
     position: relative;
@@ -121,7 +125,7 @@ main .contents-inner {
 }
 
 .intro-main .main-items .btn-item .item-info .title {
-    padding-bottom: 4px;
+    padding-bottom: 8px;
     box-sizing: border-box;
     font-size: 14px;
     font-weight: bold;
