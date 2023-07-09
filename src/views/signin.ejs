@@ -28,28 +28,24 @@
                         <label>이메일</label>
                         <input type="text" id="emailInput" placeholder="예: customit@custom.com">
                         <div class="email-check" id="emailCheckBtn" onClick="validateEmail()">
-                            <a href="#">중복확인</a>
+                            <button href="#">중복확인</button>
                         </div>
                     </div>
-                    <p id="emailCheck" style="color: red;"></p>
+                    <p id="emailCheck"></p>
 
                     <script>
                         function validateEmail() {
-                            let $emailInput = document.querySelector("#emailInput");
-                            let $emailCheck = document.querySelector("#emailCheck");
-                            let $emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-                            if ($emailInput.value.match($emailRegex)) {
+                            let $emailInput = document.querySelector(" #emailInput"); let
+                                $emailCheck = document.querySelector("#emailCheck"); let
+                                    $emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; if
+                                ($emailInput.value.match($emailRegex)) {
                                 $emailCheck.style.fontSize = "12px";
-                                $emailCheck.textContent = "올바른 이메일 형식입니다.";
-                                $emailCheck.style.color = "blue";
+                                $emailCheck.textContent = "올바른 이메일 형식입니다."; $emailCheck.style.color = "blue";
                             } else {
-                                $emailCheck.style.fontSize = "12px";
-                                $emailCheck.textContent = "올바른 이메일 형식이 아닙니다.";
+                                $emailCheck.style.fontSize = "12px"; $emailCheck.textContent = "올바른 이메일 형식이 아닙니다.";
                                 $emailCheck.style.color = "red";
                             }
-                        }
-                    </script>
+                        } </script>
 
 
                     <div class="password">
@@ -58,7 +54,7 @@
                             onChange="validatePassword()">
                         <span><a href="#">중복확인</a></span>
                     </div>
-                    <p id="passwordCheck" style="color:red;"></p>
+                    <p id="passwordCheck"></p>
 
                     <script>
                         function validatePassword() {
@@ -84,7 +80,7 @@
                             onChange="validatePasswordConfirm()">
                         <span><a href="#">중복확인</a></span>
                     </div>
-                    <p id="pwConfirmCheck" style="color:red;"></p>
+                    <p id="pwConfirmCheck"></p>
                     <script>
                         function validatePasswordConfirm() {
                             let $passwordInputConfirm = document.querySelector("#passwordInputConfirm");
@@ -115,7 +111,7 @@
                             onchange="validatePhoneNum()" maxlength="13">
                         <span><a href="#">중복확인</a></span>
                     </div>
-                    <p id="phoneNumCheck" style="color:red;"></p>
+                    <p id="phoneNumCheck"></p>
                     <script>
                         function validatePhoneNum() {
                             let $phoneNumInput = document.querySelector("#phoneNumInput");
@@ -138,7 +134,7 @@
                         <label>주소</label>
                         <input type="text" id="addressInput" placeholder="우측 주소 검색을 클릭해주세요" readonly />
                         <div class="address-check" id="adressCheckBtn">
-                            <div><a href="#" onClick="openKakaoMap()">주소검색</a></div>
+                            <div><button href="#" onClick="openKakaoMap()">주소검색</button></div>
                         </div>
                     </div>
                     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -173,38 +169,7 @@
                 </div>
             </div>
         </div>
-        <div class="tbl_wrap">
-            <table class="tbl tbl_view">
-                <caption>보기테이블</caption>
-                <colgroup>
-                    <col style="width: 110px;">
-                    <col>
 
-
-
-
-                </colgroup>
-                <tbody>
-                    <tr>
-                        <th>항목</th>
-                        <td>내용</td>
-
-
-
-
-                    </tr>
-
-                    <tr>
-                        <th>항목</th>
-                        <td>내용</td>
-
-
-
-
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </main>
     <footer class="footer">
         <%- include('../views/partials/footer'); %>
