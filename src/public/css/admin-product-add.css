@@ -1,0 +1,43 @@
+.product{
+    font-weight: bold;
+    font-size: larger;
+}
+
+table{
+    color:#353535;;
+    width:50%;
+    border-top:3px solid gray;
+    border-collapse: collapse;
+}
+
+td, th{
+    border-bottom: 1px solid #bbbbbb;
+    padding: 10px;
+    font-weight: bold;
+}
+
+select{
+    width: 60%;
+    padding: 5px 10px 5px 10px;
+}
+
+.add-image{
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.file-name{
+    border: 1px solid gray;
+    width: 50%;
+    padding: 3px 5px 3px 5px;
+}
+
+.add-image-label{
+    background-color: #353535;
+    color: white;
+    padding: 3px 10px 3px 10px;
+    font-weight: normal;
+}

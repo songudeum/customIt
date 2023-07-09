@@ -3,14 +3,16 @@
     <div class="wrap">
     <head>
         <%- include('../views/partials/head.ejs'); %>
-        <link rel="stylesheet" href="/css/admin-category.css">
+        <link rel="stylesheet" href="/css/admin.css">
         <link rel="stylesheet" href="/css/admin-aside.css">
+        <link rel="stylesheet" href="/css/admin-order.css">
     </head>
     <body>
         <div class="grid">
         <%- include('../views/partials/admin-aside.ejs'); %>
         <article class="article">
-            <p>주문 관리</p>
+            <h2>주문 관리</h2>
+            <section>
             <table>
                 <tr>
                     <th>날짜</th>
@@ -20,23 +22,23 @@
                     <th>관리</th>
                 </tr>
                 <tr>
-                    <th href="#">.</th>
-                    <th href="#">.</th>
-                    <th href="#">.</th>
-                    <th href="#">
+                    <td href="#">.</td>
+                    <td href="#">.</td>
+                    <td href="#">.</td>
+                    <td href="#">
                         <select>
                             <option>상품 준비중</option>
                             <option>배송 중</option>
                             <option>배송 완료</option>
-                        </select></th>
-                    <th href="#">
-                        <button class="cancle-order">
+                        </select></td>
+                    <td href="#">
+                        <button class="btn btn-large">
                             주문 취소
                         </button>
-                    </th>
+                    </td>
                 </tr>
-                <button class="btn-add-product">상품 등록</button>
-                </table>  
+                </table>
+            </section>
         </article>
     </div>
     </body>

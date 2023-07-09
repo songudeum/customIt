@@ -1,21 +1,21 @@
-body{
-    background-color: #dbdbdb;
-    margin: 0;
-}
-
-article{
-    background-color: white;
-    margin:8% 10% 0 10%;
-    border-radius: 3px;
-}
-
 .category{ 
     /**admin-aside 내부 class**/
     font-weight: bold;
     font-size: larger;
 }
 
-.grid{
-    display: grid;
-    grid-template-columns: 300px 1fr;
+.list-category-li{
+    list-style: none;
+    border: 1px solid #adadad;
+    display: flex;
+    padding:10px;
+    justify-content: space-around;
+}
+
+.add-category{
+    margin-left: 40px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px #adadad solid;
+    padding:10px;
 }
