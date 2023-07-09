@@ -28,7 +28,7 @@ router.get(
         const { id } = req.params;
         const product = await Product.findOne({ id });
         const categories = await Category.find({});
-        res.render('admin-product-add', { product, categories });
+        res.render('admin-product-edit', { product, categories });
     }),
 );
 
