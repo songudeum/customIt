@@ -13,7 +13,7 @@ router.post(
     upload.single('productImage'),
     asyncHandler(async (req, res) => {
         const { name, price, description, company, categoryName } = req.body;
-
+        console.log(name, price, description, company, categoryName);
         if (!name || !price || !description || !company || !categoryName) {
             const error = new Error('모든 값은 필수 값입니다.');
             error.statusCode = 400;
@@ -42,13 +42,7 @@ router.post(
             image: `../public/image/${req.file.originalname}`,
         });
 
-        res.status(201);
-        res.json({
-            success: true,
-            data: {
-                id,
-            },
-        });
+        res.status(201).redirect('/admin/product');
     }),
 );
 
@@ -84,10 +78,7 @@ router.put(
             image: `../public/image/${req.file.originalname}`,
         });
 
-        res.status(201);
-        res.json({
-            success: true,
-        });
+        res.status(201).redirect('/admin/product');
     }),
 );
 
@@ -98,10 +89,7 @@ router.delete(
 
         productService.deleteProduct({ id });
 
-        res.status(200);
-        res.json({
-            success: true,
-        });
+        res.status(200).redirect('/admin/product');
     }),
 );
 
