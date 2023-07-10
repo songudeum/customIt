@@ -1,8 +1,5 @@
 require('dotenv').config();
 
-const express = require('express');
-const cors = require('cors');
-const path = require('node:path');
 const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
