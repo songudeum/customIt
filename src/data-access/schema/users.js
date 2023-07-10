@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema } = require('mongoose');
 
 const userSchema = new Schema(
     {
@@ -26,10 +26,15 @@ const userSchema = new Schema(
             }),
             required: true,
         },
+        userId: {
+            type: String,
+            required: true,
+            unique: true,
+        },
     },
     {
-        collection: "Users",
-    }
+        collection: 'Users',
+    },
 );
 
 module.exports = userSchema;

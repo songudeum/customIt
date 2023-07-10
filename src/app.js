@@ -63,7 +63,7 @@ app.use('/admin/product', adminProductRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/product', productRouter);
 app.use('/order', orderRouter);
-app.use('/admin/order', adminOrderRouter);
+app.use('/admin/orders', adminOrderRouter);
 app.use('/api/orders', orderApiRouter);
 
 app.use((req, res, next) => {

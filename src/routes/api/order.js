@@ -71,10 +71,10 @@ router.put(
 router.put(
     '/:id',
     asyncHandler(async (req, res) => {
-        const { DeliveryStatus } = req.body;
+        const { deliveryStatus } = req.body;
         const { id } = req.params;
 
-        orderService.updateDeliveryStatus({ id, DeliveryStatus });
+        orderService.updateDeliveryStatus({ id, deliveryStatus });
         //  업데이트 완료 응답 전송
         res.status(201).send();
     }),

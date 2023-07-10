@@ -16,8 +16,20 @@ const orderService = {
             throw new Error('주문서 등록에 실패했습니다.');
         }
 
-        return createdOrder;
+        // 'User'와 'Product'에 대한 참조 정보를 가져오기 위해 필요한 populate() 함수 적용
+        const populatedOrder = await Order.populate(createdOrder, [
+            { path: 'userId' },
+            { path: 'productId' },
+        ]);
+
+        if (!populatedOrder) {
+            throw new Error('주문서 정보를 가져오는 데 실패했습니다.');
+        }
+
+        // 추가된 사용자와 제품 정보와 주문에 포함해서 반환
+        return populatedOrder;
     },
+
     // 주문서 삭제
     deleteOrder: async ({ orderId }) => {
         const deletedOrder = await Order.deleteOne({ _id: orderId });
