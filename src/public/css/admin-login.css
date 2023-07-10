@@ -62,7 +62,7 @@ main .contents-inner {
     box-shadow: 0 0 0 3px rgba(165, 134, 246, 0.3);
 }
 
-.login-btn {
+.btn-login {
     width: 372px;
     margin-top: 27px;
     height: 73px;
@@ -72,7 +72,7 @@ main .contents-inner {
     cursor: pointer;
 }
 
-.login-btn span {
+.btn-login span {
     color: #a586f6;
     text-align: center;
     font-size: 20px;
@@ -81,7 +81,7 @@ main .contents-inner {
     line-height: normal;
 }
 
-.join-btn {
+.btn-join {
     margin-top: 16px;
     width: 372px;
     height: 73px;
@@ -91,11 +91,16 @@ main .contents-inner {
     cursor: pointer;
 }
 
-.join-btn span {
+.btn-join a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     color: #a586f6;
     text-align: center;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    height: 73px;
 }
