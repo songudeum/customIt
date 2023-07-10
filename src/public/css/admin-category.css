@@ -19,3 +19,11 @@
     border: 1px solid #adadad;
     list-style: none;
 }
+
+.list-category-li{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border: 1px solid #adadad;
+    list-style: none;
+}
