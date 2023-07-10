@@ -16,11 +16,10 @@ main .contents-inner {
     margin: 216px auto 360px auto;
 }
 
-/* 가운데 정렬 알아보기 */
 .header-logo img {
-    width: 300px;
-    height: 81px;
-    margin: 0 36px;
+    width: 286px;
+    height: 49px;
+    margin: 0 36px 30px 36px;
 }
 
 .login-box {
@@ -64,6 +63,7 @@ main .contents-inner {
 
 .login-btn {
     width: 372px;
+    margin-top: 27px;
     height: 73px;
     border-radius: 5px;
     border: 1px solid #a586f6;
@@ -74,7 +74,6 @@ main .contents-inner {
 .login-btn span {
     color: #fff;
     text-align: center;
-    font-family: pretendard;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
@@ -82,7 +81,7 @@ main .contents-inner {
 }
 
 .join-btn {
-    margin-top: 16px;
+    margin: 16px 0;
     width: 372px;
     height: 73px;
     border-radius: 5px;
@@ -94,9 +93,14 @@ main .contents-inner {
 .join-btn span {
     color: #ddd;
     text-align: center;
-    font-family: pretendard;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+.admin-page {
+    text-align: center;
+    text-decoration: none;
+    color: rgba(185, 185, 185, 1);
 }

@@ -1,15 +1,17 @@
-<link rel="stylesheet" href="/css/user-login.css" />
-
 <!doctype html>
 <html lang="ko">
-    <head> </head>
+    <head>
+        <%- include('../views/partials/head.ejs'); %>
+        <link rel="stylesheet" href="/css/user-login.css" />
+        <link rel="stylesheet" href="/css/layout.css" />
+    </head>
     <body class="container">
         <header class="header"></header>
         <main class="contents-inner">
             <div class="login-wrap">
                 <div class="header-logo">
                     <a href="http://localhost:3000/">
-                        <img src="/image/custom-it-logo.svg" alt="custom-it-logo" />
+                        <img src="/image/customit-big-logo1.png" alt="custom-it-logo" />
                     </a>
                 </div>
                 <form method="post" action="/users/login" class="login-form">
@@ -28,8 +30,8 @@
                         </button>
                     </a>
                 </form>
-                <a href="http://localhost:3000/admin/login">
-                    <p>관리자이신가요&#63; 어드민 페이지로 이동&gt;</p>
+                <a href="http://localhost:3000/admin/login" class="admin-page">
+                    <p>관리자이신가요&#63; 어드민 페이지로 이동 &gt;</p>
                 </a>
             </div>
         </main>
