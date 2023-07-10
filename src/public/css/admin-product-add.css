@@ -1,0 +1,44 @@
+.product{
+    /**admin-aside 내부 class**/
+    font-weight: bold;
+    font-size: larger;
+}
+
+table{
+    width:50%;
+    border-top:3px solid gray;
+    border-collapse: collapse;
+    color:#353535;;
+}
+
+td, th{
+    padding: 10px;
+    border-bottom: 1px solid #bbbbbb;
+    font-weight: bold;
+}
+
+select{
+    width: 60%;
+    padding: 5px 10px 5px 10px;
+}
+
+.file-name{
+    width: 50%;
+    padding: 3px 5px 3px 5px;
+    border: 1px solid gray;
+}
+
+.add-image{
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    padding: 0;
+    border: 0;
+}
+
+.add-image-label{
+    padding: 3px 10px 3px 10px;
+    background-color: #353535;
+    color: white;
+    font-weight: normal;
+}
