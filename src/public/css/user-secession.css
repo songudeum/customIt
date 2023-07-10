@@ -8,6 +8,8 @@ main .contents-inner {
     display: flex;
     justify-content: center;
     background-color: rgb(255, 255, 255);
+    width: 1280px;
+    margin: 0 auto;
 }
 
 .user-secession-wrap {
@@ -26,6 +28,7 @@ main .contents-inner {
 .user-secession-info {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 .user-secession-info span {
     color: #a586f6;
@@ -34,7 +37,6 @@ main .contents-inner {
 
 .user-secession-info div {
     margin: 10px 0;
-    width: 97vh;
 }
 
 .user-secession-info p {
@@ -44,6 +46,7 @@ main .contents-inner {
 .user-secession-wrap .top {
     display: flex;
     flex-direction: column;
+    max-width: 660px;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     padding: 15px 0;

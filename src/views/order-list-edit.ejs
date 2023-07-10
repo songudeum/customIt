@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/order-list-edit.css">
+        <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body class="container">
+
+    <header class="header">
+        <%- include('../views/partials/header'); %>
+
+    </header>
+
+    <main role="main" class="contents">
+        <div class="contents-inner">
+            <section class="user-aside">
+                <div id="snb" class="snb_my">
+                    <h2 class="tit_snb">마이페이지</h2>
+                    <div class="inner_sub">
+                        <ul class="list_menu">
+                            <li class="on">
+                                <a href="#">주문내역</a>
+                            </li>
+                            <li>
+                                <a href="#">개인 정보 수정</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="contents-inner">
+                    <div class="order-list-wrap">
+                        <div class="text">배송지 정보 수정</div>
+                        <section class="top">
+                            <div class="email">
+                                <label>이메일</label>
+                                <input type="text" placeholder="예: customit@custom.com" readonly>
+                                <span class="hidden-span"><a href="#">중복확인</a></span>
+                            </div>
+                            <div class="name">
+                                <label>이름</label>
+                                <input type="text" placeholder="받으실 분 이름을 입력해주세요">
+                                <span class="hidden-span"><a href="#">중복확인</a></span>
+                            </div>
+                            <div class="phone-num">
+                                <label>휴대폰</label>
+                                <input type="tel" id="phoneNumInput" placeholder="'-' 없이 번호만 입력해주세요"
+                                    onchange="validatePhoneNum()" maxlength="13">
+                                <span class="hidden-span"><a href="#">중복확인</a></span>
+
+                            </div>
+                            <p id="phoneNumCheck"></p>
+                            <script>
+                                function validatePhoneNum() {
+                                    let $phoneNumInput = document.querySelector("#phoneNumInput");
+                                    let $phoneNumCheck = document.querySelector("#phoneNumCheck");
+                                    let $phoneNumRegex = /^[0-9]+$/;
+
+                                    if ($phoneNumInput.value.match($phoneNumRegex)) {
+                                        $phoneNumCheck.style.fontSize = "12px";
+                                        $phoneNumCheck.textContent = "올바른 휴대폰 번호입니다.";
+                                        $phoneNumCheck.style.color = "blue";
+                                    } else {
+                                        $phoneNumCheck.style.fontSize = "12px";
+                                        $phoneNumCheck.textContent = "숫자로만 입력해주세요";
+                                        $phoneNumCheck.style.color = "red";
+                                    }
+                                }
+                            </script>
+                            <div class="address">
+                                <label>주소</label>
+                                <input type="text" id="addressInput" placeholder="우측 주소 검색을 클릭해주세요" readonly />
+                                <div class="address-check" id="adressCheckBtn">
+                                    <div><button href="#" onClick="openKakaoMap()">주소검색</button></div>
+                                </div>
+                            </div>
+                            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                            <script>
+                                function openKakaoMap() {
+                                    new daum.Postcode({
+                                        oncomplete: function (data) {
+                                            var $addressInput = document.querySelector("#addressInput");
+                                            $addressInput.value = data.address;
+                                            $addressInput.focus();
+                                        }
+                                    }).open();
+                                }
+                            </script>
+                            <div div class="detailAddress">
+                                <label>상세주소</label>
+                                <input type="text" id="detailAddress" placeholder="상세주소를 입력해주세요">
+                                <span class="hidden-span"><a href="#">중복확인</a></span>
+
+                            </div>
+                        </section>
+
+                        <div class="bottom">
+                            <button class="btn">배송지 변경하기</button>
+
+                        </div>
+                    </div>
+                </div>
+    </main>
+    <footer class="footer">
+        <%- include('../views/partials/footer'); %>
+    </footer>
+</body>
+
+</html>
