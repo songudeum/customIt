@@ -1,6 +1,5 @@
-#container,
+/* #container,
 #content {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,29 +10,25 @@
     border-bottom: 1px solid #f7f7f7;
     width: 100%;
     max-width: 1050px;
+    margin: 0 auto;
 }
 
 #content {
     min-width: 1050px;
     padding-bottom: 120px;
-    margin: 0 auto;
 }
 
 .page_aticle {
     margin: 0 auto;
+    width: 100%;
+    max-width: 1050px;
 }
 
 .page_aticle.aticle_type2 {
     padding-top: 65px;
 }
 
-.page_aticle {
-    width: 1050px;
-    margin: 0 auto;
-}
-
 #snb {
-    float: left;
     width: 200px;
 }
 
@@ -101,15 +96,13 @@
 
 .page_aticle.aticle_type2:after {
     content: '';
-    display: block;
-    overflow: hidden;
-    width: 100%;
+    display: table;
     clear: both;
 }
 
 .page_aticle.aticle_type2 .page_section {
     float: right;
-    width: 820px;
+    width: calc(100% - 200px);
 }
 
 .page_aticle .head_aticle {
@@ -235,7 +228,7 @@
     cursor: pointer;
 }
 
-.section_orderlist .list_order .order_info {
+.section_orderlist .order_info {
     overflow: hidden;
     padding: 14px 0 20px;
 }
@@ -290,16 +283,15 @@
 }
 
 .section_orderlist .list_order .order_status {
-    display: table;
+    display: flex;
     position: absolute;
     right: 20px;
     bottom: 0;
     height: 114px;
-    vertical-align: middle;
+    align-items: center;
 }
 
 .section_orderlist .list_order .inner_status {
-    display: table-cell;
     vertical-align: middle;
 }
 
@@ -318,6 +310,8 @@
 
 .page_aticle .layout-pagination {
     font-size: 0;
+    text-align: center;
+    margin: 60px 0 0;
 }
 
 .page_aticle .layout-pagination-first-page:first-child {
@@ -341,9 +335,11 @@
 body #container #main .layout-pagination-button:first-child {
     border-left: 1px solid #ddd;
 }
+
 .layout-pagination-prev-page {
     background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png);
 }
+
 .layout-pagination-first-page,
 .layout-pagination-prev-page,
 .layout-pagination-next-page,
@@ -362,35 +358,10 @@ body #container #main .layout-pagination-button:first-child {
     vertical-align: top;
 }
 
-.layout-pagination {
-    margin: 60px 0 0;
-    text-align: center;
-}
-
-.layout-pagination-first-page {
-    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png);
-}
-
-.layout-pagination-number:hover,
-.layout-pagination-number.__active {
-    background-color: #f7f7f7;
-    color: #5f0080;
-}
-
-.layout-pagination-number {
-    font-weight: 700;
-    color: #333;
-    line-height: 34px;
-}
-
-body #container #main .layout-pagination .pagediv span strong {
-    border-left: 0px;
-}
-
 .layout-pagination-next-page {
     background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png);
 }
 
 .layout-pagination-last-page {
     background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png);
-}
+} */
