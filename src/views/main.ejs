@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/header.css" />
+        <link rel="stylesheet" href="/css/signin.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+
+    <body class="container">
+        <header class="header"><%- include('../views/partials/header'); %></header>
+
+        <main role="main" class="contents">
+            <div class="contents-inner">
+                <div class="intro-main">
+                    <div class="main-img">
+                        <img src="/image/img-main.jpg" alt="메인이미지" />
+                        <div class="info">
+                            <p class="title">책상 위를 자신만의 작은 인테리어 공간 &#9997;</p>
+                            <p class="desc">
+                                잠자는 시간을 제외하면 책상 앞에 앉아있는 시간이 가장 많은
+                                직장인들을 위한 데스크테리어 추천!
+                            </p>
+                        </div>
+                    </div>
+                    <ul class="main-items">
+                        <li>
+                            <a href="#" class="btn-item">
+                                <div class="item-img">
+                                    <img src="/image/img-product01.jpg" alt="" />
+                                </div>
+                                <div class="item-info">
+                                    <p class="title">상품명 상품명 상품명 상품명</p>
+                                    <p class="price">200,000<span class="unit">원</span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-item">
+                                <div class="item-img">
+                                    <img src="/image/img-product02.jpg" alt="" />
+                                </div>
+                                <div class="item-info">
+                                    <p class="title">상품명</p>
+                                    <p class="price">125,000<span class="unit">원</span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-item">
+                                <div class="item-img">
+                                    <img src="/image/img-product03.jpg" alt="" />
+                                </div>
+                                <div class="item-info">
+                                    <p class="title">상품명</p>
+                                    <p class="price">39,900<span class="unit">원</span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-item">
+                                <div class="item-img">
+                                    <img src="/image/img-product04.jpg" alt="" />
+                                </div>
+                                <div class="item-info">
+                                    <p class="title">상품명 상품명</p>
+                                    <p class="price">19,900<span class="unit">원</span></p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+    </body>
+</html>
