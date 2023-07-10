@@ -44,8 +44,12 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.get('/', (req, res) => {
-    res.render('order-detail');
+app.get('/users/join', (req, res) => {
+    res.render('signin');
+});
+
+app.get('/users/login', (req, res) => {
+    res.render('user-login');
 });
 
 app.use(express.json());

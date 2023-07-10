@@ -33,9 +33,9 @@
 
                     <script>
                         function validateEmail() {
-                            let $emailInput = document.querySelector(" #emailInput");
-                            let $emailCheck = document.querySelector("#emailCheck");
-                            let $emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                            const $emailInput = document.querySelector(" #emailInput");
+                            const $emailCheck = document.querySelector("#emailCheck");
+                            const $emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
                             if ($emailInput.value.match($emailRegex)) {
                                 $emailCheck.style.fontSize = "12px";
@@ -50,15 +50,15 @@
                         <label>비밀번호</label>
                         <input type="password" id="passwordInput" placeholder="비밀번호를 입력해주세요"
                             onChange="validatePassword()">
-                        <span><a href="#">중복확인</a></span> 
+                        <span><a href="#">중복확인</a></span>
                     </div>
                     <p id="passwordCheck"></p>
 
                     <script>
                         function validatePassword() {
-                            let $passwordInput = document.querySelector("#passwordInput");
-                            let $passwordCheck = document.querySelector("#passwordCheck");
-                            let $passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,15}$/;
+                            const $passwordInput = document.querySelector("#passwordInput");
+                            const $passwordCheck = document.querySelector("#passwordCheck");
+                            const $passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,15}$/;
 
                             if ($passwordInput.value.match($passwordRegex)) {
                                 $passwordCheck.style.fontSize = "12px";
@@ -81,9 +81,9 @@
                     <p id="pwConfirmCheck"></p>
                     <script>
                         function validatePasswordConfirm() {
-                            let $passwordInputConfirm = document.querySelector("#passwordInputConfirm");
-                            let $passwordInput = document.querySelector("#passwordInput");
-                            let $pwConfirmCheck = document.querySelector("#pwConfirmCheck");
+                            const $passwordInputConfirm = document.querySelector("#passwordInputConfirm");
+                            const $passwordInput = document.querySelector("#passwordInput");
+                            const $pwConfirmCheck = document.querySelector("#pwConfirmCheck");
 
                             if ($passwordInputConfirm.value === $passwordInput.value) {
                                 $pwConfirmCheck.style.fontSize = "12px";
@@ -99,9 +99,28 @@
 
                     <div class="name">
                         <label>이름</label>
-                        <input type="text" placeholder="이름을 입력해주세요">
+                        <input type="text" id="nameInput" placeholder="이름은 2~4글자로 입력해주세요." onchange="validateName()">
                         <span><a href="#">중복확인</a></span>
                     </div>
+                    <p id="nameCheck"></p>
+                    <script>
+                        function validateName() {
+                            const $nameInput = document.querySelector('#nameInput');
+                            const $nameCheck = document.querySelector('#nameCheck')
+                            const $nameRegex = /^[가-힣]{2,4}$/;
+
+                            if ($nameInput.value.match($nameRegex)) {
+                                $nameCheck.textContent = "";
+                            } else {
+                                $nameCheck.style.fontSize = "12px";
+                                $nameCheck.textContent = "이름은 2~4글자로 입력해주세요.";
+                                $nameCheck.style.color = "red";
+                            }
+                        }
+                    </script>
+
+
+
 
                     <div class="phone-num">
                         <label>휴대폰</label>
@@ -112,9 +131,9 @@
                     <p id="phoneNumCheck"></p>
                     <script>
                         function validatePhoneNum() {
-                            let $phoneNumInput = document.querySelector("#phoneNumInput");
-                            let $phoneNumCheck = document.querySelector("#phoneNumCheck");
-                            let $phoneNumRegex = /^[0-9]+$/;
+                            const $phoneNumInput = document.querySelector("#phoneNumInput");
+                            const $phoneNumCheck = document.querySelector("#phoneNumCheck");
+                            const $phoneNumRegex = /^[0-9]+$/;
 
                             if ($phoneNumInput.value.match($phoneNumRegex)) {
                                 $phoneNumCheck.style.fontSize = "12px";
@@ -122,7 +141,7 @@
                                 $phoneNumCheck.style.color = "blue";
                             } else {
                                 $phoneNumCheck.style.fontSize = "12px";
-                                $phoneNumCheck.textContent = "숫자로만 입력해주세요";
+                                $phoneNumCheck.textContent = "휴대폰 번호는 숫자로 입력해주세요.";
                                 $phoneNumCheck.style.color = "red";
                             }
                         }
@@ -135,6 +154,7 @@
                             <div><button href="#" onClick="openKakaoMap()">주소검색</button></div>
                         </div>
                     </div>
+
                     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
                     <script>
                         function openKakaoMap() {
@@ -148,12 +168,12 @@
                         }
                     </script>
 
-                    </script>
-                    <div div class="detailAddress">
+                    <div class="detailAddress">
                         <label>상세주소</label>
                         <input type="text" id="detailAddress" placeholder="상세주소를 입력해주세요">
                         <span><a href="#">중복확인</a></span>
                     </div>
+
                 </section>
 
                 <div class="bottom-wrap">
@@ -161,7 +181,7 @@
                     <div class="login">
                         이미 아이디가 있으신가요?
                         <div>
-                            <a href="#"> 로그인</a>
+                            <a href="http://localhost:3000/users/login"> 로그인</a>
                         </div>
                     </div>
                 </div>
