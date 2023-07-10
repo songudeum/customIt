@@ -6,6 +6,8 @@ const createHash = require('../utils/hash-password');
 const { setUserToken } = require('../utils/jwt');
 
 const router = Router();
+const emailCheck = /[a-z0-9]+@admin.com/;
+const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
 
 // 관리자 회원가입 api
 router.post(
@@ -14,7 +16,6 @@ router.post(
         const { email, password, name } = req.body;
 
         // 이메일 형식 체크하는 조건문
-        const emailCheck = /[a-z0-9]+@admin.com/;
         if (!emailCheck.test(email)) {
             const error = new Error('@admin.com 형식으로 입력해주세요.');
             error.statusCode = 400;
@@ -22,7 +23,6 @@ router.post(
         }
 
         // 비밀번호 형식 체크하는 조건문
-        const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
         if (!pwCheck.test(password)) {
             const error = new Error(
                 '비밀번호 형식은 대소문자/특수문자 조합 8~15자로 입력해주세요.',
@@ -37,7 +37,6 @@ router.post(
             name,
         });
 
-        res.status(201).json({ message: '회원가입 성공' });
         res.redirect('/');
     }),
 );
@@ -46,8 +45,7 @@ router.post(
 router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
     // 유저 토큰 생성 및 쿠키에 전달
     setUserToken(res, req.user);
-
-    res.send('성공');
+    res.redirect('/');
 });
 
 module.exports = router;

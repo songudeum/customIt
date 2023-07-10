@@ -12,8 +12,10 @@ router.post(
         const { email } = req.body;
         const emailDuplicate = await Admin.findOne({ email });
         if (emailDuplicate) {
-            res.render('중복된 이메일이 존재합니다.');
-        } else res.render('성공');
+            res.json({ message: '중복된 이메일이 존재합니다.' });
+        } else {
+            res.json({ message: '사용가능한 이메일입니다.' });
+        }
     }),
 );
 

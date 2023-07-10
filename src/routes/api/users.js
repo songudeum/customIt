@@ -2,6 +2,8 @@ const { Router } = require('express');
 const { Users } = require('../../data-access');
 const asyncHandler = require('../../utils/async-handler');
 const createHash = require('../../utils/hash-password');
+const getUserFromJWT = require('../../middlewares/get-user-from-jwt');
+const { jwtVerify } = require('../../utils/jwt');
 
 const router = Router();
 
@@ -12,16 +14,19 @@ router.post(
         const { email } = req.body;
         const emailDuplicate = await Users.findOne({ email });
         if (emailDuplicate) {
-            res.send('중복된 이메일이 존재합니다.');
-        } else res.send('성공');
+            res.json({ message: '중복된 이메일이 존재합니다.' });
+        } else {
+            res.json({ message: '사용가능한 이메일입니다.' });
+        }
     }),
 );
 
 // 개인페이지 사용자 정보 수정 api(send 나중에 render로 수정)
 router.put(
     '/info/edit/:email',
+    getUserFromJWT,
     asyncHandler(async (req, res) => {
-        const userEmail = req.params.email;
+        const userEmail = jwtVerify(req);
         const { email, password, newPassword, name, phoneNumber, address } = req.body;
         const user = await Users.findOne({ email: userEmail });
         const userPw = user.password;
@@ -41,7 +46,7 @@ router.put(
                 address,
             },
         );
-        res.send(newUserInfo);
+        res.render(newUserInfo);
     }),
 );
 
