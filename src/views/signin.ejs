@@ -22,7 +22,6 @@
                     회원가입
                 </div>
                 <section class="top">
-
                     <div class="email">
                         <label>이메일</label>
                         <input type="text" id="emailInput" placeholder="예: customit@custom.com">
@@ -34,10 +33,11 @@
 
                     <script>
                         function validateEmail() {
-                            let $emailInput = document.querySelector(" #emailInput"); let
-                                $emailCheck = document.querySelector("#emailCheck"); let
-                                    $emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; if
-                                ($emailInput.value.match($emailRegex)) {
+                            let $emailInput = document.querySelector(" #emailInput");
+                            let $emailCheck = document.querySelector("#emailCheck");
+                            let $emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                            if ($emailInput.value.match($emailRegex)) {
                                 $emailCheck.style.fontSize = "12px";
                                 $emailCheck.textContent = "올바른 이메일 형식입니다."; $emailCheck.style.color = "blue";
                             } else {
@@ -46,12 +46,11 @@
                             }
                         } </script>
 
-
                     <div class="password">
                         <label>비밀번호</label>
                         <input type="password" id="passwordInput" placeholder="비밀번호를 입력해주세요"
                             onChange="validatePassword()">
-                        <span><a href="#">중복확인</a></span>
+                        <span><a href="#">중복확인</a></span> 
                     </div>
                     <p id="passwordCheck"></p>
 
