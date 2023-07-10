@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <div class="wrap">
     <head>
         <%- include('../views/partials/head.ejs'); %>
         <link rel="stylesheet" href="/css/admin.css">
@@ -9,42 +8,39 @@
     </head>
     <body>
         <div class="grid">
-        <%- include('../views/partials/admin-aside.ejs'); %>
-        <article class="article">
-            <h2>카테고리 관리</h2>
-            <section>
-            <ul class="list-category">
-                <li class="list-category-li">
-                    <input type="text" value="category1" readonly="readonly">
-                    <div>
-                    <button class="btn btn-small"> 수정 </button>
-                    <button class="btn btn-small"> 삭제 </button>
+            <%- include('../views/partials/admin-aside.ejs'); %>
+            <article class="article">
+                <h2>카테고리 관리</h2>
+                <section>
+                    <ul class="list-category">
+                        <li class="list-category-li">
+                            <input type="text" value="category1" readonly="readonly">
+                            <div>
+                                <button class="btn btn-small"> 수정 </button>
+                                <button class="btn btn-small"> 삭제 </button>
+                            </div>
+                        </li>
+                        <li class="list-category-li">
+                            <input type="text" value="category2" readonly="readonly">
+                            <div>
+                                <button class="btn btn-small"> 수정 </button>
+                                <button class="btn btn-small"> 삭제 </button>
+                            </div>
+                        </li>
+                        <li class="list-category-li">
+                            <input type="text" value="category3" readonly="readonly">
+                            <div>
+                                <button class="btn btn-small"> 수정 </button>
+                                <button class="btn btn-small"> 삭제 </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="add-category">
+                        <input type="text"/>
+                        <input type="submit" class="btn btn-small btn-submit" value="등록"/>
                     </div>
-                </li>
-                <li class="list-category-li">
-                    <input type="text" value="category2" readonly="readonly">
-                    <div>
-                        <button class="btn btn-small"> 수정 </button>
-                        <button class="btn btn-small"> 삭제 </button>
-                    </div>
-                </li>
-                <li class="list-category-li">
-                    <input type="text" value="category3" readonly="readonly">
-                    <div>
-                        <button class="btn btn-small"> 수정 </button>
-                        <button class="btn btn-small"> 삭제 </button>
-                    </div>
-                </li>
-            </ul>
-            <div class="add-category">
-            <input type="text" class="add-form" id="add-form"/>
-            <input type="submit" class="btn btn-small btn-submit" value="등록"/>
-            </div>
-            </section>
-        </article>
+                </section>
+            </article>
         </div>
     </body>
-    <footer>
-    </footer>
-</div>
 </html>

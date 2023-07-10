@@ -4,14 +4,14 @@
 }
 
 table{
-    color:#353535;;
     width:50%;
     border-top:1px solid gray;
     border-collapse: collapse;
+    color:#353535;;
 }
 
 td, th{
-    border-bottom: 1px solid #bbbbbb;
     padding: 10px;
+    border-bottom: 1px solid #bbbbbb;
     font-weight: bold;
 }

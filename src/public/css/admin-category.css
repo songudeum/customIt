@@ -4,18 +4,18 @@
     font-size: larger;
 }
 
-.list-category-li{
-    list-style: none;
-    border: 1px solid #adadad;
+.add-category{
     display: flex;
-    padding:10px;
     justify-content: space-around;
+    margin-left: 40px;
+    padding:10px;
+    border: 1px #adadad solid;
 }
 
-.add-category{
-    margin-left: 40px;
+.list-category-li{
     display: flex;
     justify-content: space-around;
-    border: 1px #adadad solid;
-    padding:10px;
+    padding: 10px;
+    border: 1px solid #adadad;
+    list-style: none;
 }

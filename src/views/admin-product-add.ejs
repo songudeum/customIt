@@ -9,61 +9,55 @@
     </head>
     <body>
         <div class="grid">
-        <%- include('../views/partials/admin-aside.ejs'); %>
-        <article class="article">
-            <h2>상품 추가</h2>
-            <section>
-            <form
-            action="#"
-            enctype="multipart/form-data"
-            method="post">
-
-            <table>
-                <tr>
-                    <td>상품명</td>
-                    <td><input type="text" name="name" required /></td>
-                </tr>
-                <tr>
-                    <td>가격</td>
-                    <td><input type="number" name="price" required /></td>
-                </tr>
-                <tr>
-                    <td>설명</td>
-                    <td><input type="text" name="description" required /></td>
-                </tr>
-                <tr>
-                    <td>제조사</td>
-                    <td><input type="text" name="company" required /></td>
-                </tr>
-                <tr>
-                    <td>카테고리</td>
-                    <td><select name="categoryName" required>
-                            <option value="노트북">노트북</option>
-                            <option value="태블릿">태블릿</option>
-                            <option value="PC관련기기">PC관련기기</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>이미지</td>
-                    <td>
-                        <input class="file-name" placeholder="이미지를 첨부하세요"/>
-                        <input type="file" class="add-image" id="add-image" name="productImage" required />
-                        <label for="add-image" class="add-image-label">찾기</label>
-                    </td>
-                    <!-- $("#file").on('change',function(){
-                        var fileName = $("#file").val();
-                        $(".upload-name").val(fileName);
-                      }); -->
-                </tr>
-            </table>
-            <input type="submit" class="btn-large submit" />
-        </form>
-        </section>
-        </article>
-    </div>
+            <%- include('../views/partials/admin-aside.ejs'); %>
+            <article class="article">
+                <h2>상품 추가</h2>
+                <section>
+                    <form
+                    action="#"
+                    enctype="multipart/form-data"
+                    method="post">
+                    <table>
+                        <tr>
+                            <td>상품명</td>
+                            <td><input type="text" name="name" required /></td>
+                        </tr>
+                        <tr>
+                            <td>가격</td>
+                            <td><input type="number" name="price" required /></td>
+                        </tr>
+                        <tr>
+                            <td>설명</td>
+                            <td><input type="text" name="description" required /></td>
+                        </tr>
+                        <tr>
+                            <td>제조사</td>
+                            <td><input type="text" name="company" required /></td>
+                        </tr>
+                        <tr>
+                            <td>카테고리</td>
+                            <td>
+                                <select name="categoryName" required>
+                                    <option value="노트북">노트북</option>
+                                    <option value="태블릿">태블릿</option>
+                                    <option value="PC관련기기">PC관련기기</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>이미지</td>
+                            <td>
+                                <input class="file-name" placeholder="이미지를 첨부하세요"/>
+                                <input type="file" class="add-image" id="add-image" name="productImage" required />
+                                <label for="add-image" class="add-image-label">찾기</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" class="btn-large submit" />
+                </form>
+            </section>
+            </article>
+        </div>
     </body>
-<footer>
-</footer>
 </div>
 </html>
