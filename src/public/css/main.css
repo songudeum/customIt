@@ -52,19 +52,12 @@ main .contents-inner {
 }
 
 .intro-main .main-items {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
     flex: none;
     width: 280px;
     margin-left: 20px;
-}
-.intro-main .main-items > li {
-    flex: 1;
-    margin-top: 10px;
-}
-
-.intro-main .main-items > li:first-child {
-    margin-top: 0;
 }
 
 .intro-main .main-items .btn-item {
@@ -107,7 +100,6 @@ main .contents-inner {
 
 .intro-main .main-items .btn-item .item-img {
     overflow: hidden;
-    position: relative;
     flex: none;
     width: 80px;
     height: 80px;
