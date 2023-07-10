@@ -1,13 +1,4 @@
-/* 나중에 지울 소스 */
-main .contents-inner {
-    display: block;
-    width: 1280px;
-    margin: 0 auto;
-    padding: 80px 20px 100px;
-    box-sizing: border-box;
-}
-
-/*  ////////////// */
+/* 메인 페이지 */
 .intro-main {
     display: flex;
     height: 500px;
