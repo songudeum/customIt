@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.render('detail-page.ejs');
+    res.render('order-list-edit.ejs');
 });
 
 app.use((req, res, next) => {

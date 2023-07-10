@@ -24,8 +24,6 @@ main .contents-inner {
     width: 600px;
     margin: 0 auto;
 }
-.signin-wrap p {
-}
 
 .signin-wrap .top {
     display: flex;
@@ -41,7 +39,7 @@ main .contents-inner {
 .signin-wrap .password-confirm,
 .signin-wrap .name,
 .signin-wrap .phone-num,
-.signin-wrap .adress,
+.signin-wrap .address,
 .signin-wrap .detailAddress {
     display: inline-flex;
     width: 100%;
