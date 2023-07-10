@@ -16,6 +16,7 @@ function adminCheck(req, res, next) {
         throw error;
     }
 
+    res.status(200).json({message: "토큰 확인 완료"})
     next();
 }
 

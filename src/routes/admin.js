@@ -6,7 +6,7 @@ const createHash = require('../utils/hash-password');
 const { setUserToken } = require('../utils/jwt');
 
 const router = Router();
-const emailCheck = /[a-z0-9]+@admin.com/;
+const adminEmailCheck = /[a-z0-9]+@admin.com/;
 const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
 
 // 관리자 회원가입 api
@@ -16,7 +16,7 @@ router.post(
         const { email, password, name } = req.body;
 
         // 이메일 형식 체크하는 조건문
-        if (!emailCheck.test(email)) {
+        if (!adminEmailCheck.test(email)) {
             const error = new Error('@admin.com 형식으로 입력해주세요.');
             error.statusCode = 400;
             throw error;
@@ -37,14 +37,15 @@ router.post(
             name,
         });
 
-        res.redirect('/');
+        res.json({ message: '관리자 회원가입 완료' });
     }),
 );
 
 // 관리자 로그인 라우터
-router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
+router.post('/login', passport.authenticate('admin', { session: false }), (req, res) => {
     // 유저 토큰 생성 및 쿠키에 전달
     setUserToken(res, req.user);
+
     res.redirect('/');
 });
 

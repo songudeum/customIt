@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { Users } = require('../../data-access');
 const asyncHandler = require('../../utils/async-handler');
 const createHash = require('../../utils/hash-password');
-const getUserFromJWT = require('../../middlewares/get-user-from-jwt');
+const loginRequired = require('../../middlewares/login-required');
 const { jwtVerify } = require('../../utils/jwt');
 
 const router = Router();
@@ -24,7 +24,7 @@ router.post(
 // 개인페이지 사용자 정보 수정 api(send 나중에 render로 수정)
 router.put(
     '/info/edit/:email',
-    getUserFromJWT,
+    loginRequired,
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         const { email, password, newPassword, name, phoneNumber, address } = req.body;
