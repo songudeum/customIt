@@ -16,6 +16,7 @@ main .contents-inner {
 }
 .product-list {
     width: 600px;
+    margin: 50px 0;
 }
 
 .product-list .company {
@@ -88,6 +89,11 @@ main .contents-inner {
     width: 70px;
     height: 30px;
     margin: 10px;
+}
+.product-list .midle .order-price .price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .product-list .midle .order-price button {
@@ -190,12 +196,12 @@ main .contents-inner {
 .right-price-info {
     display: flex;
     flex-direction: column;
-    margin: 35px 0 0 30px;
+    margin: 75px 0 0 30px;
 }
 .right-price-info .box {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 220px;
     height: 150px;
     border-radius: 6px;
