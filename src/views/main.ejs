@@ -37,7 +37,9 @@
                                 <div class="item-info">
                                     <p class="title"><%= products[i].name %></p>
                                     <p class="price">
-                                        <%= products[i].price %><span class="unit">원</span>
+                                        <%= products[i].price.toLocaleString() %><span class="unit"
+                                            >원</span
+                                        >
                                     </p>
                                 </div>
                             </a>
