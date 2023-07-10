@@ -40,6 +40,7 @@ main .contents-inner {
 .detail-wrap .product .text {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     margin: 10px 0 30px 0;
     height: 100%;
 }
@@ -53,17 +54,10 @@ main .contents-inner {
 }
 .detail-wrap .product .text .right {
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    width: 50%;
+    justify-content: flex-end;
 }
 .detail-wrap .product .text .right div {
     font-size: 25px;
-}
-
-.detail-wrap .product .text .right span {
-    font-size: 30px;
-    font-weight: bold;
 }
 
 .detail-wrap .btn {
