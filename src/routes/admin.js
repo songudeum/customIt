@@ -37,7 +37,6 @@ router.post(
             name,
         });
 
-        res.status(201).json({ message: '회원가입 성공' });
         res.redirect('/');
     }),
 );
@@ -46,8 +45,7 @@ router.post(
 router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
     // 유저 토큰 생성 및 쿠키에 전달
     setUserToken(res, req.user);
-    res.status(200);
-    res.send('성공');
+    res.redirect('/');
 });
 
 module.exports = router;

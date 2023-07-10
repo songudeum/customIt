@@ -46,7 +46,6 @@ router.post(
             address,
         });
 
-        res.status(201).json({ message: '회원가입 성공' });
         res.redirect('/');
     }),
 );
@@ -58,8 +57,7 @@ router.get(
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         const userInfo = await Users.findOne({ email: userEmail });
-        res.status(200).json({ message: '사용자 정보 조회 완료' });
-        res.send(userInfo);
+        res.render(userInfo);
     }),
 );
 
@@ -70,8 +68,7 @@ router.delete(
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         await Users.findOneAndDelete({ email: userEmail });
-        res.status(200).json({ message: '사용자 탈퇴 완료' });
-        res.redirect('/');
+        res.json({ message: '사용자 탈퇴 완료'});
     }),
 );
 
@@ -80,16 +77,13 @@ router.post('/login', passport.authenticate('local', { session: false }), (req, 
     // 유저 토큰 생성 및 쿠키에 전달
     setUserToken(res, req.user);
 
-    res.status(200).json({ message: '로그인 완료' });
-    res.send('성공');
+    res.redirect('/');
 });
 
 // 로그아웃 라우터
 router.get('/logout', getUserFromJWT, (req, res) => {
     // 쿠키 만료시키도록 전달
     res.cookie('token', null, { maxAge: 0 });
-    res.status(200).json({ message: '로그아웃 완료' });
-    res.redirect('/');
 });
 
 module.exports = router;
