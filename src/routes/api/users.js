@@ -19,7 +19,7 @@ router.post(
             res.json({ message: '사용가능한 이메일입니다.' });
         }
     }),
-);
+);ㅡ
 
 // 개인페이지 사용자 정보 수정 api(send 나중에 render로 수정)
 router.put(
