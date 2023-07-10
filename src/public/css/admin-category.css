@@ -1,0 +1,29 @@
+.category{ 
+    /**admin-aside 내부 class**/
+    font-weight: bold;
+    font-size: larger;
+}
+
+.add-category{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 40px;
+    padding:10px;
+    border: 1px #adadad solid;
+}
+
+.list-category-li{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border: 1px solid #adadad;
+    list-style: none;
+}
+
+.list-category-li{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border: 1px solid #adadad;
+    list-style: none;
+}

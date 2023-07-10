@@ -1,0 +1,46 @@
+.aside {    
+    position: relative;
+    height: 100vh;
+    background-color: #353535;
+}
+
+.aside .admin-logo {
+    margin: 30px 0 0 15px;
+    width: 75%;
+}
+
+.aside .nav {
+    margin-top: 30px;
+    padding-left: 5px;
+}
+
+li {
+    margin-top: 10px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+    width: 80%;
+    border-bottom: 1px solid grey;
+    list-style: none;
+}
+
+li a {
+    color: white;
+    text-decoration: none;
+}
+
+.aside .logout{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.aside .logout .btn-logout{
+    margin: 0 5% 0 5%;
+    border: 2px #1a1a1a solid;
+    border-radius: 5px;
+    width: 90%;
+    height: 50px;
+    box-sizing: border-box;
+    background-color: #353535;
+    color: #c9c9c9;
+}

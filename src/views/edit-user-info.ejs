@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/edit-user-info.css">
+        <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body class="container">
+
+    <header class="header">
+        <%- include('../views/partials/header'); %>
+    </header>
+
+    <main role="main" class="contents">
+        <div class="contents-inner">
+            <section class="user-aside">
+                <div id="snb" class="snb_my">
+                    <h2 class="tit_snb">마이페이지</h2>
+                    <div class="inner_sub">
+                        <ul class="list_menu">
+                            <li class="on">
+                                <a href="#">주문내역</a>
+                            </li>
+
+                            <li>
+                                <a href="#">개인 정보 수정</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="user-info-wrap">
+
+                <section>
+                    <div class="user-info-text">
+                        개인정보수정
+                    </div>
+                    <div class="top">
+                        <div class="name">
+                            <label>이름</label>
+                            <input type="text" placeholder="사용자 이름" readonly />
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="email">
+                            <label>이메일</label>
+                            <input type="text" placeholder="사용자 email 주소" readonly />
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="cellphone">
+                            <label>휴대폰</label>
+                            <input type="text" placeholder="숫자로 입력해주세요">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="password">
+                            <label>현재 비밀번호</label>
+                            <input type="password" placeholder="현재 사용중인 비밀번호를 입력해주세요">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="password">
+                            <label>새 비밀번호</label>
+                            <input type="password" placeholder="변경하실 비밀번호를 입력해주세요">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="password-confirm">
+                            <label>새 비밀번호 확인</label>
+                            <input type="password" placeholder="비밀번호를 한번 더 입력해주세요">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="adress">
+                            <label>주소</label>
+                            <input type="#" placeholder="주소 검색을 통해 주소를 입력해주세요" readonly />
+                            <div class="adress-check" id="email-check"><a href="#">주소검색</a></div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="btn-bottom">
+                    <a href="#" class="btn-secede">탈퇴하기</a>
+                    <a href="#" class="btn-edit-user-info">회원정보수정</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <%- include('../views/partials/footer'); %>
+    </footer>
+</body>
+
+</html>

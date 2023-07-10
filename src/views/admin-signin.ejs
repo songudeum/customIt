@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/admin-signin.css">
+        <link rel="stylesheet" href="/css/footer.css">
+
+</head>
+
+<body class="container">
+
+    <header class="header">
+    </header>
+
+    <main role="main" class="contents">
+        <div class="contents-inner">
+            <div class="admin-signin-wrap">
+                <div class="admin-signin-text">회원가입</div>
+                <section class="top">
+                    <div class="admin-email">
+                        <label>이메일</label>
+                        <input type="text" placeholder="예: customit@custom.com">
+                        <span class="admin-email-check" id="admin-email-check"><a href="#">중복확인</a></span>
+                    </div>
+                    <div class="password">
+                        <label>비밀번호</label>
+                        <input type="password" placeholder="비밀번호를 입력해주세요">
+                        <span class="hidden-span"><a href="#">중복확인</a></span>
+                    </div>
+                    <div class="password-confirm">
+                        <label>비밀번호확인</label>
+                        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요">
+                        <span class="hidden-span"><a href="#">중복확인</a></span>
+                    </div>
+                    <div class="name">
+                        <label>이름</label>
+                        <input type="text" placeholder="이름을 입력해주세요">
+                        <span class="hidden-span"><a href="#">중복확인</a></span>
+                    </div>
+                </section>
+
+                <div class="bottom-wrap">
+                    <a href="#" class="btn-admin-signin">관리자 회원가입</a>
+                    <div class="login">
+                        이미 아이디가 있으신가요?
+                        <div>
+                            <a href="#"> 로그인</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <%- include('../views/partials/footer'); %>
+    </footer>
+</body>
+
+</html>

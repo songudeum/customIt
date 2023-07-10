@@ -1,0 +1,125 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+main .contents-inner {
+    display: flex;
+    justify-content: center;
+    max-width: 1280px;
+    margin: 100px auto;
+    padding: 0 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+.detail-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+
+.detail-wrap .top {
+    display: flex;
+}
+.detail-wrap .image-box {
+    margin-right: 30px;
+    width: 500px;
+    height: 500px;
+    background: whitesmoke;
+    border-radius: 10px;
+    min-width: 500px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, -0.76);
+}
+.detail-wrap .product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 810px;
+}
+.detail-wrap .product .text {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 10px 0 30px 0;
+    height: 100%;
+}
+
+.detail-wrap .product .text .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    height: 75%;
+}
+.detail-wrap .product .text .right {
+    display: flex;
+    justify-content: flex-end;
+}
+.detail-wrap .product .text .right div {
+    font-size: 25px;
+}
+
+.detail-wrap .btn {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 46px;
+}
+
+.detail-wrap .btn .cart {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    background: white;
+    color: #a586f6;
+    border: 1px solid #a586f6;
+    width: 100%;
+    height: 46px;
+    font-size: 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+.detail-wrap .btn .purchase {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    background: #a586f6;
+    color: white;
+    width: 100%;
+    height: 46px;
+    font-size: 18px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    margin-left: 3px;
+}
+.detail-wrap .bottom {
+    height: 100%;
+    margin: 30px 0;
+}
+.detail-wrap .bottom .box {
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    background: whitesmoke;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, -0.76);
+}
+.product .left .company {
+    font-size: 20px;
+}
+.product .left .name {
+    font-size: 30px;
+    font-weight: bold;
+}
+.product .left .price {
+    font-size: 20px;
+}
+.product .left .count {
+    font-size: 20px;
+}

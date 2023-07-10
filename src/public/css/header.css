@@ -1,0 +1,96 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    border-bottom: 1px solid rgb(220, 220, 220);
+    background-color: #fff;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    width: 1280px;
+    max-width: 100%;
+}
+
+.header-inner .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-inner .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-inner .nav .gnb {
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
+    margin: 0 20px;
+}
+
+.header-inner .nav .gnb a {
+    text-decoration: none;
+    color: #2f3438;
+    font-size: 18px;
+    transition: font-weight 0.2s;
+}
+
+.header-inner .nav .gnb a:hover {
+    font-weight: 600;
+}
+
+.header-inner .nav .gnb a:active {
+    color: #6c6c6c;
+}
+
+.header-inner .nav .utils {
+    display: flex;
+    align-items: center;
+}
+
+.header-inner .btn-cart,
+.header-inner .btn-user {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    width: 30px;
+    height: 30px;
+}
+
+.header-inner .btn-cart img,
+.header-inner .btn-user img {
+    width: 100%;
+}
+
+.header-inner .btn-login,
+.header-inner .btn-logout,
+.header-inner .btn-signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 2px;
+    flex-shrink: 0;
+    font-size: 14px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    height: 40px;
+    padding: 0 18px;
+}
+
+.header-inner .btn-login {
+    background: #a586f6;
+}
+
+.header-inner .btn-signin {
+    background: #2f3438;
+}
+
+.header-inner .btn-logout {
+    background: #2f3438;
+}

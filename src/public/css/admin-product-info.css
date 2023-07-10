@@ -1,0 +1,17 @@
+.product{
+    font-weight: bold;
+    font-size: larger;
+}
+
+table{
+    width:50%;
+    border-top:1px solid gray;
+    border-collapse: collapse;
+    color:#353535;;
+}
+
+td, th{
+    padding: 10px;
+    border-bottom: 1px solid #bbbbbb;
+    font-weight: bold;
+}
