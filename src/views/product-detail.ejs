@@ -20,12 +20,15 @@
                     <div class="info-box">
                         <div class="company"><%= product.company %></div>
                         <div class="name"><%= product.name %></div>
-                        <div class="price"><%= product.price %><span>원</span></div>
+                        <div class="price">
+                            <%= product.price.toLocaleString() %><span>원</span>
+                        </div>
                         <!-- <div class="count">수량선택</div> -->
                         <div class="bottom">
                             <div class="total">
                                 총 금액 상품:
-                                <span class="total-price"><%= product.price %></span
+                                <span class="total-price"
+                                    ><%= product.price.toLocaleString() %></span
                                 ><span class="unit">원</span>
                             </div>
                             <div class="btn-box">

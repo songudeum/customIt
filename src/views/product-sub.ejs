@@ -25,7 +25,9 @@
                                 <p class="company"><%= product.company %></p>
                                 <p class="name"><%= product.name %></p>
                                 <p class="price">
-                                    <%= product.price %><span class="unit">원</span>
+                                    <%= product.price.toLocaleString() %><span class="unit"
+                                        >원</span
+                                    >
                                 </p>
                             </div>
                         </a>
