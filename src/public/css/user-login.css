@@ -4,36 +4,27 @@ body {
     margin: 0;
 }
 
-main .contents-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 20px;
-    background-color: rgb(255, 255, 255);
-}
-
 .login-wrap {
     width: 372px;
     margin: 216px auto 360px auto;
 }
 
-/* 가운데 정렬 알아보기 */
 .header-logo img {
-    width: 300px;
-    height: 81px;
-    margin: 0 36px;
+    width: 286px;
+    height: 49px;
+    margin: 0 36px 30px 36px;
 }
 
 .login-box {
     margin: 30 auto;
 }
 .login-box input {
-    border: 1px solid #a586f6;
-    width: 100%;
     outline: none;
-    width: 372px;
-    height: 74px;
     position: relative;
     padding-left: 20px;
+    border: 1px solid #a586f6;
+    width: 372px;
+    height: 74px;
 }
 
 .login-box input ::placeholder {
@@ -41,8 +32,8 @@ main .contents-inner {
 }
 
 .login-box input:nth-child(1) {
-    border-radius: 4px 4px 0 0;
     margin-top: -1px;
+    border-radius: 4px 4px 0 0;
 }
 
 .login-box input:nth-child(2) {
@@ -62,41 +53,50 @@ main .contents-inner {
     box-shadow: 0 0 0 3px rgba(165, 134, 246, 0.3);
 }
 
-.login-btn {
+.btn-login {
     width: 372px;
     height: 73px;
+    margin-top: 27px;
     border-radius: 5px;
     border: 1px solid #a586f6;
     background: #a586f6;
     cursor: pointer;
 }
 
-.login-btn span {
-    color: #fff;
+.btn-login span {
     text-align: center;
-    font-family: pretendard;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    color: #fff;
 }
 
-.join-btn {
-    margin-top: 16px;
+.btn-join {
     width: 372px;
     height: 73px;
-    border-radius: 5px;
+    margin: 16px 0;
     border: 1px solid #a586f6;
+    border-radius: 5px;
     background: #fff;
     cursor: pointer;
 }
 
-.join-btn span {
-    color: #ddd;
-    text-align: center;
-    font-family: pretendard;
+.btn-join a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 73px;
+    text-decoration: none;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    color: #ddd;
+}
+
+.admin-page {
+    text-align: center;
+    text-decoration: none;
+    color: rgba(185, 185, 185, 1);
 }
