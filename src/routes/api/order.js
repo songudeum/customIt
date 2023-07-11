@@ -7,7 +7,7 @@ const asyncHandler = require('../../utils/async-handler');
 
 const router = Router();
 
-// 주문 생성
+// 주문 생성 => 테스트 완
 router.post(
     '/',
     asyncHandler(async (req, res) => {
@@ -51,9 +51,9 @@ router.post(
     }),
 );
 
-// 주문삭제
+// 주문삭제 => 테스트 완
 router.delete(
-    '/:orderId',
+    '/:id',
     asyncHandler(async (req, res) => {
         const { orderId } = req.params;
 
@@ -64,19 +64,19 @@ router.delete(
     }),
 );
 
-// updateDeliveryInfo
+// updateDeliveryInfo => 테스트 완료
 router.put(
     '/:orderId',
     asyncHandler(async (req, res) => {
         const { orderId } = req.params;
 
-        orderService.updateeDeliveryInfo({ orderId });
+        orderService.updateDeliveryInfo({ orderId });
         //  업데이트 완료 응답 전송
         res.status(201).send();
     }),
 );
 
-// updateDeliveryStatus
+// updateDeliveryStatus => 테스트완
 router.put(
     '/:id',
     asyncHandler(async (req, res) => {
