@@ -20,7 +20,6 @@ const userSchema = new Schema(
         },
         address: {
             type: new Schema({
-                postalCode: String,
                 address1: String,
                 address2: String,
             }),
