@@ -11,7 +11,7 @@ const router = Router();
 const emailCheck = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
 const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
 const numberCheck = /^[0-9]+$/;
-const nameCheck = /^[가-힣]{2,4}$/;
+const nameCheck = /^[가-a힣]{2,4}$/;
 
 // 사용자 회원가입 라우터
 router.post(
@@ -34,7 +34,7 @@ router.post(
         }
 
         // 이름 형식 확인 조건문
-        if (!nameCheck.test(password)) {
+        if (!nameCheck.test(name)) {
             const error = new Error('이름은 2~4글자로 입력해주세요.');
             error.statusCode = 400;
             throw error;

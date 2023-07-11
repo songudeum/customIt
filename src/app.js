@@ -22,6 +22,7 @@ const adminProductRouter = require('./routes/admin-product');
 const categoryRouter = require('./routes/api/category');
 const productRouter = require('./routes/api/product');
 
+const { Product, Category } = require('./data-access');
 // passport설정 가지고 옴
 require('./passport')();
 
@@ -41,6 +42,34 @@ const url = `mongodb+srv://${MONGO_USER}:${MONGO_PW}@cluster0.snarddw.mongodb.ne
 connectToDatabase(url);
 
 const app = express();
+
+app.get('/admin/login', (req, res) => {
+    res.render('admin-login');
+});
+
+app.get('/admin/join', (req, res) => {
+    res.render('admin-signin');
+});
+
+app.get('/users/login', (req, res) => {
+    res.render('user-login');
+});
+
+app.get('/users/join', (req, res) => {
+    res.render('signin');
+});
+app.get('/product/detail/:id', async (req, res) => {
+    const { id } = req.params;
+    const product = await Product.findOne({ id });
+    // console.log(products);
+    res.render('product-detail', { product });
+});
+app.get('/product/sub/:categoryName', async (req, res) => {
+    const { categoryName } = req.params;
+    const products = await Product.find({ categoryName });
+    // console.log(products);
+    res.render('product-sub', { products });
+});
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 

@@ -4,6 +4,7 @@ const { Admin } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
 const createHash = require('../utils/hash-password');
 const { setUserToken } = require('../utils/jwt');
+const loginRequired = require('../middlewares/login-required');
 
 const router = Router();
 const adminEmailCheck = /[a-z0-9]+@admin.com/;
@@ -47,6 +48,12 @@ router.post('/login', passport.authenticate('admin', { session: false }), (req, 
     setUserToken(res, req.user);
 
     res.redirect('/');
+});
+
+// 로그아웃 라우터
+router.get('/logout', loginRequired, (req, res) => {
+    // 쿠키 만료시키도록 전달
+    res.cookie('token', null, { maxAge: 0 });
 });
 
 module.exports = router;
