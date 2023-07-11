@@ -1,8 +1,10 @@
-<link rel="stylesheet" href="/css/admin-login.css" />
-
 <!doctype html>
 <html lang="ko">
-    <head> </head>
+    <head>
+        <%- include('../views/partials/head.ejs'); %>
+        <link rel="stylesheet" href="/css/admin-login.css" />
+        <link rel="stylesheet" href="/css/layout.css" />
+    </head>
     <body class="container">
         <header class="header"></header>
         <main class="contents-inner">
@@ -12,24 +14,69 @@
                         <img src="/image/admin-logo.png" alt="admin-logo" />
                     </a>
                 </div>
-                <form method="post" action="/admin/login" class="login-form">
+                <form method="post" action="/admin/login" class="login-form" id="loginForm">
                     <div class="login-box">
-                        <input type="text" name="email" placeholder="이메일" />
-                        <input type="password" name="password" placeholder="패스워드" />
+                        <input type="text" name="email" id="email" placeholder="이메일" />
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="패스워드"
+                        />
                     </div>
                     <a href="http://localhost:3000/admin/category">
-                        <button class="login-btn">
+                        <button class="btn-login">
                             <span>LOGIN</span>
                         </button>
                     </a>
-                    <a href="http://localhost:3000/admin/join">
-                        <button class="join-btn">
-                            <span>JOIN</span>
-                        </button>
-                    </a>
+                    <div class="btn-join">
+                        <a href="http://localhost:3000/admin/join"> JOIN </a>
+                    </div>
                 </form>
             </div>
         </main>
         <footer class="footer"></footer>
     </body>
+    <script>
+        const emailCheck = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
+        const inputEmail = document.querySelector('#email');
+        const inputPw = document.querySelector('#password');
+        const loginForm = document.querySelector('#loginForm');
+
+        loginForm.addEventListener('submit', btnLogin);
+
+        async function btnLogin(e) {
+            e.preventDefault();
+
+            const email = inputEmail.value;
+            const password = inputPw.value;
+
+            const data = { email, password };
+
+            // 이메일 비밀번호 입력이 되지 않았을 경우 입력칸 포커싱
+            if (!emailCheck.test(email)) {
+                return alert('이메일 입력이 되지 않았습니다.');
+            }
+
+            if (!password) {
+                return alert('비밀번호를 입력하지 않았습니다.');
+            }
+
+            // 데이터 json 형태로 파싱
+            const jsonData = JSON.stringify(data);
+            const apiUrl = 'http://localhost:3000/admin/login';
+            const res = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: jsonData,
+            });
+            if (res.status === 400) {
+                alert('이메일 또는 비밀번호가 일치하지 않습니다.');
+            } else {
+                window.location.href = 'http://localhost:3000/admin/category';
+            }
+        }
+    </script>
 </html>
