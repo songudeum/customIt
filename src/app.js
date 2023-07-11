@@ -21,6 +21,9 @@ const adminCategoryRouter = require('./routes/admin-category');
 const adminProductRouter = require('./routes/admin-product');
 const categoryRouter = require('./routes/api/category');
 const productRouter = require('./routes/api/product');
+const orderRouter = require('./routes/order');
+const orderApiRouter = require('./routes/api/order');
+const adminOrderRouter = require('./routes/admin-order');
 
 // passport설정 가지고 옴
 require('./passport')();
@@ -59,6 +62,9 @@ app.use('/admin/category', adminCategoryRouter);
 app.use('/admin/product', adminProductRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/product', productRouter);
+app.use('/order', orderRouter);
+app.use('/admin/orders', adminOrderRouter);
+app.use('/api/orders', orderApiRouter);
 
 app.use((req, res, next) => {
     const error = new Error('Resource Not Found');

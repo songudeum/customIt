@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const passport = require('passport');
+const { nanoid } = require('nanoid');
 const { Users } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
 const createHash = require('../utils/hash-password');
@@ -38,7 +39,9 @@ router.post(
             throw error;
         }
 
+        const userId = nanoid(10);
         await Users.create({
+            userId,
             email,
             password: createHash(password),
             name,
@@ -68,7 +71,7 @@ router.delete(
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         await Users.findOneAndDelete({ email: userEmail });
-        res.json({ message: '사용자 탈퇴 완료'});
+        res.json({ message: '사용자 탈퇴 완료' });
     }),
 );
 
