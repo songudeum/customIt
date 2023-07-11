@@ -4,20 +4,12 @@ body {
     margin: 0;
 }
 
-main .contents-inner {
+.user-secession-wrap {
     display: flex;
     justify-content: center;
-    background-color: rgb(255, 255, 255);
-    width: 1280px;
-    margin: 0 auto;
 }
 
-.user-secession-wrap {
-    max-width: 660px;
-    padding: 0 30px;
-}
-
-.user-secession-title {
+.user-secession .title {
     margin: 70px 0 20px 15px;
     font-size: 28px;
     line-height: 35px;
@@ -25,21 +17,26 @@ main .contents-inner {
     color: rgb(51, 51, 51);
 }
 
-.user-secession-info {
+.user-secession {
+    max-width: 660px;
+    padding: 0 30px;
+}
+
+.user-secession .info {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-.user-secession-info span {
+.user-secession .info span {
     color: #a586f6;
     font-weight: 500;
 }
 
-.user-secession-info div {
+.user-secession .info div {
     margin: 10px 0;
 }
 
-.user-secession-info p {
+.user-secession .info p {
     margin: 5px 0;
 }
 
@@ -52,7 +49,7 @@ main .contents-inner {
     padding: 15px 0;
 }
 
-.user-secession-wrap .password {
+.user-secession .password {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -60,29 +57,29 @@ main .contents-inner {
     padding: 12px 0;
 }
 
-.user-secession-wrap .password label {
+.user-secession .password label {
     font-size: 17px;
     font-weight: 500;
 }
 
-.user-secession-wrap .password span {
+.user-secession .password span {
     vertical-align: middle;
     font-size: 20px;
     color: red;
 }
 
-.user-secession-wrap input {
+.user-secession input {
     width: 350px;
     height: 46px;
     padding: 0px 11px 1px 15px;
     border-radius: 6px;
     border: 1px solid rgb(221, 221, 221);
 }
-.user-secession-wrap input::placeholder {
+.user-secession input::placeholder {
     color: #bbbbbb;
 }
 
-.user-secession-wrap .btn-bottom {
+.user-secession .btn-bottom {
     display: inline-flex;
     width: 100vh;
     height: 80px;
