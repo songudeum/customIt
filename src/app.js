@@ -15,12 +15,14 @@ const passport = require('passport');
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
-const adminApiRouter = require('./routes/api/admin');
-const userApiRouter = require('./routes/api/users');
 const adminCategoryRouter = require('./routes/admin-category');
 const adminProductRouter = require('./routes/admin-product');
-const categoryRouter = require('./routes/api/category');
-const productRouter = require('./routes/api/product');
+const productRouter = require('./routes/product');
+
+const adminApiRouter = require('./routes/api/admin');
+const userApiRouter = require('./routes/api/users');
+const categoryApiRouter = require('./routes/api/category');
+const productApiRouter = require('./routes/api/product');
 
 const { Product, Category } = require('./data-access');
 // passport설정 가지고 옴
@@ -81,13 +83,15 @@ app.use(passport.initialize());
 app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/users', userRouter);
+app.use('/product', productRouter);
 app.use('/admin', adminRouter);
-app.use('/api/users', userApiRouter);
-app.use('/api/admin', adminApiRouter);
 app.use('/admin/category', adminCategoryRouter);
 app.use('/admin/product', adminProductRouter);
-app.use('/api/category', categoryRouter);
-app.use('/api/product', productRouter);
+
+app.use('/api/users', userApiRouter);
+app.use('/api/admin', adminApiRouter);
+app.use('/api/category', categoryApiRouter);
+app.use('/api/product', productApiRouter);
 
 app.use((req, res, next) => {
     const error = new Error('Resource Not Found');
