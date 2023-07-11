@@ -1,12 +1,4 @@
-/* 나중에 없앨 코드 */
-main .contents-inner {
-    width: 1280px;
-    margin: 0 auto;
-    padding: 60px 40px 80px;
-    box-sizing: border-box;
-    display: block;
-}
-
+/* 서브 페이지 */
 a {
     text-decoration: none;
     color: #303030;
@@ -26,11 +18,19 @@ a {
     overflow: hidden;
     position: relative;
     width: 100%;
-    height: 290px;
     border-radius: 10px;
 }
 
+.product-list .product .product-img::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
 .product-list .product .product-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -41,7 +41,7 @@ a {
     transform: scale(1.02);
 }
 
-.product-list .product .product-img .btn-add-cart {
+.product-list .product .btn-add-cart {
     display: inline-block;
     position: absolute;
     right: 10px;
@@ -64,7 +64,7 @@ a {
     font-size: 12px;
 }
 
-.product-list .product .product-info .title {
+.product-list .product .product-info .name {
     margin-top: 4px;
     font-size: 16px;
 }
