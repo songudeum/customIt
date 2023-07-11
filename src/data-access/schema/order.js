@@ -7,14 +7,37 @@ const orderSchema = new Schema(
             required: true,
             unique: true,
         },
-        userId: {
-            type: Schema.Types.ObjectId,
-            ref: 'Users',
+        email: {
+            type: String,
             required: true,
         },
-        productId: {
-            type: Schema.Types.ObjectId,
-            ref: 'Product',
+        userName: {
+            type: String,
+            required: true,
+        },
+        phoneNumber: {
+            type: String,
+            required: true,
+        },
+        address: {
+            type: new Schema({
+                postalCode: String,
+                address1: String,
+                address2: String,
+            }),
+            required: true,
+        },
+
+        productName: {
+            type: String,
+            required: true,
+        },
+        price: {
+            type: Number,
+            required: true,
+        },
+        image: {
+            type: String,
             required: true,
         },
         quantity: {
@@ -25,11 +48,11 @@ const orderSchema = new Schema(
             type: Date,
             required: true,
         },
-        totalAmount: {
+        totalPrice: {
             type: Number,
             required: true,
         },
-        DeliveryStatus: {
+        deliveryStatus: {
             type: String,
         },
     },
