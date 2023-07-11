@@ -1,32 +1,31 @@
-<link rel="stylesheet" href="/css/header.css" />
-<link rel="stylesheet" href="/css/footer.css" />
-<link rel="stylesheet" href="/css/order-list.css" />
+
 <!DOCTYPE html>
 <html lang="ko">
     <head>
         <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/header.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="/css/order-list.css" />
     </head>
     <body>
         <header><%- include('../views/partials/header'); %></header>
         <section class="container">
             <main>
-                <section class="snb_my">
-                    <h2 class="tit_snb">마이페이지</h2>
-                    <nav>
-                        <ul class="list_menu">
-                            <li class="on">
-                                <a href="#">주문내역</a>
-                            </li>
-                            <li>
-                                <a href="#">개인 정보 수정</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </section>
-                <section class="section_orderlist">
-                    <div class="head_aticle">
-                        <h2 class="tit">주문 내역</h2>
+                <section class="user-aside">
+                    <div id="snb" class="snb-my">
+                        <h2 class="tit-snb">마이페이지</h2>
+                        <div class="inner-sub">
+                            <ul class="list-menu">
+                                <li class="on">
+                                    <a href="#">주문내역</a>
+                                </li>
+                                <li>
+                                    <a href="#">개인 정보 수정</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+                </section>
                     <ul class="list_order">
                         <li>
                             <div class="date">2020.12.17 (날짜 데이터 넣는 곳)</div>
