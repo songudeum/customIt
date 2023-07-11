@@ -43,8 +43,8 @@ connectToDatabase(url);
 
 const app = express();
 
-app.get('/admin/login', (req, res) => {
-    res.render('admin-login');
+app.get('/', (req, res) => {
+    res.render('order-list.ejs');
 });
 
 app.get('/admin/join', (req, res) => {
