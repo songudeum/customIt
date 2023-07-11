@@ -8,24 +8,22 @@ const path = require('node:path');
 
 const { MONGO_USER, MONGO_PW } = process.env;
 const passport = require('passport');
-// const getUserFromJWT = require('./middlewares/get-user-from-jwt');
-// const loginrequired = require('./middlewares/login-required');
-// const adminCheck = require('./middlewares/admin-check');
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
+const productRouter = require('./routes/product');
+const orderRouter = require('./routes/order');
 const adminRouter = require('./routes/admin');
 const adminCategoryRouter = require('./routes/admin-category');
 const adminProductRouter = require('./routes/admin-product');
-const productRouter = require('./routes/product');
+const adminOrderRouter = require('./routes/admin-order');
 
 const adminApiRouter = require('./routes/api/admin');
 const userApiRouter = require('./routes/api/users');
 const categoryApiRouter = require('./routes/api/category');
 const productApiRouter = require('./routes/api/product');
+const orderApiRouter = require('./routes/api/order');
 
-const { Product, Category } = require('./data-access');
-// passport설정 가지고 옴
 require('./passport')();
 
 const connectToDatabase = async (url) => {
@@ -60,18 +58,7 @@ app.get('/users/login', (req, res) => {
 app.get('/users/join', (req, res) => {
     res.render('signin');
 });
-app.get('/product/detail/:id', async (req, res) => {
-    const { id } = req.params;
-    const product = await Product.findOne({ id });
-    // console.log(products);
-    res.render('product-detail', { product });
-});
-app.get('/product/sub/:categoryName', async (req, res) => {
-    const { categoryName } = req.params;
-    const products = await Product.find({ categoryName });
-    // console.log(products);
-    res.render('product-sub', { products });
-});
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -84,10 +71,13 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/users', userRouter);
 app.use('/product', productRouter);
+app.use('/order', orderRouter);
 app.use('/admin', adminRouter);
 app.use('/admin/category', adminCategoryRouter);
 app.use('/admin/product', adminProductRouter);
+app.use('/admin/orders', adminOrderRouter);
 
+app.use('/api/orders', orderApiRouter);
 app.use('/api/users', userApiRouter);
 app.use('/api/admin', adminApiRouter);
 app.use('/api/category', categoryApiRouter);
