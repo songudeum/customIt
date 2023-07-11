@@ -1,23 +1,29 @@
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
     width: 100%;
     border-bottom: 1px solid rgb(220, 220, 220);
     background-color: #fff;
 }
-
 .header-inner {
     display: flex;
     justify-content: space-between;
-    width: 1280px;
-    max-width: 100%;
+    align-items: center;
+    max-width: 1280px;
+    padding: 0 20px;
+    height: 80px;
+    margin: 0 auto;
 }
 
 .header-inner .logo {
-    display: flex;
-    align-items: center;
+    width: 130px;
+}
+
+.header-inner .logo img {
+    width: 100%;
 }
 
 .header-inner .nav {
@@ -72,25 +78,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
+    height: 36px;
     margin: 0 2px;
-    flex-shrink: 0;
-    font-size: 14px;
+    padding: 0 18px;
     border-radius: 20px;
     color: white;
+    font-size: 13px;
     text-align: center;
-    height: 40px;
-    padding: 0 18px;
+    text-decoration: none;
 }
 
 .header-inner .btn-login {
-    background: #a586f6;
+    background-color: #a586f6;
+}
+.header-inner .btn-login:hover {
+    background-color: #9b7ce9;
 }
 
-.header-inner .btn-signin {
-    background: #2f3438;
-}
-
+.header-inner .btn-signin,
 .header-inner .btn-logout {
-    background: #2f3438;
+    background-color: #2f3438;
+}
+
+.header-inner .btn-signin:hover,
+.header-inner .btn-logout:hover {
+    background-color: #3c4449;
 }

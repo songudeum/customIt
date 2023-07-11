@@ -3,7 +3,6 @@
 
 <head>
     <%- include('../views/partials/head'); %>
-        <link rel="stylesheet" href="/css/reset.css">
         <link rel="stylesheet" href="/css/header.css">
         <link rel="stylesheet" href="/css/edit-user-info.css">
         <link rel="stylesheet" href="/css/footer.css">
@@ -17,80 +16,167 @@
 
     <main role="main" class="contents">
         <div class="contents-inner">
-            <section class="user-aside">
-                <div id="snb" class="snb_my">
-                    <h2 class="tit_snb">마이페이지</h2>
-                    <div class="inner_sub">
-                        <ul class="list_menu">
-                            <li class="on">
-                                <a href="#">주문내역</a>
-                            </li>
+            <div class="edit-info-wrap">
+                <section class="user-aside">
+                    <div id="snb" class="snb_my">
+                        <h2 class="tit_snb">마이페이지</h2>
+                        <div class="inner_sub">
+                            <ul class="list_menu">
+                                <li class="on">
+                                    <a href="#">주문내역</a>
+                                </li>
 
-                            <li>
-                                <a href="#">개인 정보 수정</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <div class="user-info-wrap">
-
-                <section>
-                    <div class="user-info-text">
-                        개인정보수정
-                    </div>
-                    <div class="top">
-                        <div class="name">
-                            <label>이름</label>
-                            <input type="text" placeholder="사용자 이름" readonly />
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <div class="email">
-                            <label>이메일</label>
-                            <input type="text" placeholder="사용자 email 주소" readonly />
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <div class="cellphone">
-                            <label>휴대폰</label>
-                            <input type="text" placeholder="숫자로 입력해주세요">
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <div class="password">
-                            <label>현재 비밀번호</label>
-                            <input type="password" placeholder="현재 사용중인 비밀번호를 입력해주세요">
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <div class="password">
-                            <label>새 비밀번호</label>
-                            <input type="password" placeholder="변경하실 비밀번호를 입력해주세요">
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <div class="password-confirm">
-                            <label>새 비밀번호 확인</label>
-                            <input type="password" placeholder="비밀번호를 한번 더 입력해주세요">
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <div class="adress">
-                            <label>주소</label>
-                            <input type="#" placeholder="주소 검색을 통해 주소를 입력해주세요" readonly />
-                            <div class="adress-check" id="email-check"><a href="#">주소검색</a></div>
+                                <li>
+                                    <a href="/users/info/:email">개인 정보 수정</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </section>
+                <div class="edit-user-info">
+                    <div class="edit-info-text">
+                        <div class="left">개인정보수정</div>
+                        <div class="right">변경 불가<div>*</div>
+                        </div>
+                    </div>
+                    <div class="top">
+                        <div class="email">
+                            <label>이메일<div>*</div></label>
+                            <input type="text" id="emailInput" placeholder="사용자 이메일" readonly>
+                            <span class="hidden"><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="emailCheck"></p>
 
-                <div class="btn-bottom">
-                    <a href="#" class="btn-secede">탈퇴하기</a>
-                    <a href="#" class="btn-edit-user-info">회원정보수정</a>
+                        <div class="name">
+                            <label>이름<div>*</div></label>
+                            <input type="text" id="nameInput" placeholder="사용자 이름" onchange="validateName()" readonly>
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="nameCheck"></p>
+
+                        <div class="password">
+                            <label>현재 비밀번호</label>
+                            <input type="password" id="passwordInput" placeholder="비밀번호를 입력해주세요"
+                                onchange="validatePassword()">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="passwordCheck"></p>
+
+                        <div class="new-password">
+                            <label>새 비밀번호</label>
+                            <input type="password" id="newPasswordInput" placeholder="새 비밀번호를 입력해주세요"
+                                onchange="validateNewPassword()">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="newPasswordCheck"></p>
+
+                        <div class="password-confirm">
+                            <label>새 비밀번호 확인</label>
+                            <input type="password" id="passwordInputConfirm" placeholder="비밀번호를 한번 더 입력해주세요"
+                                onchange="validatePasswordConfirm()">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="pwConfirmCheck"></p>
+
+                        <div class="phone-num">
+                            <label>휴대폰</label>
+                            <input type="tel" id="phoneNumInput" placeholder="'-' 없이 번호만 입력해주세요"
+                                onchange="validatePhoneNum()" maxlength="13">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="phoneNumCheck"></p>
+
+                        <div class="address">
+                            <label>주소</label>
+                            <input type="text" id="addressInput" placeholder="우측 주소 검색을 클릭해주세요" readonly>
+                            <div class="address-check" id="addressCheckBtn">
+                                <div><button href="#" onclick="openKakaoMap()">주소검색</button></div>
+                            </div>
+                        </div>
+
+                        <div class="detail-address">
+                            <label>상세주소</label>
+                            <input type="text" id="detailAddress" placeholder="상세주소를 입력해주세요">
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                    </div>
+                    <div class="btn-bottom">
+                        <a href="/api/users/info/delete/:email" class="btn-secede">탈퇴하기</a>
+                        <a href="#" class="btn-edit-user-info">회원정보수정</a>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-        </div>
     </main>
+
     <footer class="footer">
         <%- include('../views/partials/footer'); %>
     </footer>
+
+    <script>
+        // 비밀번호 유효성 검사
+        function validatePassword() {
+            const $passwordInput = document.querySelector("#passwordInput");
+            const $passwordCheck = document.querySelector("#passwordCheck");
+            const $passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,15}$/;
+
+            if ($passwordInput.value.match($passwordRegex)) {
+                $passwordCheck.style.fontSize = "12px";
+                $passwordCheck.textContent = "안전한 비밀번호입니다.";
+                $passwordCheck.style.color = "blue";
+            } else {
+                $passwordCheck.style.fontSize = "12px";
+                $passwordCheck.textContent = "영문, 숫자, 특수기호 조합 8~15자리 이하로 입력해주세요.";
+                $passwordCheck.style.color = "red";
+            }
+        }
+
+        // 비밀번호 재확인 검사
+        function validatePasswordConfirm() {
+            const $passwordInputConfirm = document.querySelector("#passwordInputConfirm");
+            const $passwordInput = document.querySelector("#passwordInput");
+            const $pwConfirmCheck = document.querySelector("#pwConfirmCheck");
+
+            if ($passwordInputConfirm.value === $passwordInput.value) {
+                $pwConfirmCheck.style.fontSize = "12px";
+                $pwConfirmCheck.textContent = "비밀번호가 일치합니다.";
+                $pwConfirmCheck.style.color = "blue";
+            } else {
+                $pwConfirmCheck.style.fontSize = "12px";
+                $pwConfirmCheck.textContent = "비밀번호가 일치하지 않습니다.";
+                $pwConfirmCheck.style.color = "red";
+            }
+        }
+
+        //휴대폰 번호 유효성 검사
+        function validatePhoneNum() {
+            const $phoneNumInput = document.querySelector("#phoneNumInput");
+            const $phoneNumCheck = document.querySelector("#phoneNumCheck");
+            const $phoneNumRegex = /^[0-9]+$/;
+
+            if ($phoneNumInput.value.match($phoneNumRegex)) {
+                $phoneNumCheck.style.fontSize = "12px";
+                $phoneNumCheck.textContent = "올바른 휴대폰 번호입니다.";
+                $phoneNumCheck.style.color = "blue";
+            } else {
+                $phoneNumCheck.style.fontSize = "12px";
+                $phoneNumCheck.textContent = "휴대폰 번호는 숫자로 입력해주세요.";
+                $phoneNumCheck.style.color = "red";
+            }
+        }
+    </script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function openKakaoMap() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    var $addressInput = document.querySelector("#addressInput");
+                    $addressInput.value = data.address;
+                    $addressInput.focus();
+                }
+            }).open();
+        }
+    </script>
 </body>
 
 </html>
