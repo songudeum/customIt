@@ -4,46 +4,77 @@ body {
     margin: 0;
 }
 
-main .contents-inner {
+.edit-info-wrap {
     display: flex;
     justify-content: center;
-    background-color: rgb(255, 255, 255);
 }
-.user-info-text {
-    margin: 70px 0 20px 15px;
+
+.edit-info-text {
+    display: flex;
+    justify-content: space-between;
+    width: 650px;
+    height: 70px;
+}
+
+.edit-info-text .left {
+    margin: 30px 0 20px 15px;
     font-size: 28px;
     line-height: 35px;
     font-weight: 500;
     color: rgb(51, 51, 51);
 }
-
-.user-info-wrap {
-    max-width: 1280px;
-    padding: 0 30px;
+.edit-info-text .right {
+    display: flex;
+    align-items: end;
+    text-align: right;
 }
 
-.user-info-wrap .top {
+.edit-info-text .right div {
+    color: red;
+    display: inline;
+}
+
+.edit-user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1280px;
+}
+
+.edit-user-info .top {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 650px;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
-    padding: 7px 0;
+    margin: 10px 0;
 }
 
-.user-info-wrap .email,
-.user-info-wrap .password,
-.user-info-wrap .password-confirm,
-.user-info-wrap .name,
-.user-info-wrap .cellphone,
-.user-info-wrap .adress {
+.edit-user-info .top .email div {
+    color: red;
+    display: inline;
+}
+.edit-user-info .top .name div {
+    color: red;
+    display: inline;
+}
+
+.edit-user-info .email,
+.edit-user-info .password,
+.edit-user-info .password-confirm,
+.edit-user-info .name,
+.edit-user-info .phone-num,
+.edit-user-info .address,
+.edit-user-info .new-password,
+.edit-user-info .detail-address {
     display: inline-flex;
     width: 100%;
     padding: 12px 20px;
     justify-content: space-between;
 }
-.user-info-wrap .adress-check {
+.edit-user-info .email-check,
+.edit-user-info .address-check {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,31 +86,60 @@ main .contents-inner {
     color: #a586f6;
     background-color: rgb(255, 255, 255);
     border: 1px solid #a586f6;
-}
-.user-info-wrap .adress-check a {
-    color: #a586f6;
-    text-decoration: none;
+    cursor: pointer;
 }
 
-.user-info-wrap label {
+.edit-user-info .email-check:hover {
+    border: 2px solid #a586f6;
+}
+
+.edit-user-info .email-check button {
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    color: #a586f6;
+    cursor: pointer;
+}
+.edit-user-info .address-check button {
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    color: #a586f6;
+    cursor: pointer;
+}
+
+.edit-user-info label {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 140px;
     padding-top: 7px;
 }
-.user-info-wrap input {
+.edit-user-info .address-check a {
+    color: #a586f6;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.edit-user-info label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    padding-top: 7px;
+}
+.edit-user-info input {
     width: 350px;
     height: 46px;
     padding: 0px 11px 1px 15px;
     border-radius: 6px;
     border: 1px solid rgb(221, 221, 221);
 }
-.user-info-wrap input::placeholder {
+.edit-user-info input::placeholder {
     color: #bbbbbb;
 }
 
-.user-info-wrap .top .btn-adress {
+.edit-user-info .top .btn-address {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -91,26 +151,21 @@ main .contents-inner {
     border-radius: 6px;
     color: #a586f6;
 }
-.user-info-wrap .top span {
+.edit-user-info .top span {
     visibility: hidden;
     display: block;
     padding: 0px 10px;
-    overflow: hidden;
     width: 100px;
     height: 46px;
-    border-radius: 6px;
-    color: rgb(95, 0, 128);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
 }
 
-.user-info-wrap .login {
+.edit-user-info .login {
     display: inline-flex;
     justify-content: center;
     margin: 20px 0 0 0;
 }
 
-.user-info-wrap .login a {
+.edit-user-info .login a {
     display: inline-block;
     text-decoration: underline;
     font-weight: bold;
@@ -118,13 +173,13 @@ main .contents-inner {
     color: rgb(51, 51, 51);
 }
 
-.user-info-wrap .btn-bottom {
+.edit-user-info .btn-bottom {
     display: inline-flex;
     justify-content: center;
     width: 100vh;
     height: 80px;
-    margin-top: 30px;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .btn-secede {
@@ -156,6 +211,10 @@ main .contents-inner {
     border: 1px solid #a586f6;
     margin: 0 3px;
 }
+.btn-bottom a {
+    font-size: 15px;
+}
+
 .snb_my {
     width: 200px;
 }
@@ -170,7 +229,7 @@ main .contents-inner {
 }
 
 .user-aside {
-    margin-top: 70px;
+    margin-top: 28px;
     float: right;
 }
 
