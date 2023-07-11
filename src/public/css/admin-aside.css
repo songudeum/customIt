@@ -4,17 +4,17 @@
     background-color: #353535;
 }
 
-.aside .admin-logo {
+.admin-logo {
     margin: 30px 0 0 15px;
     width: 75%;
 }
 
-.aside .nav {
+.nav {
     margin-top: 30px;
     padding-left: 5px;
 }
 
-li {
+.nav-li {
     margin-top: 10px;
     margin-left: 10px;
     padding-bottom: 10px;
@@ -23,18 +23,18 @@ li {
     list-style: none;
 }
 
-li a {
+.nav-li-a{
     color: white;
     text-decoration: none;
 }
 
-.aside .logout{
+.logout{
     position: absolute;
     bottom: 20px;
     width: 100%;
 }
 
-.aside .logout .btn-logout{
+.btn-logout{
     margin: 0 5% 0 5%;
     border: 2px #1a1a1a solid;
     border-radius: 5px;
