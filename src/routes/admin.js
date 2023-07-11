@@ -77,7 +77,7 @@ router.get('/login', (req, res) => {
 });
 
 // 어드민 회원가입 화면
-router.get('/login', (req, res) => {
+router.get('/join', (req, res) => {
     res.render('admin-signin');
 });
 
