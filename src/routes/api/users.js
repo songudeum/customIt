@@ -14,7 +14,7 @@ router.get(
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         const userInfo = await Users.findOne({ email: userEmail });
-        res.render('user-secession', { userInfo });
+        res.render('edit-user-info', userInfo);
     }),
 );
 
@@ -43,7 +43,7 @@ router.put(
                 address,
             },
         );
-        res.render('user-secession', { newUserInfo });
+        res.render('edit-user-info', { newUserInfo });
     }),
 );
 

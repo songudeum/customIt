@@ -98,7 +98,6 @@ router.post(
     '/info/delete',
     loginRequired,
     asyncHandler(async (req, res) => {
-        console.log(req.body);
         const { password } = req.body;
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
@@ -125,6 +124,6 @@ router.get('/join', (req, res) => {
 
 // 회원 탈퇴 페이지
 router.get('/info/delete', (req, res) => {
-    res.render('user-session');
+    res.render('user-secession');
 });
 module.exports = router;
