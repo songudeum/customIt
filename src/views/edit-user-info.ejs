@@ -42,15 +42,14 @@
                     <div class="top">
                         <div class="email">
                             <label>이메일<div>*</div></label>
-                            <input type="text" id="emailInput" placeholder="#{user.userId}" readonly>
+                            <input type="text" id="emailInput" readonly>
                             <span class="hidden"><a href="#">중복확인</a></span>
                         </div>
                         <p id="emailCheck"></p>
 
                         <div class="name">
                             <label>이름<div>*</div></label>
-                            <input type="text" id="nameInput" placeholder="#{user.name}" onchange="validateName()"
-                                readonly>
+                            <input type="text" id="nameInput" onchange="validateName()" readonly>
                             <span><a href="#">중복확인</a></span>
                         </div>
                         <p id="nameCheck"></p>
@@ -165,6 +164,67 @@
                 $phoneNumCheck.style.color = "red";
             }
         }
+
+
+        async function registerUser() {
+            const $passwordInput = document.querySelector("#passwordInput").value;
+            const $phoneNumInput = document.querySelector("#phoneNumInput").value;
+            const $addressInput = document.querySelector("#addressInput").value;
+            const $detailAddressInput = document.querySelector("#detailAddress").value;
+            const $newPasswordInput = document.querySelector("#newPasswordInput").value;
+
+            const userData = {
+                password: $passwordInput,
+                phoneNumber: $phoneNumInput,
+                newPassword: $newPasswordInput,
+                address: {
+                    "address1": $addressInput,
+                    "address2": $detailAddressInput
+                }
+            };
+
+            try {
+                const res = await fetch('/users/join', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                if (res.ok) {
+                    window.location.href = res.url
+                } else {
+                    console.error('회원가입에 실패했습니다.');
+                }
+            } catch (error) {
+                console.error('서버와의 통신 중 오류가 발생했습니다.', error);
+            }
+        }
+       
+        // 개인정보 수정 조건 검사
+        function validateCondition() {
+            const isPasswordValid = validatePassword();
+            const isNewPasswordValid = validateNewPassword();
+            const isPasswordConfirmValid = validatePasswordConfirm();
+            const isPhoneNumValid = validatePhoneNum();
+
+            if (isPasswordValid && isNewPasswordValid && isPasswordConfirmValid && isPhoneNumValid) {
+                const passwordInput = document.querySelector("#passwordInput");
+                const newPasswordInput = document.querySelector("#newPasswordInput");
+                const phoneNumInput = document.querySelector("#phoneNumInput");
+
+                const password = passwordInput.value;
+                const newPassword = isNewPasswordValid ? newPasswordInput.value : null;
+                const phoneNumber = isPhoneNumValid ? phoneNumInput.value : null;
+
+                // 서버로 수정할 개인 정보 전송
+                updateUserProfile(password, newPassword, phoneNumber);
+            } else {
+                console.error('개인정보 수정 조건을 만족하지 못했습니다.');
+            }
+        }
+
     </script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
