@@ -24,3 +24,9 @@
 .addNewCategory{
     display: none;
 }
+
+.checkCategory{
+    margin-top: 3px;
+    font-size: smaller;
+    color: #A586F6;
+}
