@@ -23,10 +23,13 @@
                         <div class="inner_sub">
                             <ul class="list_menu">
                                 <li class="on">
-                                    <a href="#">주문내역</a>
+                                    <a href="/order/:id/orderList">주문내역</a>
                                 </li>
                                 <li>
-                                    <a href="/users/info/:email">개인 정보 수정</a>
+                                    <a href="/api/users/info">개인 정보 수정</a>
+                                </li>
+                                <li>
+                                    <a href="/users/info/delete">탈퇴하기</a>
                                 </li>
                             </ul>
                         </div>
@@ -63,7 +66,7 @@
                             </div>
                         </div>
                         <div class="btn-bottom">
-                            <a href="/api/users/info/edit/:email" class="btn-cancel">취소</a>
+                            <a href="/api/users/info" class="btn-cancel">취소</a>
                             <a href="#" id="btnSecession" class="btn-secede">탈퇴하기</a>
                         </div>
                 </div>
