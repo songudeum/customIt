@@ -16,7 +16,7 @@ router.post(
         if (emailDuplicate) {
             res.json({ message: '중복된 이메일이 존재합니다.' });
         } else {
-            res.render('signin', { email });
+            res.json({ message: '사용 가능한 이메일입니다.' });
         }
     }),
 );

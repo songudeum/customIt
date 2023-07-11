@@ -42,14 +42,15 @@
                     <div class="top">
                         <div class="email">
                             <label>이메일<div>*</div></label>
-                            <input type="text" id="emailInput" placeholder="사용자 이메일" readonly>
+                            <input type="text" id="emailInput" placeholder="#{user.userId}" readonly>
                             <span class="hidden"><a href="#">중복확인</a></span>
                         </div>
                         <p id="emailCheck"></p>
 
                         <div class="name">
                             <label>이름<div>*</div></label>
-                            <input type="text" id="nameInput" placeholder="사용자 이름" onchange="validateName()" readonly>
+                            <input type="text" id="nameInput" placeholder="#{user.name}" onchange="validateName()"
+                                readonly>
                             <span><a href="#">중복확인</a></span>
                         </div>
                         <p id="nameCheck"></p>

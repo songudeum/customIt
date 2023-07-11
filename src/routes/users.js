@@ -57,7 +57,7 @@ router.post(
             address,
         });
 
-        res.redirect('/');
+        res.redirect('/users/login');
     }),
 );
 
