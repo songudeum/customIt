@@ -71,7 +71,7 @@ app.get('/api/users/info/delete/:email', (req, res) => {
 
 // 페이지 보기
 app.get('/', (req, res) => {
-    res.render('edit-user-info');
+    res.render('signin');
 });
 
 app.use(express.json());
