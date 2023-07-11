@@ -21,6 +21,7 @@ router.post(
             phoneNumber,
             email,
             address,
+            orderDate,
         } = req.body;
 
         // 고유한 주문 ID 생성
@@ -38,6 +39,7 @@ router.post(
             phoneNumber,
             email,
             address,
+            orderDate,
         });
 
         // 생성된 주문의 ID를 포함한 응답 전송
