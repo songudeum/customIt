@@ -16,7 +16,7 @@ router.post(
         if (emailDuplicate) {
             res.json({ message: '중복된 이메일이 존재합니다.' });
         } else {
-            res.json({ message: '사용가능한 이메일입니다.' });
+            res.render('signin', { email });
         }
     }),
 );
@@ -27,6 +27,7 @@ router.put(
     loginRequired,
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
+        console.log(userEmail);
         const { email, password, newPassword, name, phoneNumber, address } = req.body;
         const user = await Users.findOne({ email: userEmail });
         const userPw = user.password;
@@ -46,7 +47,7 @@ router.put(
                 address,
             },
         );
-        res.render(newUserInfo);
+        res.render('user-secession', { newUserInfo });
     }),
 );
 

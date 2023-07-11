@@ -38,7 +38,7 @@ router.post(
             name,
         });
 
-        res.json({ message: '관리자 회원가입 완료' });
+        res.redirect('/admin/login');
     }),
 );
 
@@ -47,7 +47,7 @@ router.post('/login', passport.authenticate('admin', { session: false }), (req, 
     // 유저 토큰 생성 및 쿠키에 전달
     setUserToken(res, req.user);
 
-    res.redirect('/');
+    res.redirect('/admin/category');
 });
 
 // 로그아웃 라우터

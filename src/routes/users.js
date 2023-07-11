@@ -11,7 +11,7 @@ const router = Router();
 const emailCheck = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
 const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
 const numberCheck = /^[0-9]+$/;
-const nameCheck = /^[가-a힣]{2,4}$/;
+const nameCheck = /^[가-힣]{2,4}$/;
 
 // 사용자 회원가입 라우터
 router.post(
@@ -47,7 +47,7 @@ router.post(
             throw error;
         }
 
-        const userId = nanoid(10);
+        const userId = nanoid(5);
         await Users.create({
             userId,
             email,
@@ -57,7 +57,7 @@ router.post(
             address,
         });
 
-        res.json({ meassage: '회원가입 성공' });
+        res.redirect('/');
     }),
 );
 
@@ -68,7 +68,7 @@ router.get(
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         const userInfo = await Users.findOne({ email: userEmail });
-        res.render(userInfo);
+        res.render('edit-user-info', { userInfo });
     }),
 );
 
