@@ -57,26 +57,28 @@ router.post(
             address,
         });
 
-        res.redirect('/');
+        res.redirect('/users/login');
     }),
 );
 
 // 사용자 정보 조회 라우터
 router.get(
-    '/info/:email',
+    '/info/:userId',
     loginRequired,
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         const userInfo = await Users.findOne({ email: userEmail });
-        res.render('edit-user-info', { userInfo });
+        res.render('user-secession', { userInfo });
     }),
 );
 
 // 사용자 탈퇴 라우터
-router.delete(
-    '/info/delete/:email',
+
+router.post(
+    '/info/delete',
     loginRequired,
     asyncHandler(async (req, res) => {
+        console.log(req.body)
         const { password } = req.body;
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
@@ -100,9 +102,10 @@ router.post('/login', passport.authenticate('local', { session: false }), (req, 
 });
 
 // 로그아웃 라우터
-router.get('/logout', loginRequired, (req, res) => {
+router.get('/logout', (req, res) => {
     // 쿠키 만료시키도록 전달
     res.cookie('token', null, { maxAge: 0 });
+    res.json({ message: '로그아웃 완료' });
 });
 
 module.exports = router;

@@ -16,18 +16,17 @@ router.post(
         if (emailDuplicate) {
             res.json({ message: '중복된 이메일이 존재합니다.' });
         } else {
-            res.render('signin', { email });
+            res.json({ message: '사용 가능한 이메일입니다.' });
         }
     }),
 );
 
 // 개인페이지 사용자 정보 수정 api(send 나중에 render로 수정)
 router.put(
-    '/info/edit/:email',
+    '/info/edit/:userId',
     loginRequired,
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
-        console.log(userEmail);
         const { email, password, newPassword, name, phoneNumber, address } = req.body;
         const user = await Users.findOne({ email: userEmail });
         const userPw = user.password;

@@ -11,7 +11,17 @@ const router = Router();
 router.post(
     '/',
     asyncHandler(async (req, res) => {
-        const { userId, productId, quantity, orderDate, totalAmount } = req.body;
+        const {
+            productName,
+            image,
+            quantity,
+            price,
+            totalPrice,
+            userName,
+            phoneNumber,
+            email,
+            address,
+        } = req.body;
 
         // 고유한 주문 ID 생성
         const orderId = nanoid(10);
@@ -19,11 +29,15 @@ router.post(
         // 제공된 데이터를 사용하여 주문 생성
         await orderService.createOrder({
             orderId,
-            userId,
-            productId,
+            productName,
+            image,
             quantity,
-            orderDate,
-            totalAmount,
+            price,
+            totalPrice,
+            userName,
+            phoneNumber,
+            email,
+            address,
         });
 
         // 생성된 주문의 ID를 포함한 응답 전송
@@ -37,11 +51,11 @@ router.post(
 
 // 주문삭제
 router.delete(
-    '/:id',
+    '/:orderId',
     asyncHandler(async (req, res) => {
-        const { id } = req.params;
+        const { orderId } = req.params;
 
-        await orderService.deleteOrder({ id });
+        await orderService.deleteOrder({ orderId });
 
         //  삭제 완료 응답 전송
         res.status(200).send();
@@ -50,18 +64,11 @@ router.delete(
 
 // updateDeliveryInfo
 router.put(
-    '/:id',
+    '/:orderId',
     asyncHandler(async (req, res) => {
-        const { userId } = req.body;
-        const { id } = req.params;
+        const { orderId } = req.params;
 
-        if (!userId) {
-            const error = new Error('기입하지 않은 정보가 있는지 확인해 주세요.');
-            error.statusCode = 400;
-            throw error;
-        }
-
-        orderService.updateeDeliveryInfo({ id, userId });
+        orderService.updateeDeliveryInfo({ orderId });
         //  업데이트 완료 응답 전송
         res.status(201).send();
     }),
