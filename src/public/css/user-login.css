@@ -26,13 +26,12 @@ main .contents-inner {
     margin: 30 auto;
 }
 .login-box input {
-    border: 1px solid #a586f6;
-    width: 100%;
     outline: none;
-    width: 372px;
-    height: 74px;
     position: relative;
     padding-left: 20px;
+    border: 1px solid #a586f6;
+    width: 372px;
+    height: 74px;
 }
 
 .login-box input ::placeholder {
@@ -40,8 +39,8 @@ main .contents-inner {
 }
 
 .login-box input:nth-child(1) {
-    border-radius: 4px 4px 0 0;
     margin-top: -1px;
+    border-radius: 4px 4px 0 0;
 }
 
 .login-box input:nth-child(2) {
@@ -63,48 +62,48 @@ main .contents-inner {
 
 .btn-login {
     width: 372px;
-    margin-top: 27px;
     height: 73px;
-    border-radius: 5px;
+    margin-top: 27px;
     border: 1px solid #a586f6;
+    border-radius: 5px;
     background: #a586f6;
     cursor: pointer;
 }
 
 .btn-login span {
-    color: #fff;
     text-align: center;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    color: #fff;
 }
 
 .btn-join {
-    margin: 16px 0;
     width: 372px;
     height: 73px;
-    border-radius: 5px;
+    margin: 16px 0;
     border: 1px solid #a586f6;
+    border-radius: 5px;
     background: #fff;
     cursor: pointer;
 }
 
 .btn-join a {
+    text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ddd;
-    text-decoration: none;
+    height: 73px;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    height: 73px;
+    color: #ddd;
 }
 
 .admin-page {
-    text-align: center;
     text-decoration: none;
+    text-align: center;
     color: rgba(185, 185, 185, 1);
 }
