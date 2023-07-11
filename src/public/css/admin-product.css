@@ -6,7 +6,7 @@
 
 table{
     width:100%;
-    border-top:1px solid gray;
+    border-top: 1px solid gray;
     border-collapse: collapse;
     color:#353535;;
 }
@@ -15,6 +15,7 @@ td, th{
     width:20%;
     padding: 10px;
     border-bottom: 1px solid gray;
+    text-align: center;
 }
 
 .btn-add-product{
