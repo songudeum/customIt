@@ -4,13 +4,6 @@ body {
     margin: 0;
 }
 
-main .contents-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 20px;
-    background-color: rgb(255, 255, 255);
-}
-
 .login-wrap {
     width: 372px;
     margin: 216px auto 360px auto;
@@ -27,12 +20,12 @@ main .contents-inner {
     margin: 30 auto;
 }
 .login-box input {
-    outline: none;
     position: relative;
     width: 372px;
     height: 74px;
     padding-left: 20px;
     border: 1px solid #a586f6;
+    outline: none;
 }
 
 .login-box input ::placeholder {

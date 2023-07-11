@@ -8,21 +8,22 @@ const path = require('node:path');
 
 const { MONGO_USER, MONGO_PW } = process.env;
 const passport = require('passport');
-// const getUserFromJWT = require('./middlewares/get-user-from-jwt');
-// const loginrequired = require('./middlewares/login-required');
-// const adminCheck = require('./middlewares/admin-check');
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
+const productRouter = require('./routes/product');
+const orderRouter = require('./routes/order');
 const adminRouter = require('./routes/admin');
-const adminApiRouter = require('./routes/api/admin');
-const userApiRouter = require('./routes/api/users');
 const adminCategoryRouter = require('./routes/admin-category');
 const adminProductRouter = require('./routes/admin-product');
-const categoryRouter = require('./routes/api/category');
-const productRouter = require('./routes/api/product');
+const adminOrderRouter = require('./routes/admin-order');
 
-// passport설정 가지고 옴
+const adminApiRouter = require('./routes/api/admin');
+const userApiRouter = require('./routes/api/users');
+const categoryApiRouter = require('./routes/api/category');
+const productApiRouter = require('./routes/api/product');
+const orderApiRouter = require('./routes/api/order');
+
 require('./passport')();
 
 const connectToDatabase = async (url) => {
@@ -41,6 +42,23 @@ const url = `mongodb+srv://${MONGO_USER}:${MONGO_PW}@cluster0.snarddw.mongodb.ne
 connectToDatabase(url);
 
 const app = express();
+
+app.get('/admin/login', (req, res) => {
+    res.render('admin-login');
+});
+
+app.get('/admin/join', (req, res) => {
+    res.render('admin-signin');
+});
+
+app.get('/users/login', (req, res) => {
+    res.render('user-login');
+});
+
+app.get('/users/join', (req, res) => {
+    res.render('signin');
+});
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -85,13 +103,18 @@ app.use(passport.initialize());
 app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/users', userRouter);
+app.use('/product', productRouter);
+app.use('/order', orderRouter);
 app.use('/admin', adminRouter);
-app.use('/api/users', userApiRouter);
-app.use('/api/admin', adminApiRouter);
 app.use('/admin/category', adminCategoryRouter);
 app.use('/admin/product', adminProductRouter);
-app.use('/api/category', categoryRouter);
-app.use('/api/product', productRouter);
+app.use('/admin/orders', adminOrderRouter);
+
+app.use('/api/orders', orderApiRouter);
+app.use('/api/users', userApiRouter);
+app.use('/api/admin', adminApiRouter);
+app.use('/api/category', categoryApiRouter);
+app.use('/api/product', productApiRouter);
 
 app.use((req, res, next) => {
     const error = new Error('Resource Not Found');
