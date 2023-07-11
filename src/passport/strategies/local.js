@@ -19,7 +19,7 @@ const local = new LocalStrategy(config, async (email, password, done) => {
             error.statusCode = 400;
             throw error;
         }
-        done(null, { email: user.email, name: user.name });
+        done(null, { email: user.email, name: user.name, userId: user.userId });
     } catch (err) {
         done(err, null);
     }
