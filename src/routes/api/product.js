@@ -46,7 +46,7 @@ router.post(
     }),
 );
 
-router.put(
+router.post(
     '/:id',
     upload.single('productImage'),
     asyncHandler(async (req, res) => {
