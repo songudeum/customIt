@@ -1,13 +1,4 @@
-/* 나중에 지울 소스 */
-main .contents-inner {
-    display: block;
-    width: 1280px;
-    margin: 0 auto;
-    padding: 80px 20px 100px;
-    box-sizing: border-box;
-}
-
-/*  ////////////// */
+/* 메인 페이지 */
 .intro-main {
     display: flex;
     height: 500px;
@@ -22,7 +13,17 @@ main .contents-inner {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);
     cursor: pointer;
 }
+
+.intro-main .main-img::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
 .intro-main .main-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     transition: transform 0.2s;
@@ -101,12 +102,22 @@ main .contents-inner {
 .intro-main .main-items .btn-item .item-img {
     overflow: hidden;
     flex: none;
+    position: relative;
     width: 80px;
     height: 80px;
     border-radius: 4px;
 }
 
+.intro-main .main-items .btn-item .item-img::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
 .intro-main .main-items .btn-item .item-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;

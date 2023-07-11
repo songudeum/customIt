@@ -49,7 +49,8 @@ main .contents-inner {
 .order-list-wrap .address,
 .order-list-wrap .phone-num,
 .order-list-wrap .name,
-.order-list-wrap .detailAddress {
+.order-list-wrap .detail-address,
+.order-list-wrap .new-password {
     display: inline-flex;
     justify-content: space-around;
     width: 100%;
@@ -183,6 +184,7 @@ main .contents-inner {
     color: #333;
     letter-spacing: -0.5px;
 }
+
 .user-aside h2 {
     width: 200px;
 }

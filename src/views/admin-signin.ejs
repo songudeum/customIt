@@ -3,50 +3,53 @@
 
 <head>
     <%- include('../views/partials/head'); %>
-        <link rel="stylesheet" href="/css/reset.css">
         <link rel="stylesheet" href="/css/admin-signin.css">
         <link rel="stylesheet" href="/css/footer.css">
-
 </head>
 
 <body class="container">
-
     <header class="header">
     </header>
-
     <main role="main" class="contents">
         <div class="contents-inner">
             <div class="admin-signin-wrap">
                 <div class="admin-signin-text">회원가입</div>
                 <section class="top">
-                    <div class="admin-email">
+                    <div class="email">
                         <label>이메일</label>
-                        <input type="text" placeholder="예: customit@custom.com">
-                        <span class="admin-email-check" id="admin-email-check"><a href="#">중복확인</a></span>
+                        <input type="text" id="emailInput" placeholder="예: customit@custom.com">
+                        <div class="email-check" id="emailCheckBtn" onClick="validateEmail()">
+                            <button href="#">중복확인</button>
+                        </div>
                     </div>
+                    <p id="emailCheck"></p>
                     <div class="password">
                         <label>비밀번호</label>
-                        <input type="password" placeholder="비밀번호를 입력해주세요">
-                        <span class="hidden-span"><a href="#">중복확인</a></span>
+                        <input type="password" id="passwordInput" placeholder="비밀번호를 입력해주세요"
+                            onChange="validatePassword()">
+                        <span><a href="#">중복확인</a></span>
                     </div>
+                    <p id="passwordCheck"></p>
                     <div class="password-confirm">
                         <label>비밀번호확인</label>
-                        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요">
-                        <span class="hidden-span"><a href="#">중복확인</a></span>
+                        <input type="password" id="passwordInputConfirm" placeholder="비밀번호를 한번 더 입력해주세요"
+                            onChange="validatePasswordConfirm()">
+                        <span><a href="#">중복확인</a></span>
                     </div>
+                    <p id="pwConfirmCheck"></p>
                     <div class="name">
                         <label>이름</label>
-                        <input type="text" placeholder="이름을 입력해주세요">
-                        <span class="hidden-span"><a href="#">중복확인</a></span>
+                        <input type="text" id="nameInput" placeholder="이름은 2~4글자로 입력해주세요." onchange="validateName()">
+                        <span><a href="#">중복확인</a></span>
                     </div>
+                    <p id="nameCheck"></p>
                 </section>
-
                 <div class="bottom-wrap">
                     <a href="#" class="btn-admin-signin">관리자 회원가입</a>
                     <div class="login">
                         이미 아이디가 있으신가요?
                         <div>
-                            <a href="#"> 로그인</a>
+                            <a href="/admin/login"> 로그인</a>
                         </div>
                     </div>
                 </div>
@@ -56,6 +59,73 @@
     <footer class="footer">
         <%- include('../views/partials/footer'); %>
     </footer>
+    <script>
+        // email 유효성 검사 
+        function validateEmail() {
+            const $emailInput = document.querySelector("#emailInput");
+            const $emailCheck = document.querySelector("#emailCheck");
+            const $emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if ($emailInput.value.match($emailRegex)) {
+                $emailCheck.style.fontSize = "12px";
+                $emailCheck.textContent = "올바른 이메일 형식입니다.";
+                $emailCheck.style.color = "blue";
+            } else {
+                $emailCheck.style.fontSize = "12px";
+                $emailCheck.textContent = "올바른 이메일 형식이 아닙니다.";
+                $emailCheck.style.color = "red";
+            }
+        }
+
+        // 비밀번호 유효성 검사
+        function validatePassword() {
+            const $passwordInput = document.querySelector("#passwordInput");
+            const $passwordCheck = document.querySelector("#passwordCheck");
+            const $passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,15}$/;
+
+            if ($passwordInput.value.match($passwordRegex)) {
+                $passwordCheck.style.fontSize = "12px";
+                $passwordCheck.textContent = "안전한 비밀번호입니다.";
+                $passwordCheck.style.color = "blue";
+            } else {
+                $passwordCheck.style.fontSize = "12px";
+                $passwordCheck.textContent = "영문, 숫자, 특수기호 조합 8~15자리 이하로 입력해주세요.";
+                $passwordCheck.style.color = "red";
+            }
+        }
+
+        // 비밀번호 재확인 검사
+        function validatePasswordConfirm() {
+            const $passwordInputConfirm = document.querySelector("#passwordInputConfirm");
+            const $passwordInput = document.querySelector("#passwordInput");
+            const $pwConfirmCheck = document.querySelector("#pwConfirmCheck");
+
+            if ($passwordInputConfirm.value === $passwordInput.value) {
+                $pwConfirmCheck.style.fontSize = "12px";
+                $pwConfirmCheck.textContent = "비밀번호가 일치합니다.";
+                $pwConfirmCheck.style.color = "blue";
+            } else {
+                $pwConfirmCheck.style.fontSize = "12px";
+                $pwConfirmCheck.textContent = "비밀번호가 일치하지 않습니다.";
+                $pwConfirmCheck.style.color = "red";
+            }
+        }
+
+        //이름 유효성 검사
+        function validateName() {
+            const $nameInput = document.querySelector('#nameInput');
+            const $nameCheck = document.querySelector('#nameCheck');
+            const $nameRegex = /^[가-힣]{2,4}$/;
+
+            if ($nameInput.value.match($nameRegex)) {
+                $nameCheck.textContent = "";
+            } else {
+                $nameCheck.style.fontSize = "12px";
+                $nameCheck.textContent = "이름은 2~4글자로 입력해주세요.";
+                $nameCheck.style.color = "red";
+            }
+        }
+    </script>
 </body>
 
 </html>
