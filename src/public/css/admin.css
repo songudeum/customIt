@@ -14,13 +14,15 @@ article{
 }
 
 h2{
-    color:#353535;;
+    color:#353535;
+    font-weight: bolder;
+    margin:10px;
 }
 
 section{
     background-color: white;
     border-radius: 3px;
-    height:80vh;
+    height:85vh;
     padding:30px;
 }
 

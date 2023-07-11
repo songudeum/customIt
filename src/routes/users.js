@@ -4,7 +4,6 @@ const { Users } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
 const createHash = require('../utils/hash-password');
 const { setUserToken, jwtVerify } = require('../utils/jwt');
-const getUserFromJWT = require('../middlewares/get-user-from-jwt');
 
 const router = Router();
 const emailCheck = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
@@ -53,7 +52,6 @@ router.post(
 // 사용자 정보 조회 라우터
 router.get(
     '/info/:email',
-    getUserFromJWT,
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         const userInfo = await Users.findOne({ email: userEmail });
@@ -64,7 +62,6 @@ router.get(
 // 사용자 탈퇴 라우터
 router.delete(
     '/info/delete/:email',
-    getUserFromJWT,
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         await Users.findOneAndDelete({ email: userEmail });
@@ -81,7 +78,7 @@ router.post('/login', passport.authenticate('local', { session: false }), (req, 
 });
 
 // 로그아웃 라우터
-router.get('/logout', getUserFromJWT, (req, res) => {
+router.get('/logout', (req, res) => {
     // 쿠키 만료시키도록 전달
     res.cookie('token', null, { maxAge: 0 });
 });

@@ -12,35 +12,90 @@
             <article class="article">
                 <h2>카테고리 관리</h2>
                 <section>
-                    <ul class="list-category">
+                    <% categories.forEach(function(category){ %>
+                    <ul class="list-category" id="listCategory">
                         <li class="list-category-li">
-                            <input type="text" value="category1" readonly="readonly">
+                            <input type="text" value= "<%= category.name %>" readonly="readonly">
                             <div>
-                                <button class="btn btn-small"> 수정 </button>
-                                <button class="btn btn-small"> 삭제 </button>
-                            </div>
-                        </li>
-                        <li class="list-category-li">
-                            <input type="text" value="category2" readonly="readonly">
-                            <div>
-                                <button class="btn btn-small"> 수정 </button>
-                                <button class="btn btn-small"> 삭제 </button>
-                            </div>
-                        </li>
-                        <li class="list-category-li">
-                            <input type="text" value="category3" readonly="readonly">
-                            <div>
-                                <button class="btn btn-small"> 수정 </button>
-                                <button class="btn btn-small"> 삭제 </button>
+                                <button class="btn btn-small" id="updateCategory" data-id="<%=
+                                category.id %>" onclick="updateCategory(event)"> 수정 </button>
+                                <button class="btn btn-small" id="deleteCategory" data-id="<%=
+                                category.id %>" onclick="deleteCategory(event)"> 삭제 </button>
+                                <button class="btn btn-small addNewCategory" id="addNewCategory" data-id="<%=
+                                category.id %>" onclick="addNewCategory(event)"> 수정 완료 </button>
                             </div>
                         </li>
                     </ul>
+                    <% }); %>
+
                     <div class="add-category">
-                        <input type="text"/>
-                        <input type="submit" class="btn btn-small btn-submit" value="등록"/>
+                        <input type="text" id="inputCategory"/>
+                        <input type="submit" data-id="test" class="btn btn-small btn-submit" id="createCategory" value="등록"/>
                     </div>
                 </section>
             </article>
         </div>
+        <script>
+            /**등록**/
+            const $inputCategory = document.querySelector('#inputCategory');
+            const $createCategory = document.querySelector('#createCategory');
+            const $listCategory = document.querySelector('#listCategory');
+            const $deleteCategory = document.querySelector('#deleteCategory');
+            const $addNewCategory = document.querySelector('#addNewCategory');
+
+            async function createCategory(){
+                const name = $inputCategory.value; //값 따오기
+                const categoryName = {name}; // 객체로 변환
+                const res = await fetch('/api/category',{ //api url
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                            },
+                    body: JSON.stringify(categoryName), //
+                });
+                const data = await res.json()
+
+                $listCategory.insertAdjacentHTML(`<li class="list-category-li">
+                            <input type="text" value=${name} readonly="readonly">
+                            <div>
+                                <button class="btn btn-small" data-id="${data.id}" onclick="updateCategory(event)"> 수정 </button>
+                                <button class="btn btn-small  data-id="${data.id}" id="deleteCategory" onclick="deleteCategory(event)"> 삭제 </button>
+                                <button class="btn btn-small addNewCategory" id="addNewCategory" data-id="${data.id}" onclick="addNewCategory(event)"> 수정 완료 </button>
+                            </div>
+                        </li>`); //해당 스크립트 insert
+            }
+            $createCategory.addEventListener('click', createCategory);
+
+            /*삭제*/
+            async function deleteCategory(event){
+                const id = event.target.getAttribute('data-id');
+                const res = await fetch(`/api/category/${id}`,{
+                    method: 'DELETE'
+                });
+            }
+
+            /*수정 버튼 눌렀을 때*/
+            async function updateCategory(event){
+                //const id = event.target.getAttribute('data-id'); 
+                const input = event.target.closest('.list-category-li').querySelector('input');
+                input.removeAttribute('readonly');
+                event.target.parentNode.style.display = 'none';
+                //event.target.parentNode.$addNewCategory.style.display = 'inline'; 안됨...
+            }
+
+            async function addNewCategory(event){
+                const name = $inputCategory.value;
+                const categoryName = {name};
+                const res = await fetch('/api/category',{ 
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                            },
+                    body: JSON.stringify(categoryName), 
+                });
+                const data = await res.json()
+            }
+        </script>
     </body>
 </html>
+
