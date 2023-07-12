@@ -43,22 +43,6 @@ connectToDatabase(url);
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.render('order-list.ejs');
-});
-
-app.get('/admin/join', (req, res) => {
-    res.render('admin-signin');
-});
-
-app.get('/users/login', (req, res) => {
-    res.render('user-login');
-});
-
-app.get('/users/join', (req, res) => {
-    res.render('signin');
-});
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
