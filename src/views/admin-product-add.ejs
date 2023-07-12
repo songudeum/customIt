@@ -13,43 +13,54 @@
             <article class="article">
                 <h2>상품 추가</h2>
                 <section>
+                    <img class='user-image' id="userImage">
                     <form
-                    action="#"
+                    action="/api/product"
                     enctype="multipart/form-data"
                     method="post">
                     <table>
                         <tr>
                             <td>상품명</td>
-                            <td><input type="text" name="name" required /></td>
+                            <td>
+                                <input type="text" id="inputName" name="name" required />
+                                <p class="check" id="checkName"></p>
+                            </td>
                         </tr>
                         <tr>
                             <td>가격</td>
-                            <td><input type="number" name="price" required /></td>
+                            <td><input type="number" id ="inputPrice" name="price" required /></td>
                         </tr>
                         <tr>
                             <td>설명</td>
-                            <td><input type="text" name="description" required /></td>
+                            <td>
+                                <textarea class="inputDescription" id ="inputDescription" name="description" required></textarea>
+                                <p class = "check" id="checkDescription"></p>
+                            </td>
+                            
                         </tr>
                         <tr>
                             <td>제조사</td>
-                            <td><input type="text" name="company" required /></td>
+                            <td>
+                                <input type="text" id ="inputCompany" name="company" required />
+                                <p class="check" id="checkCompany"></p>
+                            </td>
+                            
                         </tr>
                         <tr>
                             <td>카테고리</td>
                             <td>
                                 <select name="categoryName" required>
-                                    <option value="노트북">노트북</option>
-                                    <option value="태블릿">태블릿</option>
-                                    <option value="PC관련기기">PC관련기기</option>
+                                    <% categories.forEach(category =>{ %>
+                                        <option value="<%= category.name %>"><%= category.name %></option>
+                                    <% }) %>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>이미지</td>
                             <td>
-                                <input class="file-name" placeholder="이미지를 첨부하세요"/>
-                                <input type="file" class="add-image" id="add-image" name="productImage" required />
-                                <label for="add-image" class="add-image-label">찾기</label>
+                                <input type="file" class="add-image" id="addImage" name="productImage" accept="image/*" required />
+                                <label for="addImage" class="add-image-label" id="addImageLabel">찾기</label>
                             </td>
                         </tr>
                     </table>
@@ -58,6 +69,54 @@
             </section>
             </article>
         </div>
+        <script>
+            const $inputName = document.querySelector('#inputName');
+            const $inputDescription = document.querySelector('#inputDescription');
+            const $inputCompany = document.querySelector('#inputCompany');
+            
+            const $checkName = document.querySelector('#checkName');
+            const $checkDescription = document.querySelector('#checkDescription');
+            const $checkCompany = document.querySelector('#checkCompany');
+    
+            function validateName(){
+                if($inputName.value.length>=30){
+                $checkName.textContent = "상품명을 30자 미만으로 입력해주세요.";
+                }else{
+                $checkName.textContent = '';
+            }}
+    
+            function validateDescription(){
+                if($inputDescription.value.length>=150){
+                $checkDescription.textContent = "설명을 150자 미만으로 입력해주세요."
+                }else{
+                $checkDescription.textContent = '';
+            }}
+    
+            function validateCompany(){
+                if($inputCompany.value.length>=30){
+                $checkCompany.textContent = "제조사를 30자 미만으로 입력해주세요.";
+                }else{
+                $checkCompany.textContent = '';
+            }}
+    
+            $inputName.addEventListener('input',validateName);
+            $inputDescription.addEventListener('input',validateDescription);
+            $inputCompany.addEventListener('input',validateCompany);
+
+
+            const $userImage =document.querySelector('#userImage');
+            const $addImage = document.querySelector('#addImage');
+            const $addImageLabel = document.querySelector('#addImageLabel');
+
+            function previewImg(){
+                let preview = new FileReader();
+                preview.onload = function(e){
+                    $userImage.src=e.target.result;
+                }
+                preview.readAsDataURL($addImage.files[0]);
+            };
+            $addImage.addEventListener('change',previewImg);
+        </script>
     </body>
 </div>
 </html>

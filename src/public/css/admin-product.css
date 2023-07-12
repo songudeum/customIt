@@ -16,6 +16,16 @@ td, th{
     padding: 10px;
     border-bottom: 1px solid gray;
     text-align: center;
+    vertical-align: middle;
+}
+
+th{
+    font-weight: bolder;
+}
+
+.image{
+    width: 30px;
+    height: 30px;
 }
 
 .btn-add-product{

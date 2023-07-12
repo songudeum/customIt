@@ -20,15 +20,17 @@
                             <th>제조사</th>
                             <th>가격</th>
                         </tr>
-                        <tr>
-                            <td href="#">.</td>
-                            <td href="#">.</td>
-                            <td href="#">.</td>
-                            <td href="#">.</td>
-                            <td href="#">.</td>
+                        <% products.forEach(function(product){ %>
+                        <tr onclick="location.href='/admin/product/<%=product.id%>'">
+                            <td><%=product.categoryName%></td>
+                            <td><img class="image" src=<%=product.image%>></td>
+                            <td><%=product.name%></td>
+                            <td><%=product.company%></td>
+                            <td><%=product.price%></td>
                         </tr>
+                        <%}); %>
                     </table>
-                    <button class="btn btn-add-product btn-large">상품 등록</button>
+                    <button class="btn btn-add-product btn-large" onclick="location.href='/admin/product/add'">상품 등록</button>
                 </section>    
             </article>
         </div>
