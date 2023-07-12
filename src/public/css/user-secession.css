@@ -60,6 +60,7 @@ body {
 .user-secession .password label {
     font-size: 17px;
     font-weight: 500;
+    margin-bottom: 8px;
 }
 
 .user-secession .password span {
@@ -116,6 +117,7 @@ body {
     border: 1px solid #a586f6;
     margin: 0 3px;
 }
+
 .snb_my {
     width: 200px;
 }

@@ -2,16 +2,47 @@ const { Router } = require('express');
 const passport = require('passport');
 const { nanoid } = require('nanoid');
 const { Users } = require('../data-access');
+const { Category } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
 const createHash = require('../utils/hash-password');
-const { setUserToken, jwtVerify } = require('../utils/jwt');
 const loginRequired = require('../middlewares/login-required');
+const { setUserToken, jwtVerify } = require('../utils/jwt');
 
 const router = Router();
+
 const emailCheck = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
 const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
 const numberCheck = /^[0-9]+$/;
 const nameCheck = /^[가-힣]{2,4}$/;
+
+// 회원가입 이메일 중복 확인 라우터
+router.post(
+    '/join/emailDuplicate',
+    asyncHandler(async (req, res) => {
+        const { email } = req.body;
+        const emailDuplicate = await Users.findOne({ email });
+        if (emailDuplicate) {
+            res.json({ message: '중복된 이메일이 존재합니다.' });
+        } else {
+            res.json({ message: '사용 가능한 이메일입니다.' });
+        }
+    }),
+);
+
+// 로그인 라우터 passport local로 인증
+router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
+    // 유저 토큰 생성 및 쿠키에 전달
+    setUserToken(res, req.user);
+
+    res.status(200).redirect('/');
+});
+
+// 로그아웃 라우터
+router.get('/logout', (req, res) => {
+    // 쿠키 만료시키도록 전달
+    res.cookie('token', null, { maxAge: 0 });
+    res.json({ message: '로그아웃 완료' });
+});
 
 // 사용자 회원가입 라우터
 router.post(
@@ -57,26 +88,17 @@ router.post(
             address,
         });
 
-        res.redirect('/');
-    }),
-);
-
-// 사용자 정보 조회 라우터
-router.get(
-    '/info/:email',
-    loginRequired,
-    asyncHandler(async (req, res) => {
-        const userEmail = jwtVerify(req);
-        const userInfo = await Users.findOne({ email: userEmail });
-        res.render('edit-user-info', { userInfo });
+        res.staus(201).redirect('/users/login');
     }),
 );
 
 // 사용자 탈퇴 라우터
-router.delete(
-    '/info/delete/:email',
+
+router.post(
+    '/info/delete',
     loginRequired,
     asyncHandler(async (req, res) => {
+        console.log(req.body);
         const { password } = req.body;
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
@@ -87,22 +109,23 @@ router.delete(
         }
         await Users.deleteOne({ email: userEmail });
 
-        res.json({ message: '사용자 탈퇴 완료' });
+        res.status(200).redirect('/');
     }),
 );
 
-// 로그인 라우터 passport local로 인증
-router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
-    // 유저 토큰 생성 및 쿠키에 전달
-    setUserToken(res, req.user);
-
-    res.redirect('/');
+// 로그인 화면 라우팅
+router.get('/login', (req, res) => {
+    res.render('user-login');
 });
 
-// 로그아웃 라우터
-router.get('/logout', loginRequired, (req, res) => {
-    // 쿠키 만료시키도록 전달
-    res.cookie('token', null, { maxAge: 0 });
+// 사용자 회원가입
+router.get('/join', (req, res) => {
+    res.render('signin');
 });
 
+// 회원 탈퇴 페이지
+router.get('/info/delete', async (req, res) => {
+    const categories = await Category.find({});
+    res.render('user-secession', {categoryName: undefined, categories});
+});
 module.exports = router;
