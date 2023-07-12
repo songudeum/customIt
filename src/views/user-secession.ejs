@@ -23,10 +23,13 @@
                         <div class="inner_sub">
                             <ul class="list_menu">
                                 <li class="on">
-                                    <a href="#">주문내역</a>
+                                    <a href="/order/:id/orderList">주문내역</a>
                                 </li>
                                 <li>
-                                    <a href="/users/info/:email">개인 정보 수정</a>
+                                    <a href="/api/users/info">개인 정보 수정</a>
+                                </li>
+                                <li>
+                                    <a href="/users/info/delete">탈퇴하기</a>
                                 </li>
                             </ul>
                         </div>
@@ -59,12 +62,12 @@
                             </div>
                             <div class="password">
                                 <label>비밀번호 확인<span>*</span></label>
-                                <input type="password" placeholder="현재 사용중인 비밀번호를 입력해주세요">
+                                <input type="password" id="passwordInput" placeholder="현재 사용중인 비밀번호를 입력해주세요">
                             </div>
                         </div>
                         <div class="btn-bottom">
-                            <a href="/api/users/info/edit/:email" class="btn-cancel">취소</a>
-                            <a href="#" class="btn-secede">탈퇴하기</a>
+                            <a href="/api/users/info" class="btn-cancel">취소</a>
+                            <a href="#" id="btnSecession" class="btn-secede">탈퇴하기</a>
                         </div>
                 </div>
             </div>
@@ -74,6 +77,36 @@
     <footer class="footer">
         <%- include('../views/partials/footer'); %>
     </footer>
+    <script>
+        async function checkPasswordDuplicate(password) {
+            try {
+                const res = await fetch('/user/info/delete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ password })
+                });
+
+                if (res.ok) {
+                    const result = await res.json();
+                    if (result.message === '비밀번호가 일치하지 않습니다.') {
+                        alert('비밀번호가 일치하지 않습니다.');
+                    } else {
+                        const $passwordInput = document.querySelector("#passwordInput");
+                        console.log($passwordInput);
+                        return true;
+                    }
+                } else {
+                    console.error('비밀번호가 일치하지 않습니다.');
+                }
+            } catch (error) {
+                console.error('서버와의 통신 중 오류가 발생했습니다.', error);
+            }
+        }
+
+    </script>
+
 
 </body>
 

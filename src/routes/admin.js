@@ -18,7 +18,7 @@ router.post(
 
         // 이메일 형식 체크하는 조건문
         if (!adminEmailCheck.test(email)) {
-            const error = new Error('@admin.com 형식으로 입력해주세요.');
+            const error = new Error('올바른 이메일 형식이 아닙니다.');
             error.statusCode = 400;
             throw error;
         }
@@ -38,7 +38,21 @@ router.post(
             name,
         });
 
-        res.redirect('/admin/login');
+        res.status(201).redirect('/admin/login');
+    }),
+);
+
+// 관리자 이메일 중복 확인 api
+router.post(
+    '/join/emailDuplicate',
+    asyncHandler(async (req, res) => {
+        const { email } = req.body;
+        const emailDuplicate = await Admin.findOne({ email });
+        if (emailDuplicate) {
+            res.json({ message: '중복된 이메일이 존재합니다.' });
+        } else {
+            res.json({ message: '사용 가능한 이메일입니다.' });
+        }
     }),
 );
 
@@ -54,6 +68,17 @@ router.post('/login', passport.authenticate('admin', { session: false }), (req, 
 router.get('/logout', loginRequired, (req, res) => {
     // 쿠키 만료시키도록 전달
     res.cookie('token', null, { maxAge: 0 });
+    res.json({ message: '로그아웃 완료' });
+});
+
+// 어드민 로그인 화면
+router.get('/login', (req, res) => {
+    res.render('admin-login');
+});
+
+// 어드민 회원가입 화면
+router.get('/join', (req, res) => {
+    res.render('admin-signin');
 });
 
 module.exports = router;

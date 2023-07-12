@@ -1,8 +1,8 @@
 // 로그인 여부 체크해주는 미들웨어
 module.exports = (req, res, next) => {
     // 로그인 안되어 있다면 메인 화면으로
-    if (!req.user) {
-        res.redirect('/')
+    if (!req.cookies.token) {
+        res.redirect('/');
         return;
     }
 

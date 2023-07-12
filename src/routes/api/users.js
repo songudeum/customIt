@@ -4,33 +4,34 @@ const asyncHandler = require('../../utils/async-handler');
 const createHash = require('../../utils/hash-password');
 const loginRequired = require('../../middlewares/login-required');
 const { jwtVerify } = require('../../utils/jwt');
+const { Category } = require('../../data-access');
 
 const router = Router();
 
-// 회원가입 사용자 이메일 중복 확인 api (send render로바꾸기!)
-router.post(
-    '/join/emailDuplicate',
-    asyncHandler(async (req, res) => {
-        const { email } = req.body;
-        const emailDuplicate = await Users.findOne({ email });
-        if (emailDuplicate) {
-            res.json({ message: '중복된 이메일이 존재합니다.' });
-        } else {
-            res.render('signin', { email });
-        }
-    }),
-);
-
-// 개인페이지 사용자 정보 수정 api(send 나중에 render로 수정)
-router.put(
-    '/info/edit/:email',
+// 사용자 정보 조회 라우터
+router.get(
+    '/info',
     loginRequired,
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
-        console.log(userEmail);
+        const userInfo = await Users.findOne({ email: userEmail });
+        const categories = await Category.find({});
+
+        res.render('edit-user-info', { userInfo, categoryName: undefined, categories });
+    }),
+);
+
+// 개인페이지 사용자 정보 수정 api
+router.put(
+    '/info/edit',
+    loginRequired,
+    asyncHandler(async (req, res) => {
+        const userEmail = jwtVerify(req);
         const { email, password, newPassword, name, phoneNumber, address } = req.body;
         const user = await Users.findOne({ email: userEmail });
         const userPw = user.password;
+
+        const categories = await Category.find({});
 
         if (userPw !== createHash(password)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
@@ -47,7 +48,7 @@ router.put(
                 address,
             },
         );
-        res.render('user-secession', { newUserInfo });
+        res.render('edit-user-info', { newUserInfo, categoryName: undefined, categories });
     }),
 );
 
