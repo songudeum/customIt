@@ -112,6 +112,42 @@ router.post(
     }),
 );
 
+// 사용자 비밀번호 변경 라우터
+router.post(
+    '/info/edit/pw',
+    loginRequired,
+    asyncHandler(async (req, res) => {
+        const userEmail = jwtVerify(req);
+        const user = await Users.findOne({ email: userEmail });
+        const { password, newPassword } = req.body;
+        const userPw = user.password;
+
+        // const categories = await Category.find({});
+
+        if (!comparePassword(password, userPw)) {
+            const error = new Error('비밀번호가 일치하지 않습니다.');
+            error.statusCode = 401;
+            throw error;
+        }
+        if (!pwCheck.test(newPassword)) {
+            const error = new Error('영문 숫자 특수기호 조합 8~15자 이하로 입력해주세요.');
+            error.statusCode = 400;
+            throw error;
+        }
+        await Users.findOneAndUpdate(
+            { email: userEmail },
+            {
+                email: userEmail,
+                password: createHash(newPassword),
+                name: user.name,
+                phoneNumber: user.phoneNumber,
+                address: user.address,
+            },
+        );
+        res.json({ message: '비밀번호가 변경되었습니다.' });
+    }),
+);
+
 // 로그인 화면 라우팅
 router.get('/login', (req, res) => {
     res.render('user-login');
@@ -122,6 +158,13 @@ router.get('/join', async (req, res) => {
     const categories = await Category.find({});
     res.render('signin', { categoryName: undefined, categories });
 });
+
+// 회원 비밀번호 수정 페이지
+router.get('/info/edit/pw', async (req, res) => {
+    const categories = await Category.find({});
+    res.render('change-password', { categoryName: undefined, categories });
+});
+module.exports = router;
 
 // 회원 탈퇴 페이지
 router.get('/info/delete', async (req, res) => {
