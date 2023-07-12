@@ -1,123 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
+    <head>
+        <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/header.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="/css/user-secession.css" />
+    </head>
 
-<head>
-    <%- include('../views/partials/head'); %>
-        <link rel="stylesheet" href="/css/header.css">
-        <link rel="stylesheet" href="/css/footer.css">
-        <link rel="stylesheet" href="/css/user-secession.css">
-
-</head>
-
-<body class="container">
-
-    <header class="header">
-        <%- include('../views/partials/header'); %>
-    </header>
-    <main role="main" class="contents">
-        <div class="contents-inner">
-            <div class="user-secession-wrap">
-                <section class="user-aside">
-                    <div id="snb" class="snb_my">
-                        <h2 class="tit_snb">마이페이지</h2>
-                        <div class="inner_sub">
-                            <ul class="list_menu">
-                                <li class="on">
-                                    <a href="/order/:id/orderList">주문내역</a>
-                                </li>
-                                <li>
-                                    <a href="/api/users/info">개인 정보 수정</a>
-                                </li>
-                                <li>
-                                    <a href="/users/info/delete">탈퇴하기</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-                <div class="user-secession">
-                    <section>
-                        <div class="title">
-                            회원탈퇴안내
-                        </div>
-                        <div class="top">
-                            <div class="info">
-                                <div>
-                                    <p>고객님께서 회원 탈퇴를 원하신다니 저희 쇼핑몰의 서비스가 많이 부족하고 미흡했나 봅니다. 불편하셨던 점이나 불만사항을 알려주시면 적극 반영해서
-                                        고객님의
-                                        불편함을
-                                        해결해 드리도록 노력하겠습니다.</p>
-                                </div>
-                                <div>
-                                    <span>아울러 회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.</span>
-                                </div>
-                                <div>
-                                    <p>1. 회원 탈퇴 시 고객님의 정보는 상품 반품 및 A/S를 위해 전자상거래 등에서의 소비자 보호에 관한 법률에 의거한 고객정보 보호정책에 따라
-                                        관리됩니다.
-                                    </p>
-                                    <p>2. 탈퇴 시 고객님께서 보유하셨던 적립금은 삭제 됩니다.</p>
-                                    <p>3. 회원 탈퇴 시 고객님께서 보유하셨던 적립금은 삭제 됩니다.</p>
-                                    <p>4. 회원 탈퇴 후 30일간 재가입이 불가능합니다.</p>
-                                </div>
-                            </div>
-                            <div class="password">
-                                <label>비밀번호 확인<span>*</span></label>
-                                <input type="password" id="passwordInput" placeholder="현재 사용중인 비밀번호를 입력해주세요">
+    <body class="container">
+        <header class="header"><%- include('../views/partials/header'); %></header>
+        <main role="main" class="contents">
+            <div class="contents-inner">
+                <div class="user-secession-wrap">
+                    <section class="user-aside">
+                        <div id="snb" class="snb_my">
+                            <h2 class="tit_snb">마이페이지</h2>
+                            <div class="inner_sub">
+                                <ul class="list_menu">
+                                    <li class="on">
+                                        <a href="/order/:id/orderList">주문내역</a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/users/info">개인 정보 수정</a>
+                                    </li>
+                                    <li>
+                                        <a href="/users/info/delete">탈퇴하기</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
+                    </section>
+                    <div class="user-secession">
+                        <section>
+                            <div class="title">회원탈퇴안내</div>
+                            <div class="top">
+                                <div class="info">
+                                    <div>
+                                        <p>
+                                            고객님께서 회원 탈퇴를 원하신다니 저희 쇼핑몰의 서비스가
+                                            많이 부족하고 미흡했나 봅니다. 불편하셨던 점이나
+                                            불만사항을 알려주시면 적극 반영해서 고객님의 불편함을
+                                            해결해 드리도록 노력하겠습니다.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <span
+                                            >아울러 회원 탈퇴시의 아래 사항을 숙지하시기
+                                            바랍니다.</span
+                                        >
+                                    </div>
+                                    <div>
+                                        <p>
+                                            1. 회원 탈퇴 시 고객님의 정보는 상품 반품 및 A/S를 위해
+                                            전자상거래 등에서의 소비자 보호에 관한 법률에 의거한
+                                            고객정보 보호정책에 따라 관리됩니다.
+                                        </p>
+                                        <p>
+                                            2. 탈퇴 시 고객님께서 보유하셨던 적립금은 삭제 됩니다.
+                                        </p>
+                                        <p>
+                                            3. 회원 탈퇴 시 고객님께서 보유하셨던 적립금은 삭제
+                                            됩니다.
+                                        </p>
+                                        <p>4. 회원 탈퇴 후 30일간 재가입이 불가능합니다.</p>
+                                    </div>
+                                </div>
+                                <div class="password">
+                                    <label>비밀번호 확인<span>*</span></label>
+                                    <input
+                                        type="password"
+                                        id="passwordInput"
+                                        placeholder="현재 사용중인 비밀번호를 입력해주세요"
+                                    />
+                                </div>
+                            </div>
+                        </section>
                         <div class="btn-bottom">
                             <a href="/api/users/info" class="btn-cancel">취소</a>
                             <a href="#" id="btnSecession" class="btn-secede">탈퇴하기</a>
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
         <footer class="footer"><%- include('../views/partials/footer'); %></footer>
         <script>
-            const $inputPw = document.querySelector('#passwordInput');
+            const inputPw = document.querySelector('#passwordInput');
 
             btnSecession.addEventListener('click', btnDelete);
 
             async function btnDelete(e) {
                 e.preventDefault();
 
-                const password = $inputPw.value;
+                const password = inputPw.value;
 
                 const data = { password };
 
                 // 데이터 json 형태로 파싱
                 const jsonData = JSON.stringify(data);
-                const apiUrl = '/api/users/info/delete';
+                const apiUrl = '/users/info/delete';
                 const res = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ password })
+                    body: jsonData,
                 });
 
-                if (res.ok) {
-                    const result = await res.json();
-                    if (result.message === '비밀번호가 일치하지 않습니다.') {
-                        alert('비밀번호가 일치하지 않습니다.');
-                    } else {
-                        const $passwordInput = document.querySelector("#passwordInput");
-                        console.log($passwordInput);
-                        return true;
-                    }
+                if (res.status === 400) {
+                    alert('비밀번호가 일치하지 않습니다.');
                 } else {
-                    console.error('비밀번호가 일치하지 않습니다.');
+                    return (window.location.href = res.url);
                 }
-            } catch (error) {
-                console.error('서버와의 통신 중 오류가 발생했습니다.', error);
             }
-        }
-
-    </script>
-
-
-</body>
-
+        </script>
+    </body>
 </html>
