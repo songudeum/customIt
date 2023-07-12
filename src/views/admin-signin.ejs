@@ -17,23 +17,24 @@
                 <section class="top">
                     <div class="email">
                         <label>이메일</label>
-                        <input type="text" id="emailInput" placeholder="예: customit@custom.com">
-                        <div class="email-check" id="emailCheckBtn" onClick="validateEmail()">
-                            <button href="#">중복확인</button>
+                        <input type="text" id="emailInput" placeholder="예: customit@custom.com"
+                            onchange="validateEmail()">
+                        <div class="email-check" id="emailCheckBtn">
+                            <button href="#" onclick="checkEmailDuplicate()">중복확인</button>
                         </div>
                     </div>
                     <p id="emailCheck"></p>
                     <div class="password">
                         <label>비밀번호</label>
                         <input type="password" id="passwordInput" placeholder="비밀번호를 입력해주세요"
-                            onChange="validatePassword()">
+                            onchange="validatePassword()">
                         <span><a href="#">중복확인</a></span>
                     </div>
                     <p id="passwordCheck"></p>
                     <div class="password-confirm">
                         <label>비밀번호확인</label>
                         <input type="password" id="passwordInputConfirm" placeholder="비밀번호를 한번 더 입력해주세요"
-                            onChange="validatePasswordConfirm()">
+                            onchange="validatePasswordConfirm()">
                         <span><a href="#">중복확인</a></span>
                     </div>
                     <p id="pwConfirmCheck"></p>
@@ -61,7 +62,7 @@
         <%- include('../views/partials/footer'); %>
     </footer>
     <script>
-        // email 유효성 검사 
+        // 이메일 유효성 검사
         async function validateEmail() {
             const $emailInput = document.querySelector("#emailInput");
             const $emailCheck = document.querySelector("#emailCheck");
@@ -71,18 +72,21 @@
                 $emailCheck.style.fontSize = "12px";
                 $emailCheck.textContent = "올바른 이메일 형식입니다.";
                 $emailCheck.style.color = "blue";
-                return true;
 
-                return checkEmailDuplicate($emailInput.value); // 서버로 이메일 중복확인 요청 보내기
+                // 서버로 이메일 중복확인 요청 보내기
+                const isDuplicate = await checkEmailDuplicate($emailInput.value);
+                return isDuplicate;
             } else {
                 $emailCheck.style.fontSize = "12px";
                 $emailCheck.textContent = "올바른 이메일 형식이 아닙니다.";
                 $emailCheck.style.color = "red";
+                return false;
             }
         }
 
-
         async function checkEmailDuplicate(email) {
+            const $emailCheck = document.querySelector("#emailCheck");
+
             try {
                 const res = await fetch('/admin/join/emailDuplicate', {
                     method: 'POST',
@@ -95,35 +99,32 @@
                 if (res.ok) {
                     const result = await res.json();
                     if (result.message === '중복된 이메일이 존재합니다.') {
-                        const $emailCheck = document.querySelector("#emailCheck");
                         $emailCheck.style.fontSize = "12px";
                         $emailCheck.textContent = "중복된 이메일입니다.";
                         $emailCheck.style.color = "red";
+                        return true;
                     } else {
-                        const $emailCheck = document.querySelector("#emailCheck");
                         $emailCheck.style.fontSize = "12px";
                         $emailCheck.textContent = "사용 가능한 이메일입니다.";
                         $emailCheck.style.color = "blue";
-
                         enableSignUpButton();
-                        return true;
+                        return false;
                     }
                 } else {
                     console.error('이메일 중복 확인에 실패했습니다.');
+                    return false;
                 }
             } catch (error) {
                 console.error('서버와의 통신 중 오류가 발생했습니다.', error);
+                return false;
             }
         }
-
-
 
         // 회원가입 버튼 활성화 함수
         function enableSignUpButton() {
             const $signupButton = document.querySelector("#btn-signin");
             $signupButton.disabled = false;
         }
-
 
         // 비밀번호 유효성 검사
         function validatePassword() {
@@ -135,11 +136,12 @@
                 $passwordCheck.style.fontSize = "12px";
                 $passwordCheck.textContent = "안전한 비밀번호입니다.";
                 $passwordCheck.style.color = "blue";
-                return true
+                return true;
             } else {
                 $passwordCheck.style.fontSize = "12px";
                 $passwordCheck.textContent = "영문, 숫자, 특수기호 조합 8~15자리 이하로 입력해주세요.";
                 $passwordCheck.style.color = "red";
+                return false;
             }
         }
 
@@ -153,15 +155,16 @@
                 $pwConfirmCheck.style.fontSize = "12px";
                 $pwConfirmCheck.textContent = "비밀번호가 일치합니다.";
                 $pwConfirmCheck.style.color = "blue";
-                return true
+                return true;
             } else {
                 $pwConfirmCheck.style.fontSize = "12px";
                 $pwConfirmCheck.textContent = "비밀번호가 일치하지 않습니다.";
                 $pwConfirmCheck.style.color = "red";
+                return false;
             }
         }
 
-        //이름 유효성 검사
+        // 이름 유효성 검사
         function validateName() {
             const $nameInput = document.querySelector('#nameInput');
             const $nameCheck = document.querySelector('#nameCheck');
@@ -169,31 +172,25 @@
 
             if ($nameInput.value.match($nameRegex)) {
                 $nameCheck.textContent = "";
-                return true
+                return true;
             } else {
                 $nameCheck.style.fontSize = "12px";
                 $nameCheck.textContent = "이름은 2~4글자로 입력해주세요.";
                 $nameCheck.style.color = "red";
+                return false;
             }
         }
 
         // 회원가입 조건 검사
+        // 회원가입 조건 검사
         async function validateCondition() {
             const isEmailValid = await validateEmail();
-            console.log(isEmailValid)
-
             const isPasswordValid = validatePassword();
-            console.log(isPasswordValid)
-
             const isPasswordConfirmValid = validatePasswordConfirm();
-            console.log(isPasswordConfirmValid)
-
             const isNameValid = validateName();
-            console.log(isNameValid)
-
 
             if (isEmailValid && isPasswordValid && isPasswordConfirmValid && isNameValid) {
-                registerAdmin(); // 회원가입 수행
+                await registerAdmin(); // 회원가입 수행
             } else {
                 console.error('회원가입 조건을 만족하지 못했습니다.');
             }
@@ -210,6 +207,12 @@
                 password: $passwordInput,
                 name: $nameInput
             };
+
+            const isDuplicate = await checkEmailDuplicate($emailInput);
+            if (isDuplicate) {
+                console.error('중복된 이메일입니다.');
+                return;
+            }
 
             try {
                 const res = await fetch('/admin/join', {
@@ -229,6 +232,7 @@
                 console.error('서버와의 통신 중 오류가 발생했습니다.', error);
             }
         }
+
     </script>
 </body>
 

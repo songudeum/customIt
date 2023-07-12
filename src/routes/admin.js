@@ -10,7 +10,10 @@ const router = Router();
 const adminEmailCheck = /[a-z0-9]+@admin.com/;
 const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
 
-// 관리자 회원가입 api
+
+
+
+// 관리자 회원가입 API
 router.post(
     '/join',
     asyncHandler(async (req, res) => {
@@ -19,6 +22,14 @@ router.post(
         // 이메일 형식 체크하는 조건문
         if (!adminEmailCheck.test(email)) {
             const error = new Error('올바른 이메일 형식이 아닙니다.');
+            error.statusCode = 400;
+            throw error;
+        }
+
+        // 이메일 중복 확인
+        const emailDuplicate = await Admin.findOne({ email });
+        if (emailDuplicate) {
+            const error = new Error('중복된 이메일이 존재합니다.');
             error.statusCode = 400;
             throw error;
         }
@@ -39,20 +50,6 @@ router.post(
         });
 
         res.status(201).redirect('/admin/login');
-    }),
-);
-
-// 관리자 이메일 중복 확인 api
-router.post(
-    '/join/emailDuplicate',
-    asyncHandler(async (req, res) => {
-        const { email } = req.body;
-        const emailDuplicate = await Admin.findOne({ email });
-        if (emailDuplicate) {
-            res.json({ message: '중복된 이메일이 존재합니다.' });
-        } else {
-            res.json({ message: '사용 가능한 이메일입니다.' });
-        }
     }),
 );
 

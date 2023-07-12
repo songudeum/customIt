@@ -88,7 +88,7 @@ router.post(
             address,
         });
 
-        res.staus(201).redirect('/users/login');
+        res.status(201).redirect('/users/login');
     }),
 );
 
@@ -119,13 +119,14 @@ router.get('/login', (req, res) => {
 });
 
 // 사용자 회원가입
-router.get('/join', (req, res) => {
-    res.render('signin');
+router.get('/join', async (req, res) => {
+    const categories = await Category.find({});
+    res.render('signin', { categoryName: undefined, categories });
 });
 
 // 회원 탈퇴 페이지
 router.get('/info/delete', async (req, res) => {
     const categories = await Category.find({});
-    res.render('user-secession', {categoryName: undefined, categories});
+    res.render('user-secession', { categoryName: undefined, categories });
 });
 module.exports = router;
