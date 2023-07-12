@@ -92,7 +92,11 @@
                 event.target.parentNode.querySelector('#addNewCategory').style.display = 'inline';
             }
 
-            async function addNewCategory(){
+            async function addNewCategory(event){
+                event.target.parentNode.querySelector('#updateCategory').style.display = 'inline'
+                event.target.parentNode.querySelector('#deleteCategory').style.display = 'inline';
+                event.target.style.display = 'none';
+                
                 const id = event.target.getAttribute('data-id');
                 const name = event.target.closest('.list-category-li').querySelector('input').value;
                 const categoryName = {name};

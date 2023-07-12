@@ -11,29 +11,31 @@
         <div class="grid">
             <%- include('../views/partials/admin-aside.ejs'); %>
             <article class="article">
-                <h2>상품 추가</h2>
+                <h2>상품 수정</h2>
                 <section>
-                    <img class='user-image' id="userImage">
                     <form
-                    action="/api/product/"<%product.id%>"
+                    action="/api/product/<%= product.id %>"
                     enctype="multipart/form-data"
                     method="post">
                     <table>
                         <tr>
+                        <img class='user-image' id="userImage" src=<%=product.image%>>
+                        </tr>
+                        <tr>
                             <td>상품명</td>
                             <td>
-                                <input type="text" id="inputName" name="name" required />
+                                <input type="text" class="input" id="inputName" name="name" value="<%=product.name%>" required />
                                 <p class="check" id="checkName"></p>
                             </td>
                         </tr>
                         <tr>
                             <td>가격</td>
-                            <td><input type="number" id ="inputPrice" name="price" required /></td>
+                            <td><input type="number" class="input" id ="inputPrice" name="price" value="<%=product.price%>" required /></td>
                         </tr>
                         <tr>
                             <td>설명</td>
                             <td>
-                                <textarea class="inputDescription" id ="inputDescription" name="description" required></textarea>
+                                <textarea class="inputDescription input" id ="inputDescription" name="description" required><%=product.description%></textarea>
                                 <p class = "check" id="checkDescription"></p>
                             </td>
                             
@@ -41,7 +43,7 @@
                         <tr>
                             <td>제조사</td>
                             <td>
-                                <input type="text" id ="inputCompany" name="company" required />
+                                <input type="text" class="input" id ="inputCompany" name="company" value="<%=product.company%>" required />
                                 <p class="check" id="checkCompany"></p>
                             </td>
                             
@@ -49,9 +51,12 @@
                         <tr>
                             <td>카테고리</td>
                             <td>
-                                <select name="categoryName" required>
+                                <select class="input" name="categoryName" required>
                                     <% categories.forEach(category =>{ %>
-                                        <option value="<%= category.name %>"><%= category.name %></option>
+                                        <option id="optionCategory" value="<%= category.name %>" 
+                                            <% if (category.name === product.categoryName) { %> selected <% } %>>
+                                            <%= category.name %>
+                                        </option>
                                     <% }) %>
                                 </select>
                             </td>
@@ -64,7 +69,10 @@
                             </td>
                         </tr>
                     </table>
-                    <input type="submit" class="btn-large submit" value="수정 완료"/>
+                    <div class="btn-box">
+                        <input type="submit" class="btn-large" value="수정 완료"/>
+                        <a href="/admin/product" class="btn-large btn-delete" id="deleteProduct" data-id="<%=product.id %>">삭제</a>
+                    </div>
                 </form>
             </section>
             </article>
@@ -116,6 +124,17 @@
                 preview.readAsDataURL($addImage.files[0]);
             };
             $addImage.addEventListener('change',previewImg);
+
+            const $deleteProduct = document.querySelector('#deleteProduct');
+
+            async function deleteProduct(event){
+                    const id = event.target.getAttribute('data-id');
+                    const res = await fetch(`/api/product/${id}`,{
+                    method: 'DELETE'
+                });
+            }
+
+            $deleteProduct.addEventListener('click', deleteProduct);
         </script>
     </body>
 </div>

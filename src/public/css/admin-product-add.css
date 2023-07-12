@@ -3,9 +3,12 @@
     font-weight: bold;
     font-size: larger;
 }
-
+section{
+    display: flex;
+    justify-content: center;
+}
 table{
-    width:60%;
+    width: 500px;
     border-top:1px solid #353535;
     border-collapse: collapse;
     color:#353535;
@@ -38,7 +41,7 @@ select{
 }
 
 .user-image{
-    width: 400px;
+    width: 500px;
     height: 300px;
     background-color: #dbdbdb;
 }
@@ -56,4 +59,15 @@ select{
     background-color: #353535;
     color: white;
     font-weight: normal;
+}
+
+.btn-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-delete{
+    text-decoration: none;
+    margin-left: 3px;
 }
