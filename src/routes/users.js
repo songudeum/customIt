@@ -2,6 +2,7 @@ const { Router } = require('express');
 const passport = require('passport');
 const { nanoid } = require('nanoid');
 const { Users } = require('../data-access');
+const { Category } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
 const createHash = require('../utils/hash-password');
 const loginRequired = require('../middlewares/login-required');
@@ -14,7 +15,7 @@ const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
 const numberCheck = /^[0-9]+$/;
 const nameCheck = /^[가-힣]{2,4}$/;
 
-// 회원가입 이메일 중복 확인 api (send render로바꾸기!)
+// 회원가입 이메일 중복 확인 라우터
 router.post(
     '/join/emailDuplicate',
     asyncHandler(async (req, res) => {
@@ -123,7 +124,8 @@ router.get('/join', (req, res) => {
 });
 
 // 회원 탈퇴 페이지
-router.get('/info/delete', (req, res) => {
-    res.render('user-secession');
+router.get('/info/delete', async (req, res) => {
+    const categories = await Category.find({});
+    res.render('user-secession', {categoryName: undefined, categories});
 });
 module.exports = router;

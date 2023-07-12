@@ -1,14 +1,18 @@
 const { Router } = require('express');
-// const asyncHandler = require('../utils/async-handler');
-// const { Users } = require("../data-access");
+
+const { Product, Category } = require('../data-access');
+
+const asyncHandler = require('../utils/async-handler');
 
 const router = Router();
 
-// 아래 코드는 포스트맨 테스트용 코드
-
-// 입력한 정보로 유저 정보 수정
-router.get('/', (req, res) => {
-	res.send('성공');
-});
+router.get(
+    '/',
+    asyncHandler(async (req, res) => {
+        const products = await Product.find({});
+        const categories = await Category.find({});
+        res.render('index', { products, categoryName: undefined, categories });
+    }),
+);
 
 module.exports = router;

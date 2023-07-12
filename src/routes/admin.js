@@ -18,7 +18,7 @@ router.post(
 
         // 이메일 형식 체크하는 조건문
         if (!adminEmailCheck.test(email)) {
-            const error = new Error('@admin.com 형식으로 입력해주세요.');
+            const error = new Error('올바른 이메일 형식이 아닙니다.');
             error.statusCode = 400;
             throw error;
         }
@@ -42,7 +42,7 @@ router.post(
     }),
 );
 
-// 관리자 이메일 중복 확인 api (render값 수정해야함)
+// 관리자 이메일 중복 확인 api
 router.post(
     '/join/emailDuplicate',
     asyncHandler(async (req, res) => {
