@@ -1,10 +1,9 @@
 const { Router } = require('express');
-const { Users } = require('../../data-access');
+const { Users, Category } = require('../../data-access');
 const asyncHandler = require('../../utils/async-handler');
-const createHash = require('../../utils/hash-password');
+const { createHash, comparePassword } = require('../../utils/hash-password');
 const loginRequired = require('../../middlewares/login-required');
 const { jwtVerify } = require('../../utils/jwt');
-const { Category } = require('../../data-access');
 
 const router = Router();
 
@@ -16,7 +15,6 @@ router.get(
         const userEmail = jwtVerify(req);
         const userInfo = await Users.findOne({ email: userEmail });
         const categories = await Category.find({});
-
         res.render('edit-user-info', { userInfo, categoryName: undefined, categories });
     }),
 );
@@ -33,7 +31,7 @@ router.put(
 
         const categories = await Category.find({});
 
-        if (userPw !== createHash(password)) {
+        if (!comparePassword(password, userPw)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 400;
             throw error;

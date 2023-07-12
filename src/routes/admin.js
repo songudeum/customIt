@@ -2,7 +2,7 @@ const { Router } = require('express');
 const passport = require('passport');
 const { Admin } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
-const createHash = require('../utils/hash-password');
+const { createHash } = require('../utils/hash-password');
 const { setUserToken } = require('../utils/jwt');
 const loginRequired = require('../middlewares/login-required');
 
