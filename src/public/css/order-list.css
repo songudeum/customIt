@@ -102,6 +102,11 @@ body {
     line-height: 16px;
 }
 
+.btn-cancel a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .horizontal-pale-line {
     margin-top: 13px;
     border-top: 1px solid #cacaca;
@@ -124,5 +129,5 @@ body {
 .arrow-icon {
     position: relative;
     top: -82px;
-    margin-left: 10px;
+    margin-left: 50px;
 }
