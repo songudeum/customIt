@@ -10,7 +10,7 @@
         <main class="contents-inner">
             <div class="login-wrap">
                 <div class="header-logo">
-                    <a href="http://localhost:3000/admin/category">
+                    <a href="/admin/category">
                         <img src="/image/admin-logo.png" alt="admin-logo" />
                     </a>
                 </div>
@@ -24,13 +24,13 @@
                             placeholder="패스워드"
                         />
                     </div>
-                    <a href="http://localhost:3000/admin/category">
+                    <a href="/admin/category">
                         <button class="btn-login">
                             <span>LOGIN</span>
                         </button>
                     </a>
                     <div class="btn-join">
-                        <a href="http://localhost:3000/admin/join"> JOIN </a>
+                        <a href="/admin/join"> JOIN </a>
                     </div>
                 </form>
             </div>
@@ -64,7 +64,7 @@
 
             // 데이터 json 형태로 파싱
             const jsonData = JSON.stringify(data);
-            const apiUrl = 'http://localhost:3000/admin/login';
+            const apiUrl = '/admin/login';
             const res = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -75,7 +75,7 @@
             if (res.status === 400) {
                 alert('이메일 또는 비밀번호가 일치하지 않습니다.');
             } else {
-                window.location.href = 'http://localhost:3000/admin/category';
+                window.location.href = '/admin/category';
             }
         }
     </script>

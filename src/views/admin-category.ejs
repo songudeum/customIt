@@ -15,7 +15,10 @@
                     <% categories.forEach(function(category){ %>
                     <ul class="list-category" id="listCategory">
                         <li class="list-category-li">
-                            <input type="text" value= "<%= category.name %>" readonly="readonly">
+                            <div>
+                            <input type="text" value= "<%= category.name %>" oninput="validateCategory(event)" readonly="readonly">
+                            <p class="checkCategory" id="checkCategory"></p>
+                            </div>
                             <div>
                                 <button class="btn btn-small" id="updateCategory" data-id="<%=
                                 category.id %>" onclick="updateCategory(event)"> 수정 </button>
@@ -29,44 +32,51 @@
                     <% }); %>
 
                     <div class="add-category">
+                        <div>
                         <input type="text" id="inputCategory"/>
+                        <p class="checkCategory" id="checkCategory"></p>
+                        </div>
+
                         <input type="submit" data-id="test" class="btn btn-small btn-submit" id="createCategory" value="등록"/>
                     </div>
                 </section>
             </article>
         </div>
         <script>
-            /**등록**/
             const $inputCategory = document.querySelector('#inputCategory');
             const $createCategory = document.querySelector('#createCategory');
             const $listCategory = document.querySelector('#listCategory');
-            const $deleteCategory = document.querySelector('#deleteCategory');
-            const $addNewCategory = document.querySelector('#addNewCategory');
 
             async function createCategory(){
-                const name = $inputCategory.value; //값 따오기
-                const categoryName = {name}; // 객체로 변환
-                const res = await fetch('/api/category',{ //api url
+                const name = $inputCategory.value;
+                const categoryName = {name};
+                const res = await fetch('/api/category',{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                             },
-                    body: JSON.stringify(categoryName), //
+                    body: JSON.stringify(categoryName),
                 });
                 const data = await res.json()
 
-                $listCategory.insertAdjacentHTML(`<li class="list-category-li">
-                            <input type="text" value=${name} readonly="readonly">
+                $listCategory.insertAdjacentHTML(
+                    `   <li class="list-category-li">
                             <div>
-                                <button class="btn btn-small" data-id="${data.id}" onclick="updateCategory(event)"> 수정 </button>
-                                <button class="btn btn-small  data-id="${data.id}" id="deleteCategory" onclick="deleteCategory(event)"> 삭제 </button>
-                                <button class="btn btn-small addNewCategory" id="addNewCategory" data-id="${data.id}" onclick="addNewCategory(event)"> 수정 완료 </button>
+                            <input type="text" value=${name} oninput="validateCategory(event)" readonly="readonly">
+                            <p class="checkCategory" id="checkCategory"></p>
                             </div>
-                        </li>`); //해당 스크립트 insert
+                            <div>
+                                <button class="btn btn-small" id="updateCategory" data-id="${data.id}" 
+                                onclick="updateCategory(event)"> 수정 </button>
+                                <button class="btn btn-small" id="deleteCategory" data-id="${data.id}" 
+                                onclick="deleteCategory(event)"> 삭제 </button>
+                                <button class="btn btn-small addNewCategory" id="addNewCategory" data-id="${data.id}" 
+                                onclick="addNewCategory(event)"> 수정 완료 </button>
+                            </div>
+                        </li>`);
             }
             $createCategory.addEventListener('click', createCategory);
 
-            /*삭제*/
             async function deleteCategory(event){
                 const id = event.target.getAttribute('data-id');
                 const res = await fetch(`/api/category/${id}`,{
@@ -74,28 +84,36 @@
                 });
             }
 
-            /*수정 버튼 눌렀을 때*/
             async function updateCategory(event){
-                //const id = event.target.getAttribute('data-id'); 
                 const input = event.target.closest('.list-category-li').querySelector('input');
                 input.removeAttribute('readonly');
-                event.target.parentNode.style.display = 'none';
-                //event.target.parentNode.$addNewCategory.style.display = 'inline'; 안됨...
+                event.target.style.display = 'none';
+                event.target.parentNode.querySelector('#deleteCategory').style.display = 'none';
+                event.target.parentNode.querySelector('#addNewCategory').style.display = 'inline';
             }
 
-            async function addNewCategory(event){
-                const name = $inputCategory.value;
+            async function addNewCategory(){
+                const id = event.target.getAttribute('data-id');
+                const name = event.target.closest('.list-category-li').querySelector('input').value;
                 const categoryName = {name};
-                const res = await fetch('/api/category',{ 
+                const res = await fetch(`/api/category/${id}`,{
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                             },
-                    body: JSON.stringify(categoryName), 
+                    body: JSON.stringify(categoryName),
                 });
-                const data = await res.json()
             }
+            
+            function validateCategory(event){
+                if(event.target.value.length>=10){
+                    event.target.parentNode.querySelector('#checkCategory').textContent = "카테고리명을 10자 미만으로 입력해주세요.";
+                }else{
+                    event.target.parentNode.querySelector('#checkCategory').textContent = '';
+            }}
+
+            $inputCategory.addEventListener('input',validateCategory);
+
         </script>
     </body>
 </html>
-
