@@ -12,7 +12,7 @@ router.get(
     asyncHandler(async (req, res) => {
         const orders = await Order.find({});
 
-        res.render('관리자 주문 관리 페이지', { orders });
+        res.render('admin-order', { orders });
     }),
 );
 

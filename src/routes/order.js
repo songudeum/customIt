@@ -42,7 +42,7 @@ router.get(
 
 // 마이페이지 주문서 상세보기
 router.get(
-    '/:id/orderList/:orderId',
+    '/:userId/orderList/:orderId',
     asyncHandler(async (req, res) => {
         const { orderId } = req.params;
         const order = await Order.findById(orderId);
