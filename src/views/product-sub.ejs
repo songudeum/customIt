@@ -9,7 +9,9 @@
     </head>
 
     <body class="container">
-        <header class="header"><%- include('../views/partials/header'); %></header>
+        <header class="header">
+            <%- include('../views/partials/header', {categoryName, categories}); %>
+        </header>
 
         <main role="main" class="contents">
             <div class="contents-inner">
