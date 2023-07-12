@@ -1,3 +1,5 @@
+// 임시저장
+
 // 로컬스토리지에서 cart 데이터를 가져오는 함수
 function getCartDataFromLocalStorage() {
     return localStorage.getItem('cart') || '[]';
