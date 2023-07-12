@@ -64,14 +64,14 @@ router.get(
 );
 
 // 결제완료
-router.get('/payment', (req, res) => {
-    const categories = Category.find({});
+router.get('/payment', async (req, res) => {
+    const categories = await Category.find({});
     res.render('order-complete', { categories, categoryName: undefined });
 });
 
 // 주문 취소 완료 페이지
-router.get('/cancel', (req, res) => {
-    const categories = Category.find({});
+router.get('/cancel', async (req, res) => {
+    const categories = await Category.find({});
     res.render('order-cancel', { categories, categoryName: undefined });
 });
 module.exports = router;
