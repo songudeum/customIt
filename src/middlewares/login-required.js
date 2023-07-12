@@ -2,7 +2,7 @@
 module.exports = (req, res, next) => {
     // 로그인 안되어 있다면 메인 화면으로
     if (!req.cookies.token) {
-        res.redirect('/')
+        res.redirect('/');
         return;
     }
 

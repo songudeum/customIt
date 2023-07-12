@@ -16,7 +16,7 @@ main .contents-inner {
     display: flex;
     justify-content: left;
     margin-top: 70px;
-    margin-left: 50px;
+    margin-left: 350px;
 }
 
 .snb-my {
@@ -54,7 +54,7 @@ main .contents-inner {
 }
 
 .title-wrap {
-    margin-left: 300px;
+    margin-left: 700px;
     margin-top: -230px;
 }
 
@@ -71,19 +71,26 @@ main .contents-inner {
 }
 
 .order-list-wrap {
-    margin-left: 300px;
+    margin-left: 700px;
     margin-top: 30px;
+    margin-bottom: 100px;
 }
 
 .order-infobox {
     margin-bottom: 30px;
 }
+.btnbox {
+    display: flex;
+    align-items: center;
+}
 
 .btn-cancel {
+    position: relative;
+    top: -82px;
     width: 69px;
     height: 24px;
     flex-shrink: 0;
-    margin-left: 500px;
+    margin-left: 450px;
     border-radius: 5px;
     border: 1px solid #fff;
     background: #a586f6;
@@ -101,4 +108,20 @@ main .contents-inner {
     width: 600px;
 }
 .item {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.item .sub {
+    margin-right: 50px;
+}
+
+.order-status {
+    color: #a586f6;
+}
+.arrow-icon {
+    position: relative;
+    top: -82px;
+    margin-left: 10px;
 }

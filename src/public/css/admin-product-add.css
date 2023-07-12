@@ -5,27 +5,42 @@
 }
 
 table{
-    width:50%;
-    border-top:3px solid gray;
+    width:60%;
+    border-top:1px solid #353535;
     border-collapse: collapse;
-    color:#353535;;
+    color:#353535;
 }
 
-td, th{
+td{
     padding: 10px;
     border-bottom: 1px solid #bbbbbb;
-    font-weight: bold;
+    vertical-align: middle;
+}
+
+td input{
+    width: 70%;
+}
+
+.inputDescription{
+    width: 70%;
+    height: 100px;
+}
+
+.check{
+    font-size: smaller;
+    margin-top: 3px;
+    color: #A586F6;
 }
 
 select{
-    width: 60%;
+    width: 70%;
     padding: 5px 10px 5px 10px;
 }
 
-.file-name{
-    width: 50%;
-    padding: 3px 5px 3px 5px;
-    border: 1px solid gray;
+.user-image{
+    width: 400px;
+    height: 300px;
+    background-color: #dbdbdb;
 }
 
 .add-image{

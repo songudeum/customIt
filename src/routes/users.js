@@ -98,6 +98,7 @@ router.post(
     '/info/delete',
     loginRequired,
     asyncHandler(async (req, res) => {
+        console.log(req.body);
         const { password } = req.body;
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
