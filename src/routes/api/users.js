@@ -23,33 +23,37 @@ router.get(
 
 // 개인페이지 사용자 정보 수정 api
 router.put(
-    '/info/edit',
+    '/users/info/edit', // 경로를 '/users/info/edit'로 변경
     loginRequired,
     asyncHandler(async (req, res) => {
+        console.log(req.body);
         const userEmail = jwtVerify(req);
-        const { email, password, newPassword, name, phoneNumber, address } = req.body;
+        const { email, name, phoneNumber, address1, address2 } = req.body;
         const user = await Users.findOne({ email: userEmail });
-        const userPw = user.password;
-
-        const categories = await Category.find({});
-
-        if (userPw !== createHash(password)) {
-            const error = new Error('비밀번호가 일치하지 않습니다.');
-            error.statusCode = 400;
-            throw error;
-        }
-        const newUserInfo = await Users.findOneAndUpdate(
+        console.log(user);
+        await Users.findOneAndUpdate(
             { email: userEmail },
             {
                 email,
-                password: createHash(newPassword),
+                password: user.password,
                 name,
                 phoneNumber,
-                address,
+                address: {
+                    address1,
+                    address2,
+                },
             },
         );
-        res.render('edit-user-info', { newUserInfo, categoryName: undefined, categories });
+
+        const updatedUserInfo = await Users.findOne({ email });
+
+        const categories = await Category.find({});
+
+        res.render('edit-user-info', {
+            userInfo: updatedUserInfo,
+            categoryName: undefined,
+            categories,
+        });
     }),
 );
-
 module.exports = router;

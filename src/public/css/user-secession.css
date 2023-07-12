@@ -10,7 +10,7 @@ body {
 }
 
 .user-secession .title {
-    margin: 70px 0 20px 15px;
+    margin: 25px 0 20px 15px;
     font-size: 28px;
     line-height: 35px;
     font-weight: 500;
@@ -18,7 +18,7 @@ body {
 }
 
 .user-secession {
-    max-width: 660px;
+    max-width: 750px;
     padding: 0 30px;
 }
 
@@ -43,7 +43,7 @@ body {
 .user-secession-wrap .top {
     display: flex;
     flex-direction: column;
-    max-width: 660px;
+    max-width: 750px;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     padding: 15px 0;
@@ -122,6 +122,12 @@ body {
     width: 200px;
 }
 
+.aside-section-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .snb_my .tit_snb {
     padding: 8px 0 33px 1px;
     font-weight: 700;
@@ -131,11 +137,6 @@ body {
     letter-spacing: -0.5px;
 }
 
-.user-aside {
-    margin-top: 70px;
-    float: right;
-}
-
 .snb_my .inner_sub {
     border: 1px solid #f2f2f2;
     border-bottom: 0;
@@ -143,6 +144,14 @@ body {
 
 .snb_my .list_menu li {
     border-bottom: 1px solid #f2f2f2;
+}
+
+.snb_my .list_menu li.on a:hover,
+.snb_my .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        52%;
+    background-size: 6px 11px;
+    color: #666;
 }
 
 .snb_my .list_menu li a {
@@ -155,6 +164,7 @@ body {
     color: #666;
     line-height: 20px;
     letter-spacing: -0.3px;
+    text-decoration: none;
 }
 
 .snb_my .link_inquire {
@@ -165,7 +175,7 @@ body {
     margin-top: 20px;
     padding: 9px 0 0 21px;
     border-radius: 0 100px 100px 0;
-    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
         25px;
     background-size: 6px 11px;
     font-size: 12px;

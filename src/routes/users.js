@@ -1,10 +1,9 @@
 const { Router } = require('express');
 const passport = require('passport');
 const { nanoid } = require('nanoid');
-const { Users } = require('../data-access');
-const { Category } = require('../data-access');
+const { Users, Category } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
-const createHash = require('../utils/hash-password');
+const { createHash, comparePassword } = require('../utils/hash-password');
 const loginRequired = require('../middlewares/login-required');
 const { setUserToken, jwtVerify } = require('../utils/jwt');
 
@@ -98,11 +97,11 @@ router.post(
     '/info/delete',
     loginRequired,
     asyncHandler(async (req, res) => {
-        console.log(req.body);
         const { password } = req.body;
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
-        if (user.password !== createHash(password)) {
+        const userPw = user.password;
+        if (!comparePassword(password, userPw)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 400;
             throw error;
@@ -110,6 +109,42 @@ router.post(
         await Users.deleteOne({ email: userEmail });
 
         res.status(200).redirect('/');
+    }),
+);
+
+// 사용자 비밀번호 변경 라우터
+router.post(
+    '/info/edit/pw',
+    loginRequired,
+    asyncHandler(async (req, res) => {
+        const userEmail = jwtVerify(req);
+        const user = await Users.findOne({ email: userEmail });
+        const { password, newPassword } = req.body;
+        const userPw = user.password;
+
+        // const categories = await Category.find({});
+
+        if (!comparePassword(password, userPw)) {
+            const error = new Error('비밀번호가 일치하지 않습니다.');
+            error.statusCode = 401;
+            throw error;
+        }
+        if (!pwCheck.test(newPassword)) {
+            const error = new Error('영문 숫자 특수기호 조합 8~15자 이하로 입력해주세요.');
+            error.statusCode = 400;
+            throw error;
+        }
+        await Users.findOneAndUpdate(
+            { email: userEmail },
+            {
+                email: userEmail,
+                password: createHash(newPassword),
+                name: user.name,
+                phoneNumber: user.phoneNumber,
+                address: user.address,
+            },
+        );
+        res.json({ message: '비밀번호가 변경되었습니다.' });
     }),
 );
 
@@ -123,6 +158,13 @@ router.get('/join', async (req, res) => {
     const categories = await Category.find({});
     res.render('signin', { categoryName: undefined, categories });
 });
+
+// 회원 비밀번호 수정 페이지
+router.get('/info/edit/pw', async (req, res) => {
+    const categories = await Category.find({});
+    res.render('change-password', { categoryName: undefined, categories });
+});
+module.exports = router;
 
 // 회원 탈퇴 페이지
 router.get('/info/delete', async (req, res) => {
