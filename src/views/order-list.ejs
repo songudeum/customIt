@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -166,7 +165,41 @@
                 </div>
             </div>
         </div>
-            </main>
+        <p id="error-message"></p>
+    </main>
         <footer><%- include('../views/partials/footer'); %></footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                // 주문 조회 기능
+            // '/api/orders' 라는 경로에서 주문 내역을 가져온다면
+            fetch('/api/orders')
+                .then(response => response.json())
+                .then(data => {
+                    // data를 사용하여 주문 내역을 표시
+                });
+    
+            // 주문 취소 기능
+            const cancelButtons = document.querySelectorAll('.btn-cancel');
+            cancelButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const orderId = this.parentNode.parentNode.dataset.orderId;
+                    fetch(`/api/orders/${orderId}`, {
+                        method: 'DELETE'
+                    }).then(response => {
+                        if (!response.ok) {
+                            throw new Error('Order cancellation failed');
+                        }
+                        // 주문 취소가 성공하면, 주문 취소 버튼을 비활성화
+                        this.disabled = true;
+                        alert('주문이 취소되었습니다.');
+                    }).catch(error => {
+                        const errorMessageElement = document.getElementById('error-message');
+                        errorMessageElement.textContent = error.message;  // 에러 메시지를 HTML 요소에 표시
+                    });
+                });
+            });
+            });
+            
+        </script>
     </body>
 </html>
