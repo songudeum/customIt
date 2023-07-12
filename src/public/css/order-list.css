@@ -4,13 +4,13 @@ body {
     margin: 0;
 }
 
-main .contents-inner {
+/* main .contents-inner {
     display: flex;
     justify-content: space-around;
     background-color: rgb(255, 255, 255);
     width: 1280px;
     margin: 0 auto;
-}
+} */
 
 .user-aside {
     display: flex;
@@ -51,6 +51,7 @@ main .contents-inner {
     color: #666;
     line-height: 20px;
     letter-spacing: -0.3px;
+    text-decoration: none;
 }
 
 .title-wrap {
@@ -101,6 +102,11 @@ main .contents-inner {
     line-height: 16px;
 }
 
+.btn-cancel a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .horizontal-pale-line {
     margin-top: 13px;
     border-top: 1px solid #cacaca;
@@ -123,5 +129,5 @@ main .contents-inner {
 .arrow-icon {
     position: relative;
     top: -82px;
-    margin-left: 10px;
+    margin-left: 50px;
 }
