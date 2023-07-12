@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { Order } = require('../data-access');
 const { getCartDataFromLocalStorage } = require('./cart');
+const { Category } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
 
 const router = Router();
@@ -11,7 +12,8 @@ router.get(
     asyncHandler(async (req, res) => {
         // 로컬스토리지에서 카트 데이터 가져오기
         const cartData = JSON.parse(getCartDataFromLocalStorage());
-        res.render('장바구니 내역을 담은 결제 전 주문서 페이지', { cartData });
+        const categories = await Category.find({});
+        res.render('수정예정', { cartData, categories, categoryName: undefined });
     }),
 );
 
@@ -21,7 +23,7 @@ router.get(
     asyncHandler(async (req, res) => {
         // 요청 파라미터에서 userId 가져오기
         const { userId } = req.params;
-
+        const categories = await Category.find({});
         const orders = await Order.find({ userId }); // 주문 데이터 Find
         const orderList = orders.map((order) => {
             const { orderId, totalPrice, deliveryStatus, image } = order;
@@ -34,17 +36,7 @@ router.get(
             };
         });
 
-        res.render('마이페이지 주문 리스트', { orderList });
-    }),
-);
-
-// 마이페이지 주문내역 상세
-router.get(
-    '/:id/orderList/:orderId',
-    asyncHandler(async (req, res) => {
-        const { orderId } = req.params;
-        const order = await Order.findById(orderId);
-        res.render('마이페이지 주문서 상세보기', { order });
+        res.render('order-list', { orderList, categories, categoryName: undefined });
     }),
 );
 
@@ -54,7 +46,8 @@ router.get(
     asyncHandler(async (req, res) => {
         const { orderId } = req.params;
         const order = await Order.findById(orderId);
-        res.render('마이페이지 주문서 상세보기', { order });
+        const categories = await Category.find({});
+        res.render('order-detail', { order, categories, categoryName: undefined });
     }),
 );
 
@@ -63,20 +56,22 @@ router.get(
     '/edit/:userId/:orderId',
     asyncHandler(async (req, res) => {
         const { orderId } = req.params;
-
+        const categories = await Category.find({});
         const order = await Order.findOne({ orderId });
 
-        res.render('배송정보 수정 페이지', { order });
+        res.render('order-list-edit', { order, categories, categoryName: undefined });
     }),
 );
 
 // 결제완료
 router.get('/payment', (req, res) => {
-    res.render('결제 완료 페이지');
+    const categories = Category.find({});
+    res.render('order-complete', { categories, categoryName: undefined });
 });
 
 // 주문 취소 완료 페이지
 router.get('/cancel', (req, res) => {
-    res.render('취소 완료 페이지');
+    const categories = Category.find({});
+    res.render('order-cancel', { categories, categoryName: undefined });
 });
 module.exports = router;

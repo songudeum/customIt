@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const { Product } = require('../data-access');
+const { Product, Category } = require('../data-access');
 
 const asyncHandler = require('../utils/async-handler');
 
@@ -11,7 +11,9 @@ router.get(
     asyncHandler(async (req, res) => {
         const { categoryName } = req.params;
         const products = await Product.find({ categoryName });
-        res.render('product-sub', { products });
+        const categories = await Category.find({});
+
+        res.render('product-sub', { products, categoryName, categories });
     }),
 );
 
@@ -20,7 +22,9 @@ router.get(
     asyncHandler(async (req, res) => {
         const { id } = req.params;
         const product = await Product.findOne({ id });
-        res.render('product-detail', { product });
+        const categories = await Category.find({});
+        const categoryName = product.categoryName;
+        res.render('product-detail', { product, categoryName, categories });
     }),
 );
 
