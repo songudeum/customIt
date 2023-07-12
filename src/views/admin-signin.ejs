@@ -17,8 +17,7 @@
                 <section class="top">
                     <div class="email">
                         <label>이메일</label>
-                        <input type="text" id="emailInput" placeholder="예: customit@custom.com"
-                            onchange="validateEmail()">
+                        <input type="text" id="emailInput" placeholder="공유된 형식으로 작성해주세요" onchange="validateEmail()">
                         <div class="email-check" id="emailCheckBtn">
                             <button href="#" onclick="checkEmailDuplicate()">중복확인</button>
                         </div>
@@ -40,7 +39,7 @@
                     <p id="pwConfirmCheck"></p>
                     <div class="name">
                         <label>이름</label>
-                        <input type="text" id="nameInput" placeholder="이름은 2~4글자로 입력해주세요." onchange="validateName()">
+                        <input type="text" id="nameInput" placeholder="이름은 2~4글자로 입력해주세요" onchange="validateName()">
                         <span><a href="#">중복확인</a></span>
                     </div>
                     <p id="nameCheck"></p>
@@ -84,8 +83,10 @@
             }
         }
 
-        async function checkEmailDuplicate(email) {
+        async function checkEmailDuplicate() {
             const $emailCheck = document.querySelector("#emailCheck");
+            const $emailInput = document.querySelector("#emailInput");
+            const email = $emailInput.value;
 
             try {
                 const res = await fetch('/admin/join/emailDuplicate', {
@@ -182,15 +183,14 @@
         }
 
         // 회원가입 조건 검사
-        // 회원가입 조건 검사
-        async function validateCondition() {
-            const isEmailValid = await validateEmail();
+        function validateCondition() {
+            const isEmailValid = validateEmail();
             const isPasswordValid = validatePassword();
             const isPasswordConfirmValid = validatePasswordConfirm();
             const isNameValid = validateName();
 
             if (isEmailValid && isPasswordValid && isPasswordConfirmValid && isNameValid) {
-                await registerAdmin(); // 회원가입 수행
+                registerAdmin(); // 회원가입 수행
             } else {
                 console.error('회원가입 조건을 만족하지 못했습니다.');
             }
