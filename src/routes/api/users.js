@@ -14,11 +14,11 @@ router.get(
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         const userInfo = await Users.findOne({ email: userEmail });
-        res.render('edit-user-info', userInfo);
+        res.render('edit-user-info', { userInfo });
     }),
 );
 
-// 개인페이지 사용자 정보 수정 api(send 나중에 render로 수정)
+// 개인페이지 사용자 정보 수정 api
 router.put(
     '/info/edit',
     loginRequired,

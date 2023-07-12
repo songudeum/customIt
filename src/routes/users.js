@@ -14,7 +14,7 @@ const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
 const numberCheck = /^[0-9]+$/;
 const nameCheck = /^[가-힣]{2,4}$/;
 
-// 회원가입 이메일 중복 확인 api (send render로바꾸기!)
+// 회원가입 이메일 중복 확인 라우터
 router.post(
     '/join/emailDuplicate',
     asyncHandler(async (req, res) => {
@@ -35,7 +35,6 @@ router.post('/login', passport.authenticate('local', { session: false }), (req, 
 
     res.status(200).redirect('/');
 });
-
 
 // 로그아웃 라우터
 router.get('/logout', (req, res) => {
