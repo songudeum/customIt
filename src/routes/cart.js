@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { getCartDataFromLocalStorage } = require('../data-access/localStorage');
-
+const { Category } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
 
 const router = Router();
@@ -9,10 +9,11 @@ const router = Router();
 router.get(
     '/',
     asyncHandler(async (req, res) => {
+        const categories = await Category.find({});
         const products = await getCartDataFromLocalStorage();
         // getProductsFromLocalStorage() 함수를 사용해 로컬 스토리지에 저장된 상품 정보를 가져옴
 
-        res.render('main-cart', { products });
+        res.render('main-cart', { products }, { categories, categoryName: undefined });
         // products 값을 넘겨주어, 이를 사용하여 장바구니 페이지를 렌더
     }),
 );
