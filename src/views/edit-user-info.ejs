@@ -23,11 +23,14 @@
                         <div class="inner_sub">
                             <ul class="list_menu">
                                 <li class="on">
-                                    <a href="#">주문내역</a>
+                                    <a href="/order/orderList">주문내역</a>
                                 </li>
 
                                 <li>
-                                    <a href="/users/info/:email">개인 정보 수정</a>
+                                    <a href="/api/users/info">개인 정보 수정</a>
+                                </li>
+                                <li>
+                                    <a href="/users/info/delete">탈퇴 하기</a>
                                 </li>
                             </ul>
                         </div>
@@ -42,14 +45,15 @@
                     <div class="top">
                         <div class="email">
                             <label>이메일<div>*</div></label>
-                            <input type="text" id="emailInput" placeholder="사용자 이메일" readonly>
+                            <input type="text" id="emailInput" value="<%= userInfo.email %>" readonly>
                             <span class="hidden"><a href="#">중복확인</a></span>
                         </div>
                         <p id="emailCheck"></p>
 
                         <div class="name">
                             <label>이름<div>*</div></label>
-                            <input type="text" id="nameInput" placeholder="사용자 이름" onchange="validateName()" readonly>
+                            <input type="text" id="nameInput" value="<%= userInfo.name %>" onchange="validateName()"
+                                readonly>
                             <span><a href="#">중복확인</a></span>
                         </div>
                         <p id="nameCheck"></p>
@@ -80,15 +84,16 @@
 
                         <div class="phone-num">
                             <label>휴대폰</label>
-                            <input type="tel" id="phoneNumInput" placeholder="'-' 없이 번호만 입력해주세요"
-                                onchange="validatePhoneNum()" maxlength="13">
+                            <input type="tel" id="phoneNumInput" value="<%= userInfo.phoneNumber %>"
+                                placeholder="'-' 없이 번호만 입력해주세요" onchange="validatePhoneNum()" maxlength="13">
                             <span><a href="#">중복확인</a></span>
                         </div>
                         <p id="phoneNumCheck"></p>
 
                         <div class="address">
                             <label>주소</label>
-                            <input type="text" id="addressInput" placeholder="우측 주소 검색을 클릭해주세요" readonly>
+                            <input type="text" id="addressInput" value="<%= userInfo.address.address1 %>"
+                                placeholder="우측 주소 검색을 클릭해주세요" readonly>
                             <div class="address-check" id="addressCheckBtn">
                                 <div><button href="#" onclick="openKakaoMap()">주소검색</button></div>
                             </div>
@@ -96,13 +101,15 @@
 
                         <div class="detail-address">
                             <label>상세주소</label>
-                            <input type="text" id="detailAddress" placeholder="상세주소를 입력해주세요">
+                            <input type="text" id="detailAddress" value="<%= userInfo.address.address2 %>"
+                                placeholder="상세주소를 입력해주세요">
                             <span><a href="#">중복확인</a></span>
                         </div>
                     </div>
                     <div class="btn-bottom">
-                        <a href="/api/users/info/delete/:email" class="btn-secede">탈퇴하기</a>
                         <a href="#" class="btn-edit-user-info">회원정보수정</a>
+                        <a href="/order/:id/orderList/:orderId" class="btn-secede">취소하기</a>
+
                     </div>
                 </div>
             </div>
@@ -164,6 +171,67 @@
                 $phoneNumCheck.style.color = "red";
             }
         }
+
+
+        async function registerUser() {
+            const $passwordInput = document.querySelector("#passwordInput").value;
+            const $phoneNumInput = document.querySelector("#phoneNumInput").value;
+            const $addressInput = document.querySelector("#addressInput").value;
+            const $detailAddressInput = document.querySelector("#detailAddress").value;
+            const $newPasswordInput = document.querySelector("#newPasswordInput").value;
+
+            const userData = {
+                password: $passwordInput,
+                phoneNumber: $phoneNumInput,
+                newPassword: $newPasswordInput,
+                address: {
+                    "address1": $addressInput,
+                    "address2": $detailAddressInput
+                }
+            };
+
+            try {
+                const res = await fetch('/api/users/info/edit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                if (res.ok) {
+                    window.location.href = res.url
+                } else {
+                    console.error('비밀번호가 일치하지 않습니다.');
+                }
+            } catch (error) {
+                console.error('서버와의 통신 중 오류가 발생했습니다.', error);
+            }
+        }
+
+        // 개인정보 수정 조건 검사
+        function validateCondition() {
+            const isPasswordValid = validatePassword();
+            const isNewPasswordValid = validateNewPassword();
+            const isPasswordConfirmValid = validatePasswordConfirm();
+            const isPhoneNumValid = validatePhoneNum();
+
+            if (isPasswordValid && isNewPasswordValid && isPasswordConfirmValid && isPhoneNumValid) {
+                const passwordInput = document.querySelector("#passwordInput");
+                const newPasswordInput = document.querySelector("#newPasswordInput");
+                const phoneNumInput = document.querySelector("#phoneNumInput");
+
+                const password = passwordInput.value;
+                const newPassword = isNewPasswordValid ? newPasswordInput.value : null;
+                const phoneNumber = isPhoneNumValid ? phoneNumInput.value : null;
+
+                // 서버로 수정할 개인 정보 전송
+                updateUserProfile(password, newPassword, phoneNumber);
+            } else {
+                console.error('개인정보 수정 조건을 만족하지 못했습니다.');
+            }
+        }
+
     </script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
