@@ -140,6 +140,11 @@ body {
     color: #bbbbbb;
 }
 
+.edit-user-info input:focus {
+    border-color: #9b7ce9;
+    color: #2f3438;
+}
+
 .edit-user-info .top .btn-address {
     display: flex;
     justify-content: space-around;

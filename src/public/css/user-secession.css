@@ -80,6 +80,11 @@ body {
     color: #bbbbbb;
 }
 
+.user-secession input:focus {
+    border-color: #9b7ce9;
+    color: #2f3438;
+}
+
 .user-secession .btn-bottom {
     display: inline-flex;
     width: 100vh;
