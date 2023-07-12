@@ -29,47 +29,56 @@
 .header-inner .nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .header-inner .nav .gnb {
     display: flex;
-    justify-content: space-between;
-    width: 230px;
-    margin: 0 20px;
 }
 
-.header-inner .nav .gnb a {
+.header-inner .nav .gnb .btn-gnb {
+    position: relative;
+    padding: 0 10px;
     text-decoration: none;
     color: #2f3438;
     font-size: 18px;
-    transition: font-weight 0.2s;
+    transition: all 0.2s;
+    cursor: pointer;
 }
 
-.header-inner .nav .gnb a:hover {
+.header-inner .nav .gnb .btn-gnb.active {
     font-weight: 600;
 }
 
-.header-inner .nav .gnb a:active {
+.header-inner .nav .gnb .btn-gnb:active {
     color: #6c6c6c;
+}
+
+.header-inner .nav .gnb .btn-gnb:hover {
+    color: #a586f6;
 }
 
 .header-inner .nav .utils {
     display: flex;
-    align-items: center;
+    margin-left: 10px;
+}
+
+.header-inner .nav .utils > li {
+    margin-left: 4px;
 }
 
 .header-inner .btn-cart,
 .header-inner .btn-user {
     display: inline-block;
-    margin: 0 5px 0 0;
     width: 30px;
-    height: 30px;
+    height: 36px;
 }
 
-.header-inner .btn-cart img,
-.header-inner .btn-user img {
-    width: 100%;
+.header-inner .btn-cart {
+    background: url('../image/cart.png') no-repeat center / 22px;
+}
+
+.header-inner .btn-user {
+    background: url('../image/user.png') no-repeat center / 20px;
 }
 
 .header-inner .btn-login,
@@ -79,7 +88,6 @@
     justify-content: center;
     align-items: center;
     height: 36px;
-    margin: 0 2px;
     padding: 0 18px;
     border-radius: 20px;
     color: white;
