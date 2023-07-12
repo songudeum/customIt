@@ -5,15 +5,35 @@
     <%- include('../views/partials/head.ejs'); %>
         <link rel="stylesheet" href="/css/user-login.css" />
         <link rel="stylesheet" href="/css/layout.css" />
-</head>
-
-<body class="container">
-    <header class="header"></header>
-    <main class="contents-inner">
-        <div class="login-wrap">
-            <div class="header-logo">
-                <a href="/">
-                    <img src="/image/customit-big-logo1.png" alt="custom-it-logo" />
+    </head>
+    <body class="container">
+        <header class="header"></header>
+        <main class="contents-inner">
+            <div class="login-wrap">
+                <div class="header-logo">
+                    <a href="/">
+                        <img src="/image/customit-big-logo.png" alt="custom-it-logo" />
+                    </a>
+                </div>
+                <form method="post" action="/users/login" class="login-form" id="loginForm">
+                    <div class="login-box">
+                        <input type="text" id="email" name="email" placeholder="Email" />
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Password"
+                        />
+                    </div>
+                    <button class="btn-login">
+                        <span>LOGIN</span>
+                    </button>
+                    <div class="btn-join">
+                        <a href="/users/join"> JOIN </a>
+                    </div>
+                </form>
+                <a href="/admin/login" class="admin-page">
+                    <p>관리자이신가요&#63; 어드민 페이지로 이동 &gt;</p>
                 </a>
             </div>
             <form method="post" action="/users/login" class="login-form" id="loginForm">

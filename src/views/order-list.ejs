@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -42,7 +41,7 @@
                                 <div class="horizontal-pale-line"></div>
                                 <div class="order-box">
                                     <div class="thum">
-                                        <img src="./img/thum1.jpg" alt="" class="img-full">
+                                        <img src=" " alt="" class="상품 대표 이미지">
                                     </div>
                                     <div class="order-infobox">
                                         <div class="item">
@@ -65,17 +64,22 @@
                                             <p class="sub">
                                                 주문상태
                                             </p>
-                                            <p class="desc">
+                                            <p class="order-status">
                                                 상품 준비중
                                             </p>
                                         </div>
+                                        
                                     </div>
                                     <div class="btnbox">
                                         <button type="button" class="btn-cancel">
                                             주문취소
                                         </button>
+                                            <a href="/order/:id/orderList/:orderId">
+                                                <img src="../public/image/icon-orderlist-arrow.png" class="arrow-icon" alt="arrow-icon" />
+                                            </a>
                                     </div>
-                                    <i class="xi-angle-right-thin order_arrow"></i>
+                                    <!-- 화살표 이미지 넣기 -->
+                                    
                                 </div>
                             </div>
                             <div class="order-item">
@@ -85,7 +89,7 @@
                                 <div class="horizontal-pale-line"></div>
                                 <div class="order-box">
                                     <div class="thum">
-                                        <img src="./img/thum1.jpg" alt="" class="img-full">
+                                        <img src=" " alt="" class="상품 대표이미지">
                                     </div>
                                     <div class="order-infobox">
                                         <div class="item">
@@ -108,12 +112,13 @@
                                             <p class="sub">
                                                 주문상태
                                             </p>
-                                            <p class="desc done">
+                                            <p class="order-status">
                                                 배송완료
                                             </p>
                                         </div>
+                                         <!-- 화살표 이미지 넣기 -->
                                     </div>
-                                    <i class="xi-angle-right-thin order_arrow"></i>
+                                    
                                 </div>
                             </div>
                             <div class="order-item">
@@ -123,7 +128,7 @@
                                 <div class="horizontal-pale-line"></div>
                                 <div class="order-box">
                                     <div class="thum">
-                                        <img src="./img/thum1.jpg" alt="" class="img-full">
+                                        <img src=" " alt="" class="상품 대표 이미지">
                                     </div>
                                     <div class="order-infobox">
                                         <div class="item">
@@ -146,12 +151,13 @@
                                             <p class="sub">
                                                 주문상태
                                             </p>
-                                            <p class="desc done">
+                                            <p class="order-status">
                                                 배송완료
                                             </p>
                                         </div>
+                                         <!-- 화살표 이미지 넣기 -->
                                     </div>
-                                    <i class="xi-angle-right-thin order_arrow"></i>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -159,7 +165,41 @@
                 </div>
             </div>
         </div>
-            </main>
+        <p id="error-message"></p>
+    </main>
         <footer><%- include('../views/partials/footer'); %></footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                // 주문 조회 기능
+            // '/api/orders' 라는 경로에서 주문 내역을 가져온다면
+            fetch('/api/orders')
+                .then(response => response.json())
+                .then(data => {
+                    // data를 사용하여 주문 내역을 표시
+                });
+    
+            // 주문 취소 기능
+            const cancelButtons = document.querySelectorAll('.btn-cancel');
+            cancelButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const orderId = this.parentNode.parentNode.dataset.orderId;
+                    fetch(`/api/orders/${orderId}`, {
+                        method: 'DELETE'
+                    }).then(response => {
+                        if (!response.ok) {
+                            throw new Error('Order cancellation failed');
+                        }
+                        // 주문 취소가 성공하면, 주문 취소 버튼을 비활성화
+                        this.disabled = true;
+                        alert('주문이 취소되었습니다.');
+                    }).catch(error => {
+                        const errorMessageElement = document.getElementById('error-message');
+                        errorMessageElement.textContent = error.message;  // 에러 메시지를 HTML 요소에 표시
+                    });
+                });
+            });
+            });
+            
+        </script>
     </body>
 </html>
