@@ -88,7 +88,7 @@ router.post(
             address,
         });
 
-        res.staus(201).redirect('/users/login');
+        res.status(201).redirect('/users/login');
     }),
 );
 
