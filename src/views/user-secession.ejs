@@ -74,13 +74,23 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <%- include('../views/partials/footer'); %>
-    </footer>
-    <script>
-        async function checkPasswordDuplicate(password) {
-            try {
-                const res = await fetch('/user/info/delete', {
+        <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+        <script>
+            const $inputPw = document.querySelector('#passwordInput');
+
+            btnSecession.addEventListener('click', btnDelete);
+
+            async function btnDelete(e) {
+                e.preventDefault();
+
+                const password = $inputPw.value;
+
+                const data = { password };
+
+                // 데이터 json 형태로 파싱
+                const jsonData = JSON.stringify(data);
+                const apiUrl = '/api/users/info/delete';
+                const res = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
