@@ -4,6 +4,7 @@ const asyncHandler = require('../../utils/async-handler');
 const createHash = require('../../utils/hash-password');
 const loginRequired = require('../../middlewares/login-required');
 const { jwtVerify } = require('../../utils/jwt');
+const { Category } = require('../../data-access');
 
 const router = Router();
 
@@ -14,7 +15,9 @@ router.get(
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         const userInfo = await Users.findOne({ email: userEmail });
-        res.render('edit-user-info', { userInfo });
+        const categories = await Category.find({});
+
+        res.render('edit-user-info', { userInfo, categoryName: undefined, categories });
     }),
 );
 
@@ -27,6 +30,8 @@ router.put(
         const { email, password, newPassword, name, phoneNumber, address } = req.body;
         const user = await Users.findOne({ email: userEmail });
         const userPw = user.password;
+
+        const categories = await Category.find({});
 
         if (userPw !== createHash(password)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
@@ -43,7 +48,7 @@ router.put(
                 address,
             },
         );
-        res.render('edit-user-info', { newUserInfo });
+        res.render('edit-user-info', { newUserInfo, categoryName: undefined, categories });
     }),
 );
 
