@@ -7,23 +7,20 @@ const { jwtVerify } = require('../../utils/jwt');
 
 const router = Router();
 
-// 회원가입 사용자 이메일 중복 확인 api (send render로바꾸기!)
-router.post(
-    '/join/emailDuplicate',
+// 사용자 정보 조회 라우터
+router.get(
+    '/info',
+    loginRequired,
     asyncHandler(async (req, res) => {
-        const { email } = req.body;
-        const emailDuplicate = await Users.findOne({ email });
-        if (emailDuplicate) {
-            res.json({ message: '중복된 이메일이 존재합니다.' });
-        } else {
-            res.json({ message: '사용 가능한 이메일입니다.' });
-        }
+        const userEmail = jwtVerify(req);
+        const userInfo = await Users.findOne({ email: userEmail });
+        res.render('edit-user-info', { userInfo });
     }),
 );
 
-// 개인페이지 사용자 정보 수정 api(send 나중에 render로 수정)
+// 개인페이지 사용자 정보 수정 api
 router.put(
-    '/info/edit/:userId',
+    '/info/edit',
     loginRequired,
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
@@ -46,7 +43,7 @@ router.put(
                 address,
             },
         );
-        res.render('user-secession', { newUserInfo });
+        res.render('edit-user-info', { newUserInfo });
     }),
 );
 
