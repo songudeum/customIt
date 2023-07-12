@@ -1,8 +1,10 @@
-const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 
-// 비밀번호 hash화 하는 함수
-module.exports = (password) => {
-    const hash = crypto.createHash('sha1');
-    hash.update(password);
-    return hash.digest('hex');
+const createHash = (password) => {
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    return hashedPassword;
 };
+
+const comparePassword = (password, userPw) => bcrypt.compareSync(password, userPw);
+
+module.exports = { createHash, comparePassword };
