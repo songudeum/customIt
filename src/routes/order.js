@@ -24,7 +24,7 @@ router.get(
         // 요청 파라미터에서 userId 가져오기
         const { userId } = req.params;
         const categories = await Category.find({});
-        const orders = await Order.find({ 'orderUser.email': userId }); // 주문 데이터 Find
+        const orders = await Order.find({ userId }); // 주문 데이터 Find
         const orderList = orders.map((order) => {
             const { orderId, totalPrice, deliveryStatus, products } = order;
 

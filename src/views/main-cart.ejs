@@ -23,7 +23,7 @@
                             <button type="button" class="btn btn-delete-opt">선택 삭제</button>
                         </div>
                         <ul class="cart-list">
-                            <li>
+                            <li class="cart-list-li">
                                 <div class="checkbox">
                                     <input class="input-chk" type="checkbox" id="inputSelect" />
                                     <label for="inputSelect"> </label>
@@ -33,46 +33,20 @@
                                         <img src="/image/img-product01.jpg" alt="상품썸네일" />
                                     </div>
                                     <div class="info">
-                                        <p class="name">Apple 아이패드 에어 5세대 M1 스타라이트</p>
+                                        <p class="name"></p>
                                         <p class="delivery">무료배송</p>
                                     </div>
                                 </div>
                                 <div class="item-option">
                                     <p>단품 구매</p>
+
                                     <div class="option-quantity">
                                         <div class="quantity">
                                             <button type="button" class="btn btn-minus">-</button>
-                                            <span>1</span>
+                                            <span class="count"></span>
                                             <button type="button" class="btn btn-plus">+</button>
                                         </div>
-                                        <div class="total">90,000 <span class="unit">원</span></div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-item-delete"></button>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                    <input class="input-chk" type="checkbox" id="inputSelect2" />
-                                    <label for="inputSelect2"> </label>
-                                </div>
-                                <div class="item-info">
-                                    <div class="img">
-                                        <img src="/image/img-product01.jpg" alt="상품썸네일" />
-                                    </div>
-                                    <div class="info">
-                                        <p class="name">Apple 아이패드 에어 5세대 M1 스타라이트</p>
-                                        <p class="delivery">무료배송</p>
-                                    </div>
-                                </div>
-                                <div class="item-option">
-                                    <p>단품 구매</p>
-                                    <div class="option-quantity">
-                                        <div class="quantity">
-                                            <button type="button" class="btn btn-minus">-</button>
-                                            <span>1</span>
-                                            <button type="button" class="btn btn-plus">+</button>
-                                        </div>
-                                        <div class="total">90,000 <span class="unit">원</span></div>
+                                        <div class="total"><span class="unit">원</span></div>
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-item-delete"></button>
@@ -85,16 +59,16 @@
                             <dl>
                                 <div class="row">
                                     <dt>총 상품 금액</dt>
-                                    <dd>1,449,000<span class="unit">원</span></dd>
+                                    <dd>3760000<span class="unit">원</span></dd>
                                 </div>
                                 <div class="row total">
                                     <dt>결제 금액</dt>
-                                    <dd>1,449,000<span class="unit">원</span></dd>
+                                    <dd>3760000<span class="unit">원</span></dd>
                                 </div>
                             </dl>
                             <div class="btn-box">
                                 <a href="/order" class="btn btn-main"
-                                    ><span>#</span>개의 상품구매하러가기</a
+                                    ><span>1</span>개의 상품구매하러가기</a
                                 >
                             </div>
                         </div>
@@ -110,9 +84,66 @@
                     </div>
                     <a href="/" class="btn btn-main">상품 담으러 가기</a>
                 </div>
+
                 <!--// 장바구니 없을 때 -->
             </div>
         </main>
         <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+        <script>
+            function getItem(item) {
+                const data = localStorage.getItem(item);
+                if (data === null) {
+                    return {};
+                }
+                return JSON.parse(data);
+            }
+
+            let cart = getItem('cart');
+            console.log(cart);
+
+            // window.addEventListener('load', (event) => {
+            //     if (!cart.length === 0) {
+            //         const noCartElem = document.querySelector('.cart-list-li');
+            //         console.log('1' + noCartElem);
+            //         noCartElem.style.display = 'none';
+            //         return;
+            //     }
+            // });
+
+            window.addEventListener('load', (event) => {
+                if (cart) {
+                    const noCartElem = document.querySelector('.no-cart');
+                    console.log('1' + noCartElem);
+                    noCartElem.style.display = 'none';
+                    return;
+                }
+            });
+
+            window.addEventListener('load', (event) => {
+                const productName = document.createElement('p');
+                productName.innerHTML = cart.productName;
+                const productNameElem = document.querySelector('p.name');
+                productNameElem.appendChild(productName);
+
+                const price = document.createElement('p');
+                price.innerHTML = cart.price;
+                const priceElem = document.querySelector('div.total');
+                priceElem.appendChild(price);
+
+                const image = document.createElement('div');
+                image.innerHTML = cart.image;
+                const imageElem = document.querySelector('div.img');
+                imageElem.appendChild(image);
+                console.log('이미지:' + cart.image);
+
+                const quantity = document.createElement('div');
+                quantity.innerHTML = cart.quantity;
+                const quantityElem = document.querySelector('span.count');
+                quantityElem.appendChild(quantity);
+            });
+
+            //             window.addEventListener('load', (event) => { const newDiv = document.createElement('div');
+            // newDiv.innerHTML = cart.productName; document.body.appendChild(newDiv); console.log(newDiv);
+        </script>
     </body>
 </html>
