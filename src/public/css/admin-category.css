@@ -1,14 +1,14 @@
-.category{ 
+.category { 
     /**admin-aside 내부 class**/
     font-weight: bold;
     font-size: larger;
 }
 
-.list-category{
+.list-category {
     border-top: 1px solid #adadad;
 }
 
-.list-category-li{
+.list-category-li {
     display: flex;
     align-items: center;
     padding: 10px 30px;
@@ -16,7 +16,7 @@
     list-style: none;
 }
 
-.add-category{
+.add-category {
     display: flex;
     align-items: center;
     padding: 10px 30px;
@@ -25,25 +25,25 @@
     background-color: #e6e6e6;
 }
 
-.addNewCategory{
+.addNewCategory {
     display: none;
 }
 
-.checkCategory{
+.checkCategory {
     margin-top: 3px;
     margin-left: 10px;
     font-size: smaller;
     color: #ff1823;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #353535;
 }
 
-.btn-box{
+.btn-box {
     margin-left: auto;
 }
 
-.btn-submit{
+.btn-submit {
     margin-left: auto;
 }

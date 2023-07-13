@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width:300px;
+    width: 300px;
     height: 100%;
     background-color: #353535;
     z-index: 1000;
@@ -27,18 +27,18 @@
     list-style: none;
 }
 
-.nav-li-a{
+.nav-li-a {
     color: white;
     text-decoration: none;
 }
 
-.logout{
+.logout {
     position: absolute;
     bottom: 20px;
     width: 100%;
 }
 
-.btn-logout{
+.btn-logout {
     margin: 0 5% 0 5%;
     border: 2px #1a1a1a solid;
     border-radius: 5px;

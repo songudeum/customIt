@@ -1,28 +1,29 @@
-.product{
+.product {
     /**admin-aside 내부 class**/
     font-weight: bold;
     font-size: larger;
 }
-section{
+
+section {
     display: flex;
     justify-content: center;
 }
 
-table{
+table {
     width: 500px;
     margin-top: 10px;
-    border-top:1px solid #353535;
+    border-top: 1px solid #353535;
     border-collapse: collapse;
-    color:#353535;
+    color: #353535;
 }
 
-td{
+td {
     padding: 10px;
     border-bottom: 1px solid #bbbbbb;
     vertical-align: middle;
 }
 
-td input{
+td input {
     width: 70%;
 }
 
@@ -52,23 +53,23 @@ td input{
     transition: transform 0.2s;
 }
 
-.inputDescription{
+.inputDescription {
     width: 70%;
     height: 100px;
 }
 
-.check{
+.check {
     font-size: smaller;
     margin-top: 3px;
     color: #A586F6;
 }
 
-select{
+select {
     width: 70%;
     padding: 5px 10px 5px 10px;
 }
 
-.add-image{
+.add-image {
     overflow: hidden;
     width: 0;
     height: 0;
@@ -76,20 +77,20 @@ select{
     border: 0;
 }
 
-.add-image-label{
+.add-image-label {
     padding: 3px 10px 3px 10px;
     background-color: #353535;
     color: white;
     font-weight: normal;
 }
 
-.btn-box{
+.btn-box {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.btn-delete{
+.btn-delete {
     text-decoration: none;
     margin-left: 10px;
 }
