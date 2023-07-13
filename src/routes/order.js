@@ -24,15 +24,15 @@ router.get(
         // 요청 파라미터에서 userId 가져오기
         const { userId } = req.params;
         const categories = await Category.find({});
-        const orders = await Order.find({ userId }); // 주문 데이터 Find
+        const orders = await Order.find({ 'orderUser.email': userId }); // 주문 데이터 Find
         const orderList = orders.map((order) => {
-            const { orderId, totalPrice, deliveryStatus, image } = order;
+            const { orderId, totalPrice, deliveryStatus, products } = order;
 
             return {
                 orderId,
                 totalPrice,
                 deliveryStatus,
-                image: image[0],
+                image: products[0].image,
             };
         });
 
@@ -45,7 +45,7 @@ router.get(
     '/:userId/orderList/:orderId',
     asyncHandler(async (req, res) => {
         const { orderId } = req.params;
-        const order = await Order.findById(orderId);
+        const order = await Order.findOne(orderId);
         const categories = await Category.find({});
         res.render('order-detail', { order, categories, categoryName: undefined });
     }),
@@ -53,7 +53,7 @@ router.get(
 
 // 배송정보 수정
 router.get(
-    '/edit/:userId/:orderId',
+    '/edit/:orderId',
     asyncHandler(async (req, res) => {
         const { orderId } = req.params;
         const categories = await Category.find({});

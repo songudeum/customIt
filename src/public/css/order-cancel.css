@@ -1,9 +1,9 @@
-.container {
+/* .container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-}
+} */
 .cancel-message {
     color: #a19a9a;
     /* font-family: Jomhuria; */
@@ -26,21 +26,23 @@
     margin-bottom: 40px;
 }
 
-.home-button {
-    flex-shrink: 0;
-    display: block;
-    width: 190px;
-    height: 30px;
-    margin: 0 auto;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #fff;
-    background: #a586f6;
+.btn-main {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    padding: 0 16px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #a586f6;
+    font-size: 18px;
     color: #fff;
-    /* font-family: Jomhuria; */
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 27px;
-    text-align: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-main:hover {
+    background-color: #9b7ce9;
 }
