@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { Order } = require('../data-access');
-const { getCartDataFromLocalStorage } = require('./cart');
+
 const { Category } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
 
@@ -11,9 +11,9 @@ router.get(
     '/',
     asyncHandler(async (req, res) => {
         // 로컬스토리지에서 카트 데이터 가져오기
-        const cartData = JSON.parse(getCartDataFromLocalStorage());
+
         const categories = await Category.find({});
-        res.render('수정예정', { cartData, categories, categoryName: undefined });
+        res.render('수정예정', { categories, categoryName: undefined });
     }),
 );
 
