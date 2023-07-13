@@ -8,12 +8,12 @@ const router = Router();
 
 // 주문서 => 주문서에 들어오는 값은 로컬 스토리지의 값
 router.get(
-    '/',
+    '/cart',
     asyncHandler(async (req, res) => {
         // 로컬스토리지에서 카트 데이터 가져오기
 
         const categories = await Category.find({});
-        res.render('수정예정', { categories, categoryName: undefined });
+        res.render('main-cart', { categories, categoryName: undefined });
     }),
 );
 
