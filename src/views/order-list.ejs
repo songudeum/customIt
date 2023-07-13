@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
     <head>
         <%- include('../views/partials/head'); %>
@@ -7,242 +7,231 @@
         <link rel="stylesheet" href="/css/order-list.css" />
     </head>
     <body>
-        
-        <header><%- include('../views/partials/header'); %></header>
-        <section class="container">
-            <main role="main" class="contents">
-                <section class="user-aside">
-                    <div id="snb" class="snb-my">
-                        <h2 class="tit-snb">마이페이지</h2>
-                        <div class="inner-sub">
-                            <ul class="list-menu">
-                                <li class="on">
-                                    <a href="#">주문내역</a>
-                                </li>
-                                <li>
-                                    <a href="#">개인 정보 수정</a>
-                                </li>
-                            </ul>
+        <header class="header"><%- include('../views/partials/header'); %></header>
+        <main role="main" class="contents">
+            <div class="contents-inner">
+                <div class="order-aside-wrap">
+                    <section class="user-aside">
+                        <div id="snb" class="snb-my">
+                            <h2 class="tit-snb">마이페이지</h2>
+                            <div class="inner-sub">
+                                <ul class="list-menu">
+                                    <li class="on">
+                                        <a href="order /:userId/orderList">주문내역</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">개인 정보 수정</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </section>
-                <div class="title-wrap">
-                    <p class="cont-title">주문 내역</p>
-                    <div class="horizontal-line"></div>
+                    </section>
+                    <div class="order-contents">
+                        <div class="title-wrap">
+                            <p class="cont-title">주문 내역</p>
+                            <div class="horizontal-line"></div>
+                        </div>
 
-                </div>
-                
-                <div class="order-list-wrap">
-                    <div class="content-item">
-                        <div class="order-list">
-                            <div class="order-item">
-                                <div class="date-tit">
-                                    2023.07.06
-                                </div>
-                                <div class="horizontal-pale-line"></div>
-                                <div class="order-box">
-                                    <div class="thum">
-                                        <img src=" " alt="" class="상품 대표 이미지">
-                                    </div>
-                                    <div class="order-infobox">
-                                        <div class="item">
-                                            <p class="sub">
-                                                주문번호
-                                            </p>
-                                            <p class="desc">
-                                                <%= orderList.orderId %>
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="sub">
-                                                결제금액
-                                            </p>
-                                            <p class="desc">
-                                                <%= orderList.totalPrice %>원
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="sub">
-                                                주문상태
-                                            </p>
-                                            <p class="order-status" data-order-status="상품 준비중">
-                                                <%= orderList.deliveryStatus %>
-                                            </p>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="btnbox">
-                                        <button type="button" class="btn-cancel">
-                                            <a href="/cancel">주문취소</a>
-                                        </button>
-                                            
-                                    </div>
-                                    <!-- 화살표 이미지 넣기 -->
-                                    <a href="/order/:userId/orderList/:orderId">
-                                                <img src="/image/icon-orderlist-arrow.png" class="arrow-icon" alt="arrow-icon" />
+                        <div class="order-list-wrap">
+                            <div class="content-item">
+                                <div class="order-list">
+                                    <div class="order-item">
+                                        <div class="date-tit">2023.07.06</div>
+                                        <div class="horizontal-pale-line"></div>
+                                        <div class="order-box">
+                                            <div class="thum">
+                                                <img src=" " alt="" class="상품 대표 이미지" />
+                                            </div>
+                                            <div class="order-infobox">
+                                                <div class="item">
+                                                    <p class="sub">주문번호</p>
+                                                    <p class="desc"><%= orderList.orderId %></p>
+                                                </div>
+                                                <div class="item">
+                                                    <p class="sub">결제금액</p>
+                                                    <p class="desc">
+                                                        <%= orderList.totalPrice %>원
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p class="sub">주문상태</p>
+                                                    <p
+                                                        class="order-status"
+                                                        data-order-status="상품 준비중"
+                                                    >
+                                                        <%= orderList.deliveryStatus %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="btnbox">
+                                                <button type="button" class="btn-cancel">
+                                                    <a href="/cancel">주문취소</a>
+                                                </button>
+                                            </div>
+                                            <!-- 화살표 이미지 넣기 -->
+                                            <a href="/order/:userId/orderList/:orderId">
+                                                <img
+                                                    src="/image/icon-orderlist-arrow.png"
+                                                    class="arrow-icon"
+                                                    alt="arrow-icon"
+                                                />
                                             </a>
-                                </div>
-                            </div>
-                            <div class="order-item">
-                                <div class="date-tit">
-                                    2023.06.14
-                                </div>
-                                <div class="horizontal-pale-line"></div>
-                                <div class="order-box">
-                                    <div class="thum">
-                                        <img src=" " alt="" class="상품 대표이미지">
+                                        </div>
                                     </div>
-                                    <div class="order-infobox">
-                                        <div class="item">
-                                            <p class="sub">
-                                                주문번호
-                                            </p>
-                                            <p class="desc">
-                                                <%= orderList.orderId %>
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="sub">
-                                                결제금액
-                                            </p>
-                                            <p class="desc">
-                                                <%= orderList.totalPrice %>원
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="sub">
-                                                주문상태
-                                            </p>
-                                            <p class="order-status" data-order-status="배송중">
-                                                <%= orderList.deliveryStatus %>
-                                            </p>
-                                        </div>
-                                         <!-- 화살표 이미지 넣기 -->
-                                         <div class="btnbox">
-                                            <button type="button" class="btn-cancel">
-                                                <a href="/cancel">주문취소</a>
-                                            </button>
-                                                
-                                        </div>
+                                    <div class="order-item">
+                                        <div class="date-tit">2023.06.14</div>
+                                        <div class="horizontal-pale-line"></div>
+                                        <div class="order-box">
+                                            <div class="thum">
+                                                <img src=" " alt="" class="상품 대표이미지" />
+                                            </div>
+                                            <div class="order-infobox">
+                                                <div class="item">
+                                                    <p class="sub">주문번호</p>
+                                                    <p class="desc"><%= orderList.orderId %></p>
+                                                </div>
+                                                <div class="item">
+                                                    <p class="sub">결제금액</p>
+                                                    <p class="desc">
+                                                        <%= orderList.totalPrice %>원
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p class="sub">주문상태</p>
+                                                    <p
+                                                        class="order-status"
+                                                        data-order-status="배송중"
+                                                    >
+                                                        <%= orderList.deliveryStatus %>
+                                                    </p>
+                                                </div>
+                                                <!-- 화살표 이미지 넣기 -->
+                                                <div class="btnbox">
+                                                    <button type="button" class="btn-cancel">
+                                                        <a href="/cancel">주문취소</a>
+                                                    </button>
+                                                </div>
                                                 <a href="/order/:userId/orderList/:orderId">
-                                                    <img src="/image/icon-orderlist-arrow.png" class="arrow-icon" alt="arrow-icon" />
+                                                    <img
+                                                        src="/image/icon-orderlist-arrow.png"
+                                                        class="arrow-icon"
+                                                        alt="arrow-icon"
+                                                    />
                                                 </a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="order-item">
-                                <div class="date-tit">
-                                    2023.05.27
-                                </div>
-                                <div class="horizontal-pale-line"></div>
-                                <div class="order-box">
-                                    <div class="thum">
-                                        <img src=" " alt="" class="상품 대표 이미지">
-                                    </div>
-                                    <div class="order-infobox">
-                                        <div class="item">
-                                            <p class="sub">
-                                                주문번호
-                                            </p>
-                                            <p class="desc">
-                                                <%= orderList.orderId %>
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="sub">
-                                                결제금액
-                                            </p>
-                                            <p class="desc">
-                                                <%= orderList.totalPrice %>원
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="sub">
-                                                주문상태
-                                            </p>
-                                            <p class="order-status" data-order-status="배송완료">
-                                                <%= orderList.deliveryStatus %>
-                                            </p>
-                                        </div>
-                                         <!-- 화살표 이미지 넣기 -->
-                                         <div class="btnbox">
-                                            <button type="button" class="btn-cancel">
-                                                <a href="/cancel">주문취소</a>
-                                            </button>   
-                                        </div>
+                                    <div class="order-item">
+                                        <div class="date-tit">2023.05.27</div>
+                                        <div class="horizontal-pale-line"></div>
+                                        <div class="order-box">
+                                            <div class="thum">
+                                                <img src=" " alt="" class="상품 대표 이미지" />
+                                            </div>
+                                            <div class="order-infobox">
+                                                <div class="item">
+                                                    <p class="sub">주문번호</p>
+                                                    <p class="desc"><%= orderList.orderId %></p>
+                                                </div>
+                                                <div class="item">
+                                                    <p class="sub">결제금액</p>
+                                                    <p class="desc">
+                                                        <%= orderList.totalPrice %>원
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p class="sub">주문상태</p>
+                                                    <p
+                                                        class="order-status"
+                                                        data-order-status="배송완료"
+                                                    >
+                                                        <%= orderList.deliveryStatus %>
+                                                    </p>
+                                                </div>
+                                                <!-- 화살표 이미지 넣기 -->
+                                                <div class="btnbox">
+                                                    <button type="button" class="btn-cancel">
+                                                        <a href="/cancel">주문취소</a>
+                                                    </button>
+                                                </div>
                                                 <a href="/order/:userId/orderList/:orderId">
-                                                    <img src="/image/icon-orderlist-arrow.png" class="arrow-icon" alt="arrow-icon" />
+                                                    <img
+                                                        src="/image/icon-orderlist-arrow.png"
+                                                        class="arrow-icon"
+                                                        alt="arrow-icon"
+                                                    />
                                                 </a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                         </div>
+                        <p id="error-message"></p>
                     </div>
                 </div>
             </div>
-        </div>
-        <p id="error-message"></p>
-    </main>
-        <footer><%- include('../views/partials/footer'); %></footer>
-        <script>
-            console.log(orderList)
-            document.addEventListener('DOMContentLoaded', function(){
-                // 주문 조회 기능
-            // '/api/orders' 라는 경로에서 주문 내역을 가져온다면
-            let a = fetch('/order/test1@test.com/orderList', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                method: "GET"
-            })
+        </main>
 
-                .then((response) => response.json())
-                .then((data) => 
-                    // data를 사용하여 주문 내역을 표시
-                    console.log(data)
-                );
-    
-            // 주문 취소 기능
-            const cancelButtons = document.querySelectorAll('.btn-cancel');
-            cancelButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const orderId = this.parentNode.parentNode.dataset.orderId;
-                    fetch(`/api/orders/${orderId}`, {
-                        method: 'DELETE'
-                    }).then(response => {
-                        if (!response.ok) {
-                            throw new Error('Order cancellation failed');
-                        }
-                        // 주문 취소가 성공하면, 주문 취소 버튼을 비활성화
-                        this.disabled = true;
-                        alert('주문이 취소되었습니다.');
-                    }).catch(error => {
-                        const errorMessageElement = document.getElementById('error-message');
-                        errorMessageElement.textContent = error.message;  // 에러 메시지를 HTML 요소에 표시
+        <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+        <script>
+            console.log(orderList);
+            document.addEventListener('DOMContentLoaded', function () {
+                // 주문 조회 기능
+                // '/api/orders' 라는 경로에서 주문 내역을 가져온다면
+                let a = fetch('/order/test1@test.com/orderList', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
+                    },
+                    method: 'GET',
+                })
+                    .then((response) => response.json())
+                    .then((data) =>
+                        // data를 사용하여 주문 내역을 표시
+                        console.log(data),
+                    );
+
+                // 주문 취소 기능
+                const cancelButtons = document.querySelectorAll('.btn-cancel');
+                cancelButtons.forEach((button) => {
+                    button.addEventListener('click', function () {
+                        const orderId = this.parentNode.parentNode.dataset.orderId;
+                        fetch(`/api/orders/${orderId}`, {
+                            method: 'DELETE',
+                        })
+                            .then((response) => {
+                                if (!response.ok) {
+                                    throw new Error('Order cancellation failed');
+                                }
+                                // 주문 취소가 성공하면, 주문 취소 버튼을 비활성화
+                                this.disabled = true;
+                                alert('주문이 취소되었습니다.');
+                            })
+                            .catch((error) => {
+                                const errorMessageElement =
+                                    document.getElementById('error-message');
+                                errorMessageElement.textContent = error.message; // 에러 메시지를 HTML 요소에 표시
+                            });
                     });
                 });
-            });
-            // 각 주문 아이템에 대해
-            const orderItems = document.querySelectorAll('.order-item');
-            orderItems.forEach(orderItem => {
-            // 주문 상태를 확인하고
-            const orderStatus = orderItem.querySelector('.order-status').dataset.orderStatus;
+                // 각 주문 아이템에 대해
+                const orderItems = document.querySelectorAll('.order-item');
+                orderItems.forEach((orderItem) => {
+                    // 주문 상태를 확인하고
+                    const orderStatus =
+                        orderItem.querySelector('.order-status').dataset.orderStatus;
 
-            // 만약 주문 상태가 '배송중' 이나 '배송완료'이면,
-            if (orderStatus === '배송중' || orderStatus === '배송완료') {
-                // 주문 취소 버튼을 숨김
-                const cancelButton = orderItem.querySelector('.btn-cancel');
-                if (cancelButton) {
-                    cancelButton.style.display = 'none';
-                }
-            }
-        });
-
-    });
-            
+                    // 만약 주문 상태가 '배송중' 이나 '배송완료'이면,
+                    if (orderStatus === '배송중' || orderStatus === '배송완료') {
+                        // 주문 취소 버튼을 숨김
+                        const cancelButton = orderItem.querySelector('.btn-cancel');
+                        if (cancelButton) {
+                            cancelButton.style.display = 'none';
+                        }
+                    }
+                });
+            });       
         </script>
     </body>
 </html>

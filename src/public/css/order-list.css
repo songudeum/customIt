@@ -3,20 +3,15 @@ body {
     height: 100%;
     margin: 0;
 }
-
-/* main .contents-inner {
+.order-aside-wrap {
     display: flex;
-    justify-content: space-around;
-    background-color: rgb(255, 255, 255);
-    width: 1280px;
-    margin: 0 auto;
-} */
+    justify-content: center;
+    margin-top: 40px;
+}
 
 .user-aside {
     display: flex;
     justify-content: left;
-    margin-top: 70px;
-    margin-left: 350px;
 }
 
 .snb-my {
@@ -24,7 +19,7 @@ body {
 }
 
 .snb-my .tit-snb {
-    padding: 8px 0 33px 1px;
+    padding: 0 0 33px 1px;
     font-weight: 500;
     font-size: 30px;
     line-height: 34px;
@@ -55,12 +50,10 @@ body {
 }
 
 .title-wrap {
-    margin-left: 700px;
-    margin-top: -230px;
+    margin-left: 40px;
 }
 
 .cont-title {
-    margin-top: 67px;
     font-size: 25px;
 }
 
@@ -72,7 +65,7 @@ body {
 }
 
 .order-list-wrap {
-    margin-left: 700px;
+    margin-left: 40px;
     margin-top: 30px;
     margin-bottom: 100px;
 }
