@@ -22,29 +22,35 @@
         </ul>
         <ul class="utils">
             <li>
-                <a href="/cart" class="btn btn-cart" title="장바구니"></a>
+                <a href="/order/cart" class="btn btn-cart" title="장바구니"></a>
             </li>
             <li>
-                <a href="/order/:id/orderList" class="btn btn-user" title="마이페이지"></a>
+                <a href="/users/info" class="btn btn-user" title="마이페이지"></a>
             </li>
-            <li><a href="/users/login" class="btn btn-login" id="btn-login">로그인</a></li>
-            <li><a href="/users/join" class="btn btn-signin" id="btn-signin">회원가입</a></li>
-            <li><a href="#" class="btn btn-logout" id="btn-logout">로그아웃</a></li>
+            <li>
+                <a href="/users/login" class="btn btn-login" id="btn-login">로그인</a>
+            </li>
+            <li>
+                <a href="/users/join" class="btn btn-signin" id="btn-signin">회원가입</a>
+            </li>
+            <li>
+                <a href="#" class="btn btn-logout" id="btn-logout">로그아웃</a>
+            </li>
         </ul>
     </nav>
 </div>
 <script>
     const $btnLogin = document.querySelector('#btn-login');
     const $btnLogout = document.querySelector('#btn-logout');
-    const $cookieName = document.cookies.name
-    if ($cookieName !== 'token' ) {
-        $btnLogout.style.visibility = 'hidden';
-    }
-    else (document.cookie) {
-        $btnLogin.style.visibility = 'hidden';
-    }
+    const $btnSignin = document.querySelector('#btn-signin');
     $btnLogout.addEventListener('click', btnLogout);
-
+    if (document.cookie) {
+        $btnLogin.style.display = 'none';
+        $btnSignin.style.display = 'none';
+    }
+    if (!document.cookie) {
+        $btnLogout.style.display = 'none';
+    }
     async function btnLogout(e) {
         e.preventDefault();
 
