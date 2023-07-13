@@ -229,6 +229,7 @@ body {
 .aside-section-wrap {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .snb_my .tit_snb {
