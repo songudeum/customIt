@@ -131,7 +131,7 @@ router.put(
                 address,
             },
         );
-        res.redirect('/users/info');
+        res.redirect(303, '/users/info');
     }),
 );
 
