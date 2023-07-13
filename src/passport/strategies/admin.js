@@ -1,7 +1,8 @@
 const LocalStrategy = require('passport-local').Strategy;
 const { Admin } = require('../../data-access');
-const createHash = require('../../utils/hash-password');
+const { comparePassword } = require('../../utils/hash-password');
 
+// 필드 생성
 const config = { usernameField: 'email', passwordFiled: 'password' };
 
 const admin = new LocalStrategy(config, async (email, password, done) => {
@@ -13,13 +14,15 @@ const admin = new LocalStrategy(config, async (email, password, done) => {
             error.statusCode = 400;
             throw error;
         }
-        if (user.password !== createHash(password)) {
+        const userPw = user.password;
+        if (!comparePassword(password, userPw)) {
             const error = new Error('이메일 또는 비밀번호가 일치하지 않습니다.');
             error.statusCode = 400;
             throw error;
         }
-        done(null, { email: user.email, name: user.name });
+        done(null, { email: user.email, name: user.name, userId: user.userId });
     } catch (err) {
+        err.statusCode = err.statusCode || 500;
         done(err, null);
     }
 });
