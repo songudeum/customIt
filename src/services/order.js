@@ -34,11 +34,7 @@ const orderService = {
     },
     // 배송 상태 수정
     updateDeliveryStatus: async ({ orderId, deliveryStatus }) => {
-        const updateDeliveryStatus = await Order.updateOne(
-            { orderId },
-            { $set: { deliveryStatus } },
-            // $set 문서 전체를 수정하는 것이 아닌 배송 상태만 수정하도록 설정
-        );
+        const updateDeliveryStatus = await Order.updateOne({ orderId }, { deliveryStatus });
         if (updateDeliveryStatus.nModified === 0) {
             // 수정된 문서의 수가 0개일 때
             // 배송 상태가 수정되지 않았다는 에러 메시지를 반환
