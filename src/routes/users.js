@@ -22,7 +22,6 @@ router.get(
     }),
 );
 
-// 개인페이지 사용자 정보 수정 api
 router.put(
     '/info/edit',
     loginRequired,
@@ -48,8 +47,13 @@ router.put(
                 phoneNumber,
                 address,
             },
+            { new: true }, // 업데이트된 정보를 반환하도록 옵션 추가
         );
-        res.render('edit-user-info', { userInfo, categoryName: undefined, categories });
+        res.render('edit-user-info', {
+            userInfo,
+            categoryName: undefined,
+            categories,
+        });
     }),
 );
 

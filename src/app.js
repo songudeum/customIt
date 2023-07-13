@@ -21,7 +21,6 @@ const adminOrderRouter = require('./routes/admin-order');
 
 const userApiRouter = require('./routes/api/users');
 const adminApiRouter = require('./routes/api/admin');
-const adminApiRouter = require('./routes/api/admin')
 const categoryApiRouter = require('./routes/api/category');
 const productApiRouter = require('./routes/api/product');
 const orderApiRouter = require('./routes/api/order');
@@ -67,7 +66,7 @@ app.use('/admin/orders', adminOrderRouter);
 app.use('/api/orders', orderApiRouter);
 app.use('/api/admin', adminApiRouter);
 app.use('/api/users', userApiRouter);
-app.use('/api/admin', adminApiRouter)
+app.use('/api/admin', adminApiRouter);
 app.use('/api/category', categoryApiRouter);
 app.use('/api/product', productApiRouter);
 
@@ -87,4 +86,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`정상적으로 커스텀잇 서버를 시작하였습니다.  http://localhost:${PORT}`);
 });
-
