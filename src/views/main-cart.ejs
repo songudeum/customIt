@@ -16,42 +16,9 @@
                 <div class="main-cart-wrap">
                     <div class="main-cart">
                         <div class="utils">
-                            <div class="checkbox">
-                                <input class="input-chk" type="checkbox" id="inputSelect3" />
-                                <label for="inputSelect3"> </label>
-                            </div>
-                            <button type="button" class="btn btn-delete-opt">선택 삭제</button>
+                            <button type="button" class="btn btn-delete-opt">전체 삭제</button>
                         </div>
-                        <ul class="cart-list">
-                            <li class="cart-list-li">
-                                <div class="checkbox">
-                                    <input class="input-chk" type="checkbox" id="inputSelect" />
-                                    <label for="inputSelect"> </label>
-                                </div>
-                                <div class="item-info">
-                                    <div class="img">
-                                        <img src="/image/img-product01.jpg" alt="상품썸네일" />
-                                    </div>
-                                    <div class="info">
-                                        <p class="name"></p>
-                                        <p class="delivery">무료배송</p>
-                                    </div>
-                                </div>
-                                <div class="item-option">
-                                    <p>단품 구매</p>
-
-                                    <div class="option-quantity">
-                                        <div class="quantity">
-                                            <button type="button" class="btn btn-minus">-</button>
-                                            <span class="count"></span>
-                                            <button type="button" class="btn btn-plus">+</button>
-                                        </div>
-                                        <div class="total"><span class="unit">원</span></div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-item-delete"></button>
-                            </li>
-                        </ul>
+                        <ul class="cart-list" id="cartBox"></ul>
                     </div>
 
                     <div class="price-info">
@@ -101,56 +68,78 @@
             let cart = getItem('cart');
             console.log(cart.length);
 
-            // window.addEventListener('load', (event) => {
-            //     if (!cart.length === 0) {
-            //         const noCartElem = document.querySelector('.cart-list-li');
-            //         console.log('1' + noCartElem);
-            //         noCartElem.style.display = 'none';
-            //         return;
-            //     }
-            // });
-
             window.addEventListener('load', (event) => {
-                if (cart) {
+                if (cart.length) {
                     const noCartElem = document.querySelector('.no-cart');
                     // console.log('1' + noCartElem);
                     noCartElem.style.display = 'none';
                     return;
-                } else {
-                    console.log('fkdshflsdjfkdsjfkljsfkhsdfkdjh');
                 }
             });
 
             window.addEventListener('load', (event) => {
                 if (cart.length) {
-                    const productName = document.createElement('p');
-                    productName.innerHTML = cart.productName;
-                    const productNameElem = document.querySelector('p.name');
-                    productNameElem.appendChild(productName);
+                    let str = '';
+                    cart.forEach((item, index) => {
+                        const productNam = item.productName;
+                        const price = item.price;
+                        const image = item.image;
+                        const quantity = item.quantity;
+                        console.log(productNam);
 
-                    const price = document.createElement('p');
-                    price.innerHTML = cart.price;
-                    const priceElem = document.querySelector('div.total');
-                    priceElem.appendChild(price);
+                        str += `<li class="cart-list-li">
+                            
+                                <div class="item-info">
+                                
+                                    <div class="info">
+                                        <p class="name">${productNam}</p>
+                                        <p class="delivery">무료배송</p>
+                                    </div>
+                                </div>
+                                <div class="item-option">
+                                    <p>단품 구매</p>
 
-                    const image = document.createElement('div');
-                    image.innerHTML = cart.image;
-                    const imageElem = document.querySelector('div.img');
-                    imageElem.appendChild(image);
-                    console.log('이미지:' + cart.image);
+                                    <div class="option-quantity">
+                                        <div class="quantity">
+                                            <button type="button" class="btn btn-minus">-</button>
+                                            <span class="count">${quantity}</span>
+                                            <button type="button" class="btn btn-plus">+</button>
+                                        </div>
+                                        <div class="total">${price}<span class="unit">원</span></div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-item-delete"></button>
+                            </li>`;
+                    });
 
-                    const quantity = document.createElement('div');
-                    quantity.innerHTML = cart.quantity;
-                    const quantityElem = document.querySelector('span.count');
-                    quantityElem.appendChild(quantity);
+                    var cartBox = document.getElementById('cartBox');
+                    cartBox.insertAdjacentHTML('beforeend', str);
+
+                    document.querySelectorAll('.btn-item-delete').forEach((btn) => {
+                        btn.addEventListener('click', (event) => {
+                            const itemName =
+                                event.target.parentElement.querySelector('.name').textContent;
+
+                            for (let i = 0; i < cart.length; i++) {
+                                if (cart[i].productName === itemName) {
+                                    cart.splice(i, 1);
+                                    break;
+                                }
+                            }
+
+                            event.target.parentElement.remove();
+
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                        });
+                    });
+
+                    let minus = document.querySelectorAll('.btn btn-minus');
+                    let plus = document.querySelectorAll('.btn btn-plus');
                 } else {
                     const noResult = document.querySelector('.no-cart');
                     noResult.style.display = 'flex';
                 }
             });
-
-            //             window.addEventListener('load', (event) => { const newDiv = document.createElement('div');
-            // newDiv.innerHTML = cart.productName; document.body.appendChild(newDiv); console.log(newDiv);
         </script>
     </body>
 </html>
