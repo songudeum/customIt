@@ -10,10 +10,10 @@ const router = Router();
 router.get(
     '/cart',
     asyncHandler(async (req, res) => {
-        // 로컬스토리지에서 카트 데이터 가져오기
+        const { cartData } = req.body;
 
         const categories = await Category.find({});
-        res.render('main-cart', { categories, categoryName: undefined });
+        res.render('main-cart', { cartData, categories, categoryName: undefined });
     }),
 );
 
