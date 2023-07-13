@@ -7,25 +7,25 @@
     <nav class="nav">
         <ul class="gnb">
             <% categories.forEach(function(category) { %>
-            <li>
-                <% if (category.name.localeCompare(categoryName)) { %>
-                <a href="/product/sub/<%= category.name %>" class="btn-gnb">
-                    <%= category.name %>
-                </a>
-                <%} else { %>
-                <a href="/product/sub/<%= category.name %>" class="btn-gnb active">
-                    <%= category.name %>
-                </a>
-                <% } %>
-            </li>
-            <% }); %>
+                <li>
+                    <% if (category.name.localeCompare(categoryName)) { %>
+                        <a href="/product/sub/<%= category.name %>" class="btn-gnb">
+                            <%= category.name %>
+                        </a>
+                        <%} else { %>
+                            <a href="/product/sub/<%= category.name %>" class="btn-gnb active">
+                                <%= category.name %>
+                            </a>
+                            <% } %>
+                </li>
+                <% }); %>
         </ul>
         <ul class="utils">
             <li>
                 <a href="/cart" class="btn btn-cart" title="장바구니"></a>
             </li>
             <li>
-                <a href="/order/:id/orderList" class="btn btn-user" title="마이페이지"></a>
+                <a href="/users/info" class="btn btn-user" title="마이페이지"></a>
             </li>
             <li><a href="/users/login" class="btn btn-login" id="btn-login">로그인</a></li>
             <li><a href="/users/join" class="btn btn-signin" id="btn-signin">회원가입</a></li>
@@ -36,13 +36,7 @@
 <script>
     const $btnLogin = document.querySelector('#btn-login');
     const $btnLogout = document.querySelector('#btn-logout');
-    const $cookieName = document.cookies.name
-    if ($cookieName !== 'token' ) {
-        $btnLogout.style.visibility = 'hidden';
-    }
-    else (document.cookie) {
-        $btnLogin.style.visibility = 'hidden';
-    }
+
     $btnLogout.addEventListener('click', btnLogout);
 
     async function btnLogout(e) {

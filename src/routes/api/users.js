@@ -135,23 +135,33 @@ router.put(
     }),
 );
 
-// 사용자 비밀번호 변경 라우터
+// 사용자 비밀번호 확인 라우터
 router.post(
-    '/info/edit/pw',
+    '/info/edit/pwCheck',
     loginRequired,
     asyncHandler(async (req, res) => {
+        const { password } = req.body;
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
-        const { password, newPassword } = req.body;
         const userPw = user.password;
-
-        // const categories = await Category.find({});
-
         if (!comparePassword(password, userPw)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 401;
             throw error;
         }
+        res.json({ message: '비밀번호가 일치합니다' });
+    }),
+);
+
+// 사용자 비밀번호 변경 라우터
+router.put(
+    '/info/edit/pw',
+    loginRequired,
+    asyncHandler(async (req, res) => {
+        const userEmail = jwtVerify(req);
+        const user = await Users.findOne({ email: userEmail });
+        const { newPassword } = req.body;
+
         if (!pwCheck.test(newPassword)) {
             const error = new Error('영문 숫자 특수기호 조합 8~15자 이하로 입력해주세요.');
             error.statusCode = 400;
