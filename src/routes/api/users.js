@@ -158,16 +158,24 @@ router.put(
     '/info/edit/pw',
     loginRequired,
     asyncHandler(async (req, res) => {
+        const { password } = req.body;
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
-        const { newPassword } = req.body;
+        const userPw = user.password;
+        console.log(userPw)
+        console.log(password)
+        if (!comparePassword(password, userPw)) {
+            const error = new Error('비밀번호가 일치하지 않습니다.');
+            error.statusCode = 401;
+            throw error;
+        }
 
         if (!pwCheck.test(newPassword)) {
             const error = new Error('영문 숫자 특수기호 조합 8~15자 이하로 입력해주세요.');
             error.statusCode = 400;
             throw error;
         }
-        await Users.findOneAndUpdate(
+        const x = await Users.findOneAndUpdate(
             { email: userEmail },
             {
                 email: userEmail,
@@ -177,6 +185,7 @@ router.put(
                 address: user.address,
             },
         );
+        console.log(x)
         res.json({ message: '비밀번호가 변경되었습니다.' });
     }),
 );
