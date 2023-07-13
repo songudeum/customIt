@@ -35,14 +35,18 @@ router.get('/join', nonLogin, async (req, res) => {
 // 회원 비밀번호 수정 페이지
 router.get('/info/edit/pw', loginRequired, async (req, res) => {
     const categories = await Category.find({});
-    res.render('change-password', { categoryName: undefined, categories });
+    const userEmail = jwtVerify(req);
+    const userInfo = await Users.findOne({ email: userEmail });
+    res.render('change-password', { userInfo, categoryName: undefined, categories });
 });
 module.exports = router;
 
 // 회원 탈퇴 페이지
 router.get('/info/delete', loginRequired, async (req, res) => {
     const categories = await Category.find({});
-    res.render('user-secession', { categoryName: undefined, categories });
+    const userEmail = jwtVerify(req);
+    const userInfo = await Users.findOne({ email: userEmail });
+    res.render('user-secession', { userInfo, categoryName: undefined, categories });
 });
 
 module.exports = router;

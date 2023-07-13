@@ -92,7 +92,6 @@ router.post(
 );
 
 // 사용자 탈퇴 라우터
-
 router.post(
     '/info/delete',
     loginRequired,
