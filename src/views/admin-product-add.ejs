@@ -63,6 +63,7 @@
                         <tr>
                             <td>이미지</td>
                             <td>
+                                <input id="imageName" value="첨부파일">
                                 <input type="file" class="add-image" id="addImage" name="productImage" accept="image/*" required />
                                 <label for="addImage" class="add-image-label" id="addImageLabel">찾기</label>
                             </td>
@@ -113,6 +114,7 @@
             const $userImage =document.querySelector('#userImage');
             const $addImage = document.querySelector('#addImage');
             const $addImageLabel = document.querySelector('#addImageLabel');
+            const $imageName = document.querySelector('#imageName');
 
             function previewImg(){
                 let preview = new FileReader();
@@ -120,6 +122,9 @@
                     $userImage.src=e.target.result;
                 }
                 preview.readAsDataURL($addImage.files[0]);
+
+                const fileName = $addImage.value;
+                $imageName.value = fileName;
             };
             $addImage.addEventListener('change',previewImg);
         </script>
