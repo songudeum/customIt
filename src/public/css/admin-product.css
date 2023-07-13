@@ -29,7 +29,10 @@ th{
 }
 
 .btn-add-product{
-    position: absolute;
-    right: 40px;
     margin-top: 10px;
+}
+
+.btn-box{
+    display: flex;
+    justify-content: end;
 }
