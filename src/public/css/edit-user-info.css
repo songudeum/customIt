@@ -39,7 +39,6 @@ body {
     flex-direction: column;
     align-items: center;
     max-width: 1280px;
-    margin: 0 30px;
 }
 
 .edit-user-info .top {
@@ -47,8 +46,8 @@ body {
     flex-direction: column;
     align-items: center;
     width: 650px;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     margin: 10px 0;
 }
 
@@ -111,7 +110,6 @@ body {
 
 .edit-user-info label {
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 140px;
     padding-top: 7px;
@@ -122,13 +120,6 @@ body {
     font-size: 15px;
 }
 
-.edit-user-info label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 140px;
-    padding-top: 7px;
-}
 .edit-user-info input {
     width: 350px;
     height: 46px;
@@ -238,7 +229,6 @@ body {
 .aside-section-wrap {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .snb_my .tit_snb {
