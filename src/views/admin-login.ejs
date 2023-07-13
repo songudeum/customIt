@@ -10,7 +10,9 @@
         <main class="contents-inner">
             <div class="login-wrap">
                 <div class="header-logo">
-                    <img src="/image/admin-logo.png" alt="admin-logo" />
+                    <a href="/admin/category">
+                        <img src="/image/admin-logo.png" alt="admin-logo" />
+                    </a>
                 </div>
                 <form method="post" action="/admin/login" class="login-form" id="loginForm">
                     <div class="login-box">
@@ -37,17 +39,17 @@
     </body>
     <script>
         const emailCheck = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
-        const inputEmail = document.querySelector('#email');
-        const inputPw = document.querySelector('#password');
-        const loginForm = document.querySelector('#loginForm');
+        const $inputEmail = document.querySelector('#email');
+        const $inputPw = document.querySelector('#password');
+        const $loginForm = document.querySelector('#loginForm');
 
-        loginForm.addEventListener('submit', btnLogin);
+        $loginForm.addEventListener('submit', btnLogin);
 
         async function btnLogin(e) {
             e.preventDefault();
 
-            const email = inputEmail.value;
-            const password = inputPw.value;
+            const email = $inputEmail.value;
+            const password = $inputPw.value;
 
             const data = { email, password };
 
@@ -62,7 +64,7 @@
 
             // 데이터 json 형태로 파싱
             const jsonData = JSON.stringify(data);
-            const apiUrl = '/admin/login';
+            const apiUrl = '/api/admin/login';
             const res = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -70,10 +72,10 @@
                 },
                 body: jsonData,
             });
-            if (res.status === 400) {
-                alert('이메일 또는 비밀번호가 일치하지 않습니다.');
-            } else {
+            if (res.status === 200) {
                 window.location.href = '/admin/category';
+            } else {
+                alert('이메일 또는 비밀번호가 일치하지 않습니다.');
             }
         }
     </script>

@@ -1,305 +1,345 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
+    <head>
+        <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/header.css" />
+        <link rel="stylesheet" href="/css/signin.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+    </head>
 
-<head>
-    <%- include('../views/partials/head'); %>
-        <link rel="stylesheet" href="/css/header.css">
-        <link rel="stylesheet" href="/css/signin.css">
-        <link rel="stylesheet" href="/css/footer.css">
-
-</head>
-
-<body class="container">
-    <header class="header">
-        <%- include('../views/partials/header'); %>
-    </header>
-    <main role="main" class="contents">
-        <div class="contents-inner">
-            <div class="signin-wrap">
-                <div class="signin-text">
-                    회원가입
-                </div>
-                <section class="top">
-                    <div class="email">
-                        <label>이메일</label>
-                        <input type="text" id="emailInput" placeholder="예: customit@custom.com">
-                        <div class="email-check" id="emailCheckBtn" onClick="validateEmail()">
-                            <button href="#">중복확인</button>
+    <body class="container">
+        <header class="header"><%- include('../views/partials/header'); %></header>
+        <main role="main" class="contents">
+            <div class="contents-inner">
+                <div class="signin-wrap">
+                    <div class="signin-text">회원가입</div>
+                    <section class="top">
+                        <div class="email">
+                            <label>이메일</label>
+                            <input
+                                type="text"
+                                id="emailInput"
+                                placeholder="예: customit@custom.com"
+                                onchange="validateEmail()"
+                            />
+                            <div class="email-check" id="emailCheckBtn">
+                                <button href="#" onclick="checkEmailDuplicate()">중복확인</button>
+                            </div>
                         </div>
-                    </div>
-                    <p id="emailCheck"></p>
-                    <div class="password">
-                        <label>비밀번호</label>
-                        <input type="password" id="passwordInput" placeholder="비밀번호를 입력해주세요"
-                            onChange="validatePassword()">
-                        <span><a href="#">중복확인</a></span>
-                    </div>
-                    <p id="passwordCheck"></p>
-                    <div class="password-confirm">
-                        <label>비밀번호확인</label>
-                        <input type="password" id="passwordInputConfirm" placeholder="비밀번호를 한번 더 입력해주세요"
-                            onChange="validatePasswordConfirm()">
-                        <span><a href="#">중복확인</a></span>
-                    </div>
-                    <p id="pwConfirmCheck"></p>
-                    <div class="name">
-                        <label>이름</label>
-                        <input type="text" id="nameInput" placeholder="이름은 2~4글자로 입력해주세요." onchange="validateName()">
-                        <span><a href="#">중복확인</a></span>
-                    </div>
-                    <p id="nameCheck"></p>
-                    <div class="phone-num">
-                        <label>휴대폰</label>
-                        <input type="tel" id="phoneNumInput" placeholder="'-' 없이 번호만 입력해주세요"
-                            onchange="validatePhoneNum()" maxlength="13">
-                        <span><a href="#">중복확인</a></span>
-                    </div>
-                    <p id="phoneNumCheck"></p>
-                    <div class="address">
-                        <label>주소</label>
-                        <input type="text" id="addressInput" placeholder="우측 주소 검색을 클릭해주세요" readonly />
-                        <div class="address-check" id="addressCheckBtn">
-                            <div><button href="#" onClick="openKakaoMap()">주소검색</button></div>
+                        <p id="emailCheck"></p>
+                        <div class="password">
+                            <label>비밀번호</label>
+                            <input
+                                type="password"
+                                id="passwordInput"
+                                placeholder="비밀번호를 입력해주세요"
+                                onchange="validatePassword()"
+                            />
+                            <span><a href="#">중복확인</a></span>
                         </div>
-                    </div>
-                    <div class="detail-address">
-                        <label>상세주소</label>
-                        <input type="text" id="detailAddress" placeholder="상세주소를 입력해주세요">
-                        <span><a href="#">중복확인</a></span>
-                    </div>
-                </section>
-                <div class="bottom-wrap">
-                    <a href="#" class="btn-signin" onclick="validateCondition()">회원가입</a>
-                    <div class="login">
-                        이미 아이디가 있으신가요?
-                        <div>
-                            <a href="/users/login"> 로그인</a>
+                        <p id="passwordCheck"></p>
+                        <div class="password-confirm">
+                            <label>비밀번호확인</label>
+                            <input
+                                type="password"
+                                id="passwordInputConfirm"
+                                placeholder="비밀번호를 한번 더 입력해주세요"
+                                onchange="validatePasswordConfirm()"
+                            />
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="pwConfirmCheck"></p>
+                        <div class="name">
+                            <label>이름</label>
+                            <input
+                                type="text"
+                                id="nameInput"
+                                placeholder="이름은 2~4글자로 입력해주세요."
+                                onchange="validateName()"
+                            />
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="nameCheck"></p>
+                        <div class="phone-num">
+                            <label>휴대폰</label>
+                            <input
+                                type="tel"
+                                id="phoneNumInput"
+                                placeholder="'-' 없이 번호만 입력해주세요"
+                                onchange="validatePhoneNum()"
+                                maxlength="13"
+                            />
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="phoneNumCheck"></p>
+                        <div class="address">
+                            <label>주소</label>
+                            <input
+                                type="text"
+                                id="addressInput"
+                                placeholder="우측 주소 검색을 클릭해주세요"
+                                readonly
+                            />
+                            <div class="address-check" id="addressCheckBtn">
+                                <div>
+                                    <button href="#" onclick="openKakaoMap()">주소검색</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-address">
+                            <label>상세주소</label>
+                            <input
+                                type="text"
+                                id="detailAddress"
+                                placeholder="상세주소를 입력해주세요"
+                            />
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                    </section>
+                    <div class="bottom-wrap">
+                        <a href="#" id="btn-signin" class="btn-signin" onclick="validateCondition()"
+                            >회원가입</a
+                        >
+                        <div class="login">
+                            이미 아이디가 있으신가요?
+                            <div>
+                                <a href="/users/login"> 로그인</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-    <footer class="footer">
-        <%- include('../views/partials/footer'); %>
-    </footer>
-    <script>
-        //이메일 유효성 검사
-        async function validateEmail() {
-            const $emailInput = document.querySelector("#emailInput");
-            const $emailCheck = document.querySelector("#emailCheck");
-            const $emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        </main>
+        <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+        <script>
+            // 이메일 유효성 검사
+            async function validateEmail() {
+                const $emailInput = document.querySelector('#emailInput');
+                const $emailCheck = document.querySelector('#emailCheck');
+                const $emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-            if ($emailInput.value.match($emailRegex)) {
-                $emailCheck.style.fontSize = "12px";
-                $emailCheck.textContent = "올바른 이메일 형식입니다.";
-                $emailCheck.style.color = "blue";
-                return true;
+                if ($emailInput.value.match($emailRegex)) {
+                    $emailCheck.style.fontSize = '12px';
+                    $emailCheck.textContent = '올바른 이메일 형식입니다.';
+                    $emailCheck.style.color = 'blue';
 
-                // 서버로 이메일 중복확인 요청 보내기
-                return await checkEmailDuplicate($emailInput.value);
-            } else {
-                $emailCheck.style.fontSize = "12px";
-                $emailCheck.textContent = "올바른 이메일 형식이 아닙니다.";
-                $emailCheck.style.color = "red";
+                    // 서버로 이메일 중복확인 요청 보내기
+                    const isDuplicate = await checkEmailDuplicate($emailInput.value);
+                    return isDuplicate;
+                } else {
+                    $emailCheck.style.fontSize = '12px';
+                    $emailCheck.textContent = '올바른 이메일 형식이 아닙니다.';
+                    $emailCheck.style.color = 'red';
+                    return false;
+                }
             }
-        }
 
-        async function checkEmailDuplicate(email) {
-            try {
-                const res = await fetch('/api/users/join/emailDuplicate', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email })
-                });
+            async function checkEmailDuplicate() {
+                const $emailInput = document.querySelector('#emailInput');
+                const $emailCheck = document.querySelector('#emailCheck');
+                const email = $emailInput.value;
 
-                if (res.ok) {
-                    const result = await res.json();
-                    if (result.message === '중복된 이메일이 존재합니다.') {
-                        const $emailCheck = document.querySelector("#emailCheck");
-                        $emailCheck.style.fontSize = "12px";
-                        $emailCheck.textContent = "중복된 이메일입니다.";
-                        $emailCheck.style.color = "red";
+                try {
+                    const res = await fetch('/api/users/join/emailDuplicate', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ email }),
+                    });
 
+                    if (res.ok) {
+                        const result = await res.json();
+                        if (result.message === '중복된 이메일이 존재합니다.') {
+                            $emailCheck.style.fontSize = '12px';
+                            $emailCheck.textContent = '중복된 이메일입니다.';
+                            $emailCheck.style.color = 'red';
+                            return true;
+                        } else {
+                            $emailCheck.style.fontSize = '12px';
+                            $emailCheck.textContent = '사용 가능한 이메일입니다.';
+                            $emailCheck.style.color = 'blue';
+                            enableSignUpButton();
+                            return false;
+                        }
                     } else {
-                        const $emailCheck = document.querySelector("#emailCheck");
-                        $emailCheck.style.fontSize = "12px";
-                        $emailCheck.textContent = "사용 가능한 이메일입니다.";
-                        $emailCheck.style.color = "blue";
-
-                        enableSignUpButton();
-                        return true;
+                        console.error('이메일 중복 확인에 실패했습니다.');
+                        return false;
                     }
+                } catch (error) {
+                    console.error('서버와의 통신 중 오류가 발생했습니다.', error);
+                    return false;
+                }
+            }
+
+            // 회원가입 버튼 활성화 함수
+            function enableSignUpButton() {
+                const $signupButton = document.querySelector('#btn-signin');
+                $signupButton.disabled = false;
+            }
+
+            // 비밀번호 유효성 검사
+            function validatePassword() {
+                const $passwordInput = document.querySelector('#passwordInput');
+                const $passwordCheck = document.querySelector('#passwordCheck');
+                const $passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,15}$/;
+
+                if ($passwordInput.value.match($passwordRegex)) {
+                    $passwordCheck.style.fontSize = '12px';
+                    $passwordCheck.textContent = '안전한 비밀번호입니다.';
+                    $passwordCheck.style.color = 'blue';
+                    return true;
                 } else {
-                    console.error('이메일 중복 확인에 실패했습니다.');
+                    $passwordCheck.style.fontSize = '12px';
+                    $passwordCheck.textContent =
+                        '영문, 숫자, 특수기호 조합 8~15자리 이하로 입력해주세요.';
+                    $passwordCheck.style.color = 'red';
+                    return false;
                 }
-            } catch (error) {
-                console.error('서버와의 통신 중 오류가 발생했습니다.', error);
             }
-        }
 
-        // 회원가입 버튼 활성화 함수
-        function enableSignUpButton() {
-            const $signupButton = document.querySelector(".btn-signin");
-            $signupButton.disabled = false;
-        }
+            // 비밀번호 재확인 검사
+            function validatePasswordConfirm() {
+                const $passwordInputConfirm = document.querySelector('#passwordInputConfirm');
+                const $passwordInput = document.querySelector('#passwordInput');
+                const $pwConfirmCheck = document.querySelector('#pwConfirmCheck');
 
-        // 비밀번호 유효성 검사
-        function validatePassword() {
-            const $passwordInput = document.querySelector("#passwordInput");
-            const $passwordCheck = document.querySelector("#passwordCheck");
-            const $passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,15}$/;
-
-            if ($passwordInput.value.match($passwordRegex)) {
-                $passwordCheck.style.fontSize = "12px";
-                $passwordCheck.textContent = "안전한 비밀번호입니다.";
-                $passwordCheck.style.color = "blue";
-                return true;
-            } else {
-                $passwordCheck.style.fontSize = "12px";
-                $passwordCheck.textContent = "영문, 숫자, 특수기호 조합 8~15자리 이하로 입력해주세요.";
-                $passwordCheck.style.color = "red";
-            }
-        }
-
-        // 비밀번호 재확인 검사
-        function validatePasswordConfirm() {
-            const $passwordInputConfirm = document.querySelector("#passwordInputConfirm");
-            const $passwordInput = document.querySelector("#passwordInput");
-            const $pwConfirmCheck = document.querySelector("#pwConfirmCheck");
-
-            if ($passwordInputConfirm.value === $passwordInput.value) {
-                $pwConfirmCheck.style.fontSize = "12px";
-                $pwConfirmCheck.textContent = "비밀번호가 일치합니다.";
-                $pwConfirmCheck.style.color = "blue";
-                return true;
-
-            } else {
-                $pwConfirmCheck.style.fontSize = "12px";
-                $pwConfirmCheck.textContent = "비밀번호가 일치하지 않습니다.";
-                $pwConfirmCheck.style.color = "red";
-            }
-        }
-
-        //이름 유효성 검사
-        function validateName() {
-            const $nameInput = document.querySelector('#nameInput');
-            const $nameCheck = document.querySelector('#nameCheck');
-            const $nameRegex = /^[가-힣]{2,4}$/;
-
-            if ($nameInput.value.match($nameRegex)) {
-                $nameCheck.textContent = "";
-                return true;
-
-            } else {
-                $nameCheck.style.fontSize = "12px";
-                $nameCheck.textContent = "이름은 2~4글자로 입력해주세요.";
-                $nameCheck.style.color = "red";
-            }
-        }
-
-        //휴대폰 번호 유효성 검사
-        function validatePhoneNum() {
-            const $phoneNumInput = document.querySelector("#phoneNumInput");
-            const $phoneNumCheck = document.querySelector("#phoneNumCheck");
-            const $phoneNumRegex = /^[0-9]+$/;
-
-            if ($phoneNumInput.value.match($phoneNumRegex)) {
-                $phoneNumCheck.style.fontSize = "12px";
-                $phoneNumCheck.textContent = "올바른 휴대폰 번호입니다.";
-                $phoneNumCheck.style.color = "blue";
-                return true;
-
-            } else {
-                $phoneNumCheck.style.fontSize = "12px";
-                $phoneNumCheck.textContent = "휴대폰 번호는 숫자로 입력해주세요.";
-                $phoneNumCheck.style.color = "red";
-            }
-        }
-
-        function openKakaoMap() {
-            new daum.Postcode({
-                oncomplete: function (data) {
-                    var $addressInput = document.querySelector("#addressInput");
-                    $addressInput.value = data.address;
-                    $addressInput.focus();
+                if ($passwordInputConfirm.value === $passwordInput.value) {
+                    $pwConfirmCheck.style.fontSize = '12px';
+                    $pwConfirmCheck.textContent = '비밀번호가 일치합니다.';
+                    $pwConfirmCheck.style.color = 'blue';
+                    return true;
+                } else {
+                    $pwConfirmCheck.style.fontSize = '12px';
+                    $pwConfirmCheck.textContent = '비밀번호가 일치하지 않습니다.';
+                    $pwConfirmCheck.style.color = 'red';
+                    return false;
                 }
-            }).open();
-        }
-
-        // 회원가입 조건 검사
-        async function validateCondition() {
-            const isEmailValid = await validateEmail();
-            console.log(isEmailValid)
-            const isPasswordValid = validatePassword();
-            console.log(isPasswordValid)
-            const isPasswordConfirmValid = validatePasswordConfirm();
-            console.log(isPasswordConfirmValid)
-            const isNameValid = validateName();
-            console.log(isNameValid)
-            const isPhoneNumValid = validatePhoneNum();
-            console.log(isPhoneNumValid)
-
-            if (isEmailValid && isPasswordValid && isPasswordConfirmValid && isNameValid && isPhoneNumValid) {
-                registerUser(); // 회원가입 수행
-            } else {
-                console.error('회원가입 조건을 만족하지 못했습니다.');
             }
-        }
 
-        // 서버로 회원가입 요청을 보내는 함수
-        async function registerUser() {
-            const $emailInput = document.querySelector("#emailInput").value;
-            const $passwordInput = document.querySelector("#passwordInput").value;
-            const $nameInput = document.querySelector("#nameInput").value;
-            const $phoneNumInput = document.querySelector("#phoneNumInput").value;
-            const $addressInput = document.querySelector("#addressInput").value;
-            const $detailAddressInput = document.querySelector("#detailAddress").value;
+            // 이름 유효성 검사
+            function validateName() {
+                const $nameInput = document.querySelector('#nameInput');
+                const $nameCheck = document.querySelector('#nameCheck');
+                const $nameRegex = /^[가-힣]{2,4}$/;
 
-            const userData = {
-                email: $emailInput,
-                password: $passwordInput,
-                name: $nameInput,
-                phoneNumber: $phoneNumInput,
-                address: {
-                    "address1": $addressInput,
-                    "address2": $detailAddressInput
+                if ($nameInput.value.match($nameRegex)) {
+                    $nameCheck.textContent = '';
+                    return true;
+                } else {
+                    $nameCheck.style.fontSize = '12px';
+                    $nameCheck.textContent = '이름은 2~4글자로 입력해주세요.';
+                    $nameCheck.style.color = 'red';
+                    return false;
                 }
-            };
+            }
 
-            try {
-                const res = await fetch('/users/join', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
+            // 휴대폰 번호 유효성 검사
+            function validatePhoneNum() {
+                const $phoneNumInput = document.querySelector('#phoneNumInput');
+                const $phoneNumCheck = document.querySelector('#phoneNumCheck');
+                const $phoneNumRegex = /^[0-9]+$/;
+
+                if ($phoneNumInput.value.match($phoneNumRegex)) {
+                    $phoneNumCheck.style.fontSize = '12px';
+                    $phoneNumCheck.textContent = '올바른 휴대폰 번호입니다.';
+                    $phoneNumCheck.style.color = 'blue';
+                    return true;
+                } else {
+                    $phoneNumCheck.style.fontSize = '12px';
+                    $phoneNumCheck.textContent = '휴대폰 번호는 숫자로 입력해주세요.';
+                    $phoneNumCheck.style.color = 'red';
+                    return false;
+                }
+            }
+            // 다음 주소 검색
+            function openKakaoMap() {
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        var $addressInput = document.querySelector('#addressInput');
+                        $addressInput.value = data.address;
+                        $addressInput.focus();
                     },
-                    body: JSON.stringify(userData)
-                });
-
-                if (res.ok) {
-                    window.location.href = res.url
-                } else {
-                    console.error('회원가입에 실패했습니다.');
-                }
-            } catch (error) {
-                console.error('서버와의 통신 중 오류가 발생했습니다.', error);
+                }).open();
             }
-        }
-    </script>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-        function openKakaoMap() {
-            new daum.Postcode({
-                oncomplete: function (data) {
-                    var $addressInput = document.querySelector("#addressInput");
-                    $addressInput.value = data.address;
-                    $addressInput.focus();
-                }
-            }).open();
-        }
-    </script>
-</body>
 
+            // 회원가입 조건 검사
+            function validateCondition() {
+                const isEmailValid = validateEmail();
+                const isPasswordValid = validatePassword();
+                const isPasswordConfirmValid = validatePasswordConfirm();
+                const isNameValid = validateName();
+                const isPhoneNumValid = validatePhoneNum();
+
+                if (
+                    isEmailValid &&
+                    isPasswordValid &&
+                    isPasswordConfirmValid &&
+                    isNameValid &&
+                    isPhoneNumValid
+                ) {
+                    registerUser(); // 회원가입 수행
+                } else {
+                    console.error('회원가입 조건을 만족하지 못했습니다.');
+                }
+            }
+
+            // 서버로 회원가입 요청을 보내는 함수
+            async function registerUser() {
+                const $emailInput = document.querySelector('#emailInput').value;
+                const $passwordInput = document.querySelector('#passwordInput').value;
+                const $nameInput = document.querySelector('#nameInput').value;
+                const $phoneNumInput = document.querySelector('#phoneNumInput').value;
+                const $addressInput = document.querySelector('#addressInput').value;
+                const $detailAddressInput = document.querySelector('#detailAddress').value;
+
+                const userData = {
+                    email: $emailInput,
+                    password: $passwordInput,
+                    name: $nameInput,
+                    phoneNumber: $phoneNumInput,
+                    address: {
+                        address1: $addressInput,
+                        address2: $detailAddressInput,
+                    },
+                };
+
+                const isDuplicate = await checkEmailDuplicate();
+                if (isDuplicate) {
+                    console.error('중복된 이메일입니다.');
+                    return;
+                }
+
+                try {
+                    const res = await fetch('/api/users/join', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(userData),
+                    });
+
+                    if (res.ok) {
+                        window.location.href = res.url;
+                    } else {
+                        console.error('회원가입에 실패했습니다.');
+                    }
+                } catch (error) {
+                    console.error('서버와의 통신 중 오류가 발생했습니다.', error);
+                }
+            }
+        </script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script>
+            function openKakaoMap() {
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        var $addressInput = document.querySelector('#addressInput');
+                        $addressInput.value = data.address;
+                        $addressInput.focus();
+                    },
+                }).open();
+            }
+        </script>
+    </body>
 </html>
