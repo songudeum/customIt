@@ -8,7 +8,7 @@ const loginRequired = require('../middlewares/login-required');
 
 const router = Router();
 const adminEmailCheck = /[a-z0-9]+@admin.com/;
-const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#y$%^*+=-])(?=.*[0-9]).{8,15}$/;
 
 // 관리자 회원가입 api
 router.post(
