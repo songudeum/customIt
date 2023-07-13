@@ -21,7 +21,7 @@
                                         <a href="/order/:id/orderList">주문내역</a>
                                     </li>
                                     <li>
-                                        <a href="/api/users/info">개인 정보 수정</a>
+                                        <a href="/users/info">개인 정보 수정</a>
                                     </li>
                                     <li>
                                         <a href="/users/info/delete">탈퇴하기</a>
@@ -86,20 +86,20 @@
 
         <footer class="footer"><%- include('../views/partials/footer'); %></footer>
         <script>
-            const inputPw = document.querySelector('#passwordInput');
+            const $inputPw = document.querySelector('#passwordInput');
 
             btnSecession.addEventListener('click', btnDelete);
 
             async function btnDelete(e) {
                 e.preventDefault();
 
-                const password = inputPw.value;
+                const password = $inputPw.value;
 
                 const data = { password };
 
                 // 데이터 json 형태로 파싱
                 const jsonData = JSON.stringify(data);
-                const apiUrl = '/users/info/delete';
+                const apiUrl = '/api/users/info/delete';
                 const res = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
@@ -108,10 +108,10 @@
                     body: jsonData,
                 });
 
-                if (res.status === 400) {
-                    alert('비밀번호가 일치하지 않습니다.');
+                if (res.status === 200) {
+                    window.location.href = res.url;
                 } else {
-                    return (window.location.href = res.url);
+                    alert('비밀번호가 일치하지 않습니다.');
                 }
             }
         </script>
