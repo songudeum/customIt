@@ -1,0 +1,252 @@
+.input-chk {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.input-chk + label {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #a586f6;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input-chk:checked + label {
+    background: #a586f6 url('../image/icon-checkbox.png') no-repeat center / 12px;
+}
+
+.btn {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+.btn-main {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    padding: 0 16px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #a586f6;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-main:hover {
+    background-color: #9b7ce9;
+}
+
+.btn-item-delete {
+    width: 36px;
+    height: 36px;
+    background: url('../image/cancel.png') no-repeat center / 12px;
+}
+
+.btn-delete-opt {
+    padding: 0 10px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.btn-delete-opt:hover {
+    color: #333;
+}
+
+.main-cart-wrap {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    padding: 0 60px;
+    box-sizing: border-box;
+}
+
+.main-cart {
+    flex: 1;
+}
+
+.main-cart .utils {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.cart-list {
+    position: relative;
+    border: 1px solid rgb(220, 220, 220);
+    border-width: 1px 0 1px 0;
+    box-sizing: border-box;
+}
+
+.cart-list .checkbox {
+    position: absolute;
+    top: 30px;
+    left: 5px;
+}
+.cart-list .btn-item-delete {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+}
+
+.cart-list > li {
+    position: relative;
+    padding: 30px 44px;
+}
+
+.cart-list > li + li {
+    border-top: 1px solid rgb(220, 220, 220);
+}
+
+.cart-list .item-info {
+    display: flex;
+    gap: 20px;
+}
+
+.cart-list .item-info .img {
+    overflow: hidden;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    background: #eee;
+}
+
+.cart-list .item-info .img::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.cart-list .item-info .img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-list .item-info .name {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cart-list .item-info .delivery {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #909090;
+}
+
+.cart-list .item-option {
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: rgb(247, 249, 250);
+    font-size: 12px;
+}
+
+.cart-list .item-option .option-quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.cart-list .item-option .quantity {
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 4px;
+    background-color: #fff;
+}
+.cart-list .item-option .quantity span,
+.cart-list .item-option .quantity .btn {
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.cart-list .item-option .total {
+    font-size: 15px;
+    color: #2f3438;
+    font-weight: bold;
+}
+
+.price-info .box.sticky {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 100px;
+}
+
+.price-info .box > dl {
+    width: 300px;
+    padding: 30px;
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #909090;
+}
+
+.price-info .box .total {
+    font-size: 16px;
+    color: #2f3438;
+}
+
+.price-info .box .row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.price-info .box .row:first-child {
+    margin-top: 0;
+}
+
+.price-info .btn-box {
+    margin-top: 20px;
+}
+
+.price-info .btn-box .btn {
+    width: 100%;
+}
+
+/* 장바구니 비었을 때 */
+.no-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 0;
+}
+.no-cart .icon {
+    width: 120px;
+    height: 120px;
+}
+.no-cart .icon img {
+    width: 100%;
+}
+
+.no-cart .btn-main {
+    flex: none;
+    margin-top: 20px;
+}
