@@ -2,7 +2,7 @@ const { Router } = require('express');
 const passport = require('passport');
 const { Admin } = require('../../data-access');
 const asyncHandler = require('../../utils/async-handler');
-const { createHash } = require('../../utils/hash-password');
+const createHash = require('../../utils/hash-password');
 const { setUserToken } = require('../../utils/jwt');
 const loginRequired = require('../../middlewares/login-required');
 
@@ -16,7 +16,7 @@ router.post('/login', passport.authenticate('admin', { session: false }), (req, 
     // 유저 토큰 생성 및 쿠키에 전달
     setUserToken(res, req.user);
 
-    res.redirect('/admin/category');
+    res.status(200).redirect('/admin/category');
 });
 
 // 관리자 회원가입 api

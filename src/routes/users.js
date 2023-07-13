@@ -6,6 +6,8 @@ const { jwtVerify } = require('../utils/jwt');
 
 const router = Router();
 
+const numberCheck = /^[0-9]+$/;
+
 // 사용자 정보 조회 라우터
 router.get(
     '/info',
@@ -30,6 +32,12 @@ router.put(
         const user = await Users.findOne({ email: userEmail });
 
         const categories = await Category.find({});
+        // 핸드폰 번호 형식 확인 조건문
+        if (!numberCheck.test(phoneNumber)) {
+            const error = new Error('휴대폰 번호는 숫자로 입력해주세요.');
+            error.statusCode = 400;
+            throw error;
+        }
 
         const userInfo = await Users.findOneAndUpdate(
             { email: userEmail },

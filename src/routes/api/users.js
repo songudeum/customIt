@@ -5,7 +5,7 @@ const { Users } = require('../../data-access');
 const asyncHandler = require('../../utils/async-handler');
 const loginRequired = require('../../middlewares/login-required');
 const { jwtVerify } = require('../../utils/jwt');
-const { createHash, comparePassword } = require('../../utils/hash-password');
+const createHash = require('../../utils/hash-password');
 const { setUserToken } = require('../../utils/jwt');
 
 const router = Router();
@@ -101,7 +101,7 @@ router.post(
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
         const userPw = user.password;
-        if (!comparePassword(password, userPw)) {
+        if (userPw !== createHash(password)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 400;
             throw error;
@@ -123,7 +123,7 @@ router.post(
         const { password, newPassword } = req.body;
         const userPw = user.password;
 
-        if (!comparePassword(password, userPw)) {
+        if (userPw !== createHash(password)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 401;
             throw error;
