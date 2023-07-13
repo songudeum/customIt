@@ -65,8 +65,8 @@ app.use('/admin/product', adminProductRouter);
 app.use('/admin/orders', adminOrderRouter);
 
 app.use('/api/orders', orderApiRouter);
-app.use('/api/users', userApiRouter);
 app.use('/api/admin', adminApiRouter);
+app.use('/api/users', userApiRouter);
 app.use('/api/category', categoryApiRouter);
 app.use('/api/product', productApiRouter);
 
