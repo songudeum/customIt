@@ -19,13 +19,19 @@
                         <div class="inner_sub">
                             <ul class="list_menu">
                                 <li class="on">
-                                    <a href="/order/:id/orderList">주문내역</a>
+                                    <a href="/order/<%= userInfo.userId %>/orderList">
+                                        주문 내역
+                                    </a>
                                 </li>
+
                                 <li>
                                     <a href="/users/info">개인 정보 수정</a>
                                 </li>
                                 <li>
-                                    <a href="/users/info/delete">탈퇴하기</a>
+                                    <a href="/users/info/edit/pw">비밀번호 변경</a>
+                                </li>
+                                <li>
+                                    <a href="/users/info/delete">회원 탈퇴 하기</a>
                                 </li>
                             </ul>
                         </div>
