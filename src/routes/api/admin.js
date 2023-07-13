@@ -46,7 +46,6 @@ router.post(
             password: createHash(password),
             name,
         });
-
         res.status(201).redirect('/admin/login');
     }),
 );
@@ -57,6 +56,14 @@ router.post(
     asyncHandler(async (req, res) => {
         const { email } = req.body;
         const emailDuplicate = await Admin.findOne({ email });
+
+        // 이메일 형식 체크하는 조건문
+        if (!adminEmailCheck.test(email)) {
+            const error = new Error('올바른 이메일 형식이 아닙니다.');
+            error.statusCode = 400;
+            throw error;
+        }
+
         if (emailDuplicate) {
             res.json({ message: '중복된 이메일이 존재합니다.' });
         } else {

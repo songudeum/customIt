@@ -92,7 +92,6 @@ router.post(
 );
 
 // 사용자 탈퇴 라우터
-
 router.post(
     '/info/delete',
     loginRequired,
@@ -101,6 +100,7 @@ router.post(
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
         const userPw = user.password;
+
         if (!comparePassword(password, userPw)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 400;
@@ -108,6 +108,7 @@ router.post(
         }
         await Users.deleteOne({ email: userEmail });
 
+        res.cookie('token', null, { maxAge: 0 });
         res.status(200).redirect('/');
     }),
 );
@@ -131,12 +132,30 @@ router.put(
                 address,
             },
         );
-        res.redirect('/users/info');
+        res.redirect(303, '/users/info');
+    }),
+);
+
+// 사용자 비밀번호 확인 라우터
+router.post(
+    '/info/edit/pwCheck',
+    loginRequired,
+    asyncHandler(async (req, res) => {
+        const { password } = req.body;
+        const userEmail = jwtVerify(req);
+        const user = await Users.findOne({ email: userEmail });
+        const userPw = user.password;
+        if (!comparePassword(password, userPw)) {
+            const error = new Error('비밀번호가 일치하지 않습니다.');
+            error.statusCode = 401;
+            throw error;
+        }
+        res.json({ message: '비밀번호가 일치합니다' });
     }),
 );
 
 // 사용자 비밀번호 변경 라우터
-router.post(
+router.put(
     '/info/edit/pw',
     loginRequired,
     asyncHandler(async (req, res) => {
@@ -145,13 +164,12 @@ router.post(
         const { password, newPassword } = req.body;
         const userPw = user.password;
 
-        // const categories = await Category.find({});
-
         if (!comparePassword(password, userPw)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 401;
             throw error;
         }
+
         if (!pwCheck.test(newPassword)) {
             const error = new Error('영문 숫자 특수기호 조합 8~15자 이하로 입력해주세요.');
             error.statusCode = 400;
