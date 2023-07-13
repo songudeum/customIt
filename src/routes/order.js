@@ -10,10 +10,10 @@ const router = Router();
 router.get(
     '/cart',
     asyncHandler(async (req, res) => {
-        // 로컬스토리지에서 카트 데이터 가져오기
+        const { cartData } = req.body;
 
         const categories = await Category.find({});
-        res.render('main-cart', { categories, categoryName: undefined });
+        res.render('main-cart', { cartData, categories, categoryName: undefined });
     }),
 );
 
@@ -24,7 +24,7 @@ router.get(
         // 요청 파라미터에서 userId 가져오기
         const { userId } = req.params;
         const categories = await Category.find({});
-        const orders = await Order.find({ 'orderUser.email': userId }); // 주문 데이터 Find
+        const orders = await Order.find({ userId }); // 주문 데이터 Find
         const orderList = orders.map((order) => {
             const { orderId, totalPrice, deliveryStatus, products } = order;
 

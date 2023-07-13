@@ -16,85 +16,32 @@
                 <div class="main-cart-wrap">
                     <div class="main-cart">
                         <div class="utils">
-                            <div class="checkbox">
-                                <input class="input-chk" type="checkbox" id="inputSelect3" />
-                                <label for="inputSelect3"> </label>
-                            </div>
-                            <button type="button" class="btn btn-delete-opt">선택 삭제</button>
+                            <button type="button" class="btn btn-delete-opt">전체 삭제</button>
                         </div>
-                        <ul class="cart-list">
-                            <li>
-                                <div class="checkbox">
-                                    <input class="input-chk" type="checkbox" id="inputSelect" />
-                                    <label for="inputSelect"> </label>
-                                </div>
-                                <div class="item-info">
-                                    <div class="img">
-                                        <img src="/image/img-product01.jpg" alt="상품썸네일" />
-                                    </div>
-                                    <div class="info">
-                                        <p class="name">Apple 아이패드 에어 5세대 M1 스타라이트</p>
-                                        <p class="delivery">무료배송</p>
-                                    </div>
-                                </div>
-                                <div class="item-option">
-                                    <p>단품 구매</p>
-                                    <div class="option-quantity">
-                                        <div class="quantity">
-                                            <button type="button" class="btn btn-minus">-</button>
-                                            <span>1</span>
-                                            <button type="button" class="btn btn-plus">+</button>
-                                        </div>
-                                        <div class="total">90,000 <span class="unit">원</span></div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-item-delete"></button>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                    <input class="input-chk" type="checkbox" id="inputSelect2" />
-                                    <label for="inputSelect2"> </label>
-                                </div>
-                                <div class="item-info">
-                                    <div class="img">
-                                        <img src="/image/img-product01.jpg" alt="상품썸네일" />
-                                    </div>
-                                    <div class="info">
-                                        <p class="name">Apple 아이패드 에어 5세대 M1 스타라이트</p>
-                                        <p class="delivery">무료배송</p>
-                                    </div>
-                                </div>
-                                <div class="item-option">
-                                    <p>단품 구매</p>
-                                    <div class="option-quantity">
-                                        <div class="quantity">
-                                            <button type="button" class="btn btn-minus">-</button>
-                                            <span>1</span>
-                                            <button type="button" class="btn btn-plus">+</button>
-                                        </div>
-                                        <div class="total">90,000 <span class="unit">원</span></div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-item-delete"></button>
-                            </li>
-                        </ul>
+                        <ul class="cart-list" id="cartBox"></ul>
                     </div>
 
                     <div class="price-info">
                         <div class="box sticky">
                             <dl>
-                                <div class="row">
-                                    <dt>총 상품 금액</dt>
-                                    <dd>1,449,000<span class="unit">원</span></dd>
+                                <div class="row quantity">
+                                    <dt>총 상품 수량</dt>
+                                    <dd>
+                                        <span class="total-quantity"></span
+                                        ><span class="unit">개</span>
+                                    </dd>
                                 </div>
                                 <div class="row total">
                                     <dt>결제 금액</dt>
-                                    <dd>1,449,000<span class="unit">원</span></dd>
+                                    <dd>
+                                        <span class="total-price"></span
+                                        ><span class="unit">원</span>
+                                    </dd>
                                 </div>
                             </dl>
                             <div class="btn-box">
                                 <a href="/order" class="btn btn-main"
-                                    ><span>#</span>개의 상품구매하러가기</a
+                                    ><span>1</span>개의 상품구매하러가기</a
                                 >
                             </div>
                         </div>
@@ -104,15 +51,155 @@
                 <!--// 장바구니 있을 때 -->
 
                 <!-- 장바구니 없을 때 -->
-                <div class="no-cart">
+                <div class="no-cart" style="display: none">
                     <div class="icon">
                         <img src="/image/empty-icon.png" alt="장바구니없음" />
                     </div>
                     <a href="/" class="btn btn-main">상품 담으러 가기</a>
                 </div>
+
                 <!--// 장바구니 없을 때 -->
             </div>
         </main>
         <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+        <script>
+            function getItem(item) {
+                const data = localStorage.getItem(item);
+                if (data === null) {
+                    return {};
+                }
+                return JSON.parse(data);
+            }
+
+            let cart = getItem('cart');
+            console.log(cart.length);
+
+            window.addEventListener('load', (event) => {
+                if (cart.length) {
+                    const noCartElem = document.querySelector('.no-cart');
+                    // console.log('1' + noCartElem);
+                    noCartElem.style.display = 'none';
+                    return;
+                }
+            });
+            function setCartDataToLocalStorage(arr) {
+                console.dir(arr);
+                localStorage.setItem('cart', JSON.stringify(arr));
+                // 로컬스토리지에 카트를 키값으로 제이슨 파일로 변환하여 문자열로 저장
+                // 로컬스토리지에는 문자열로만 저장 가능
+            }
+
+            const minusQuantity = (target) => {
+                const count = target.closest('.quantity').children[1];
+                const productName = target.closest('.cart-list-li').getAttribute('data-name');
+                arr = cart.slice();
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].productName === productName) {
+                        arr[i].quantity--;
+                        setCartDataToLocalStorage(arr);
+                        const quantityName = target.previousSibling.id;
+
+                        count.innerHTML = `${arr[i].quantity}`;
+
+                        return;
+                    }
+                }
+            };
+
+            const plusQuantity = (target) => {
+                const count = target.closest('.quantity').children[1];
+                const productName = target.closest('.cart-list-li').getAttribute('data-name');
+                arr = cart.slice();
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].productName === productName) {
+                        arr[i].quantity++;
+
+                        setCartDataToLocalStorage(arr);
+                        const quantityName = target.previousSibling.id;
+
+                        count.innerHTML = `${arr[i].quantity}`;
+
+                        return;
+                    }
+                }
+            };
+            window.addEventListener('load', (event) => {
+                if (cart.length) {
+                    let str = '';
+                    cart.forEach((item, index) => {
+                        const productName = item.productName;
+                        const price = item.price;
+                        const image = item.image;
+                        const quantity = item.quantity;
+
+                        str += `<li class="cart-list-li" data-name="${productName}">
+
+                                <div class="item-info">
+
+                                    <div class="info">
+                                        <p class="name">${productName}</p>
+                                        <p class="delivery">무료배송</p>
+                                    </div>
+                                </div>
+                                <div class="item-option">
+                                    <p>단품 구매</p>
+
+                                    <div class="option-quantity">
+                                        <div class="quantity">
+
+                                            <button type="button" class="btn btn-minus" onclick="minusQuantity(this)">-</button>
+                                            <span class="count" id="${index}">${quantity}</span>
+                                            <button type="button" class="btn btn-plus" onclick="plusQuantity(this)">+</button>
+
+
+                                        </div>
+                                        <div class="total">${price}<span class="unit">원</span></div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-item-delete"></button>
+                            </li>`;
+                    });
+
+                    var cartBox = document.getElementById('cartBox');
+                    cartBox.insertAdjacentHTML('beforeend', str);
+
+                    document.querySelectorAll('.btn-item-delete').forEach((btn) => {
+                        btn.addEventListener('click', (event) => {
+                            const itemName =
+                                event.target.parentElement.querySelector('.name').textContent;
+
+                            for (let i = 0; i < cart.length; i++) {
+                                if (cart[i].productName === itemName) {
+                                    cart.splice(i, 1);
+                                    break;
+                                }
+                            }
+
+                            event.target.parentElement.remove();
+
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                        });
+                    });
+
+                    let totalPrice = 0;
+                    cart.forEach((item) => {
+                        totalPrice += item.price * item.quantity;
+                    });
+                    document.querySelectorAll('.total-price')[0].textContent =
+                        totalPrice.toLocaleString();
+
+                    let totalQuantity = 0;
+                    cart.forEach((item) => {
+                        totalQuantity += item.quantity;
+                    });
+                    document.querySelector('.total-quantity').textContent = totalQuantity;
+
+                    document.querySelector('.btn-main span').textContent = totalQuantity;
+                } else {
+                    const noResult = document.querySelector('.no-cart');
+                    noResult.style.display = 'flex';
+                }
+            });
+        </script>
     </body>
 </html>
