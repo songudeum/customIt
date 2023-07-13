@@ -21,6 +21,10 @@ section{
     padding:30px;
 }
 
+.btn{
+    cursor: pointer;
+}
+
 .btn-small{
     background-color:gray;
     padding: 5px 20px 5px 20px;
