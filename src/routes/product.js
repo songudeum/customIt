@@ -23,7 +23,7 @@ router.get(
         const { id } = req.params;
         const product = await Product.findOne({ id });
         const categories = await Category.find({});
-        const categoryName = product.categoryName;
+        const { categoryName } = product;
         res.render('product-detail', { product, categoryName, categories });
     }),
 );
