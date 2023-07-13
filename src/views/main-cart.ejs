@@ -78,7 +78,7 @@
                 <!--// 장바구니 있을 때 -->
 
                 <!-- 장바구니 없을 때 -->
-                <div class="no-cart">
+                <div class="no-cart" style="display: none">
                     <div class="icon">
                         <img src="/image/empty-icon.png" alt="장바구니없음" />
                     </div>
@@ -99,7 +99,7 @@
             }
 
             let cart = getItem('cart');
-            console.log(cart);
+            console.log(Object.keys(cart).length === 0);
 
             // window.addEventListener('load', (event) => {
             //     if (!cart.length === 0) {
@@ -113,33 +113,40 @@
             window.addEventListener('load', (event) => {
                 if (cart) {
                     const noCartElem = document.querySelector('.no-cart');
-                    console.log('1' + noCartElem);
+                    // console.log('1' + noCartElem);
                     noCartElem.style.display = 'none';
                     return;
+                } else {
+                    console.log('fkdshflsdjfkdsjfkljsfkhsdfkdjh');
                 }
             });
 
             window.addEventListener('load', (event) => {
-                const productName = document.createElement('p');
-                productName.innerHTML = cart.productName;
-                const productNameElem = document.querySelector('p.name');
-                productNameElem.appendChild(productName);
+                if (Object.keys(cart).length !== 0) {
+                    const productName = document.createElement('p');
+                    productName.innerHTML = cart.productName;
+                    const productNameElem = document.querySelector('p.name');
+                    productNameElem.appendChild(productName);
 
-                const price = document.createElement('p');
-                price.innerHTML = cart.price;
-                const priceElem = document.querySelector('div.total');
-                priceElem.appendChild(price);
+                    const price = document.createElement('p');
+                    price.innerHTML = cart.price;
+                    const priceElem = document.querySelector('div.total');
+                    priceElem.appendChild(price);
 
-                const image = document.createElement('div');
-                image.innerHTML = cart.image;
-                const imageElem = document.querySelector('div.img');
-                imageElem.appendChild(image);
-                console.log('이미지:' + cart.image);
+                    const image = document.createElement('div');
+                    image.innerHTML = cart.image;
+                    const imageElem = document.querySelector('div.img');
+                    imageElem.appendChild(image);
+                    console.log('이미지:' + cart.image);
 
-                const quantity = document.createElement('div');
-                quantity.innerHTML = cart.quantity;
-                const quantityElem = document.querySelector('span.count');
-                quantityElem.appendChild(quantity);
+                    const quantity = document.createElement('div');
+                    quantity.innerHTML = cart.quantity;
+                    const quantityElem = document.querySelector('span.count');
+                    quantityElem.appendChild(quantity);
+                } else {
+                    const noResult = document.querySelector('.no-cart');
+                    noResult.style.display = 'flex';
+                }
             });
 
             //             window.addEventListener('load', (event) => { const newDiv = document.createElement('div');
