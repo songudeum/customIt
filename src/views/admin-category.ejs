@@ -11,31 +11,30 @@
             <%- include('../views/partials/admin-aside.ejs'); %>
             <article class="article">
                 <h2>카테고리 관리</h2>
-                <section>
-                    <% categories.forEach(function(category){ %>
+                <section>          
                     <ul class="list-category" id="listCategory">
+                        <% categories.forEach(function(category){ %>
                         <li class="list-category-li">
-                            <div>
+                            
                             <input type="text" value= "<%= category.name %>" oninput="validateCategory(event)" readonly="readonly">
                             <p class="checkCategory" id="checkCategory"></p>
-                            </div>
-                            <div>
+                            
+                            <div class="btn-box">
                                 <button class="btn btn-small" id="updateCategory" data-id="<%=
                                 category.id %>" onclick="updateCategory(event)"> 수정 </button>
                                 <button class="btn btn-small" id="deleteCategory" data-id="<%=
-                                category.id %>" onclick="deleteCategory(event)"> 삭제 </button>
+                                category.id %>" onclick="deleteCategory(event); window.location.reload();"> 삭제 </button>
                                 <button class="btn btn-small addNewCategory" id="addNewCategory" data-id="<%=
-                                category.id %>" onclick="addNewCategory(event)"> 수정 완료 </button>
+                                category.id %>" onclick="addNewCategory(event); window.location.reload();"> 수정 완료 </button>
                             </div>
                         </li>
+                        <% }); %>
                     </ul>
-                    <% }); %>
+                    
 
                     <div class="add-category">
-                        <div>
                         <input type="text" id="inputCategory"/>
                         <p class="checkCategory" id="checkCategory"></p>
-                        </div>
 
                         <input type="submit" data-id="test" class="btn btn-small btn-submit" id="createCategory" value="등록"/>
                     </div>

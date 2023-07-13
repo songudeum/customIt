@@ -68,12 +68,6 @@ select{
     padding: 5px 10px 5px 10px;
 }
 
-/* .user-image{
-    width: 500px;
-    height: 300px;
-    background-color: #dbdbdb;
-} */
-
 .add-image{
     overflow: hidden;
     width: 0;
