@@ -23,7 +23,7 @@
                         <% products.forEach(function(product){ %>
                         <tr onclick="location.href='/admin/product/<%=product.id%>'">
                             <td><%=product.categoryName%></td>
-                            <td><img class="image" src=<%=product.image%>></td>
+                            <td><img class="image" src="/image/<%=product.image%>"></td>
                             <td><%=product.name%></td>
                             <td><%=product.company%></td>
                             <td><%=product.price%></td>

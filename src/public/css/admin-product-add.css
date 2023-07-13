@@ -7,8 +7,10 @@ section{
     display: flex;
     justify-content: center;
 }
+
 table{
     width: 500px;
+    margin-top: 10px;
     border-top:1px solid #353535;
     border-collapse: collapse;
     color:#353535;
@@ -22,6 +24,32 @@ td{
 
 td input{
     width: 70%;
+}
+
+.image-box {
+    overflow: hidden;
+    position: relative;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    background: #eee;
+    cursor: pointer;
+}
+
+.image-box::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.image-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s;
 }
 
 .inputDescription{
@@ -40,11 +68,11 @@ select{
     padding: 5px 10px 5px 10px;
 }
 
-.user-image{
+/* .user-image{
     width: 500px;
     height: 300px;
     background-color: #dbdbdb;
-}
+} */
 
 .add-image{
     overflow: hidden;
@@ -69,5 +97,5 @@ select{
 
 .btn-delete{
     text-decoration: none;
-    margin-left: 3px;
+    margin-left: 10px;
 }
