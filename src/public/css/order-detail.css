@@ -1,32 +1,52 @@
-.user-aside .snb_my .tit_snb {
-    padding: 8px 0 33px 1px;
-    font-weight: 700;
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #2f3438;
+}
+
+.user-aside {
+    display: flex;
+    justify-content: left;
+    margin: 50px 0 0 0;
+}
+
+.order-contents {
+    width: 800px;
+    margin-left: 50px;
+}
+.order-aside-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.snb-my {
+    width: 200px;
+}
+
+.snb-my .tit-snb {
+    padding: 0 0 33px 1px;
+    font-weight: 500;
     font-size: 30px;
     line-height: 34px;
     color: #333;
     letter-spacing: -0.5px;
 }
-.user-aside h2 {
-    width: 200px;
-}
 
-.user-aside {
-    max-width: 1280px;
-    padding: 0 30px;
-}
-.snb_my {
-    width: 100%;
-}
-.user-aside .snb_my .inner_sub {
+.snb-my .inner-sub {
     border: 1px solid #f2f2f2;
     border-bottom: 0;
 }
 
-.user-aside .snb_my .list_menu li {
+.snb-my .list-menu li {
     border-bottom: 1px solid #f2f2f2;
 }
 
-.user-aside .snb_my .list_menu li a {
+.snb-my .list-menu li a {
     display: block;
     overflow: hidden;
     padding: 15px 0 15px 20px;
@@ -36,9 +56,187 @@
     color: #666;
     line-height: 20px;
     letter-spacing: -0.3px;
+    text-decoration: none;
 }
 
-.user-aside .snb_my .link_inquire {
+.title-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 40px;
+}
+.btn-edit {
+    font-size: 15px;
+    color: #666;
+    height: 36px;
+    padding: 0 10px;
+    line-height: 36px;
+}
+.cont-title {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.order-list-wrap {
+    margin-left: 40px;
+    margin-top: 30px;
+    border-top: 1px solid black;
+}
+.order-list-wrap + .title-wrap {
+    margin-top: 40px;
+}
+
+.btn-cancel {
+    width: 69px;
+    height: 24px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+.btn-edit:hover {
+    color: #a586f6;
+}
+
+.horizontal-pale-line {
+    margin-top: 13px;
+    border-top: 1px solid #cacaca;
+    height: 2px;
+    width: 600px;
+}
+.item {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 4px;
+    flex: 1;
+}
+
+.item .sub {
+    margin-right: 50px;
+}
+
+.order-status {
+    color: #a586f6;
+}
+.arrow-icon {
+    position: relative;
+    top: -102px;
+    margin-left: 575px;
+}
+
+.order-box {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    border-width: 1px 0 1px 0;
+    box-sizing: border-box;
+}
+.order-box2 {
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.order-box .thum {
+    overflow: hidden;
+    flex: none;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    background: #eee;
+}
+
+.order-box .thum::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.order-box .thum img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-box .btnbox {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+}
+
+.order-item + .order-item {
+    margin-top: 20px;
+}
+
+.order-item .date-tit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.order-item .price {
+    margin-left: auto;
+}
+.snb_my {
+    width: 200px;
+}
+
+.aside-section-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.snb_my .tit_snb {
+    padding: 8px 0 33px 1px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 34px;
+    color: #333;
+    letter-spacing: -0.5px;
+}
+
+.snb_my .inner_sub {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+.snb_my .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.snb_my .list_menu li.on a:hover,
+.snb_my .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        52%;
+    background-size: 6px 11px;
+    color: #666;
+}
+
+.snb_my .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 15px 0 15px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    text-decoration: none;
+}
+
+.snb_my .link_inquire {
     display: block;
     overflow: hidden;
     width: 200px;
@@ -46,7 +244,7 @@
     margin-top: 20px;
     padding: 9px 0 0 21px;
     border-radius: 0 100px 100px 0;
-    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
         25px;
     background-size: 6px 11px;
     font-size: 12px;
@@ -54,70 +252,9 @@
     line-height: 20px;
 }
 
-.user-aside .snb_my .link_inquire .emph {
+.snb_my .link_inquire .emph {
     display: block;
     padding-bottom: 1px;
     font-weight: 700;
     font-size: 14px;
-}
-
-.order-detail-wrap {
-    display: flex;
-}
-.order-detail-wrap h2 {
-    margin-left: 20px;
-    font-size: 30px;
-    font-weight: 600;
-}
-.order-detail-wrap .order {
-    display: flex;
-    flex-direction: column;
-    margin: 10px 0 25px 0;
-}
-
-.order-detail-wrap .list-box {
-    display: flex;
-    border-top: 2px solid black;
-    border-bottom: 1px solid rgb(220, 220, 220);
-    width: 850px;
-}
-
-.order-detail-wrap .image-box {
-    width: 150px;
-    height: 150px;
-    background-color: #666;
-}
-
-.order-detail-wrap .list-box .layer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 750px;
-    margin: 15px 0;
-}
-
-.order-detail-wrap .info-box {
-    display: flex;
-    width: 850px;
-    border-top: 2px solid black;
-}
-
-.order-detail-wrap .info-box li {
-    margin: 30px 30px;
-    font-size: 20px;
-}
-
-.order-detail-wrap .order-change {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.order-detail-wrap .order-change a {
-    text-decoration: none;
-    color: #727272;
-    font-size: 20px;
-}
-.order-detail-wrap .order-change a:hover {
-    color: #a586f6;
 }

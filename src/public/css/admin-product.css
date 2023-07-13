@@ -1,38 +1,38 @@
-.product{ 
+.product { 
     /**admin-aside 내부 class**/
     font-weight: bold;
     font-size: larger;
 }
 
-table{
-    width:100%;
+table {
+    width: 100%;
     border-top: 1px solid gray;
     border-collapse: collapse;
-    color:#353535;;
+    color: #353535;;
 }
 
-td, th{
-    width:20%;
+td, th {
+    width: 20%;
     padding: 10px;
     border-bottom: 1px solid gray;
     text-align: center;
     vertical-align: middle;
 }
 
-th{
+th {
     font-weight: bolder;
 }
 
-.image{
+.image {
     width: 30px;
     height: 30px;
 }
 
-.btn-add-product{
+.btn-add-product {
     margin-top: 10px;
 }
 
-.btn-box{
+.btn-box {
     display: flex;
     justify-content: end;
 }

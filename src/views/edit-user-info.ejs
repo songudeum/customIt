@@ -1,222 +1,195 @@
 <!doctype html>
 <html lang="ko">
-    <head>
-        <%- include('../views/partials/head'); %>
+
+<head>
+    <%- include('../views/partials/head'); %>
         <link rel="stylesheet" href="/css/header.css" />
         <link rel="stylesheet" href="/css/edit-user-info.css" />
         <link rel="stylesheet" href="/css/footer.css" />
-    </head>
+</head>
 
-    <body class="container">
-        <header class="header"><%- include('../views/partials/header'); %></header>
+<body class="container">
+    <header class="header"><%- include('../views/partials/header'); %></header>
 
-        <main role="main" class="contents">
-            <div class="contents-inner">
-                <div class="edit-info-wrap">
-                    <section class="aside-section-wrap">
-                        <div id="snb" class="snb_my">
-                            <h2 class="tit_snb">마이페이지</h2>
-                            <div class="inner_sub">
-                                <ul class="list_menu">
-                                    <li class="on">
-                                        <a href="/order/<%= userInfo.userId %>/orderList">
-                                            주문내역
-                                        </a>
-                                    </li>
+    <main role="main" class="contents">
+        <div class="contents-inner">
+            <div class="edit-info-wrap">
+                <section class="aside-section-wrap">
+                    <div id="snb" class="snb_my">
+                        <h2 class="tit_snb">마이페이지</h2>
+                        <div class="inner_sub">
+                            <ul class="list_menu">
+                                <li class="on">
+                                    <a href="/order/<%= userInfo.userId %>/orderList">
+                                        주문 내역
+                                    </a>
+                                </li>
 
-                                    <li>
-                                        <a href="/users/info">개인 정보 수정</a>
-                                    </li>
-                                    <li>
-                                        <a href="/users/info/delete">탈퇴 하기</a>
-                                    </li>
-                                    <li>
-                                        <a href="/users/info/edit/pw">비밀번호 변경</a>
-                                    </li>
-                                </ul>
-                            </div>
+                                <li>
+                                    <a href="/users/info">개인 정보 수정</a>
+                                </li>
+                                <li>
+                                    <a href="/users/info/edit/pw">비밀번호 변경</a>
+                                </li>
+                                <li>
+                                    <a href="/users/info/delete">회원 탈퇴 하기</a>
+                                </li>
+                            </ul>
                         </div>
-                    </section>
-                    <div class="edit-user-info">
-                        <div class="edit-info-text">
-                            <div class="left">개인정보수정</div>
-                            <div class="right">
-                                변경 불가
+                    </div>
+                </section>
+                <div class="edit-user-info">
+                    <div class="edit-info-text">
+                        <div class="left">개인정보수정</div>
+                        <div class="right">
+                            변경 불가
+                            <div>*</div>
+                        </div>
+                    </div>
+                    <div class="top">
+                        <div class="email">
+                            <label>이메일
                                 <div>*</div>
-                            </div>
+                            </label>
+                            <input type="text" id="emailInput" value="<%= userInfo.email %>" readonly />
+                            <span class="hidden"><a href="#">중복확인</a></span>
                         </div>
-                        <div class="top">
-                            <div class="email">
-                                <label
-                                    >이메일
-                                    <div>*</div>
-                                </label>
-                                <input
-                                    type="text"
-                                    id="emailInput"
-                                    value="<%= userInfo.email %>"
-                                    readonly
-                                />
-                                <span class="hidden"><a href="#">중복확인</a></span>
-                            </div>
-                            <p id="emailCheck"></p>
+                        <p id="emailCheck"></p>
 
-                            <div class="name">
-                                <label
-                                    >이름
-                                    <div>*</div>
-                                </label>
-                                <input
-                                    type="text"
-                                    id="nameInput"
-                                    value="<%= userInfo.name %>"
-                                    onchange="validateName()"
-                                    readonly
-                                />
-                                <span><a href="#">중복확인</a></span>
-                            </div>
-                            <p id="nameCheck"></p>
-                            <div class="phone-num">
-                                <label>휴대폰</label>
-                                <input
-                                    type="tel"
-                                    id="phoneNumInput"
-                                    value="<%= userInfo.phoneNumber %>"
-                                    placeholder="'-' 없이 번호만 입력해주세요"
-                                    onchange="validatePhoneNum()"
-                                    maxlength="13"
-                                />
-                                <span><a href="#">중복확인</a></span>
-                            </div>
-                            <p id="phoneNumCheck"></p>
+                        <div class="name">
+                            <label>이름
+                                <div>*</div>
+                            </label>
+                            <input type="text" id="nameInput" value="<%= userInfo.name %>" onchange="validateName()"
+                                readonly />
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="nameCheck"></p>
+                        <div class="phone-num">
+                            <label>휴대폰</label>
+                            <input type="tel" id="phoneNumInput" value="<%= userInfo.phoneNumber %>"
+                                placeholder="'-' 없이 번호만 입력해주세요" onchange="validatePhoneNum()" maxlength="13" />
+                            <span><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="phoneNumCheck"></p>
 
-                            <div class="address">
-                                <label>주소</label>
-                                <input
-                                    type="text"
-                                    id="addressInput"
-                                    value="<%= userInfo.address.address1 %>"
-                                    placeholder="우측 주소 검색을 클릭해주세요"
-                                    readonly
-                                />
-                                <div class="address-check" id="addressCheckBtn">
-                                    <div>
-                                        <button href="#" onclick="openKakaoMap()">주소검색</button>
-                                    </div>
+                        <div class="address">
+                            <label>주소</label>
+                            <input type="text" id="addressInput" value="<%= userInfo.address.address1 %>"
+                                placeholder="우측 주소 검색을 클릭해주세요" readonly />
+                            <div class="address-check" id="addressCheckBtn">
+                                <div>
+                                    <button href="#" onclick="openKakaoMap()">주소검색</button>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="detail-address">
-                                <label>상세주소</label>
-                                <input
-                                    type="text"
-                                    id="detailAddress"
-                                    value="<%= userInfo.address.address2 %>"
-                                    placeholder="상세주소를 입력해주세요"
-                                />
-                                <span><a href="#">중복확인</a></span>
-                            </div>
+                        <div class="detail-address">
+                            <label>상세주소</label>
+                            <input type="text" id="detailAddress" value="<%= userInfo.address.address2 %>"
+                                placeholder="상세주소를 입력해주세요" />
+                            <span><a href="#">중복확인</a></span>
                         </div>
-                        <div class="btn-bottom">
-                            <div class="btn-edit-user-info" id="editUserInfo">
-                                <button href="#" onclick="editUserInfoChange()">
-                                    회원정보수정
-                                </button>
-                            </div>
-                            <a href="/order/<%= userInfo.userId %>/orderList" class="btn-secede"
-                                >취소하기</a
-                            >
+                    </div>
+                    <div class="btn-bottom">
+                        <div class="btn-edit-user-info" id="editUserInfo">
+                            <button href="#" onclick="editUserInfoChange()">
+                                회원정보수정
+                            </button>
                         </div>
+                        <a href="/order/<%= userInfo.userId %>/orderList" class="btn-secede">취소하기</a>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+    </main>
 
-        <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+    <footer class="footer"><%- include('../views/partials/footer'); %></footer>
 
-        <script>
-            // 휴대폰 번호 유효성 검사
-            function validatePhoneNum() {
-                const $phoneNumInput = document.querySelector('#phoneNumInput');
-                const $phoneNumCheck = document.querySelector('#phoneNumCheck');
-                const $phoneNumRegex = /^[0-9]+$/;
+    <script>
+        // 휴대폰 번호 유효성 검사
+        function validatePhoneNum() {
+            const $phoneNumInput = document.querySelector('#phoneNumInput');
+            const $phoneNumCheck = document.querySelector('#phoneNumCheck');
+            const $phoneNumRegex = /^[0-9]+$/; //숫자로만 입력 가능 
 
-                if ($phoneNumInput.value.match($phoneNumRegex)) {
-                    $phoneNumCheck.style.fontSize = '12px';
-                    $phoneNumCheck.textContent = '올바른 휴대폰 번호입니다.';
-                    $phoneNumCheck.style.color = 'blue';
-                    return true;
-                } else {
-                    $phoneNumCheck.style.fontSize = '12px';
-                    $phoneNumCheck.textContent = '휴대폰 번호는 숫자로 입력해주세요.';
-                    $phoneNumCheck.style.color = 'red';
-                    return false;
-                }
+            if ($phoneNumInput.value.match($phoneNumRegex)) {
+                $phoneNumCheck.style.fontSize = '12px';
+                $phoneNumCheck.textContent = '올바른 휴대폰 번호입니다.';
+                $phoneNumCheck.style.color = 'blue';
+                return true;
+            } else {
+                $phoneNumCheck.style.fontSize = '12px';
+                $phoneNumCheck.textContent = '휴대폰 번호는 숫자로 입력해주세요.';
+                $phoneNumCheck.style.color = 'red';
+                return false;
             }
+        }
 
-            // 개인정보 수정 조건 검사
-            function validateCondition() {
-                const isPhoneNumValid = validatePhoneNum();
-                if (isPhoneNumValid) {
-                    editUserInfoChange();
-                } else {
-                    console.error('개인정보 수정 조건을 만족하지 못했습니다.');
-                }
+        // 개인정보 수정 조건 검사
+        function validateCondition() {
+            const isPhoneNumValid = validatePhoneNum();
+            if (isPhoneNumValid) {
+                editUserInfoChange();
+            } else {
+                console.error('개인정보 수정 조건을 만족하지 못했습니다.');
             }
+        }
 
-            // 유저 정보 변경 요청
-            async function editUserInfoChange() {
-                const $emailInput = document.querySelector('#emailInput').value;
-                const $nameInput = document.querySelector('#nameInput').value;
-                const $phoneNumInput = document.querySelector('#phoneNumInput').value;
-                const $addressInput = document.querySelector('#addressInput').value;
-                const $detailAddressInput = document.querySelector('#detailAddress').value;
+        // 유저 정보 변경 요청
+        async function editUserInfoChange() {
+            const $emailInput = document.querySelector('#emailInput').value;
+            const $nameInput = document.querySelector('#nameInput').value;
+            const $phoneNumInput = document.querySelector('#phoneNumInput').value;
+            const $addressInput = document.querySelector('#addressInput').value;
+            const $detailAddressInput = document.querySelector('#detailAddress').value;
 
-                // 서버에 요청하여 수정된 정보를 받아옴
-                const updatedData = {
-                    email: $emailInput,
-                    name: $nameInput,
-                    phoneNumber: $phoneNumInput,
-                    address: {
-                        address1: $addressInput,
-                        address2: $detailAddressInput,
+            // 서버에 요청하여 수정된 정보를 받아옴
+            const updatedData = {
+                email: $emailInput,
+                name: $nameInput,
+                phoneNumber: $phoneNumInput,
+                address: {
+                    address1: $addressInput,
+                    address2: $detailAddressInput,
+                },
+            };
+
+            try {
+                // 서버에 수정된 정보 전송
+                const res = await fetch('/api/users/info/edit', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
                     },
-                };
+                    body: JSON.stringify(updatedData),
+                });
 
-                try {
-                    // 서버에 수정된 정보 전송
-                    const res = await fetch('/api/users/info/edit', {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(updatedData),
-                    });
-
-                    if (res.ok) {
-                        // 성공적으로 수정되었을 경우 처리
-                        // 화면에 출력하는 로직 추가
-                        alert('개인정보 수정에 성공하였습니다');
-                        window.location.href = '/users/info'; // 수정 완료 후 이동할 페이지 URL
-                    } else {
-                        console.error('회원정보 수정에 실패했습니다.');
-                    }
-                } catch (error) {
-                    console.error('서버와의 통신 중 오류가 발생했습니다.', error);
+                if (res.ok) {
+                    // 성공적으로 수정되었을 경우 처리
+                    // 화면에 출력하는 로직 추가
+                    alert('개인정보 수정에 성공하였습니다');
+                    window.location.href = '/users/info'; // 수정 완료 후 이동할 페이지 URL
+                } else {
+                    console.error('회원정보 수정에 실패했습니다.');
                 }
+            } catch (error) {
+                console.error('서버와의 통신 중 오류가 발생했습니다.', error);
             }
-        </script>
-        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        <script>
-            function openKakaoMap() {
-                new daum.Postcode({
-                    oncomplete: function (data) {
-                        var $addressInput = document.querySelector('#addressInput');
-                        $addressInput.value = data.address;
-                        $addressInput.focus();
-                    },
-                }).open();
-            }
-        </script>
-    </body>
+        }
+    </script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function openKakaoMap() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    var $addressInput = document.querySelector('#addressInput');
+                    $addressInput.value = data.address;
+                    $addressInput.focus();
+                },
+            }).open();
+        }
+    </script>
+</body>
+
 </html>
