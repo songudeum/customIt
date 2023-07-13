@@ -3,15 +3,27 @@ body {
     height: 100%;
     margin: 0;
 }
+
+a {
+    text-decoration: none;
+    color: #2f3438;
+}
+
 .order-aside-wrap {
     display: flex;
     justify-content: center;
     margin-top: 40px;
+    padding: 0 60px;
+    box-sizing: border-box;
 }
 
 .user-aside {
     display: flex;
     justify-content: left;
+}
+
+.order-contents {
+    flex: 1;
 }
 
 .snb-my {
@@ -57,47 +69,21 @@ body {
     font-size: 25px;
 }
 
-.horizontal-line {
-    margin-top: 20px;
-    border-top: 1px solid #000000;
-    height: 2px;
-    width: 600px;
-}
-
 .order-list-wrap {
     margin-left: 40px;
     margin-top: 30px;
     margin-bottom: 100px;
 }
 
-.order-infobox {
-    margin-bottom: 30px;
-}
-.btnbox {
-    display: flex;
-    align-items: center;
-}
-
 .btn-cancel {
-    position: relative;
-    top: -82px;
     width: 69px;
     height: 24px;
-    flex-shrink: 0;
-    margin-left: 450px;
     border-radius: 5px;
-    border: 1px solid #fff;
-    background: #a586f6;
-    color: #fff;
+    text-align: center;
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px;
-}
-
-.btn-cancel a {
-    color: #fff;
-    text-decoration: none;
+    line-height: 24px;
 }
 
 .horizontal-pale-line {
@@ -109,7 +95,7 @@ body {
 .item {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 4px;
 }
 
 .item .sub {
@@ -123,4 +109,59 @@ body {
     position: relative;
     top: -102px;
     margin-left: 575px;
+}
+
+.order-box {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    position: relative;
+    padding: 20px 80px 20px 20px;
+    border: 1px solid rgb(220, 220, 220);
+    border-width: 1px 0 1px 0;
+    box-sizing: border-box;
+    background: url('../image/icon-orderlist-arrow.png') no-repeat right 20px center / 10px;
+}
+
+.order-box .thum {
+    overflow: hidden;
+    flex: none;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    background: #eee;
+}
+
+.order-box .thum::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.order-box .thum img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-box .btnbox {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+}
+
+.order-item + .order-item {
+    margin-top: 20px;
+}
+
+.order-item .date-tit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
 }
