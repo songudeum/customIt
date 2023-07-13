@@ -79,47 +79,26 @@
                                         </div>
                                     </div>
                                     <div class="order-item">
-                                        <div class="date-tit">2023.06.14</div>
-                                        <div class="horizontal-pale-line"></div>
-                                        <div class="order-box">
-                                            <div class="thum">
-                                                <img src=" " alt="" class="상품 대표이미지" />
-                                            </div>
-                                            <div class="order-infobox">
-                                                <div class="item">
-                                                    <p class="sub">주문번호</p>
-                                                    <p class="desc"><%= orderList.orderId %></p>
-                                                </div>
-                                                <div class="item">
-                                                    <p class="sub">결제금액</p>
-                                                    <p class="desc">
-                                                        <%= orderList.totalPrice %>원
-                                                    </p>
-                                                </div>
-                                                <div class="item">
-                                                    <p class="sub">주문상태</p>
-                                                    <p
-                                                        class="order-status"
-                                                        data-order-status="배송중"
-                                                    >
-                                                        <%= orderList.deliveryStatus %>
-                                                    </p>
-                                                </div>
-                                                <!-- 화살표 이미지 넣기 -->
-                                                <div class="btnbox">
-                                                    <button type="button" class="btn-cancel">
-                                                        <a href="/cancel">주문취소</a>
-                                                    </button>
-                                                </div>
-                                                <a href="/order/:userId/orderList/:orderId">
-                                                    <img
-                                                        src="/image/icon-orderlist-arrow.png"
-                                                        class="arrow-icon"
-                                                        alt="arrow-icon"
-                                                    />
-                                                </a>
-                                            </div>
-                                        </div>
+                                        <% orderList.forEach(function(order){ %>
+                                        <table>
+                                            <tr>
+                                                <td>주문날짜</td>
+                                                <td><%= order.createdAt %></td>
+                                            </tr>
+                                            <tr>
+                                                <td>주문번호</td>
+                                                <td><%= orderList.orderId %></td>
+                                            </tr>
+                                            <tr>
+                                                <td>결제금액</td>
+                                                <td><%= orderList.totalPrice %>원</td>
+                                            </tr>
+                                            <tr>
+                                                <td>주문상태</td>
+                                                <td><%= orderList.deliveryStatus %></td>
+                                            </tr>
+                                        </table>
+                                        <% }); %>
                                     </div>
                                     <div class="order-item">
                                         <div class="date-tit">2023.05.27</div>
@@ -231,7 +210,7 @@
                         }
                     }
                 });
-            });       
+            });
         </script>
     </body>
 </html>
