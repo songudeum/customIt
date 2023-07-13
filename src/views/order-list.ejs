@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="/css/order-list.css" />
     </head>
     <body>
+        
         <header><%- include('../views/partials/header'); %></header>
         <section class="container">
             <main role="main" class="contents">
@@ -186,6 +187,7 @@
     </main>
         <footer><%- include('../views/partials/footer'); %></footer>
         <script>
+            console.log(orderList)
             document.addEventListener('DOMContentLoaded', function(){
                 // 주문 조회 기능
             // '/api/orders' 라는 경로에서 주문 내역을 가져온다면
