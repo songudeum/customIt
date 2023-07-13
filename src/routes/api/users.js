@@ -101,6 +101,7 @@ router.post(
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
         const userPw = user.password;
+
         if (!comparePassword(password, userPw)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 400;
@@ -108,6 +109,7 @@ router.post(
         }
         await Users.deleteOne({ email: userEmail });
 
+        res.cookie('token', null, { maxAge: 0 });
         res.status(200).redirect('/');
     }),
 );

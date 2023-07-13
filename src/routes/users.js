@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { Users, Category } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
 const loginRequired = require('../middlewares/login-required');
+const nonLogin = require('../middlewares/non-login');
 const { jwtVerify } = require('../utils/jwt');
 
 const router = Router();
@@ -21,25 +22,25 @@ router.get(
 );
 
 // 로그인 화면 라우팅
-router.get('/login', (req, res) => {
+router.get('/login', nonLogin, (req, res) => {
     res.render('user-login');
 });
 
 // 사용자 회원가입
-router.get('/join', async (req, res) => {
+router.get('/join', nonLogin, async (req, res) => {
     const categories = await Category.find({});
     res.render('signin', { categoryName: undefined, categories });
 });
 
 // 회원 비밀번호 수정 페이지
-router.get('/info/edit/pw', async (req, res) => {
+router.get('/info/edit/pw', loginRequired, async (req, res) => {
     const categories = await Category.find({});
     res.render('change-password', { categoryName: undefined, categories });
 });
 module.exports = router;
 
 // 회원 탈퇴 페이지
-router.get('/info/delete', async (req, res) => {
+router.get('/info/delete', loginRequired, async (req, res) => {
     const categories = await Category.find({});
     res.render('user-secession', { categoryName: undefined, categories });
 });
