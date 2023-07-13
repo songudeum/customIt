@@ -1,7 +1,16 @@
+html,
+body {
+    height: 100%;
+}
+
+.contents {
+    min-height: 100%;
+    padding-bottom: 400px;
+}
+
 main .contents-inner {
     width: 1280px;
     margin: 0 auto;
     padding: 120px 20px 100px;
     box-sizing: border-box;
 }
-
