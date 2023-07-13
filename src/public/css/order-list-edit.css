@@ -4,12 +4,12 @@ body {
     margin: 0;
 }
 
-/* main .contents-inner {
+
+.aside-section-wrap {
     display: flex;
     justify-content: center;
-    background-color: rgb(255, 255, 255);
-} */
-
+    margin-top: 20px;
+}
 html,
 body {
     height: 100%;

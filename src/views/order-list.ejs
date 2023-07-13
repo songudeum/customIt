@@ -23,7 +23,6 @@
                                         주문 내역
                                     </a>
                                 </li>
-
                                 <li>
                                     <a href="/users/info">개인 정보 수정</a>
                                 </li>
@@ -58,28 +57,56 @@
                                             <li class="item">
                                                 <p class="sub">주문번호</p>
                                                 <p class="desc">
-                                                    <%= orderList.orderId %>
+                                                    2293421150023
                                                 </p>
                                             </li>
                                             <li class="item">
                                                 <p class="sub">결제금액</p>
                                                 <p class="desc">
-                                                    <%= orderList.totalPrice %>원
+                                                    229,000원
                                                 </p>
                                             </li>
                                             <li class="item">
                                                 <p class="sub">주문상태</p>
                                                 <p class="order-status" data-order-status="상품 준비중">
-                                                    <%= orderList.deliveryStatus %>
+                                                    배송중
                                                 </p>
                                             </li>
                                         </ul>
                                     </a>
                                 </li>
-                            </ul>
-                        </div>
-                        <div class="order-list-wrap">
-                            <ul class="order-list">
+                                <li class="order-item">
+                                    <div class="date-tit">
+                                        <span>2023.6.23</span>
+                                        <a href="/cancel" class="btn-cancel">주문취소</a>
+                                    </div>
+
+                                    <a href="" class="order-box">
+                                        <div class="thum">
+                                            <img src="/image/img-product04.jpg" alt="" class="상품 대표 이미지" />
+                                        </div>
+                                        <ul class="order-infobox">
+                                            <li class="item">
+                                                <p class="sub">주문번호</p>
+                                                <p class="desc">
+                                                    2292514900955
+                                                </p>
+                                            </li>
+                                            <li class="item">
+                                                <p class="sub">결제금액</p>
+                                                <p class="desc">
+                                                    2,790,000원
+                                                </p>
+                                            </li>
+                                            <li class="item">
+                                                <p class="sub">주문상태</p>
+                                                <p class="order-status" data-order-status="상품 준비중">
+                                                    배송완료
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </li>
                                 <li class="order-item">
                                     <div class="date-tit">
                                         <span>2023.07.06</span>
@@ -88,34 +115,30 @@
 
                                     <a href="" class="order-box">
                                         <div class="thum">
-                                            <img src="/image/img-product01.jpg" alt="" class="상품 대표 이미지" />
+                                            <img src="/image/img-product03.jpg" alt="" class="상품 대표 이미지" />
                                         </div>
                                         <ul class="order-infobox">
                                             <li class="item">
                                                 <p class="sub">주문번호</p>
                                                 <p class="desc">
-                                                    <%= orderList.orderId %>
+                                                    2293939481727
                                                 </p>
                                             </li>
                                             <li class="item">
                                                 <p class="sub">결제금액</p>
                                                 <p class="desc">
-                                                    <%= orderList.totalPrice %>원
+                                                    119,000원
                                                 </p>
                                             </li>
                                             <li class="item">
                                                 <p class="sub">주문상태</p>
                                                 <p class="order-status" data-order-status="상품 준비중">
-                                                    <%= orderList.deliveryStatus %>
+                                                    배송완료
                                                 </p>
                                             </li>
                                         </ul>
                                     </a>
                                 </li>
-                            </ul>
-                        </div>
-                        <div class="order-list-wrap">
-                            <ul class="order-list">
                                 <li class="order-item">
                                     <div class="date-tit">
                                         <span>2023.07.06</span>
@@ -124,34 +147,34 @@
 
                                     <a href="" class="order-box">
                                         <div class="thum">
-                                            <img src="/image/img-product01.jpg" alt="" class="상품 대표 이미지" />
+                                            <img src="/image/img-product21.jpg" alt="" class="상품 대표 이미지" />
                                         </div>
                                         <ul class="order-infobox">
                                             <li class="item">
                                                 <p class="sub">주문번호</p>
                                                 <p class="desc">
-                                                    <%= orderList.orderId %>
+                                                    2293939211722
                                                 </p>
                                             </li>
                                             <li class="item">
                                                 <p class="sub">결제금액</p>
                                                 <p class="desc">
-                                                    <%= orderList.totalPrice %>원
+                                                    49,900원
                                                 </p>
                                             </li>
                                             <li class="item">
                                                 <p class="sub">주문상태</p>
                                                 <p class="order-status" data-order-status="상품 준비중">
-                                                    <%= orderList.deliveryStatus %>
+                                                    배송완료
                                                 </p>
                                             </li>
                                         </ul>
                                     </a>
                                 </li>
                             </ul>
+
+                            <p id="error-message"></p>
                         </div>
-                        <p id="error-message"></p>
-                    </div>
                 </section>
             </div>
 
