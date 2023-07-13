@@ -12,8 +12,8 @@
             <article class="article">
                 <h2>카테고리 관리</h2>
                 <section>
-                    <% categories.forEach(function(category){ %>
                     <ul class="list-category" id="listCategory">
+                        <% categories.forEach(function(category){ %>
                         <li class="list-category-li">
                             <div>
                             <input type="text" value= "<%= category.name %>" oninput="validateCategory(event)" readonly="readonly">
@@ -28,8 +28,9 @@
                                 category.id %>" onclick="addNewCategory(event)"> 수정 완료 </button>
                             </div>
                         </li>
+                        <% }); %>
                     </ul>
-                    <% }); %>
+                    
 
                     <div class="add-category">
                         <div>
