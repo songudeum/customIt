@@ -12,7 +12,21 @@ router.get(
     asyncHandler(async (req, res) => {
         const orders = await Order.find({});
 
-        res.render('admin-order', { orders });
+        const orderData = orders.map((order) => {
+            const { orderId, createdAt, products, totalPrice, deliveryStatus } = order;
+
+            const productNames = products.map((product) => product.productName);
+
+            return {
+                orderId,
+                createdAt,
+                productNames,
+                totalPrice,
+                deliveryStatus,
+            };
+        });
+
+        res.render('admin-order', { orders: orderData });
     }),
 );
 

@@ -1,12 +1,49 @@
 const { Schema } = require('mongoose');
 
-const orderSchema = new Schema(
+const ProductSchema = new Schema(
     {
-        orderId: {
+        productName: {
             type: String,
             required: true,
-            unique: true,
         },
+        price: {
+            type: Number,
+            required: true,
+        },
+
+        image: {
+            type: String,
+            required: true,
+        },
+
+        quantity: {
+            type: Number,
+            required: true,
+        },
+    },
+    { _id: false },
+);
+
+const AddressSchema = new Schema(
+    {
+        postalCode: {
+            type: String,
+            required: true,
+        },
+        address1: {
+            type: String,
+            required: true,
+        },
+        address2: {
+            type: String,
+            required: true,
+        },
+    },
+    { _id: false },
+);
+
+const orderUserSchema = new Schema(
+    {
         email: {
             type: String,
             required: true,
@@ -20,32 +57,26 @@ const orderSchema = new Schema(
             required: true,
         },
         address: {
-            type: new Schema({
-                postalCode: String,
-                address1: String,
-                address2: String,
-            }),
+            type: AddressSchema,
             required: true,
         },
+    },
+    { _id: false },
+);
 
-        productName: {
+const orderSchema = new Schema(
+    {
+        orderId: {
             type: String,
             required: true,
+            unique: true,
         },
-        price: {
-            type: Number,
+        products: {
+            type: [ProductSchema],
             required: true,
         },
-        image: {
-            type: String,
-            required: true,
-        },
-        quantity: {
-            type: Number,
-            required: true,
-        },
-        orderDate: {
-            type: Date,
+        orderUser: {
+            type: orderUserSchema,
             required: true,
         },
         totalPrice: {
@@ -54,10 +85,16 @@ const orderSchema = new Schema(
         },
         deliveryStatus: {
             type: String,
+            enum: ['상품준비중', '배송준비중', '배송중', '배송완료'],
+            default: '상품준비중',
+        },
+        paymentStatus: {
+            type: Boolean,
         },
     },
     {
         collection: 'Order',
+        timestamps: true,
     },
 );
 
