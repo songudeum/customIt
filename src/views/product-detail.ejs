@@ -17,13 +17,15 @@
             <div class="contents-inner">
                 <section class="product-info">
                     <div class="image-box">
-                        <img src="<%= product.image %>" alt="상품 썸네일" />
+                        <img src="/image/<%= product.image %>" alt="상품 썸네일" />
+                        <input type="hidden" id="image" value="<%= product.image %>" />
                     </div>
                     <div class="info-box">
                         <div class="company"><%= product.company %></div>
-                        <div class="name"><%= product.name %></div>
+                        <div class="name" id="name"><%= product.name %></div>
                         <div class="price">
-                            <%= product.price.toLocaleString() %><span>원</span>
+                            <span id="price"><%= product.price.toLocaleString() %></span
+                            ><span>원</span>
                         </div>
                         <div class="bottom">
                             <div class="total">
@@ -33,8 +35,10 @@
                                 ><span class="unit">원</span>
                             </div>
                             <div class="btn-box">
-                                <a href="#" class="btn btn-main-line">장바구니</a>
-                                <a href="#" class="btn btn-main">바로 구매</a>
+                                <button type="button" id="btnCart" class="btn btn-main-line">
+                                    장바구니
+                                </button>
+                                <a href="/cart" id="btnOrder" class="btn btn-main">바로 구매</a>
                             </div>
                         </div>
                     </div>
@@ -46,5 +50,31 @@
             </div>
         </main>
         <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+
+        <script>
+            const $btnCart = document.querySelector('#btnCart');
+            const $btnOrder = document.querySelector('#btnOrder');
+            const productName = document.querySelector('#name').textContent;
+            const price = Number(document.querySelector('#price').textContent.replace(/\,/g, ''));
+            const image = document.querySelector('#image').value;
+            const quantity = 1;
+            const data = {
+                productName,
+                price,
+                image,
+                quantity,
+            };
+
+            function setCartDataToLocalStorage(data) {
+                console.dir(data);
+                localStorage.setItem('cart', JSON.stringify(data));
+                // 로컬스토리지에 카트를 키값으로 제이슨 파일로 변환하여 문자열로 저장
+                // 로컬스토리지에는 문자열로만 저장 가능
+                alert('장바구니에 상품을 담았습니다.');
+            }
+            $btnCart.addEventListener('click', () => {
+                setCartDataToLocalStorage(data);
+            });
+        </script>
     </body>
 </html>
