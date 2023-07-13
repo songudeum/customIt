@@ -3,9 +3,14 @@
     font-weight: bold;
     font-size: larger;
 }
+section{
+    display: flex;
+    justify-content: center;
+}
 
 table{
-    width:60%;
+    width: 500px;
+    margin-top: 10px;
     border-top:1px solid #353535;
     border-collapse: collapse;
     color:#353535;
@@ -19,6 +24,32 @@ td{
 
 td input{
     width: 70%;
+}
+
+.image-box {
+    overflow: hidden;
+    position: relative;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    background: #eee;
+    cursor: pointer;
+}
+
+.image-box::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.image-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s;
 }
 
 .inputDescription{
@@ -37,11 +68,11 @@ select{
     padding: 5px 10px 5px 10px;
 }
 
-.user-image{
-    width: 400px;
+/* .user-image{
+    width: 500px;
     height: 300px;
     background-color: #dbdbdb;
-}
+} */
 
 .add-image{
     overflow: hidden;
@@ -56,4 +87,15 @@ select{
     background-color: #353535;
     color: white;
     font-weight: normal;
+}
+
+.btn-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-delete{
+    text-decoration: none;
+    margin-left: 10px;
 }
