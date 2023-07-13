@@ -69,16 +69,6 @@
                                 <label>비밀번호 확인<span>*</span></label>
                                 <input type="password" id="passwordInput" placeholder="현재 사용중인 비밀번호를 입력해주세요" />
                             </div>
-                        </section>
-                        <div class="btn-bottom">
-                            <a href="/api/users/info" class="btn-cancel">취소</a>
-                            <a href="#" id="btnSecession" class="btn-secede">탈퇴하기</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-                        </div>
                     </section>
                     <div class="btn-bottom">
                         <a href="/api/users/info" class="btn-cancel">취소</a>
@@ -89,36 +79,38 @@
         </div>
     </main>
 
-        <footer class="footer"><%- include('../views/partials/footer'); %></footer>
-        <script>
-            const $inputPw = document.querySelector('#passwordInput');
+    <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+    <script>
+        const $inputPw = document.querySelector('#passwordInput');
 
-            btnSecession.addEventListener('click', btnDelete);
+        btnSecession.addEventListener('click', btnDelete);
 
-            async function btnDelete(e) {
-                e.preventDefault();
+        async function btnDelete(e) {
+            e.preventDefault();
 
-                const password = $inputPw.value;
+            const password = $inputPw.value;
 
-                const data = { password };
+            const data = { password };
 
-                // 데이터 json 형태로 파싱
-                const jsonData = JSON.stringify(data);
-                const apiUrl = '/api/users/info/delete';
-                const res = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: jsonData,
-                });
+            // 데이터 json 형태로 파싱
+            const jsonData = JSON.stringify(data);
+            const apiUrl = '/api/users/info/delete';
+            const res = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: jsonData,
+            });
 
-                if (res.status === 200) {
-                    window.location.href = res.url;
-                } else {
-                    alert('비밀번호가 일치하지 않습니다.');
-                }
+            if (res.status === 200) {
+                alert('회원 탈퇴가 완료 되었습니다')
+                window.location.href = res.url;
+            } else {
+                alert('비밀번호가 일치하지 않습니다.');
             }
-        </script>
-    </body>
+        }
+    </script>
+</body>
+
 </html>

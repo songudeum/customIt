@@ -189,6 +189,7 @@
                     if (res.ok) {
                         // 성공적으로 수정되었을 경우 처리
                         // 화면에 출력하는 로직 추가
+                        alert('개인정보 수정에 성공하였습니다')
                         window.location.href = res.url; // 수정 완료 후 이동할 페이지 URL
                     } else {
                         console.error('회원정보 수정에 실패했습니다.');

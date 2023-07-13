@@ -112,25 +112,23 @@ router.post(
     }),
 );
 
-// 사용자 비밀번호 변경 라우터
-router.post(
-    '/info/edit/pw',
+// 개인페이지 사용자 정보 수정 api
+router.put(
+    '/info/edit',
     loginRequired,
     asyncHandler(async (req, res) => {
-        console.log(req.body);
         const userEmail = jwtVerify(req);
+        const { email, name, phoneNumber, address } = req.body;
         const user = await Users.findOne({ email: userEmail });
-        const { password, newPassword } = req.body;
-        const userPw = user.password;
 
         await Users.findOneAndUpdate(
             { email: userEmail },
             {
-                email: userEmail,
-                password: createHash(newPassword),
-                name: user.name,
-                phoneNumber: user.phoneNumber,
-                address: user.address,
+                email,
+                password: user.password,
+                name,
+                phoneNumber,
+                address,
             },
         );
         res.redirect('/users/info');
