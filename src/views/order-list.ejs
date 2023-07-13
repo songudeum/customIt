@@ -49,7 +49,7 @@
                                                 주문번호
                                             </p>
                                             <p class="desc">
-                                                <%= orderId %>
+                                                <%= orderList.orderId %>
                                             </p>
                                         </div>
                                         <div class="item">
@@ -57,7 +57,7 @@
                                                 결제금액
                                             </p>
                                             <p class="desc">
-                                                <%= totalPrice.toLocaleString() %>원
+                                                <%= orderList.totalPrice %>원
                                             </p>
                                         </div>
                                         <div class="item">
@@ -65,21 +65,21 @@
                                                 주문상태
                                             </p>
                                             <p class="order-status" data-order-status="상품 준비중">
-                                                <%= deliveryStatus %>
+                                                <%= orderList.deliveryStatus %>
                                             </p>
                                         </div>
                                         
                                     </div>
                                     <div class="btnbox">
                                         <button type="button" class="btn-cancel">
-                                            <a href=" /cancel">주문취소</a>
+                                            <a href="/cancel">주문취소</a>
                                         </button>
-                                            <a href="/order/:id/orderList/:orderId">
-                                                <img src="/image/icon-orderlist-arrow.png" class="arrow-icon" alt="arrow-icon" />
-                                            </a>
+                                            
                                     </div>
                                     <!-- 화살표 이미지 넣기 -->
-                                    
+                                    <a href="/order/:userId/orderList/:orderId">
+                                                <img src="/image/icon-orderlist-arrow.png" class="arrow-icon" alt="arrow-icon" />
+                                            </a>
                                 </div>
                             </div>
                             <div class="order-item">
@@ -97,7 +97,7 @@
                                                 주문번호
                                             </p>
                                             <p class="desc">
-                                                <%= orderId %>
+                                                <%= orderList.orderId %>
                                             </p>
                                         </div>
                                         <div class="item">
@@ -105,7 +105,7 @@
                                                 결제금액
                                             </p>
                                             <p class="desc">
-                                                <%= totalPrice.toLocaleString() %>원
+                                                <%= orderList.totalPrice %>원
                                             </p>
                                         </div>
                                         <div class="item">
@@ -113,17 +113,17 @@
                                                 주문상태
                                             </p>
                                             <p class="order-status" data-order-status="배송중">
-                                                <%= deliveryStatus %>
+                                                <%= orderList.deliveryStatus %>
                                             </p>
                                         </div>
                                          <!-- 화살표 이미지 넣기 -->
                                          <div class="btnbox">
                                             <button type="button" class="btn-cancel">
-                                                <a href=" /cancel">주문취소</a>
+                                                <a href="/cancel">주문취소</a>
                                             </button>
                                                 
                                         </div>
-                                                <a href="/order/:id/orderList/:orderId">
+                                                <a href="/order/:userId/orderList/:orderId">
                                                     <img src="/image/icon-orderlist-arrow.png" class="arrow-icon" alt="arrow-icon" />
                                                 </a>
                                     </div>
@@ -145,7 +145,7 @@
                                                 주문번호
                                             </p>
                                             <p class="desc">
-                                                <%= orderId %>
+                                                <%= orderList.orderId %>
                                             </p>
                                         </div>
                                         <div class="item">
@@ -153,7 +153,7 @@
                                                 결제금액
                                             </p>
                                             <p class="desc">
-                                                <%= totalPrice.toLocaleString() %>원
+                                                <%= orderList.totalPrice %>원
                                             </p>
                                         </div>
                                         <div class="item">
@@ -161,16 +161,16 @@
                                                 주문상태
                                             </p>
                                             <p class="order-status" data-order-status="배송완료">
-                                                <%= deliveryStatus %>
+                                                <%= orderList.deliveryStatus %>
                                             </p>
                                         </div>
                                          <!-- 화살표 이미지 넣기 -->
                                          <div class="btnbox">
                                             <button type="button" class="btn-cancel">
-                                                <a href=" /cancel">주문취소</a>
+                                                <a href="/cancel">주문취소</a>
                                             </button>   
                                         </div>
-                                                <a href="/order/:id/orderList/:orderId">
+                                                <a href="/order/:userId/orderList/:orderId">
                                                     <img src="/image/icon-orderlist-arrow.png" class="arrow-icon" alt="arrow-icon" />
                                                 </a>
                                     </div>
@@ -189,11 +189,19 @@
             document.addEventListener('DOMContentLoaded', function(){
                 // 주문 조회 기능
             // '/api/orders' 라는 경로에서 주문 내역을 가져온다면
-            fetch('/api/orders')
-                .then(response => response.json())
-                .then(data => {
+            let a = fetch('/order/test1@test.com/orderList', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                method: "GET"
+            })
+
+                .then((response) => response.json())
+                .then((data) => 
                     // data를 사용하여 주문 내역을 표시
-                });
+                    console.log(data)
+                );
     
             // 주문 취소 기능
             const cancelButtons = document.querySelectorAll('.btn-cancel');
@@ -222,7 +230,7 @@
             const orderStatus = orderItem.querySelector('.order-status').dataset.orderStatus;
 
             // 만약 주문 상태가 '배송중' 이나 '배송완료'이면,
-            if (order-status === '배송중' || order-status === '배송완료') {
+            if (orderStatus === '배송중' || orderStatus === '배송완료') {
                 // 주문 취소 버튼을 숨김
                 const cancelButton = orderItem.querySelector('.btn-cancel');
                 if (cancelButton) {
