@@ -178,7 +178,7 @@
 
                 try {
                     // 서버에 수정된 정보 전송
-                    const res = await fetch('/users/info/edit', {
+                    const res = await fetch('/api/users/info/edit', {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -189,10 +189,6 @@
                     if (res.ok) {
                         // 성공적으로 수정되었을 경우 처리
                         // 화면에 출력하는 로직 추가
-                        const $phoneNumInput = document.querySelector('#phoneNumInput');
-                        const $addressInput = document.querySelector('#addressInput');
-                        const $detailAddressInput = document.querySelector('#detailAddress');
-
                         window.location.href = res.url; // 수정 완료 후 이동할 페이지 URL
                     } else {
                         console.error('회원정보 수정에 실패했습니다.');
