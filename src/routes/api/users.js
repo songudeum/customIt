@@ -101,6 +101,7 @@ router.post(
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
         const userPw = user.password;
+
         if (!comparePassword(password, userPw)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 400;
@@ -108,6 +109,7 @@ router.post(
         }
         await Users.deleteOne({ email: userEmail });
 
+        res.cookie('token', null, { maxAge: 0 });
         res.status(200).redirect('/');
     }),
 );
@@ -162,8 +164,7 @@ router.put(
         const user = await Users.findOne({ email: userEmail });
         const { password, newPassword } = req.body;
         const userPw = user.password;
-        console.log(userPw)
-        console.log(password)
+
         if (!comparePassword(password, userPw)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 401;
@@ -175,7 +176,7 @@ router.put(
             error.statusCode = 400;
             throw error;
         }
-        const x = await Users.findOneAndUpdate(
+        await Users.findOneAndUpdate(
             { email: userEmail },
             {
                 email: userEmail,
@@ -185,7 +186,6 @@ router.put(
                 address: user.address,
             },
         );
-        console.log(x)
         res.json({ message: '비밀번호가 변경되었습니다.' });
     }),
 );
