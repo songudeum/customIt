@@ -131,7 +131,7 @@ router.put(
                 address,
             },
         );
-        res.redirect('/users/info');
+        res.redirect(303, '/users/info');
     }),
 );
 
@@ -160,7 +160,14 @@ router.put(
     asyncHandler(async (req, res) => {
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
-        const { newPassword } = req.body;
+        const { password, newPassword } = req.body;
+        const userPw = user.password;
+
+        if (!comparePassword(password, userPw)) {
+            const error = new Error('비밀번호가 일치하지 않습니다.');
+            error.statusCode = 401;
+            throw error;
+        }
 
         if (!pwCheck.test(newPassword)) {
             const error = new Error('영문 숫자 특수기호 조합 8~15자 이하로 입력해주세요.');
