@@ -6,6 +6,26 @@
                     <li class="nav-li"><a href="/admin/orders/edit" class="order nav-li-a">주문 관리</a></li>
                 </ul>
             <div class="logout">
-                <button class="btn btn-logout">로그아웃</button>
+                <button class="btn btn-logout" id="logout">로그아웃</button>
             </div>
         </aside>
+        <script>
+            async function btnLogout(e) {         
+                e.preventDefault();          
+                const apiUrl = '/api/admin/logout';         
+                const res = await fetch(apiUrl, {             
+                    method: 'GET',             
+                    headers: {                 
+                        'Content-Type': 'application/json',             
+                    },         
+                });          
+                if (res.status === 200) {             
+                    window.location.href = res.url;         
+                } else {             
+                    alert(res.message);         
+                }     
+            }
+
+            const $logout = document.querySelector('#logout');
+            $logout.addEventListener('click', btnLogout);
+        </script>

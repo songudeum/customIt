@@ -53,17 +53,21 @@
 
             async function updateDeliveryStatus(event){
                 const orderId = event.target.getAttribute('data-id');
-                const status = event.target.value;
-                const deliveryStatus = {status};
+                const deliveryStatus = event.target.value;
                 const res = await fetch(`/api/orders/${orderId}`,{
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                             },
-                    body: JSON.stringify(deliveryStatus)
+                    body: JSON.stringify({orderId, deliveryStatus}),
                 });
-            }
 
+                if (res.status === 201) {
+                    alert('성공');
+                } else {
+                    alert('실패');
+                }
+            }
             async function deleteOrder(event){
                 const orderId = event.target.getAttribute('data-id');
                 const res = await fetch(`/api/orders/${orderId}`,{

@@ -66,7 +66,7 @@ router.put(
         const { deliveryStatus } = req.body;
         const { orderId } = req.params;
 
-        orderService.updateDeliveryStatus({ orderId, deliveryStatus });
+        await orderService.updateDeliveryStatus({ orderId, deliveryStatus });
         //  업데이트 완료 응답 전송
         res.status(201).send();
     }),
