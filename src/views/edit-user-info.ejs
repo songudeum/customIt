@@ -25,10 +25,13 @@
                                     </li>
 
                                     <li>
-                                        <a href="/api/users/info">개인 정보 수정</a>
+                                        <a href="/users/info">개인 정보 수정</a>
                                     </li>
                                     <li>
                                         <a href="/users/info/delete">탈퇴 하기</a>
+                                    </li>
+                                    <li>
+                                        <a href="/users/info/edit/pw">비밀번호 변경</a>
                                     </li>
                                 </ul>
                             </div>
@@ -46,8 +49,8 @@
                             <div class="email">
                                 <label
                                     >이메일
-                                    <div>*</div></label
-                                >
+                                    <div>*</div>
+                                </label>
                                 <input
                                     type="text"
                                     id="emailInput"
@@ -61,8 +64,8 @@
                             <div class="name">
                                 <label
                                     >이름
-                                    <div>*</div></label
-                                >
+                                    <div>*</div>
+                                </label>
                                 <input
                                     type="text"
                                     id="nameInput"
@@ -120,7 +123,9 @@
                                     회원정보수정
                                 </button>
                             </div>
-                            <a href="/order/:id/orderList/:orderId" class="btn-secede">취소하기</a>
+                            <a href="/order/<%= userInfo.userId %>/orderList" class="btn-secede"
+                                >취소하기</a
+                            >
                         </div>
                     </div>
                 </div>
@@ -192,7 +197,7 @@
                         // 성공적으로 수정되었을 경우 처리
                         // 화면에 출력하는 로직 추가
                         alert('개인정보 수정에 성공하였습니다');
-                        window.location.href = res.url; // 수정 완료 후 이동할 페이지 URL
+                        window.location.href = '/users/info'; // 수정 완료 후 이동할 페이지 URL
                     } else {
                         console.error('회원정보 수정에 실패했습니다.');
                     }
