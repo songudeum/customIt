@@ -6,8 +6,6 @@ const { jwtVerify } = require('../utils/jwt');
 
 const router = Router();
 
-const numberCheck = /^[0-9]+$/;
-
 // 사용자 정보 조회 라우터
 router.get(
     '/info',
@@ -22,40 +20,6 @@ router.get(
     }),
 );
 
-router.put(
-    '/info/edit',
-    loginRequired,
-    asyncHandler(async (req, res) => {
-        const userEmail = jwtVerify(req);
-        const { email, name, phoneNumber, address } = req.body;
-        const user = await Users.findOne({ email: userEmail });
-
-        const categories = await Category.find({});
-        // 핸드폰 번호 형식 확인 조건문
-        if (!numberCheck.test(phoneNumber)) {
-            const error = new Error('휴대폰 번호는 숫자로 입력해주세요.');
-            error.statusCode = 400;
-            throw error;
-        }
-
-        const userInfo = await Users.findOneAndUpdate(
-            { email: userEmail },
-            {
-                email,
-                password: user.password,
-                name,
-                phoneNumber,
-                address,
-            },
-            { new: true }, // 업데이트된 정보를 반환하도록 옵션 추가
-        );
-        res.render('edit-user-info', {
-            userInfo,
-            categoryName: undefined,
-            categories,
-        });
-    }),
-);
 
 // 로그인 화면 라우팅
 router.get('/login', (req, res) => {

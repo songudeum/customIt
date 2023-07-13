@@ -247,7 +247,7 @@
                     if (res.ok) {
                         window.location.href = res.url;
                     } else {
-                        console.error('관리자 회원가입에 실패했습니다.');
+                        console.error('관리자 회원가입에 실패했습니다.', error);
                     }
                 } catch (error) {
                     console.error('서버와의 통신 중 오류가 발생했습니다.', error);

@@ -3,10 +3,9 @@ const passport = require('passport');
 const { nanoid } = require('nanoid');
 const { Users } = require('../../data-access');
 const asyncHandler = require('../../utils/async-handler');
+const { createHash, comparePassword } = require('../../utils/hash-password');
 const loginRequired = require('../../middlewares/login-required');
-const { jwtVerify } = require('../../utils/jwt');
-const createHash = require('../../utils/hash-password');
-const { setUserToken } = require('../../utils/jwt');
+const { setUserToken, jwtVerify } = require('../../utils/jwt');
 
 const router = Router();
 
@@ -41,7 +40,7 @@ router.post('/login', passport.authenticate('local', { session: false }), (req, 
 router.get('/logout', (req, res) => {
     // 쿠키 만료시키도록 전달
     res.cookie('token', null, { maxAge: 0 });
-    res.json({ message: '로그아웃 완료' });
+    res.redirect('/');
 });
 
 // 사용자 회원가입 라우터
@@ -93,6 +92,7 @@ router.post(
 );
 
 // 사용자 탈퇴 라우터
+
 router.post(
     '/info/delete',
     loginRequired,
@@ -101,7 +101,7 @@ router.post(
         const userEmail = jwtVerify(req);
         const user = await Users.findOne({ email: userEmail });
         const userPw = user.password;
-        if (userPw !== createHash(password)) {
+        if (!comparePassword(password, userPw)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 400;
             throw error;
@@ -123,7 +123,33 @@ router.post(
         const { password, newPassword } = req.body;
         const userPw = user.password;
 
-        if (userPw !== createHash(password)) {
+        await Users.findOneAndUpdate(
+            { email: userEmail },
+            {
+                email: userEmail,
+                password: createHash(newPassword),
+                name: user.name,
+                phoneNumber: user.phoneNumber,
+                address: user.address,
+            },
+        );
+        res.redirect('/users/info');
+    }),
+);
+
+// 사용자 비밀번호 변경 라우터
+router.post(
+    '/info/edit/pw',
+    loginRequired,
+    asyncHandler(async (req, res) => {
+        const userEmail = jwtVerify(req);
+        const user = await Users.findOne({ email: userEmail });
+        const { password, newPassword } = req.body;
+        const userPw = user.password;
+
+        // const categories = await Category.find({});
+
+        if (!comparePassword(password, userPw)) {
             const error = new Error('비밀번호가 일치하지 않습니다.');
             error.statusCode = 401;
             throw error;
