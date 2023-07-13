@@ -40,7 +40,7 @@ router.post('/login', passport.authenticate('local', { session: false }), (req, 
 router.get('/logout', (req, res) => {
     // 쿠키 만료시키도록 전달
     res.cookie('token', null, { maxAge: 0 });
-    res.json({ message: '로그아웃 완료' });
+    res.redirect('/');
 });
 
 // 사용자 회원가입 라우터

@@ -54,17 +54,17 @@
         <footer class="footer"></footer>
         <script>
             const emailCheck = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
-            const inputEmail = document.querySelector('#email');
-            const inputPw = document.querySelector('#password');
-            const loginForm = document.querySelector('#loginForm');
+            const $inputEmail = document.querySelector('#email');
+            const $inputPw = document.querySelector('#password');
+            const $loginForm = document.querySelector('#loginForm');
 
-            loginForm.addEventListener('submit', btnLogin);
+            $loginForm.addEventListener('submit', btnLogin);
 
             async function btnLogin(e) {
                 e.preventDefault();
 
-                const email = inputEmail.value;
-                const password = inputPw.value;
+                const email = $inputEmail.value;
+                const password = $inputPw.value;
 
                 const data = { email, password };
 

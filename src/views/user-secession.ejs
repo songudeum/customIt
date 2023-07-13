@@ -21,7 +21,7 @@
                                         <a href="/order/:id/orderList">주문내역</a>
                                     </li>
                                     <li>
-                                        <a href="/api/users/info">개인 정보 수정</a>
+                                        <a href="/users/info">개인 정보 수정</a>
                                     </li>
                                     <li>
                                         <a href="/users/info/delete">탈퇴하기</a>
@@ -86,14 +86,14 @@
 
         <footer class="footer"><%- include('../views/partials/footer'); %></footer>
         <script>
-            const inputPw = document.querySelector('#passwordInput');
+            const $inputPw = document.querySelector('#passwordInput');
 
             btnSecession.addEventListener('click', btnDelete);
 
             async function btnDelete(e) {
                 e.preventDefault();
 
-                const password = inputPw.value;
+                const password = $inputPw.value;
 
                 const data = { password };
 
