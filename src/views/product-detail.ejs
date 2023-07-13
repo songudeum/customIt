@@ -67,25 +67,6 @@
                 return JSON.parse(data);
             }
 
-            let cart = getItem('cart');
-            console.log(cart.length);
-            const data = {
-                productName,
-                price,
-                image,
-                quantity,
-            };
-            let arr;
-            if (!cart.length) {
-                console.log('장바구니 없음');
-                arr = [];
-                arr.push(data);
-            } else {
-                console.log('장바구니 있음');
-                arr = cart.slice();
-                arr.push(data);
-            }
-
             function setCartDataToLocalStorage(arr) {
                 console.dir(arr);
                 localStorage.setItem('cart', JSON.stringify(arr));
@@ -94,6 +75,25 @@
                 alert('장바구니에 상품을 담았습니다.');
             }
             $btnCart.addEventListener('click', () => {
+                let cart = getItem('cart');
+                console.log(cart);
+                const data = {
+                    productName,
+                    price,
+                    image,
+                    quantity,
+                };
+                let arr;
+                if (!cart.length) {
+                    console.log('장바구니 없음');
+                    arr = [];
+                    arr.push(data);
+                } else {
+                    console.log('장바구니 있음');
+                    arr = cart.slice();
+                    console.log(arr[0].quantity);
+                    arr.push(data);
+                }
                 setCartDataToLocalStorage(arr);
             });
         </script>
