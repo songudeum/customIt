@@ -20,7 +20,6 @@ router.get(
     }),
 );
 
-
 // 로그인 화면 라우팅
 router.get('/login', (req, res) => {
     res.render('user-login');
@@ -37,6 +36,7 @@ router.get('/info/edit/pw', async (req, res) => {
     const categories = await Category.find({});
     res.render('change-password', { categoryName: undefined, categories });
 });
+module.exports = router;
 
 // 회원 탈퇴 페이지
 router.get('/info/delete', async (req, res) => {

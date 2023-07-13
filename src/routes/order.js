@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { Order } = require('../data-access');
-const { getCartDataFromLocalStorage } = require('./cart');
+
 const { Category } = require('../data-access');
 const asyncHandler = require('../utils/async-handler');
 
@@ -8,12 +8,12 @@ const router = Router();
 
 // 주문서 => 주문서에 들어오는 값은 로컬 스토리지의 값
 router.get(
-    '/',
+    '/cart',
     asyncHandler(async (req, res) => {
         // 로컬스토리지에서 카트 데이터 가져오기
-        const cartData = JSON.parse(getCartDataFromLocalStorage());
+
         const categories = await Category.find({});
-        res.render('수정예정', { cartData, categories, categoryName: undefined });
+        res.render('main-cart', { categories, categoryName: undefined });
     }),
 );
 

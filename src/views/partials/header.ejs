@@ -22,14 +22,44 @@
         </ul>
         <ul class="utils">
             <li>
-                <a href="#" class="btn btn-cart" title="장바구니"></a>
+                <a href="/cart" class="btn btn-cart" title="장바구니"></a>
             </li>
             <li>
-                <a href="#" class="btn btn-user" title="마이페이지"></a>
+                <a href="/order/:id/orderList" class="btn btn-user" title="마이페이지"></a>
             </li>
-            <li><a href="/users/login" class="btn btn-login">로그인</a></li>
-            <li><a href="/users/join" class="btn btn-signin">회원가입</a></li>
-            <li><a href="#" class="btn btn-logout">로그아웃</a></li>
+            <li><a href="/users/login" class="btn btn-login" id="btn-login">로그인</a></li>
+            <li><a href="/users/join" class="btn btn-signin" id="btn-signin">회원가입</a></li>
+            <li><a href="#" class="btn btn-logout" id="btn-logout">로그아웃</a></li>
         </ul>
     </nav>
 </div>
+<script>
+    const $btnLogin = document.querySelector('#btn-login');
+    const $btnLogout = document.querySelector('#btn-logout');
+    const $cookieName = document.cookies.name
+    if ($cookieName !== 'token' ) {
+        $btnLogout.style.visibility = 'hidden';
+    }
+    else (document.cookie) {
+        $btnLogin.style.visibility = 'hidden';
+    }
+    $btnLogout.addEventListener('click', btnLogout);
+
+    async function btnLogout(e) {
+        e.preventDefault();
+
+        const apiUrl = '/api/users/logout';
+        const res = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (res.status === 200) {
+            window.location.href = res.url;
+        } else {
+            alert(res.message);
+        }
+    }
+</script>
