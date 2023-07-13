@@ -13,14 +13,14 @@ const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
 const productRouter = require('./routes/product');
 const orderRouter = require('./routes/order');
-const cartRouter = require('./routes/cart');
+
 const adminRouter = require('./routes/admin');
 const adminCategoryRouter = require('./routes/admin-category');
 const adminProductRouter = require('./routes/admin-product');
 const adminOrderRouter = require('./routes/admin-order');
 
 const userApiRouter = require('./routes/api/users');
-const adminApiRouter = require('./routes/api/admin')
+const adminApiRouter = require('./routes/api/admin');
 const categoryApiRouter = require('./routes/api/category');
 const productApiRouter = require('./routes/api/product');
 const orderApiRouter = require('./routes/api/order');
@@ -53,11 +53,12 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(cookieParser());
+
 app.use('/', indexRouter);
 app.use('/users', userRouter);
 app.use('/product', productRouter);
 app.use('/order', orderRouter);
-app.use('/cart', cartRouter);
+
 app.use('/admin', adminRouter);
 app.use('/admin/category', adminCategoryRouter);
 app.use('/admin/product', adminProductRouter);
@@ -65,7 +66,7 @@ app.use('/admin/orders', adminOrderRouter);
 
 app.use('/api/orders', orderApiRouter);
 app.use('/api/users', userApiRouter);
-app.use('/api/admin', adminApiRouter)
+app.use('/api/admin', adminApiRouter);
 app.use('/api/category', categoryApiRouter);
 app.use('/api/product', productApiRouter);
 
