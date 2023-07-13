@@ -117,7 +117,6 @@
 
 .cart-list .item-info {
     display: flex;
-    gap: 20px;
 }
 
 .cart-list .item-info .img {
@@ -157,7 +156,7 @@
 }
 
 .cart-list .item-option {
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 20px;
     border-radius: 8px;
     box-sizing: border-box;

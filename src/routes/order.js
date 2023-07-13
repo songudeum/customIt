@@ -42,7 +42,7 @@ router.get(
 
 // 마이페이지 주문서 상세보기
 router.get(
-    '/:userId/orderList/:orderId',
+    '/orderListDetail',
     asyncHandler(async (req, res) => {
         const { orderId } = req.params;
         const order = await Order.findOne(orderId);
@@ -53,7 +53,7 @@ router.get(
 
 // 배송정보 수정
 router.get(
-    '/edit/:orderId',
+    '/edit',
     asyncHandler(async (req, res) => {
         const { orderId } = req.params;
         const categories = await Category.find({});
