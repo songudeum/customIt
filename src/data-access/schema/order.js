@@ -22,9 +22,6 @@ const ProductSchema = new Schema(
 
 const AddressSchema = new Schema(
     {
-        postalCode: {
-            type: String,
-        },
         address1: {
             type: String,
         },
@@ -71,8 +68,6 @@ const orderSchema = new Schema(
         },
         deliveryStatus: {
             type: String,
-            enum: ['상품준비중', '배송준비중', '배송중', '배송완료'],
-            default: '상품준비중',
         },
         paymentStatus: {
             type: Boolean,
