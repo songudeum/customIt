@@ -38,7 +38,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <button class="btn btn-large" onclick="deleteOrder(event)" data-id="<%=order.orderId %>">
+                                    <button class="btn btn-large" onclick="deleteOrder(event); window.location.reload();" data-id="<%=order.orderId %>">
                                         주문 취소
                                     </button>
                                 </td>
