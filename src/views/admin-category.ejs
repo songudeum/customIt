@@ -59,18 +59,19 @@
                 const data = await res.json()
 
                 $listCategory.insertAdjacentHTML(
+                    'beforeend',
                     `   <li class="list-category-li">
                             <div>
                             <input type="text" value=${name} oninput="validateCategory(event)" readonly="readonly">
                             <p class="checkCategory" id="checkCategory"></p>
                             </div>
-                            <div>
+                            <div class="btn-box">
                                 <button class="btn btn-small" id="updateCategory" data-id="${data.id}" 
                                 onclick="updateCategory(event)"> 수정 </button>
                                 <button class="btn btn-small" id="deleteCategory" data-id="${data.id}" 
-                                onclick="deleteCategory(event)"> 삭제 </button>
+                                onclick="deleteCategory(event); window.location.reload();"> 삭제 </button>
                                 <button class="btn btn-small addNewCategory" id="addNewCategory" data-id="${data.id}" 
-                                onclick="addNewCategory(event)"> 수정 완료 </button>
+                                onclick="addNewCategory(event); window.location.reload();"> 수정 완료 </button>
                             </div>
                         </li>`);
             }

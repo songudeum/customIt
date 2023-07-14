@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="/css/layout.css" />
     </head>
     <body class="container">
-        <header class="header"></header>
         <main class="contents-inner">
             <div class="login-wrap">
                 <div class="header-logo">
@@ -33,13 +32,13 @@
                 </form>
             </div>
         </main>
-        <footer class="footer"></footer>
     </body>
     <script>
         const emailCheck = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
         const $inputEmail = document.querySelector('#email');
         const $inputPw = document.querySelector('#password');
         const $loginForm = document.querySelector('#loginForm');
+        const emailRegex = /[a-z0-9]+@admin.com/;
 
         $loginForm.addEventListener('submit', btnLogin);
 
@@ -51,9 +50,12 @@
 
             const data = { email, password };
 
-            // 이메일 비밀번호 입력이 되지 않았을 경우 입력칸 포커싱
-            if (!emailCheck.test(email)) {
+            if (email === '') {
                 return alert('이메일 입력이 되지 않았습니다.');
+            }
+
+            if (!emailRegex.test(email)) {
+                return alert('이메일 형식이 올바르지 않습니다.');
             }
 
             if (!password) {
