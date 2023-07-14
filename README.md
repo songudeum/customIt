@@ -66,5 +66,8 @@ master -----dev
 
 ##### 사용자 로그인
 - ID: test@test.com
-- PW: test1234! 
+- PW: test1234!
+
+- ID: test123@test.com
+- PW: test1234!
 
