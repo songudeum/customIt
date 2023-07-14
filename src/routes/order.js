@@ -6,7 +6,6 @@ const asyncHandler = require('../utils/async-handler');
 
 const router = Router();
 
-// 주문서 => 주문서에 들어오는 값은 로컬 스토리지의 값
 router.get(
     '/cart',
     asyncHandler(async (req, res) => {
@@ -17,14 +16,12 @@ router.get(
     }),
 );
 
-// 마이페이지 주문내역 리스트
 router.get(
     '/:userId/orderList',
     asyncHandler(async (req, res) => {
-        // 요청 파라미터에서 userId 가져오기
         const { userId } = req.params;
         const categories = await Category.find({});
-        const orders = await Order.find({ userId }); // 주문 데이터 Find
+        const orders = await Order.find({ userId });
         const orderList = orders.map((order) => {
             const { orderId, totalPrice, deliveryStatus, products } = order;
 
@@ -40,7 +37,6 @@ router.get(
     }),
 );
 
-// 마이페이지 주문서 상세보기
 router.get(
     '/orderListDetail',
     asyncHandler(async (req, res) => {
@@ -51,7 +47,6 @@ router.get(
     }),
 );
 
-// 배송정보 수정
 router.get(
     '/edit',
     asyncHandler(async (req, res) => {
@@ -63,13 +58,11 @@ router.get(
     }),
 );
 
-// 결제완료
 router.get('/payment', async (req, res) => {
     const categories = await Category.find({});
     res.render('order-complete', { categories, categoryName: undefined });
 });
 
-// 주문 취소 완료 페이지
 router.get('/cancel', async (req, res) => {
     const categories = await Category.find({});
     res.render('order-cancel', { categories, categoryName: undefined });

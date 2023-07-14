@@ -21,15 +21,15 @@
                         <a href="/product/detail/<%= product.id %>" class="product">
                             <div class="product-img">
                                 <img src="/image/<%= product.image %>" alt="" />
-                                <button type="button" class="btn-add-cart"></button>
+                                <input type="hidden" id="image" value="<%= product.image %>" />
+                                <button type="button" class="btn-add-cart" id="btnCart"></button>
                             </div>
                             <div class="product-info">
                                 <p class="company"><%= product.company %></p>
-                                <p class="name"><%= product.name %></p>
+                                <p class="name" id="name"><%= product.name %></p>
                                 <p class="price">
-                                    <%= product.price.toLocaleString() %><span class="unit"
-                                        >원</span
-                                    >
+                                    <span id="price"> <%= product.price.toLocaleString() %></span>
+                                    <span class="unit">원</span>
                                 </p>
                             </div>
                         </a>
@@ -39,5 +39,50 @@
             </div>
         </main>
         <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+        <script>
+            const $btnCart = document.querySelector('#btnCart');
+            const productName = document.querySelector('#name').textContent;
+            const price = Number(document.querySelector('#price').textContent.replace(/\,/g, ''));
+            const image = document.querySelector('#image').value;
+            const quantity = 1;
+
+            function getItem(item) {
+                const data = localStorage.getItem(item);
+                if (data === null) {
+                    return {};
+                }
+                return JSON.parse(data);
+            }
+
+            function setCartDataToLocalStorage(arr) {
+                localStorage.setItem('cart', JSON.stringify(arr));
+                alert('장바구니에 상품을 담았습니다.');
+            }
+            $btnCart.addEventListener('click', () => {
+                let cart = getItem('cart');
+                const data = {
+                    productName,
+                    price,
+                    image,
+                    quantity,
+                };
+                let arr;
+                if (!cart.length) {
+                    arr = [];
+                    arr.push(data);
+                } else {
+                    arr = cart.slice();
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i].productName === productName) {
+                            arr[i].quantity++;
+                            setCartDataToLocalStorage(arr);
+                            return;
+                        }
+                    }
+                    arr.push(data);
+                }
+                setCartDataToLocalStorage(arr);
+            });
+        </script>
     </body>
 </html>

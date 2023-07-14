@@ -70,15 +70,13 @@
             }
 
             function setCartDataToLocalStorage(arr) {
-                console.dir(arr);
                 localStorage.setItem('cart', JSON.stringify(arr));
-                // 로컬스토리지에 카트를 키값으로 제이슨 파일로 변환하여 문자열로 저장
-                // 로컬스토리지에는 문자열로만 저장 가능
+
                 alert('장바구니에 상품을 담았습니다.');
             }
             $btnCart.addEventListener('click', () => {
                 let cart = getItem('cart');
-                // console.log(cart);
+
                 const data = {
                     productName,
                     price,
@@ -87,22 +85,18 @@
                 };
                 let arr;
                 if (!cart.length) {
-                    console.log('장바구니 없음');
                     arr = [];
                     arr.push(data);
                 } else {
-                    console.log('장바구니 있음');
                     arr = cart.slice();
                     for (let i = 0; i < arr.length; i++) {
                         if (arr[i].productName === productName) {
-                            console.log(arr);
                             arr[i].quantity++;
                             setCartDataToLocalStorage(arr);
                             return;
                         }
                     }
                     arr.push(data);
-                    console.log('hihihihih');
                 }
                 setCartDataToLocalStorage(arr);
             });
