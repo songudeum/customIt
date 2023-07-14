@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <div class="wrap">
+    <head>
+        <%- include('../views/partials/head.ejs'); %>
+        <link rel="stylesheet" href="/css/admin.css">
+        <link rel="stylesheet" href="/css/admin-aside.css">
+        <link rel="stylesheet" href="/css/admin-product-add.css">
+    </head>
+    <body>
+        <div class="grid">
+            <%- include('../views/partials/admin-aside.ejs'); %>
+            <article class="article">
+                <h2>상품 추가</h2>
+                <section>
+                    <form
+                    action="/api/product"
+                    enctype="multipart/form-data"
+                    method="post">
+                    <table>
+                        <tr>
+                            <div class="image-box">
+                            <img class='user-image' id="userImage">
+                            </div>
+                            </tr>
+                        <tr>
+                            <td>상품명</td>
+                            <td>
+                                <input type="text" id="inputName" name="name" required />
+                                <p class="check" id="checkName"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>가격</td>
+                            <td><input type="number" id ="inputPrice" name="price" required /></td>
+                        </tr>
+                        <tr>
+                            <td>설명</td>
+                            <td>
+                                <textarea class="inputDescription" id ="inputDescription" name="description" required></textarea>
+                                <p class = "check" id="checkDescription"></p>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>제조사</td>
+                            <td>
+                                <input type="text" id ="inputCompany" name="company" required />
+                                <p class="check" id="checkCompany"></p>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>카테고리</td>
+                            <td>
+                                <select name="categoryName" required>
+                                    <% categories.forEach(category =>{ %>
+                                        <option value="<%= category.name %>"><%= category.name %></option>
+                                    <% }) %>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>이미지</td>
+                            <td>
+                                <input id="imageName" value="첨부파일">
+                                <input type="file" class="add-image" id="addImage" name="productImage" accept="image/*" required />
+                                <label for="addImage" class="add-image-label" id="addImageLabel">찾기</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="btn-box">
+                    <input type="submit" class="btn-large submit" onsubmit="window.location.reload(true);"/>
+                    </div>
+                </form>
+            </section>
+            </article>
+        </div>
+        <script>
+            const $inputName = document.querySelector('#inputName');
+            const $inputDescription = document.querySelector('#inputDescription');
+            const $inputCompany = document.querySelector('#inputCompany');
+            
+            const $checkName = document.querySelector('#checkName');
+            const $checkDescription = document.querySelector('#checkDescription');
+            const $checkCompany = document.querySelector('#checkCompany');
+    
+            function validateName(){
+                if($inputName.value.length>=30){
+                $checkName.textContent = "상품명을 30자 미만으로 입력해주세요.";
+                }else{
+                $checkName.textContent = '';
+            }}
+    
+            function validateDescription(){
+                if($inputDescription.value.length>=150){
+                $checkDescription.textContent = "설명을 150자 미만으로 입력해주세요."
+                }else{
+                $checkDescription.textContent = '';
+            }}
+    
+            function validateCompany(){
+                if($inputCompany.value.length>=30){
+                $checkCompany.textContent = "제조사를 30자 미만으로 입력해주세요.";
+                }else{
+                $checkCompany.textContent = '';
+            }}
+    
+            $inputName.addEventListener('input',validateName);
+            $inputDescription.addEventListener('input',validateDescription);
+            $inputCompany.addEventListener('input',validateCompany);
+
+
+            const $userImage =document.querySelector('#userImage');
+            const $addImage = document.querySelector('#addImage');
+            const $addImageLabel = document.querySelector('#addImageLabel');
+            const $imageName = document.querySelector('#imageName');
+
+            function previewImg(){
+                let preview = new FileReader();
+                preview.onload = function(e){
+                    $userImage.src=e.target.result;
+                }
+                preview.readAsDataURL($addImage.files[0]);
+
+                const fileName = $addImage.value;
+                $imageName.value = fileName;
+            };
+            $addImage.addEventListener('change',previewImg);
+        </script>
+    </body>
+</div>
+</html>

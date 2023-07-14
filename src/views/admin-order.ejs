@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <div class="wrap">
+    <head>
+        <%- include('../views/partials/head.ejs'); %>
+        <link rel="stylesheet" href="/css/admin.css">
+        <link rel="stylesheet" href="/css/admin-aside.css">
+        <link rel="stylesheet" href="/css/admin-order.css">
+    </head>
+    <body>
+        <div class="grid">
+            <%- include('../views/partials/admin-aside.ejs'); %>
+            <article class="article">
+                <h2>주문 관리</h2>
+                <section>
+                    <table>
+                        <tr>
+                            <th>날짜</th>
+                            <th>주문 상품</th>
+                            <th>주문 총액</th>
+                            <th>준비/배송 상태</th>
+                            <th>관리</th>
+                        </tr>
+                        <% orders.forEach(function(order){%>
+                            <tr>
+                                <td><%= order.createdAt%></td>
+                                <td><%= order.productNames%></td>
+                                <td><%= order.totalPrice%></td>
+                                <td>
+                                    <select id = "deliveryStatus" data-id="<%= order.orderId %>" onchange="updateDeliveryStatus(event)">
+                                        <% const Status=['상품준비중', '배송준비중', '배송중', '배송완료']; %>
+                                        <% Status.forEach( e =>{ %>
+                                            <% if(e == order.deliveryStatus ){ %>
+                                                <option selected><%= e %></option>
+                                            <% }else{ %>
+                                                <option><%= e %></option>
+                                            <% }}) %>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button class="btn btn-large" onclick="deleteOrder(event); window.location.reload();" data-id="<%=order.orderId %>">
+                                        주문 취소
+                                    </button>
+                                </td>
+                            </tr>
+                        <%});%>
+                    </table>
+                </section>
+            </article>
+        </div>
+        <script>
+            const $deliveryStatus = document.querySelector('#deliveryStatus');
+
+            async function updateDeliveryStatus(event){
+                const orderId = event.target.getAttribute('data-id');
+                const deliveryStatus = event.target.value;
+                const res = await fetch(`/api/orders/${orderId}`,{
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                            },
+                    body: JSON.stringify({orderId, deliveryStatus}),
+                });
+
+                if (res.status === 201) {
+                    alert('배송 상태가 변경되었습니다.');
+                } else {
+                    alert('배송 상태 변경에 실패하였습니다.');
+                }
+            }
+            async function deleteOrder(event){
+                const orderId = event.target.getAttribute('data-id');
+                const res = await fetch(`/api/orders/${orderId}`,{
+                    method: 'DELETE'
+                });
+            }
+        </script>
+    </body>
+</div>
+</html>

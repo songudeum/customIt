@@ -1,0 +1,49 @@
+.footer {
+    position: relative;
+    transform: translateY(-100%);
+    height: 300px;
+    background-color: #f7f9fa;
+}
+
+.footer-inner {
+    max-width: 1280px;
+    height: 100%;
+    padding: 40px 20px 60px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.footer .project-info {
+    font-size: 13px;
+    line-height: 21px;
+    color: #909090;
+}
+
+.footer .project-info .title {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.footer .project-info .copyright {
+    margin-top: 10px;
+}
+
+.footer .skills-list {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #909090;
+}
+
+.footer .skills-list > li {
+    width: 30px;
+    height: 30px;
+}
+
+.footer .skills-list > li img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

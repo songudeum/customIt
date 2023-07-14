@@ -1,0 +1,114 @@
+.header {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    border-bottom: 1px solid rgb(220, 220, 220);
+    background-color: #fff;
+}
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    padding: 0 20px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.header-inner .logo {
+    width: 130px;
+}
+
+.header-inner .logo img {
+    width: 100%;
+}
+
+.header-inner .nav {
+    display: flex;
+    align-items: center;
+}
+
+.header-inner .nav .gnb {
+    display: flex;
+}
+
+.header-inner .nav .gnb .btn-gnb {
+    position: relative;
+    padding: 0 10px;
+    text-decoration: none;
+    color: #2f3438;
+    font-size: 18px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.header-inner .nav .gnb .btn-gnb.active {
+    font-weight: 600;
+}
+
+.header-inner .nav .gnb .btn-gnb:active {
+    color: #6c6c6c;
+}
+
+.header-inner .nav .gnb .btn-gnb:hover {
+    color: #a586f6;
+}
+
+.header-inner .nav .utils {
+    display: flex;
+    margin-left: 10px;
+}
+
+.header-inner .nav .utils > li {
+    margin-left: 4px;
+}
+
+.header-inner .btn-cart,
+.header-inner .btn-user {
+    display: inline-block;
+    width: 30px;
+    height: 36px;
+}
+
+.header-inner .btn-cart {
+    background: url('../image/cart.png') no-repeat center / 22px;
+}
+
+.header-inner .btn-user {
+    background: url('../image/user.png') no-repeat center / 20px;
+}
+
+.header-inner .btn-login,
+.header-inner .btn-logout,
+.header-inner .btn-signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    padding: 0 18px;
+    border-radius: 20px;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.header-inner .btn-login {
+    background-color: #a586f6;
+}
+.header-inner .btn-login:hover {
+    background-color: #9b7ce9;
+}
+
+.header-inner .btn-signin,
+.header-inner .btn-logout {
+    background-color: #2f3438;
+}
+
+.header-inner .btn-signin:hover,
+.header-inner .btn-logout:hover {
+    background-color: #3c4449;
+}

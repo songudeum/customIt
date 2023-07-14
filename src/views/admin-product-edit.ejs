@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ko">
+    <div class="wrap">
+        <head>
+            <%- include('../views/partials/head.ejs'); %>
+            <link rel="stylesheet" href="/css/admin.css" />
+            <link rel="stylesheet" href="/css/admin-aside.css" />
+            <link rel="stylesheet" href="/css/admin-product-add.css" />
+        </head>
+        <body>
+            <div class="grid">
+                <%- include('../views/partials/admin-aside.ejs'); %>
+                <article class="article">
+                    <h2>상품 수정</h2>
+                    <section>
+                        <form
+                            action="/api/product/<%= product.id %>"
+                            enctype="multipart/form-data"
+                            method="post"
+                        >
+                            <table>
+                                <tr>
+                                    <div class="image-box">
+                                        <img
+                                            class="user-image"
+                                            id="userImage"
+                                            src="/image/<%=product.image%>"
+                                        />
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <td>상품명</td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            class="input"
+                                            id="inputName"
+                                            name="name"
+                                            value="<%=product.name%>"
+                                            required
+                                        />
+                                        <p class="check" id="checkName"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>가격</td>
+                                    <td>
+                                        <input
+                                            type="number"
+                                            class="input"
+                                            id="inputPrice"
+                                            name="price"
+                                            value="<%=product.price%>"
+                                            required
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>설명</td>
+                                    <td>
+                                        <textarea
+                                            class="inputDescription input"
+                                            id="inputDescription"
+                                            name="description"
+                                            required
+                                        >
+<%=product.description%></textarea
+                                        >
+                                        <p class="check" id="checkDescription"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>제조사</td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            class="input"
+                                            id="inputCompany"
+                                            name="company"
+                                            value="<%=product.company%>"
+                                        />
+                                        <p class="check" id="checkCompany"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>카테고리</td>
+                                    <td>
+                                        <select class="input" name="categoryName" required>
+                                            <% categories.forEach(category =>{ %>
+                                        <option id="optionCategory" value="<%= category.name %>" 
+                                            <% if (category.name === product.categoryName) { %> selected <% } %>>
+                                            <%= category.name %>
+                                            </option>
+                                            <% }) %>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>이미지</td>
+                                    <td>
+                                        <span id="imageName"><%=product.image%></span>
+                                        <input
+                                            type="file"
+                                            class="add-image"
+                                            id="addImage"
+                                            name="productImage"
+                                            accept="image/*"
+                                        />
+                                        <label
+                                            for="addImage"
+                                            class="add-image-label"
+                                            id="addImageLabel"
+                                            >찾기</label
+                                        >
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="btn-box">
+                            <input type="submit" class="btn-large submit" value="수정 완료" />
+                            <a
+                                href="/admin/product"
+                                class="btn-large btn-delete"
+                                id="deleteProduct"
+                                data-id="<%=product.id %>"
+                                >삭제</a
+                            >
+                            </div>
+                        </form>
+                    </section>
+                </article>
+            </div>
+            <script>
+                const $inputName = document.querySelector('#inputName');
+                const $inputDescription = document.querySelector('#inputDescription');
+                const $inputCompany = document.querySelector('#inputCompany');
+
+                const $checkName = document.querySelector('#checkName');
+                const $checkDescription = document.querySelector('#checkDescription');
+                const $checkCompany = document.querySelector('#checkCompany');
+
+                function validateName() {
+                    if ($inputName.value.length >= 30) {
+                        $checkName.textContent = '상품명을 30자 미만으로 입력해주세요.';
+                    } else {
+                        $checkName.textContent = '';
+                    }
+                }
+
+                function validateDescription() {
+                    if ($inputDescription.value.length >= 150) {
+                        $checkDescription.textContent = '설명을 150자 미만으로 입력해주세요.';
+                    } else {
+                        $checkDescription.textContent = '';
+                    }
+                }
+
+                function validateCompany() {
+                    if ($inputCompany.value.length >= 30) {
+                        $checkCompany.textContent = '제조사를 30자 미만으로 입력해주세요.';
+                    } else {
+                        $checkCompany.textContent = '';
+                    }
+                }
+
+                $inputName.addEventListener('input', validateName);
+                $inputDescription.addEventListener('input', validateDescription);
+                $inputCompany.addEventListener('input', validateCompany);
+
+                const $userImage = document.querySelector('#userImage');
+                const $addImage = document.querySelector('#addImage');
+                const $addImageLabel = document.querySelector('#addImageLabel');
+
+                function previewImg() {
+                    let preview = new FileReader();
+                    preview.onload = function (e) {
+                        $userImage.src = e.target.result;
+                        imageName.textContent = $addImage.files[0].name;
+                    };
+                    preview.readAsDataURL($addImage.files[0]);
+
+                    const imageName = document.querySelector('#imageName');
+                }
+                $addImage.addEventListener('change', previewImg);
+
+                const $deleteProduct = document.querySelector('#deleteProduct');
+
+                async function deleteProduct(event) {
+                    const id = event.target.getAttribute('data-id');
+                    const res = await fetch(`/api/product/${id}`, {
+                        method: 'DELETE',
+                    });
+                }
+
+                $deleteProduct.addEventListener('click', deleteProduct);
+            </script>
+        </body>
+    </div>
+</html>

@@ -1,0 +1,347 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.aside-section-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.contents-inner2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 50px;
+}
+
+.order-list-wrap .text {
+    margin: 0 0 20px 0;
+    font-size: 28px;
+    line-height: 35px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    color: rgb(51, 51, 51);
+}
+
+.order-list-wrap {
+    width: 630px;
+}
+
+.order-list-wrap .top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 15px 0;
+}
+.order-list-wrap .email,
+.order-list-wrap .address,
+.order-list-wrap .phone-num,
+.order-list-wrap .name,
+.order-list-wrap .detail-address,
+.order-list-wrap .new-password {
+    display: inline-flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 12px 20px;
+}
+.order-list-wrap .address-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+    overflow: hidden;
+    width: 100px;
+    height: 46px;
+    border-radius: 6px;
+    color: #a586f6;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #a586f6;
+    cursor: pointer;
+}
+.email .check-email {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    color: black;
+    background-color: #a586f6;
+    cursor: pointer;
+}
+
+.email-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0px 10px;
+    width: 100px;
+    height: 46px;
+    border-radius: 6px;
+    color: rgb(95, 0, 128);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(95, 0, 128);
+}
+.order-list-wrap .address-check button {
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    color: #a586f6;
+    cursor: pointer;
+}
+.email-check a {
+    text-decoration: none;
+}
+
+.hidden-span {
+    visibility: hidden;
+    width: 100px;
+    height: 46px;
+    padding: 0px 10px;
+}
+
+.order-list-wrap label {
+    display: flex;
+    align-items: center;
+    width: 140px;
+    padding-top: 7px;
+}
+
+.order-list-wrap input {
+    width: 350px;
+    height: 46px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 6px;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.order-list-wrap input:focus {
+    border: #a586f6;
+}
+
+.order-list-wrap .bottom-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    margin: 30px 0;
+    margin-left: 14px;
+    margin-left: -20px;
+}
+
+.order-list-wrap .login {
+    display: inline-flex;
+    justify-content: center;
+    margin: 20px 0 0 0;
+}
+
+.order-list-wrap .login a {
+    display: inline-block;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-left: 10px;
+    color: rgb(51, 51, 51);
+}
+.order-list-wrap .bottom {
+    margin-top: 30px;
+}
+
+.order-list-wrap .bottom .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 350px;
+    height: 46px;
+    font-size: 17px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    color: white;
+    background-color: #a586f6;
+    margin: 0 auto;
+}
+
+.user-aside .snb_my .tit_snb {
+    padding: 8px 0 33px 1px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 34px;
+    color: #333;
+    letter-spacing: -0.5px;
+}
+
+.user-aside h2 {
+    width: 200px;
+}
+
+.user-aside {
+    max-width: 1280px;
+    padding: 0 30px;
+}
+.snb_my {
+    width: 100%;
+}
+.user-aside .snb_my .inner_sub {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+.user-aside .snb_my .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.user-aside .snb_my .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 15px 0 15px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+}
+
+.user-aside .snb_my .link_inquire {
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+    padding: 9px 0 0 21px;
+    border-radius: 0 100px 100px 0;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        25px;
+    background-size: 6px 11px;
+    font-size: 12px;
+    color: #333;
+    line-height: 20px;
+}
+
+.user-aside .snb_my .link_inquire .emph {
+    display: block;
+    padding-bottom: 1px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.snb_my {
+    width: 200px;
+}
+
+.aside-section-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.snb_my .tit_snb {
+    padding: 8px 0 33px 1px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 34px;
+    color: #333;
+    letter-spacing: -0.5px;
+}
+
+.snb_my .inner_sub {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+.snb_my .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.snb_my .list_menu li.on a:hover,
+.snb_my .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        52%;
+    background-size: 6px 11px;
+    color: #666;
+}
+
+.snb_my .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 15px 0 15px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    text-decoration: none;
+}
+
+.snb_my .link_inquire {
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+    padding: 9px 0 0 21px;
+    border-radius: 0 100px 100px 0;
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        25px;
+    background-size: 6px 11px;
+    font-size: 12px;
+    color: #333;
+    line-height: 20px;
+}
+
+.snb_my .link_inquire .emph {
+    display: block;
+    padding-bottom: 1px;
+    font-weight: 700;
+    font-size: 14px;
+}
+.btn-cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 46px;
+    font-size: 15px;
+    border-radius: 6px;
+    background-color: #a586f6;
+    text-decoration: none;
+    border: 1px solid #a586f6;
+    margin: 0 3px;
+    color: white;
+}
+
+.btn-secede {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 46px;
+    font-size: 15px;
+
+    border-radius: 6px;
+    color: #a586f6;
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    border: 1px solid #a586f6;
+    margin: 0 3px;
+}
+
+.btn-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}

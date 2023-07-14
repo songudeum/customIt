@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/header.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="/css/empty-order-list.css" />
+    </head>
+
+    <body class="container">
+        <header class="header"><%- include('../views/partials/header'); %></header>
+
+        <main role="main" class="contents">
+            <div class="contents-inner">
+                <section class="user-aside">
+                    <div id="snb" class="snb-my">
+                        <h2 class="tit-snb">마이페이지</h2>
+                        <div class="inner-sub">
+                            <ul class="list-menu">
+                                <li class="on">
+                                    <a href="#">주문내역</a>
+                                </li>
+                                <li>
+                                    <a href="#">개인 정보 수정</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <p class="cont-title">주문 내역</p>
+                <div class="horizontal-line"></div>
+
+                <div class="empty-orderlist-wrap">
+                    <section>
+                        <div class="blank-box">
+                            <p class="empty-message">주문내역이 없습니다.</p>
+                            <a href="홈화면 URL" class="home-button">홈화면으로 돌아가기</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+    </body>
+</html>
