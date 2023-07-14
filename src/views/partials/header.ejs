@@ -7,18 +7,18 @@
     <nav class="nav">
         <ul class="gnb">
             <% categories.forEach(function(category) { %>
-            <li>
-                <% if (category.name.localeCompare(categoryName)) { %>
-                <a href="/product/sub/<%= category.name %>" class="btn-gnb">
-                    <%= category.name %>
-                </a>
-                <%} else { %>
-                <a href="/product/sub/<%= category.name %>" class="btn-gnb active">
-                    <%= category.name %>
-                </a>
-                <% } %>
-            </li>
-            <% }); %>
+                <li>
+                    <% if (category.name.localeCompare(categoryName)) { %>
+                        <a href="/product/sub/<%= category.name %>" class="btn-gnb">
+                            <%= category.name %>
+                        </a>
+                        <%} else { %>
+                            <a href="/product/sub/<%= category.name %>" class="btn-gnb active">
+                                <%= category.name %>
+                            </a>
+                            <% } %>
+                </li>
+                <% }); %>
         </ul>
         <ul class="utils">
             <li>

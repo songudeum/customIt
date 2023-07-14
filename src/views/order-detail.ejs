@@ -16,92 +16,134 @@
 
     <main role="main" class="contents">
         <div class="contents-inner">
-            <div class="order-detail-wrap">
+            <div class="order-aside-wrap">
                 <section class="user-aside">
                     <div id="snb" class="snb_my">
                         <h2 class="tit_snb">마이페이지</h2>
                         <div class="inner_sub">
                             <ul class="list_menu">
                                 <li class="on">
-                                    <a href="#">주문내역</a>
+                                    <a href="/order/ETfNh/orderList">
+                                        주문 내역
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="#">개인 정보 수정</a>
+                                    <a href="/users/info">개인 정보 수정</a>
+                                </li>
+                                <li>
+                                    <a href="/users/info/edit/pw">비밀번호 변경</a>
+                                </li>
+                                <li>
+                                    <a href="/users/info/delete">회원 탈퇴 하기</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                </section>
-                <section>
-                    <div class="order">
-                        <h2>
-                            주문 내역 상세
-                        </h2>
-                        <dir class="list-box">
-                            <ul>
-                                <li class="layer">
-                                    <div class="image-box">
-                                        <img src="#" alt="첫 번째 주문내역" class="#">
-                                    </div>
-                                    <div>
-                                        [KF365]1+등급 무항생제 대란 20구
-                                    </div>
-                                    <div>1개</div>
-                                    <div class="price">
-                                        <div>4,990원</div>
-                                    </div>
-                                </li>
-                                <li class="layer">
-                                    <div class="image-box">
-                                        <img src="#" alt="첫 번째 주문내역" class="#">
-                                    </div>
-                                    <div>
-                                        [KF365]1+등급 무항생제 대란 20구
-                                    </div>
-                                    <div>1개</div>
-                                    <div class="price">
-                                        <div>4,990원</div>
-                                    </div>
-                                </li>
-                                <li class="layer">
-                                    <div class="image-box">
-                                        <img src="#" alt="첫 번째 주문내역" class="#">
-                                    </div>
-                                    <div>
-                                        [KF365]1+등급 무항생제 대란 20구
-                                    </div>
-                                    <div>1개</div>
-                                    <div class="price">
-                                        <div>4,990원</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </dir>
-                    </div>
-                    </dir>
-                    <div class="addres">
-                        <div class="order-change">
-                            <h2>배송지 정보</h2>
-                            <div>
-                                <a href="http://localhost:3000//edit/:userId/:orderId">배송지 수정하기 ></a>
-                            </div>
+                    <div class="order-contents">
+                        <div class="title-wrap">
+                            <p class="cont-title">주문 내역 상세</p>
                         </div>
-
-                        <dir class="info-box">
-                            <ul class="">
-                                <li>받는분</li>
-                                <li>휴대폰</li>
-                                <li>이메일</li>
-                                <li>배송지</li>
+                        <div class="order-list-wrap">
+                            <ul class="order-list">
+                                <li class="order-item">
+                                    <div href="" class="order-box">
+                                        <div class="thum">
+                                            <img src="/image/img-product01.jpg" alt="" class="상품 대표 이미지" />
+                                        </div>
+                                        <div class="item">
+                                            <p class="sub">주문번호</p>
+                                            <p class="desc">
+                                                4123555223232
+                                            </p>
+                                            <p class="price">
+                                                229,000원
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="order-item">
+                                    <div href="" class="order-box">
+                                        <div class="thum">
+                                            <img src="/image/img-product04.jpg" alt="" class="상품 대표 이미지" />
+                                        </div>
+                                        <div class="item">
+                                            <p class="sub">주문번호</p>
+                                            <p class="desc">
+                                                2292514900955
+                                            </p>
+                                            <p class="price">
+                                                2,790,000원
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="order-item">
+                                    <div href="" class="order-box">
+                                        <div class="thum">
+                                            <img src="/image/img-product03.jpg" alt="" class="상품 대표 이미지" />
+                                        </div>
+                                        <div class="item">
+                                            <p class="sub">주문번호</p>
+                                            <p class="desc">
+                                                3727382819233
+                                            </p>
+                                            <p class="price">
+                                                119,000원
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
-                            <ul>
-                                <li>유저이름</li>
-                                <li>010-0000-0000</li>
-                                <li>customit@elice.com</li>
-                                <li>서울 성동구 아차산로 17길 48 성수낙낙 2층</li>
+                        </div>
+                        <div class="title-wrap">
+                            <p class="cont-title">주문 내역 상세</p>
+                            <a href="/order/edit" class="btn-edit">배송지 수정하기 > </a>
+                        </div>
+                        <div class="order-list-wrap">
+                            <ul class="order-list">
+                                <li class="order-item">
+                                    <div class="order-box2">
+                                        <div class="item">
+                                            <p class="sub">받는 분</p>
+                                            <p class="desc">
+                                                체셔
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="order-item">
+                                    <div class="order-box2">
+                                        <div class="item">
+                                            <p class="sub">휴대폰</p>
+                                            <p class="desc">
+                                                010-0000-0000
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="order-item">
+                                    <div class="order-box2">
+                                        <div class="item">
+                                            <p class="sub">이메일</p>
+                                            <p class="desc">
+                                                cheshire@elice.com
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="order-item">
+                                    <div class="order-box2">
+                                        <div class="item">
+                                            <p class="sub">배송지</p>
+                                            <p class="desc">
+                                                서울 성동구 아차산로17길 48 성수낙낙 2층
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
+                        </div>
                     </div>
-
                 </section>
             </div>
         </div>

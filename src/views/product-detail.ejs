@@ -38,7 +38,9 @@
                                 <button type="button" id="btnCart" class="btn btn-main-line">
                                     장바구니
                                 </button>
-                                <a href="/cart" id="btnOrder" class="btn btn-main">바로 구매</a>
+                                <a href="/order/cart" id="btnOrder" class="btn btn-main"
+                                    >바로 구매</a
+                                >
                             </div>
                         </div>
                     </div>
@@ -58,22 +60,51 @@
             const price = Number(document.querySelector('#price').textContent.replace(/\,/g, ''));
             const image = document.querySelector('#image').value;
             const quantity = 1;
-            const data = {
-                productName,
-                price,
-                image,
-                quantity,
-            };
 
-            function setCartDataToLocalStorage(data) {
-                console.dir(data);
-                localStorage.setItem('cart', JSON.stringify(data));
+            function getItem(item) {
+                const data = localStorage.getItem(item);
+                if (data === null) {
+                    return {};
+                }
+                return JSON.parse(data);
+            }
+
+            function setCartDataToLocalStorage(arr) {
+                console.dir(arr);
+                localStorage.setItem('cart', JSON.stringify(arr));
                 // 로컬스토리지에 카트를 키값으로 제이슨 파일로 변환하여 문자열로 저장
                 // 로컬스토리지에는 문자열로만 저장 가능
                 alert('장바구니에 상품을 담았습니다.');
             }
             $btnCart.addEventListener('click', () => {
-                setCartDataToLocalStorage(data);
+                let cart = getItem('cart');
+                // console.log(cart);
+                const data = {
+                    productName,
+                    price,
+                    image,
+                    quantity,
+                };
+                let arr;
+                if (!cart.length) {
+                    console.log('장바구니 없음');
+                    arr = [];
+                    arr.push(data);
+                } else {
+                    console.log('장바구니 있음');
+                    arr = cart.slice();
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i].productName === productName) {
+                            console.log(arr);
+                            arr[i].quantity++;
+                            setCartDataToLocalStorage(arr);
+                            return;
+                        }
+                    }
+                    arr.push(data);
+                    console.log('hihihihih');
+                }
+                setCartDataToLocalStorage(arr);
             });
         </script>
     </body>
