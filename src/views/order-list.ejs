@@ -184,7 +184,6 @@
 
     <footer class="footer"><%- include('../views/partials/footer'); %></footer>
     <script>
-        console.log(orderList);
         document.addEventListener('DOMContentLoaded', function () {
             // 주문 조회 기능
             // '/api/orders' 라는 경로에서 주문 내역을 가져온다면
@@ -198,7 +197,6 @@
                 .then((response) => response.json())
                 .then((data) =>
                     // data를 사용하여 주문 내역을 표시
-                    console.log(data),
                 );
 
             // 주문 취소 기능

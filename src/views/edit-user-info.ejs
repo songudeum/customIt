@@ -132,7 +132,6 @@
             if (isPhoneNumValid) {
                 editUserInfoChange();
             } else {
-                console.error('개인정보 수정 조건을 만족하지 못했습니다.');
             }
         }
 
@@ -171,10 +170,8 @@
                     alert('개인정보 수정에 성공하였습니다');
                     window.location.href = '/users/info'; // 수정 완료 후 이동할 페이지 URL
                 } else {
-                    console.error('회원정보 수정에 실패했습니다.');
                 }
             } catch (error) {
-                console.error('서버와의 통신 중 오류가 발생했습니다.', error);
             }
         }
     </script>

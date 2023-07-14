@@ -132,11 +132,9 @@
                             return false;
                         }
                     } else {
-                        console.error('이메일 중복 확인에 실패했습니다.');
                         return false;
                     }
                 } catch (error) {
-                    console.error('서버와의 통신 중 오류가 발생했습니다.', error);
                     return false;
                 }
             }
@@ -213,7 +211,6 @@
                 if (isEmailValid && isPasswordValid && isPasswordConfirmValid && isNameValid) {
                     registerAdmin(); // 회원가입 수행
                 } else {
-                    console.error('회원가입 조건을 만족하지 못했습니다.');
                 }
             }
 
@@ -231,7 +228,6 @@
 
                 const isDuplicate = await checkEmailDuplicate($emailInput);
                 if (isDuplicate) {
-                    console.error('중복된 이메일입니다.');
                     return;
                 }
 
@@ -247,10 +243,8 @@
                     if (res.ok) {
                         window.location.href = res.url;
                     } else {
-                        console.error('관리자 회원가입에 실패했습니다.', error);
                     }
                 } catch (error) {
-                    console.error('서버와의 통신 중 오류가 발생했습니다.', error);
                 }
             }
         </script>
