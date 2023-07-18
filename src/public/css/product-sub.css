@@ -1,0 +1,76 @@
+/* 서브 페이지 */
+a {
+    text-decoration: none;
+    color: #303030;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 20px;
+}
+
+.product-list > li {
+    flex: 0 0 calc(25% - 20px);
+}
+
+.product-list .product .product-img {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product-list .product .product-img::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.product-list .product .product-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s;
+}
+
+.product-list .product:hover .product-img img {
+    transform: scale(1.02);
+}
+
+.product-list .product .btn-add-cart {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background: #a586f6 url('../image/icon-cart-white.png') no-repeat center / 16px;
+    cursor: pointer;
+}
+
+.product-list .product .product-info {
+    margin-top: 10px;
+}
+
+.product-list .product .product-info .company {
+    color: #ccc;
+    font-size: 12px;
+}
+
+.product-list .product .product-info .name {
+    margin-top: 4px;
+    font-size: 16px;
+}
+
+.product-list .product .product-info .price {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}

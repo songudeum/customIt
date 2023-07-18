@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/css/header.css" />
+<link rel="stylesheet" href="/css/order-cancel.css" />
+<link rel="stylesheet" href="/css/footer.css" />
+
+<!doctype html>
+<html lang="ko">
+    <head>
+        <%- include('../views/partials/head'); %>
+    </head>
+
+    <body class="container">
+        <header class="header"><%- include('../views/partials/header'); %></header>
+
+        <main role="main" class="contents">
+            <div class="contents-inner">
+                <div class="order-cancel-wrap">
+                    <div class="icon-wrapper">
+                        <img src="/image/order-cancel-icon.png" alt="이미지 아이콘" />
+                    </div>
+                    <p class="cancel-message">주문이 취소되었습니다.</p>
+                    <a href="/" class="btn-main">홈 화면으로 돌아가기</a>
+                </div>
+            </div>
+        </main>
+        <footer class="footer"><%- include('../views/partials/footer'); %></footer>
+    </body>
+</html>

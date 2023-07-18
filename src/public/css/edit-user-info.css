@@ -1,0 +1,295 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.edit-info-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-info-text {
+    display: flex;
+    justify-content: space-between;
+    width: 650px;
+    height: 70px;
+}
+
+.edit-info-text .left {
+    margin: 30px 0 20px 15px;
+    font-size: 28px;
+    line-height: 35px;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+}
+.edit-info-text .right {
+    display: flex;
+    align-items: end;
+    text-align: right;
+}
+
+.edit-info-text .right div {
+    color: red;
+    display: inline;
+}
+
+.edit-user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1280px;
+}
+
+.edit-user-info .top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 650px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin: 10px 0;
+}
+
+.edit-user-info .top .email div {
+    color: red;
+    display: inline;
+}
+.edit-user-info .top .name div {
+    color: red;
+    display: inline;
+}
+
+.edit-user-info .email,
+.edit-user-info .password,
+.edit-user-info .password-confirm,
+.edit-user-info .name,
+.edit-user-info .phone-num,
+.edit-user-info .address,
+.edit-user-info .new-password,
+.edit-user-info .detail-address {
+    display: inline-flex;
+    width: 100%;
+    padding: 12px 20px;
+    justify-content: space-between;
+}
+.edit-user-info .email-check,
+.edit-user-info .address-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+    overflow: hidden;
+    width: 100px;
+    height: 46px;
+    border-radius: 6px;
+    color: #a586f6;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #a586f6;
+    cursor: pointer;
+}
+
+.edit-user-info .email-check:hover {
+    border: 2px solid #a586f6;
+}
+
+.edit-user-info .email-check button {
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    color: #a586f6;
+    cursor: pointer;
+}
+.edit-user-info .address-check button {
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    color: #a586f6;
+    cursor: pointer;
+}
+
+.edit-user-info label {
+    display: flex;
+    align-items: center;
+    width: 140px;
+    padding-top: 7px;
+}
+.edit-user-info .address-check a {
+    color: #a586f6;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.edit-user-info input {
+    width: 350px;
+    height: 46px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 6px;
+    border: 1px solid rgb(221, 221, 221);
+    outline: none;
+}
+.edit-user-info input::placeholder {
+    color: #bbbbbb;
+}
+
+.edit-user-info input:focus {
+    border-color: #9b7ce9;
+    color: #2f3438;
+}
+
+.edit-user-info .top .btn-address {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 350px;
+    height: 46px;
+    background-color: white;
+    border: 1px solid #a586f6;
+    text-decoration: none;
+    border-radius: 6px;
+    color: #a586f6;
+}
+.edit-user-info .top span {
+    visibility: hidden;
+    display: block;
+    padding: 0px 10px;
+    width: 100px;
+    height: 46px;
+}
+
+.edit-user-info .login {
+    display: inline-flex;
+    justify-content: center;
+    margin: 20px 0 0 0;
+}
+
+.edit-user-info .login a {
+    display: inline-block;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-left: 10px;
+    color: rgb(51, 51, 51);
+}
+
+.edit-user-info .btn-bottom {
+    display: inline-flex;
+    justify-content: center;
+    width: 100vh;
+    height: 80px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.btn-secede {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 46px;
+    font-size: 17px;
+    border-radius: 6px;
+    color: #a586f6;
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    border: 1px solid #a586f6;
+    margin: 0 3px;
+}
+
+.btn-edit-user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 46px;
+    font-size: 17px;
+    border-radius: 6px;
+    color: #ffffff;
+    background-color: #a586f6;
+    text-decoration: none;
+    border: 1px solid #a586f6;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.btn-edit-user-info button {
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-bottom a {
+    font-size: 15px;
+}
+
+.snb_my {
+    width: 200px;
+}
+
+.aside-section-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.snb_my .tit_snb {
+    padding: 8px 0 33px 1px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 34px;
+    color: #333;
+    letter-spacing: -0.5px;
+}
+
+.snb_my .inner_sub {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+.snb_my .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.snb_my .list_menu li.on a:hover,
+.snb_my .list_menu li a:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        52%;
+    background-size: 6px 11px;
+    color: #666;
+}
+
+.snb_my .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 15px 0 15px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    text-decoration: none;
+}
+
+.snb_my .link_inquire {
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+    padding: 9px 0 0 21px;
+    border-radius: 0 100px 100px 0;
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        25px;
+    background-size: 6px 11px;
+    font-size: 12px;
+    color: #333;
+    line-height: 20px;
+}
+
+.snb_my .link_inquire .emph {
+    display: block;
+    padding-bottom: 1px;
+    font-weight: 700;
+    font-size: 14px;
+}

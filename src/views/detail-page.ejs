@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/detail-page.css">
+        <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body class="container">
+
+    <header class="header">
+        <%- include('../views/partials/header'); %>
+    </header>
+
+    <main role="main" class="contents">
+        <div class="contents-inner">
+            <div class="detail-wrap">
+                <section class="top">
+                    <div class="image-box">image
+                        <img src="#" alt="상품 썸네일">
+                    </div>
+                    <div class="product">
+                        <div class="text">
+                            <div class="left">
+                                <div class="company">제조사</div>
+                                <div class="name">상품명</div>
+                                <div class="price">2,000,000원</div>
+                                <div class="count">수량선택</div>
+                            </div>
+                            <div class="right">
+                                <div>총 금액 상품: </div>
+                                <div>1,000,000원</div>
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <button class="cart">장바구니</button>
+                            <button class="purchase">바로 구매</button>
+                        </div>
+                    </div>
+                </section>
+                <section class="bottom">
+                    <div>상품설명</div>
+                    <div class="box">설명란</div>
+                </section>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <%- include('../views/partials/footer'); %>
+    </footer>
+</body>
+
+</html>

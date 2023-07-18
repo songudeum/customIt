@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/empty-cart.css">
+        <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body class="container">
+
+    <header class="header">
+        <%- include('../views/partials/header'); %>
+    </header>
+
+    <main role="main" class="contents">
+        <div class="contents-inner">
+            <div class="empty-cart-wrap">
+                <section class="user-aside">
+                    <div id="snb" class="snb_my">
+                        <h2 class="tit_snb">마이페이지</h2>
+                        <div class="inner_sub">
+                            <ul class="list_menu">
+                                <li class="on">
+                                    <a href="#">주문내역</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">개인 정보 수정</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="empty-cart">
+                    <div class="icon">
+                        <img src="../image/empty-icon.png" alt="">
+                    </div>
+                    <div class="box">
+                        <a href="#">상품 담으러 가기</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <%- include('../views/partials/footer'); %>
+    </footer>
+</body>
+
+</html>

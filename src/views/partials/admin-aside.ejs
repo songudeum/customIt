@@ -1,0 +1,31 @@
+        <aside class="aside">
+            <img class="admin-logo" src="/image/admin-logo.png">   
+                <ul class="nav">
+                    <li class="nav-li"><a href="/admin/category" class="category nav-li-a">카테고리 관리</a></li>
+                    <li class="nav-li"><a href="/admin/product" class="product nav-li-a">상품 관리</a></li>
+                    <li class="nav-li"><a href="/admin/orders/edit" class="order nav-li-a">주문 관리</a></li>
+                </ul>
+            <div class="logout">
+                <button class="btn btn-logout" id="logout">로그아웃</button>
+            </div>
+        </aside>
+        <script>
+            async function btnLogout(e) {         
+                e.preventDefault();          
+                const apiUrl = '/api/admin/logout';         
+                const res = await fetch(apiUrl, {             
+                    method: 'GET',             
+                    headers: {                 
+                        'Content-Type': 'application/json',             
+                    },         
+                });          
+                if (res.status === 200) {             
+                    window.location.href = res.url;         
+                } else {             
+                    alert(res.message);         
+                }     
+            }
+
+            const $logout = document.querySelector('#logout');
+            $logout.addEventListener('click', btnLogout);
+        </script>

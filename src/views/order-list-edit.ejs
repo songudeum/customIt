@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include('../views/partials/head'); %>
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/order-list-edit.css">
+        <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body class="container">
+    <header class="header">
+        <%- include('../views/partials/header'); %>
+    </header>
+    <main role="main" class="contents">
+        <div class="contents-inner">
+            <div class="contents-inner2">
+                <section class="aside-section-wrap">
+                    <div id="snb" class="snb_my">
+                        <h2 class="tit_snb">마이페이지</h2>
+                        <div class="inner_sub">
+                            <ul class="list_menu">
+                                <li class="on">
+                                    <a href="#">
+                                        주문 내역
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/users/info">개인 정보 수정</a>
+                                </li>
+                                <li>
+                                    <a href="/users/info/edit/pw">비밀번호 변경</a>
+                                </li>
+                                <li>
+                                    <a href="/users/info/delete">회원 탈퇴 하기</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <div class="order-list-wrap">
+                    <div class="text">배송지 정보 수정</div>
+                    <section class="top">
+                        <div class="email">
+                            <label>이메일</label>
+                            <input type="text" placeholder="custom-it@custom.com">
+                            <span class="hidden-span"><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="name">
+                            <label>이름</label>
+                            <input type="text" placeholder="체셔">
+                            <span class="hidden-span"><a href="#">중복확인</a></span>
+                        </div>
+                        <div class="phone-num">
+                            <label>휴대폰</label>
+                            <input type="tel" id="phoneNumInput" placeholder="010-0000-0000"
+                                onchange="validatePhoneNum()" maxlength="13">
+                            <span class="hidden-span"><a href="#">중복확인</a></span>
+                        </div>
+                        <p id="phoneNumCheck"></p>
+                        <div class="phone-num">
+                            <label>휴대폰</label>
+                            <input type="tel" id="phoneNumInput" placeholder="서울 성동구 아차산로17길 48 성수낙낙 2층"
+                                onchange="validatePhoneNum()" maxlength="13">
+                            <span class="hidden-span"><a href="#">중복확인</a></span>
+                        </div>
+                    </section>
+
+                    <div class="btn-bottom">
+                        <a href="/users/info" class="btn-cancel">배송지 변경</a>
+                        <a href="/users/info" id="btnSecession" class="btn-secede">취소</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer class="footer">
+        <%- include('../views/partials/footer'); %>
+    </footer>
+</body>
+
+</html>
