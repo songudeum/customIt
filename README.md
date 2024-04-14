@@ -1,7 +1,6 @@
 # Custom IT 💻
 
 취향대로 꾸미는 나만의 IT 데스크테리어를 위한 온라인 쇼핑몰 사이트<br>
-[Custom IT 사이트 보러가기](http://kdt-sw-5-team16.elicecoding.com/)
 
 ## 프로젝트 목표
 - 사용자가 바로 찾을 수 있는 네비게이션을 제공한다.
